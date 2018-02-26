@@ -1,4 +1,4 @@
-module top (input [1:0] s, input [7:0] a, b, c, d, output reg [7:0] y);
+module top (input [1:0] s, input [5:0] a, b, c, d, output reg [5:0] y);
   always @* begin
     case (s)
       0: y = a;

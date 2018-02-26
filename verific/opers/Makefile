@@ -1,4 +1,4 @@
-TESTS := wide_mux sel_mux
+TESTS := wide_mux sel_mux select wselect rednor
 
 all: $(addsuffix .status,$(TESTS))
 
