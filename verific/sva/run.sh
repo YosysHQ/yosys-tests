@@ -16,7 +16,7 @@ while read t; do
 		echo ""
 		echo "[script]"
 		echo "verific -sv $1.sv"
-		echo "verific -import -v $t"
+		echo "verific -import $t"
 		echo "prep -nordff -top $t"
 		echo "chformal -assume -early"
 		echo "opt_clean"
