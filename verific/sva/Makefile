@@ -1,4 +1,4 @@
-TESTS := until
+TESTS := until until_trig
 
 all: $(addsuffix .status,$(TESTS))
 	touch .stamp

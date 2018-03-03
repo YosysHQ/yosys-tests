@@ -26,10 +26,14 @@ module pass_00 (input clock);
 		.trace_a("_-______________________________"),
 		.trace_b("__----__________________________"),
 		.trace_c("____----________________________"),
-		.trace_d("______-_________________________")
+		.trace_d("_____--_________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) $rose(A) |=> B ##2 C until D);
+	sequence DD;
+		D [*2];
+	endsequence
+
+	assert property (@(posedge clock) $rose(A) |=> B ##2 C until DD.triggered);
 endmodule
 
 module fail_01 (input clock);
@@ -40,10 +44,14 @@ module fail_01 (input clock);
 		.trace_a("_-______________________________"),
 		.trace_b("__----__________________________"),
 		.trace_c("____----________________________"),
-		.trace_d("_______-________________________")
+		.trace_d("____-_-_________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) $rose(A) |=> B ##2 C until D);
+	sequence DD;
+		D [*2];
+	endsequence
+
+	assert property (@(posedge clock) $rose(A) |=> B ##2 C until DD.triggered);
 endmodule
 
 module fail_02 (input clock);
@@ -54,10 +62,14 @@ module fail_02 (input clock);
 		.trace_a("_-______________________________"),
 		.trace_b("__----__________________________"),
 		.trace_c("____----________________________"),
-		.trace_d("______-_________________________")
+		.trace_d("_____--_________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) $rose(A) |=> B ##2 C until_with D);
+	sequence DD;
+		D [*2];
+	endsequence
+
+	assert property (@(posedge clock) $rose(A) |=> B ##2 C until_with DD.triggered);
 endmodule
 
 module pass_03 (input clock);
@@ -68,8 +80,12 @@ module pass_03 (input clock);
 		.trace_a("_-______________________________"),
 		.trace_b("__-----_________________________"),
 		.trace_c("____-----_______________________"),
-		.trace_d("______-_________________________")
+		.trace_d("_____--_________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) $rose(A) |=> B ##2 C until_with D);
+	sequence DD;
+		D [*2];
+	endsequence
+
+	assert property (@(posedge clock) $rose(A) |=> B ##2 C until_with DD.triggered);
 endmodule
