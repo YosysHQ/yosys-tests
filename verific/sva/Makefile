@@ -1,6 +1,7 @@
 TESTS := until until_trig seq_or
 
 all: $(addsuffix .status,$(TESTS))
+	grep -H . *.status | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t20
 	touch .stamp
 
 %.status: %.sv run.sh
