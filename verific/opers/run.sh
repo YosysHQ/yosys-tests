@@ -3,7 +3,7 @@
 set -ex
 trap "echo FAIL > $1.status" ERR
 
-yosys -l $1.log -p "
+yosys -p "
 	verific -sv $1.sv
 	verific -import -v top
 	synth -flatten -top top

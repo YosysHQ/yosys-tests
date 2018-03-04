@@ -5,7 +5,7 @@ all: $(addsuffix .status,$(TESTS))
 	touch .stamp
 
 %.status: %.sv run.sh
-	-bash run.sh $(basename $@)
+	-bash run.sh $(basename $@) > $(basename $@).log 2>&1
 	test -f $@
 
 clean:

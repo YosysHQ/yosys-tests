@@ -1,7 +1,7 @@
 SUBDIRS = verific
 
 all: $(addsuffix /.stamp,$(SUBDIRS))
-	find -name "*.status" | sort | xargs grep -H . | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t40
+	echo; find * -name "*.status" | sort | xargs grep -H . | sed 's,^,    ,; s,.status:,\t,; s,PASS,pass,;' | expand -t40; echo
 	touch .stamp
 
 %/.stamp:
