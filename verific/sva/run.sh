@@ -18,8 +18,6 @@ while read t; do
 		echo "verific -sv $1.sv"
 		echo "verific -import $t"
 		echo "prep -nordff -top $t"
-		echo "chformal -assume -early"
-		echo "opt_clean"
 		echo ""
 		echo "[files]"
 		echo "$1.sv"
