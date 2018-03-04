@@ -30,6 +30,7 @@ module pass_00 (input clock);
 	) uut (clock, A, B, C, D);
 
 	sequence DD;
+		@(posedge clock)
 		D [*2];
 	endsequence
 
@@ -48,6 +49,7 @@ module fail_01 (input clock);
 	) uut (clock, A, B, C, D);
 
 	sequence DD;
+		@(posedge clock)
 		D [*2];
 	endsequence
 
@@ -66,6 +68,7 @@ module fail_02 (input clock);
 	) uut (clock, A, B, C, D);
 
 	sequence DD;
+		@(posedge clock)
 		D [*2];
 	endsequence
 
@@ -84,6 +87,7 @@ module pass_03 (input clock);
 	) uut (clock, A, B, C, D);
 
 	sequence DD;
+		@(posedge clock)
 		D [*2];
 	endsequence
 

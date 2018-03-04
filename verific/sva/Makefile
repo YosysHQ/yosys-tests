@@ -1,4 +1,4 @@
-TESTS := until until_trig seq_or
+TESTS := seq_and seq_or triggered until until_trig
 
 all: $(addsuffix .status,$(TESTS))
 	grep -H . *.status | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t20
