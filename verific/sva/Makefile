@@ -1,4 +1,4 @@
-TESTS := consrep firstmatch gotorep intersect nonconsrep seq_and seq_or triggered until until_trig within
+TESTS := consrep firstmatch gotorep intersect nonconsrep seq_and seq_or triggered until until_trig within repzero
 
 all: $(addsuffix .status,$(TESTS))
 	grep -H . *.status | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t20

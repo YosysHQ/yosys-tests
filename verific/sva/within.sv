@@ -29,7 +29,7 @@ module pass_00 (input clock);
 		.trace_d("______-______-__________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module pass_01 (input clock);
@@ -43,7 +43,7 @@ module pass_01 (input clock);
 		.trace_d("________-_______________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module fail_02 (input clock);
@@ -57,7 +57,7 @@ module fail_02 (input clock);
 		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module fail_03 (input clock);
@@ -71,7 +71,7 @@ module fail_03 (input clock);
 		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module fail_04 (input clock);
@@ -85,7 +85,7 @@ module fail_04 (input clock);
 		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module pass_05 (input clock);
@@ -99,7 +99,7 @@ module pass_05 (input clock);
 		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule
 
 module pass_06 (input clock);
@@ -113,5 +113,5 @@ module pass_06 (input clock);
 		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> (B [*3] within (C [*])) ##1 D));
+	assert property (@(posedge clock) (A |=> (B [*3] within (C [+])) ##1 D));
 endmodule

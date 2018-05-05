@@ -29,7 +29,7 @@ module pass_00 (input clock);
 		.trace_d("_____________-__-_______________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [*] ##1 D)) ##1 B ##1 C ##1 D));
+	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [+] ##1 D)) ##1 B ##1 C ##1 D));
 endmodule
 
 module fail_01 (input clock);
@@ -43,7 +43,7 @@ module fail_01 (input clock);
 		.trace_d("_____________-__-_______________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [*] ##1 D)) ##1 B ##1 C ##1 D));
+	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [+] ##1 D)) ##1 B ##1 C ##1 D));
 endmodule
 
 module fail_02 (input clock);
@@ -57,7 +57,7 @@ module fail_02 (input clock);
 		.trace_d("_____________-__-_______________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [*] ##1 D)) ##1 B ##1 C ##1 D));
+	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [+] ##1 D)) ##1 B ##1 C ##1 D));
 endmodule
 
 module fail_03 (input clock);
@@ -71,7 +71,7 @@ module fail_03 (input clock);
 		.trace_d("_____________-___-______________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [*] ##1 D)) ##1 B ##1 C ##1 D));
+	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [+] ##1 D)) ##1 B ##1 C ##1 D));
 endmodule
 
 module fail_04 (input clock);
@@ -85,5 +85,5 @@ module fail_04 (input clock);
 		.trace_d("____________-___-_______________")
 	) uut (clock, A, B, C, D);
 
-	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [*] ##1 D)) ##1 B ##1 C ##1 D));
+	assert property (@(posedge clock) (A |=> ((B ##1 !B [*] ##1 B) intersect (C [+] ##1 D)) ##1 B ##1 C ##1 D));
 endmodule

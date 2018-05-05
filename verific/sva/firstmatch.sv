@@ -46,7 +46,7 @@ module fail_01 (input clock);
 	assert property (@(posedge clock) (A ##1 B [*] ##1 C |=> D));
 endmodule
 
-module fail_02 (input clock);
+module pass_02 (input clock);
 	wire A, B, C, D;
 
 	sequencer #(
@@ -60,7 +60,21 @@ module fail_02 (input clock);
 	assert property (@(posedge clock) (first_match(A ##1 B [*] ##1 C) |=> D));
 endmodule
 
-module pass_03 (input clock);
+module fail_03 (input clock);
+	wire A, B, C, D;
+
+	sequencer #(
+		//        01234567890123456789012345678901
+		.trace_a("_-___-__________________________"),
+		.trace_b("__-------------_________________"),
+		.trace_c("______-____-___-________________"),
+		.trace_d("_______-________________________")
+	) uut (clock, A, B, C, D);
+
+	assert property (@(posedge clock) (first_match(A ##1 B [+] ##1 C) |=> D));
+endmodule
+
+module pass_04 (input clock);
 	wire A, B, C, D;
 
 	sequencer #(
@@ -74,7 +88,7 @@ module pass_03 (input clock);
 	assert property (@(posedge clock) (first_match(A ##1 B [*] ##1 C) |=> D));
 endmodule
 
-module pass_04 (input clock);
+module pass_05 (input clock);
 	wire A, B, C, D;
 
 	sequencer #(
@@ -83,6 +97,20 @@ module pass_04 (input clock);
 		.trace_b("__-------------_________________"),
 		.trace_c("______-____-___-________________"),
 		.trace_d("_______-____-___________________")
+	) uut (clock, A, B, C, D);
+
+	assert property (@(posedge clock) (first_match(A ##1 B [*] ##1 C) |=> D));
+endmodule
+
+module fail_06 (input clock);
+	wire A, B, C, D;
+
+	sequencer #(
+		//        01234567890123456789012345678901
+		.trace_a("_-____-_________________________"),
+		.trace_b("__-------------_________________"),
+		.trace_c("______-____-___-________________"),
+		.trace_d("_______-________________________")
 	) uut (clock, A, B, C, D);
 
 	assert property (@(posedge clock) (first_match(A ##1 B [*] ##1 C) |=> D));
