@@ -1,4 +1,4 @@
-SUBDIRS = opers sva
+SUBDIRS = opers sva vhdl
 
 all: $(addsuffix /.stamp,$(SUBDIRS))
 	touch .stamp
