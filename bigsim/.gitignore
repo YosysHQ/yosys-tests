@@ -1,0 +1,9 @@
+/.stamp
+/*_cmos.status
+/*_ice40.status
+/*/work_sim
+/*/work_cmos
+/*/work_ice40
+/*/.stamp_sim
+/*/.stamp_cmos
+/*/.stamp_ice40
