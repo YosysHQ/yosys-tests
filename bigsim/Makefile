@@ -1,8 +1,11 @@
-all::
+all: work
 	touch .stamp
 
+clean::
+	rm -f .stamp
+
 define template
-all:: $(addprefix $(1)/.stamp_,sim $(2))
+work:: $(addprefix $(1)/.stamp_,sim $(2))
 
 $(1)/.stamp_sim:
 	bash run.sh $(1) sim
