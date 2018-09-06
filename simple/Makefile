@@ -5,16 +5,18 @@ clean::
 	rm -f .stamp
 
 define template
-work:: $(1)/work_$(2)/.stamp
+$(foreach design,$(1),
+$(foreach script,$(2),
+work:: $(design)/work_$(script)/.stamp
 
-$(1)/work_$(2)/.stamp:
-	bash run.sh $(1) $(2)
+$(design)/work_$(script)/.stamp:
+	bash run.sh $(design) $(script)
 
 clean::
-	rm -rf $(1)/work_$(2)
+	rm -rf $(design)/work_$(script)
+))
 endef
 
-$(eval $(call template,alu,gates))
-$(eval $(call template,alu,luts))
+$(eval $(call template,alu,gates luts))
 
 .PHONY: all clean
