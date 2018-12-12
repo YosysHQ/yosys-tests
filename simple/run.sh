@@ -9,7 +9,7 @@ mkdir $1/work_$2
 cd $1/work_$2
 
 yosys -ql yosys.log ../../scripts/$2.ys
-iverilog -o testbench ../testbench.v synth.v
+iverilog -o testbench ../testbench.v synth.v ../../../../../techlibs/common/simcells.v
 
 if ! vvp -N testbench > testbench.log 2>&1; then
 	grep 'ERROR' testbench.log
