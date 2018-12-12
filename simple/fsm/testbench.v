@@ -31,21 +31,35 @@ module testbench;
     );
     
     initial begin
-        rst <= 0;
-        #5
         rst <= 1;
         #5
-        a <= 1;
-        b <= 0;
-        #50
-        a <= 0;
-        b <= 0;
-        #50
-        a <= 0;
-        b <= 1;
-        #50
-        a <= 1;
-        b <= 1;
+        rst <= 0;
     end
-    
+	
+	initial begin
+		a <= 0;
+		repeat (20000) #3 a = !a;
+	end
+	
+	initial begin
+		b <= 0;
+		repeat (20000) #4 b = !b;
+	end
+	
+    assert g0_test(.clk(clk), .A(g0));
+	assert g1_test(.clk(clk), .A(g1));
+  
+endmodule
+
+
+module assert(input clk, input A);
+    always @(posedge clk)
+    begin
+        //#1;
+        if (A == 1'bZ)
+        begin
+            $display("ASSERTION FAILED in %m:",$time," ",A);
+            //$finish;
+        end
+    end
 endmodule

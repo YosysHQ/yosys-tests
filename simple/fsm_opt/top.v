@@ -71,7 +71,7 @@ fsm u_fsm ( .clock(clk),
 assign g0 = g[0];
 assign g1 = g[1];
 
-assign a = r[0];
-assign b = r[1];
+assign r[0] = a;
+assign r[1] = b;
 
 endmodule

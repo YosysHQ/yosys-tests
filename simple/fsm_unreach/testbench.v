@@ -35,9 +35,11 @@ module testbench;
     );
     
     initial begin
-        rst <= 0;
+	rst <= 0;
         #5
         rst <= 1;
+        #5
+        rst <= 0;
         #5
         a <= 4'b1111;
         b <= 4'b1010;        
@@ -56,4 +58,21 @@ module testbench;
         c <= 4'b0000;
     end
     
+    assert x_test(.clk(clk), .A(x));
+	assert y_test(.clk(clk), .A(y));
+	assert z_test(.clk(clk), .A(z));
+  
+endmodule
+
+
+module assert(input clk, input [4:0] A);
+    always @(posedge clk)
+    begin
+        //#1;
+        if (A == 4'b0000)
+        begin
+            $display("ASSERTION FAILED in %m:",$time," ",A);
+            //$finish;
+        end
+    end
 endmodule
