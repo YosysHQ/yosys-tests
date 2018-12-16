@@ -16,6 +16,9 @@ case "$2" in
 	sim)
 		iverilog_cmd="$iverilog_cmd $rtl_files"
 		;;
+	falsify)
+		iverilog_cmd="$iverilog_cmd -DBUG $rtl_files"
+		;;
 	cmos)
 		yosys -ql synthlog.txt -p "synth -top $TOP; abc -g cmos4; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v"
@@ -36,10 +39,16 @@ $iverilog_cmd
 
 vvp -N sim | pv -l > output.txt
 
-if [ "$2" != "sim" ]; then
+if [ "$2" = "falsify" ]; then
+	if cmp output.txt ../work_sim/output.txt; then
+		echo FAIL > ../../${1}_${2}.status
+	else
+		echo pass > ../../${1}_${2}.status
+	fi
+elif [ "$2" != "sim" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
 		echo pass > ../../${1}_${2}.status
 	else
-		echo fail > ../../${1}_${2}.status
+		echo FAIL > ../../${1}_${2}.status
 	fi
 fi

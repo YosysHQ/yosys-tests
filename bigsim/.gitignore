@@ -1,9 +1,12 @@
 /.stamp
 /*_cmos.status
 /*_ice40.status
+/*_falsify.status
 /*/work_sim
 /*/work_cmos
 /*/work_ice40
+/*/work_falsify
 /*/.stamp_sim
 /*/.stamp_cmos
 /*/.stamp_ice40
+/*/.stamp_falsify
