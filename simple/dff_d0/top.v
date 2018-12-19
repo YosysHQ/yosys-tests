@@ -16,7 +16,11 @@ output b
 
 dff u_dff (
         .clk (clk ),
+`ifndef BUG
         .d (1'b0 ),
+`else
+        .d (a ),
+`endif
         .q (b )
     );
 

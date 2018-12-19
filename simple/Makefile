@@ -20,7 +20,7 @@ endef
 $(eval $(call template,alu,gates luts))
 
 # DFF with constant drivers
-$(eval $(call template,dff, dff))
+$(eval $(call template,dff_d0, dff))
 $(eval $(call template,dffr, dff))
 $(eval $(call template,dffc, dff))
 $(eval $(call template,dffcp, dff))

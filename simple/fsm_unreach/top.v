@@ -16,9 +16,15 @@ module top(clk, rst, a, b, c, x, y, z);
     end else begin
       case (state)
         1: begin
+`ifndef BUG
             x <= x;
             y <= b;
             z <= 1;
+`else
+            x <= 5'd0;
+            y <= 5'd0;
+            z <= 5'd0;
+`endif
           end
         2: begin
             x <= a;

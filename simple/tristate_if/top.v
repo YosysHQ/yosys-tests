@@ -6,7 +6,11 @@ module tribuf (en, i, o);
     always @*
 		begin
 			if (en)
+`ifndef BUG
 				o = i;
+`else	
+				o = ~i;
+`endif
 			else
 				o = 1'bZ;
 		end

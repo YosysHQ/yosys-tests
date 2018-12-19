@@ -17,8 +17,13 @@ output b
 
 dffcp u_dffcp (
         .clk (clk ),
+`ifndef BUG        
         .clr (1'b0),
         .pre (1'b1),
+`else        
+        .clr (1'b1),
+        .pre (1'b0),
+`endif
         .d (a ),
         .q (b )
     );

@@ -6,7 +6,11 @@ module tristate (en, i, o);
     always @(en or i)
 		begin
 			case (en)
+`ifndef BUG 
 				1:o <= i;
+`else
+				1:o <= ~i;
+`endif
 				default :o <= 1'bZ;
 			endcase
 		end

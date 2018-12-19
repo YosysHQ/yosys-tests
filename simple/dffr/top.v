@@ -16,7 +16,11 @@ output b
 
 dffr u_dffr (
         .clk (clk),
+`ifndef BUG
         .rst (1'b1),
+`else
+        .rst (1'b0),
+`endif
         .d (a ),
         .q (b )
     );

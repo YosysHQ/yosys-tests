@@ -3,7 +3,11 @@ module tristate (en, i, o);
     input i;
     output o;
 
+`ifndef BUG
     assign o = (en)? i : 1'bZ;
+`else	
+    assign o = (en)? ~i : 1'bZ;
+`endif
     
 endmodule
 

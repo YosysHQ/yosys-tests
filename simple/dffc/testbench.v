@@ -14,46 +14,32 @@ module testbench;
         $display("OKAY");    
     end
    
+   function [31:0] xorshift32;
+        input [31:0] arg;
+        begin
+                xorshift32 = arg;
+                // Xorshift32 RNG, doi:10.18637/jss.v008.i14
+                xorshift32 = xorshift32 ^ (xorshift32 << 13);
+                xorshift32 = xorshift32 ^ (xorshift32 >> 17);
+                xorshift32 = xorshift32 ^ (xorshift32 <<  5);
+        end
+    endfunction
+
+    reg [31:0] rng = 123456789;
+    always @(posedge clk) rng <= xorshift32(rng);
+
+    wire dinA = xorshift32(rng * 5);
+    wire dinC = xorshift32(rng * 7);
     
-    reg dinA;
-    reg dinC;
-    wire dinB;
+    wire doutB;
 
     top uut (
         .clk (clk ),
         .a (dinA ),
         .c (dinC),
-        .b (dinB )
+        .b (doutB )
     );
     
-    initial begin
-        dinC <= 1;
-        #5
-        dinC <= 0;
-        #10
-        dinC <= 1;
-        #10
-        dinC <= 0;
-    end
+	assert_dff ff_test(.clk(clk), .test(doutB), .pat(1'b1));
     
-    initial begin
-		dinA <= 0;
-		
-		repeat (20000) #3 dinA = !dinA;
-	end
-	
-	assert ff_test(.clk(clk), .test(dinB));
-    
-endmodule
-
-
-module assert(input clk, input test);
-    always @(posedge clk)
-    begin
-        if (test == 0)
-        begin
-            $display("ASSERTION FAILED in %m:",$time);
-            //$finish;
-        end
-    end
 endmodule

@@ -4,7 +4,11 @@ module tristate (en, i, o);
     output o;
 
     always @(en or i)
+`ifndef BUG 	
 		o <= (en)? i : 1'bZ;
+`else	
+		o <= (en)? ~i : 1'bZ;
+`endif
 endmodule
 
 

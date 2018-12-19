@@ -16,7 +16,11 @@ output b
 
 tristate u_tri (
         .en (en ),
-        .i (1'bZ ),
+`ifndef BUG 	
+        .i (1'b0 ),
+`else	
+		.i (a ),
+`endif
         .o (b )
     );
 

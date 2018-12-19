@@ -15,41 +15,27 @@ module testbench;
     end
    
     
-    reg dinA;
-    wire [1:0] dinB;    
-    wire [1:0] dinC;
+    reg dinA = 0;
+    wire [1:0] dioB;    
+    wire [1:0] doutC;
 
     top uut (
         .en (en ),
         .a (dinA ),
-        .b (dinB ),
-        .c (dinC )
+        .b (dioB ),
+        .c (doutC )
     );
     
-    initial begin
-		dinA <= 0;
-		
-		repeat (20000) #3 dinA = !dinA;
-	end
-	
-	assert b_test(.en(en), .A(dinA), .B(dinB[0]));
-	
-	assert c_test(.en(en), .A(dinA), .B(dinC[0]));
-	
-	assert cz_test(.en(!en), .A(1'bZ), .B(dinC[0]));
-    
-endmodule
-
-
-module assert(input en, input A, input B);
-    always @(posedge en)
-    begin
-        //#1;
-        if (A != B)
-        begin
-            $display("ASSERTION FAILED in %m:",$time," ",A," ",B);
-            //$finish;
-        end
+    always @(posedge en) begin
+    #3;
+    dinA <= !dinA;
     end
+	
+	assert_dff b_test(.clk(en), .test(dinA), .pat(dioB[0]));
+	
+	assert_dff c_test(.clk(en), .test(dinA), .pat(doutC[0]));
+	
+	assert_dff cz_test(.clk(!en), .test(1'bZ), .pat(doutC[0]));
+    
 endmodule
 

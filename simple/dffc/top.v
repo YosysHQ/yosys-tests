@@ -20,7 +20,11 @@ output b
 dffcp u_dffcp (
         .clk (clk ),
         .clr (c ),
+`ifndef BUG
         .pre (1'b1),
+`else
+        .pre (1'b0),
+`endif
         .d (a ),
         .q (b )
     );

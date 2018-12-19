@@ -15,34 +15,20 @@ module testbench;
     end
    
     
-    reg dinA;
-    wire dinB;
+    reg dinA = 0;
+    wire doutB;
 
     top uut (
         .en (en ),
         .a (dinA ),
-        .b (dinB )
+        .b (doutB )
     );
     
-    initial begin
-		dinA <= 0;
-		
-		repeat (20000) #3 dinA = !dinA;
-	end
-	
-	assert b_test(.en(en), .A(dinA), .B(dinB));
-  
-endmodule
-
-
-module assert(input en, input A, input B);
-    always @(posedge en)
-    begin
-        //#1;
-        if (A != B)
-        begin
-            $display("ASSERTION FAILED in %m:",$time," ",A," ",B);
-            //$finish;
-        end
+    always @(posedge en) begin
+    #3;
+    dinA <= !dinA;
     end
+	
+	assert_tri b_test(.en(en), .A(1'b0), .B(doutB));
+  
 endmodule

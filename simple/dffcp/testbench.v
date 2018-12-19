@@ -15,33 +15,20 @@ module testbench;
     end
    
     
-    reg dinA;
-    wire dinB;
+    reg dinA = 0;
+    wire doutB;
 
     top uut (
         .clk (clk ),
         .a (dinA ),
-        .b (dinB )
+        .b (doutB )
     );
     
-    initial begin
-		dinA <= 0;
-		
-		repeat (20000) #3 dinA = !dinA;
-	end
-	
-	assert ff_test(.clk(clk), .test(dinB));
-    
-endmodule
-
-
-module assert(input clk, input test);
-    always @(posedge clk)
-    begin
-        if (test == 0)
-        begin
-            $display("ASSERTION FAILED in %m:",$time);
-            //$finish;
-        end
+    always @(posedge clk) begin
+    #3;
+    dinA <= !dinA;
     end
+	
+	assert_dff ff_test(.clk(clk), .test(doutB), .pat(1'b1));
+    
 endmodule

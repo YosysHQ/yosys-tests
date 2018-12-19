@@ -3,14 +3,20 @@ module tristate (en, i, io, o);
     input i;
     inout [1:0] io;    
     output [1:0] o;
-
-    always @(en or i)
-		io[0] <= (en)? i : 1'bZ;
+`ifndef BUG    
+	assign 	io[0] = (en)? i : 1'bZ;
 		
-    always @(en or i)
-		io[1] <= (i)? en : 1'bZ;
+    assign 	io[1] = (i)? en : 1'bZ;
 		
     assign o = io;
+`else
+	assign 	io[0] = (en)? ~i : 1'bZ;
+		
+    assign 	io[1] = (i)? ~en : 1'bZ;
+		
+    assign o = ~io;
+`endif
+
 endmodule
 
 
