@@ -1,7 +1,7 @@
 module tribuf (en, i, o);
     input en;
     input i;
-    output o;
+    output reg o;
 
     always @*
 		begin

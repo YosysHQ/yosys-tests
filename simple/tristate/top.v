@@ -1,7 +1,7 @@
 module tristate (en, i, o);
     input en;
     input i;
-    output o;
+    output reg o;
 `ifndef BUG 
     
     always @(en or i)
