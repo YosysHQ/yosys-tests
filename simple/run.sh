@@ -17,7 +17,7 @@ elif [ "$2" = "falsify" ]; then
 	iverilog -DBUG -o testbench ../testbench.v ../../common.v ../top.v
 else
 	yosys -ql yosys.log ../../scripts/$2.ys
-	iverilog -o testbench ../testbench.v ../../common.v synth.v $(yosys-config --datdir/common/simcells.v)
+	iverilog -o testbench ../testbench.v ../../common.v synth.v $(yosys-config --datdir/simcells.v)
 fi
 
 if [ "$2" = "falsify" ]; then
