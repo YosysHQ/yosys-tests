@@ -6,7 +6,7 @@ clean::
 
 define template
 $(foreach design,$(1),
-$(foreach script,$(2),
+$(foreach script,verify falsify $(2),
 work:: $(design)/work_$(script)/.stamp
 
 $(design)/work_$(script)/.stamp:

@@ -136,7 +136,9 @@ reg [7:0] GPR_Rr;
 always @(*) begin
 	case(Rr)
 		default: GPR_Rr = GPR_Rr8;
+`ifndef BUG
 		5'd24: GPR_Rr = U[7:0];
+`endif
 		5'd25: GPR_Rr = U[15:8];
 		5'd26: GPR_Rr = pX[7:0];
 		5'd27: GPR_Rr = pX[15:8];
