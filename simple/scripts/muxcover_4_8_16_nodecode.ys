@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth -top top
+muxcover -mux4 -mux8 -mux16 -nodecode
+write_verilog synth.v

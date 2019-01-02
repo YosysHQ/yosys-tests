@@ -32,3 +32,15 @@ module assert_Z(input clk, input A);
         end
     end
 endmodule
+
+module assert_comb(input A, input B);
+    always @(*)
+    begin
+        #1;
+        if (A !== B)
+        begin
+            $display("ERROR: ASSERTION FAILED in %m:",$time," ",A," ",B);
+            $stop;
+        end
+    end
+endmodule
