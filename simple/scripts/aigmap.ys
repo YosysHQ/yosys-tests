@@ -1,0 +1,7 @@
+read_verilog ../top.v
+aigmap
+proc
+aigmap
+synth -top top
+aigmap
+write_verilog synth.v
