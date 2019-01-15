@@ -35,7 +35,8 @@ module testbench;
 	.we_b(we_b), 	
 	.re_a(re_a), 
 	.re_b(re_b), 
-	.clk(clk),
+	.clka(clk),
+	.clkb(clk),
 	.q_a(q_a), 
 	.q_b(q_b)
     );

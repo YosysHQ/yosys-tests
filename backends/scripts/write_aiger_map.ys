@@ -1,0 +1,5 @@
+read_verilog -sv ../top.v
+aigmap
+write_aiger -map a.map aiger.aiger
+synth -top top
+write_verilog synth.v 
