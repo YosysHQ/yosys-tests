@@ -1,0 +1,76 @@
+library (Cell_EX2) {
+technology (cmos);
+delay_model : table_lookup;
+capacitive_load_unit (1,pf);
+pulling_resistance_unit : "1kohm";
+time_unit : "1ns";
+voltage_unit : "1V";
+current_unit : "1A";
+default_fanout_load : 0.0;
+default_inout_pin_cap : 0.0;
+default_input_pin_cap : 0.0;
+default_output_pin_cap : 0.0;
+input_threshold_pct_rise : 50.0;
+input_threshold_pct_fall : 50.0;
+output_threshold_pct_rise : 50.0;
+output_threshold_pct_fall : 50.0;
+slew_lower_threshold_pct_fall : 10.0;
+slew_lower_threshold_pct_rise : 10.0;
+slew_upper_threshold_pct_fall : 90.0;
+slew_upper_threshold_pct_rise : 90.0;
+
+lu_table_template (delay_template4x4) {
+variable_1 : input_net_transition;
+variable_2 : total_output_net_capacitance;
+index_1 ("1,2,3,4");
+index_2 ("1,2,3,4");
+}
+
+
+/* Enabled inverter or tristate inverter */
+cell(top) {
+area : 324;
+cell_footprint : "eninv";
+pin(A) {
+direction : input;
+capacitance : 0.027;
+} /* end of pin A */
+pin(En) {
+direction : input;
+capacitance : 0.0135;
+} /*end of pin En */
+pin(Y) {
+direction : output;
+function : "A";
+three_state : "En";
+timing () {
+timing_sense : negative_unate;
+related_pin : "A";
+cell_rise(lu5x5) { values( " ... " );}
+rise_transition(lu5x5) { values( " ... " );}
+cell_fall(lu5x5) { values( " ... " );}
+fall_transition(lu5x5) { values( " ... " );}
+} /* end of enabled timing */
+timing() {
+timing_sense : positive_unate;
+timing_type : three_state_enable;
+related_pin : "En";
+cell_rise(delay_template_5x5) { values( " ... " );}
+rise_transition(delay_template_5x5) { values( " ... " );}
+cell_fall(delay_template_5x5) { values( " ... " );}
+fall_transition(delay_template_5x5) { values( " ... " );}
+} /* end of enable timing */
+timing() {
+timing_sense : negative_unate;
+timing_type : three_state_disable;
+related_pin : "En";
+cell_rise(delay_template_5x1) { values( " ... " );}
+rise_transition(delay_template_5x1) { values( " ... " );}
+cell_fall(delay_template_5x1) { values( " ... " );}
+fall_transition(delay_template_5x1) { values( " ... " );}
+} /* end of disable timing */
+} /* end of pin Y */
+} /* end of eninv */
+
+
+}

@@ -1,5 +1,5 @@
 
-SUBDIRS := bigsim simple
+SUBDIRS := architecture backends bigsim simple
 
 ifeq ($(VERIFIC),1)
 export VERIFIC=1
