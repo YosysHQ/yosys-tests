@@ -20,6 +20,12 @@ endef
 #achronix (in the code '-flatten' but in the help '-noflatten')
 $(eval $(call template,synth_achronix,synth_achronix synth_achronix_top synth_achronix_vout synth_achronix_run synth_achronix_noflatten synth_achronix_retime))
 
+#anlogic
+#../../../../../techlibs/anlogic/cells_sim.v:20: error: Unable to bind wire/reg/memory `A' in `testbench.uut._09_'
+#../../../../../techlibs/anlogic/cells_sim.v:20: error: Unable to elaborate r-value: (INIT)>>(A)
+#$(eval $(call template,synth_anlogic,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
+#$(eval $(call template,synth_anlogic_fulladder,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
+
 #coolrunner2
 $(eval $(call template,synth_coolrunner2,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime))
 
