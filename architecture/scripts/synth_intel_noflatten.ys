@@ -1,3 +1,3 @@
 read_verilog ../top.v
-synth_intel -flatten
+synth_intel -noflatten
 write_verilog synth.v 
