@@ -13,6 +13,8 @@ if [ "$1" = "synth_ecp5" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/ecp5/cells_sim.v
 elif [ "$1" = "synth_achronix" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/achronix/speedster22i/cells_sim.v
+elif [ "$1" = "synth_anlogic" ]; then
+    iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/anlogic/cells_sim.v
 elif [ "$1" = "synth_coolrunner2" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/coolrunner2/cells_sim.v
 elif [ "$1" = "synth_gowin" ]; then
