@@ -17,14 +17,12 @@ clean::
 ))
 endef
 
-#achronix (in the code '-flatten' but in the help '-noflatten')
+#achronix
 $(eval $(call template,synth_achronix,synth_achronix synth_achronix_top synth_achronix_vout synth_achronix_run synth_achronix_noflatten synth_achronix_retime))
 
 #anlogic
-#../../../../../techlibs/anlogic/cells_sim.v:20: error: Unable to bind wire/reg/memory `A' in `testbench.uut._09_'
-#../../../../../techlibs/anlogic/cells_sim.v:20: error: Unable to elaborate r-value: (INIT)>>(A)
-#$(eval $(call template,synth_anlogic,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
-#$(eval $(call template,synth_anlogic_fulladder,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
+$(eval $(call template,synth_anlogic,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
+$(eval $(call template,synth_anlogic_fulladder,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
 
 #coolrunner2
 $(eval $(call template,synth_coolrunner2,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime))
@@ -41,7 +39,7 @@ $(eval $(call template,synth_gowin,synth_gowin synth_gowin_top synth_gowin_vout 
 #ice40
 $(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr))
 
-#intel (in the code '-flatten' but in the help '-noflatten')
+#intel
 $(eval $(call template,synth_intel,synth_intel synth_intel_top synth_intel_vqm synth_intel_vpr synth_intel_run synth_intel_noflatten synth_intel_retime synth_intel_noiopads synth_intel_nobram synth_intel_max10 ))
 $(eval $(call template,synth_intel_cycloneiv,synth_intel_cycloneiv  ))
 $(eval $(call template,synth_intel_cycloneive,synth_intel_cycloneive   ))
