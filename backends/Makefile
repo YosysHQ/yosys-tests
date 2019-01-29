@@ -24,7 +24,7 @@ $(eval $(call template,write_aiger,write_aiger write_aiger_ascii write_aiger_zin
 $(eval $(call template,write_blif,write_blif write_blif_top write_blif_buf write_blif_unbuf write_blif_true  write_blif_false  write_blif_undef  write_blif_noalias  write_blif_icells  write_blif_gates  write_blif_conn  write_blif_attr  write_blif_param  write_blif_cname  write_blif_iname  write_blif_iattr  write_blif_blackbox  write_blif_impltf))
 
 #write_btor
-$(eval $(call template,write_btor,write_btor write_btor write_btor_v write_btor_s))
+$(eval $(call template,write_btor,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_btor_logic,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_btor_mem,write_btor_mem write_btor_mem_v write_btor_mem_s))
 $(eval $(call template,write_btor_pmux,write_btor_pmux))
@@ -74,6 +74,9 @@ $(eval $(call template,write_smv_cmos4,write_smv_cmos4))
 
 #write_spice
 $(eval $(call template,write_spice,write_spice write_spice_top write_spice_big_endian write_spice_neg_i write_spice_pos_i write_spice_nc_prefix write_spice_inames ))
+
+#write_table
+$(eval $(call template,write_table,write_table ))
 
 
 
