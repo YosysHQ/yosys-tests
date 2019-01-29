@@ -1,0 +1,2 @@
+read_verilog ../top.v
+tee -o result.log scc -set_attr attr true top
