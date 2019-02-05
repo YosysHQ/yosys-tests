@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth
+insbuf -buf $_BUF_ in out
+write_verilog synth.v
