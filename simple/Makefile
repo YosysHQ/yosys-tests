@@ -83,4 +83,29 @@ $(eval $(call template,uniquify,uniquify))
 #hierarchy (44% increased to 61,3%)
 $(eval $(call template,hierarchy,hierarchy hierarchy_top hierarchy_check hierarchy_simcheck hierarchy_purge_lib hierarchy_libdir hierarchy_keep_positionals hierarchy_keep_portwidths hierarchy_nokeep_asserts hierarchy_auto_top hierarchy_generate))
 
+#attrmap
+$(eval $(call template,attrmap,attrmap attrmap_modattr))
+
+#dff2dffe -unmap
+# dff2dffe_unmap_direct - skipped: ERROR: Found error in internal cell \dffe.$procdff$47 ($dffe) at
+$(eval $(call template,dff2dffe_unmap,dff2dffe_unmap dff2dffe_unmap_mince))
+
+#dff2dffs
+$(eval $(call template,dff2dffs,dff2dffs))
+
+#extract
+$(eval $(call template,extract,extract_cell_attr extract_compat extract_constports extract_map_design extract_ignore_parameters extract_ignore_param  extract_map extract_mine_cells_span extract_mine_limit_matches_per_module extract_mine_max_fanout extract_mine_min_freq extract_mine_split extract_mine extract_nodefaultswaps extract_perm extract_swap extract_verbose extract_wire_attr ))
+
+#extract_counter
+$(eval $(call template,extract_counter,extract_counter extract_counter_maxwidth extract_counter_pout))
+$(eval $(call template,extract_counter_down,extract_counter extract_counter_maxwidth extract_counter_pout))
+$(eval $(call template,extract_counter_negative_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
+$(eval $(call template,extract_counter_no_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
+$(eval $(call template,extract_counter_sync_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
+
+#shregmap
+$(eval $(call template,shregmap,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
+$(eval $(call template,shregmap_resetable,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
+
+
 .PHONY: all clean

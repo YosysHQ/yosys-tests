@@ -1,5 +1,5 @@
 
-SUBDIRS := architecture backends bigsim frontends misc regression simple
+SUBDIRS := architecture backends bigsim equiv frontends misc regression simple
 
 ifeq ($(VERIFIC),1)
 export VERIFIC=1

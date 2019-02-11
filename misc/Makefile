@@ -69,4 +69,7 @@ $(eval $(call template,delete_mem, delete_mem ))
 #cover
 $(eval $(call template,cover, cover cover_q cover_o cover_dir cover_a ))
 
+#insbuf ERROR: Found error in internal cell
+#$(eval $(call template,insbuf,insbuf insbuf_cell))
+
 .PHONY: all clean
