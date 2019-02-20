@@ -1,0 +1,2 @@
+read_verilog ../top.v
+tee -o result.log add -global_input gi 32000
