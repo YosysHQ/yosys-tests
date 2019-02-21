@@ -96,11 +96,11 @@ $(eval $(call template,connect,  connect_nomap_set connect_nomap_unset connect_n
 $(eval $(call template,connwrappers, connwrappers connwrappers_signed connwrappers_unsigned connwrappers_port ))
 
 #plugin
-$(eval $(call template,plugin, plugin plugin_i plugin_a plugin_l ))
+#$(eval $(call template,plugin, plugin plugin_i plugin_a plugin_l ))
 
 #select
 $(eval $(call template,select, select select_all select_add select_add_all select_assert_any select_assert_count select_assert_max select_assert_min select_assert_none select_clear select_count select_del select_list select_module select_none select_read select_set select_write select_add_A_eq select_add_a_eq select_add_A_lesseq select_add_a_lesseq select_add_A_less select_add_a_less select_add_A_moreeq select_add_a_moreeq select_add_A_more select_add_a_more select_add_A select_add_a select_add_c select_add_i select_add_mid select_add_m select_add_n select_add_obj select_add_o select_add_p select_add_r_eq select_add_r_lesseq select_add_r_less select_add_r_moreeq select_add_r_more select_add_r select_add_ss select_add_s select_add_t select_add_w select_add_x ))
-$(eval $(call template,select_mem, select select_all select_add select_add_all select_assert_any select_assert_count_mem select_assert_max_mem select_assert_min select_assert_none select_clear select_count select_del select_list select_module_mem select_none select_read select_set select_write select_add_A_eq select_add_a_eq select_add_A_lesseq select_add_a_lesseq select_add_A_less select_add_a_less select_add_A_moreeq select_add_a_moreeq select_add_A_more select_add_a_more select_add_A select_add_a select_add_c select_add_i select_add_mid select_add_m select_add_n select_add_obj select_add_o select_add_p select_add_r_eq select_add_r_lesseq select_add_r_less select_add_r_moreeq select_add_r_more select_add_r select_add_ss select_add_s select_add_t select_add_w select_add_x ))
+$(eval $(call template,select_mem, select select_all select_add select_add_all select_assert_any select_assert_count_mem select_assert_max_mem select_assert_min select_assert_none select_clear select_count select_del select_list select_module_mem ))
 $(eval $(call template,select_ls, select_ls select_ls_top))
 $(eval $(call template,select_cd, select_cd select_cd_up select_cd_module ))
 $(eval $(call template,select_stack,select_%a select_%cie select_%ci select_%coe select_%co select_%C select_%c select_%i select_%M select_%m select_%n select_%R4 select_%R select_%s select_%u select_%x_%D select_%x_%d select_%xe select_%))
