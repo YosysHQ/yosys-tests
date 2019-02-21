@@ -107,5 +107,16 @@ $(eval $(call template,extract_counter_sync_reset,extract_counter extract_counte
 $(eval $(call template,shregmap,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
 $(eval $(call template,shregmap_resetable,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
 
+#design_import
+$(eval $(call template,design_import, design_import design_import_as ))
+
+#async2sync
+$(eval $(call template,async2sync,async2sync))
+
+#flowmap
+$(eval $(call template,flowmap,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
+$(eval $(call template,flowmap_latch,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax  flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
+$(eval $(call template,flowmap_mem,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
+
 
 .PHONY: all clean
