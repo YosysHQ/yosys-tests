@@ -53,6 +53,7 @@ $(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf
 
 #xilinx
 $(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr))
+$(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 
 #greenpak4
 $(eval $(call template,synth_greenpak4,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
