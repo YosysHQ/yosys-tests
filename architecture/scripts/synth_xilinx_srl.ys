@@ -1,5 +1,6 @@
 read_verilog -icells ../top.v
 synth_xilinx
+rename -top synth
 write_verilog synth.v
 cd $paramod\template\len=1;   select t:FD* -assert-count 1; select t:SRL16E -assert-count 0; select t:SRLC32E -assert-count 0; select t:MUXF7 -assert-count 0; select t:MUXF8 -assert-count 0; select t:FD* t:SRL16E t:SRLC32E t:MUXF7 t:MUXF8 %% t:* %n %i -assert-none
 cd $paramod\template\len=2;   select t:FD* -assert-count 0; select t:SRL16E -assert-count 1; select t:SRLC32E -assert-count 0; select t:MUXF7 -assert-count 0; select t:MUXF8 -assert-count 0; select t:FD* t:SRL16E t:SRLC32E t:MUXF7 t:MUXF8 %% t:* %n %i -assert-none

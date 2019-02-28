@@ -39,6 +39,8 @@ elif [ "$1" = "synth_sf2" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/sf2/cells_sim.v
 elif [ "$1" = "synth_xilinx" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+elif [ "$1" = "synth_xilinx_srl" ]; then
+    iverilog -o testbench  ../testbench.v -I.. ../top.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/greenpak4/cells_sim_digital.v
 else 
