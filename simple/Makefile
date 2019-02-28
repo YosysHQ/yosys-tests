@@ -38,8 +38,8 @@ $(eval $(call template,tristate_const_1, tristate))
 $(eval $(call template,tristate_const_data, tristate))
 
 # Demoting I/O port
-$(eval $(call template,inout_port, tristate))
-$(eval $(call template,inout_port_demote, tristate))
+$(eval $(call template,inout_port, deminout deminout_synth))
+$(eval $(call template,inout_port_demote, deminout deminout_synth))
 
 # MACC cells
 $(eval $(call template,macc, macc))
@@ -88,10 +88,13 @@ $(eval $(call template,attrmap,attrmap attrmap_modattr))
 
 #dff2dffe -unmap
 # dff2dffe_unmap_direct - skipped: ERROR: Found error in internal cell \dffe.$procdff$47 ($dffe) at
-$(eval $(call template,dff2dffe_unmap,dff2dffe_unmap dff2dffe_unmap_mince))
+$(eval $(call template,dff2dffe_unmap,dff2dffe_unmap dff2dffe_unmap_mince dff2dffe_unmap_direct))
 
 #dff2dffs
 $(eval $(call template,dff2dffs,dff2dffs))
+
+#dffsr2dff
+$(eval $(call template,dffsr2dff,dffsr2dff))
 
 #extract
 $(eval $(call template,extract,extract_cell_attr extract_compat extract_constports extract_map_design extract_ignore_parameters extract_ignore_param  extract_map extract_mine_cells_span extract_mine_limit_matches_per_module extract_mine_max_fanout extract_mine_min_freq extract_mine_split extract_mine extract_nodefaultswaps extract_perm extract_swap extract_verbose extract_wire_attr ))
@@ -117,6 +120,9 @@ $(eval $(call template,async2sync,async2sync))
 $(eval $(call template,flowmap,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
 $(eval $(call template,flowmap_latch,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax  flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
 $(eval $(call template,flowmap_mem,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
+
+#iopadmap
+$(eval $(call template,iopadmap,iopadmap))
 
 
 .PHONY: all clean
