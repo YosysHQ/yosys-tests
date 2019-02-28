@@ -8,7 +8,7 @@ module testbench;
         // $dumpvars(0, testbench);
 
         #5 clk = 0;
-        repeat (10000) begin
+        repeat (`N*3) begin
             #5 clk = 1;
             #5 clk = 0;
         end
