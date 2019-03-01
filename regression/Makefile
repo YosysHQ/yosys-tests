@@ -69,4 +69,50 @@ $(eval $(call template,issue_00085,issue_00085))
 #issue_00086
 $(eval $(call template,issue_00086,issue_00086))
 
+#issue_00088
+$(eval $(call template,issue_00088,issue_00088))
+
+#issue_00089
+#1. Executing Verilog-2005 frontend.
+#Parsing Verilog input from `top.v' to AST representation.
+#top.v:6: ERROR: syntax error, unexpected $undefined
+#$(eval $(call template,issue_00089,issue_00089))
+
+#issue_00091
+$(eval $(call template,issue_00091,issue_00091))
+
+#issue_00093
+# correct behavior
+#../top.v:1: syntax error
+#../top.v:1: error: syntax error in left side of continuous assignment.
+#$(eval $(call template,issue_00093,issue_00093))
+
+#issue_00095
+#../top.v:1: syntax error
+#../top.v:1: error: Invalid variable list in port declaration.
+#../top.v:1: error: duplicate declaration for net or variable 'c' in 'a'.
+#$(eval $(call template,issue_00095,issue_00095))
+
+#issue_00096
+#../top.v:2: syntax error
+#../top.v:1: error: syntax error in integer variable list.
+#../top.v:2: syntax error
+#../top.v:2: error: syntax error in left side of continuous assignment.
+#../top.v:2: syntax error
+#../top.v:2: error: syntax error in left side of continuous assignment.
+#$(eval $(call template,issue_00096,issue_00096))
+
+#issue_00098
+$(eval $(call template,issue_00098,issue_00098))
+
+#issue_00099
+$(eval $(call template,issue_00099,issue_00099))
+
+#issue_00102
+$(eval $(call template,issue_00102,issue_00102))
+
+#issue_00111
+$(eval $(call template,issue_00111,issue_00111))
+
+
 .PHONY: all clean
