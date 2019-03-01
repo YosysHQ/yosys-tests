@@ -30,6 +30,7 @@ $(eval $(call template,torder,torder torder_stop torder_noautostop ))
 
 #trace
 $(eval $(call template,trace,trace ))
+$(eval $(call template,trace_mem,trace_mem ))
 
 #write_file
 $(eval $(call template,write_file,write_file write_file_a ))
@@ -43,6 +44,9 @@ $(eval $(call template,show, show show_colorattr show_colors show_color show_enu
 
 #scc
 $(eval $(call template,scc, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+$(eval $(call template,scc_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+$(eval $(call template,scc_hier_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+
 
 #scatter
 $(eval $(call template,scatter, scatter ))
@@ -139,5 +143,12 @@ $(eval $(call template,sat, sat_dump_cnf sat_dump_json sat_dump_vcd sat_initstep
 #sim
 $(eval $(call template,sim,sim sim_a sim_clock sim_d sim_n sim_rstlen sim_vcd sim_w sim_zinit ))
 $(eval $(call template,sim_mem,sim sim_a sim_clockn sim_clock_mem sim_d sim_n sim_resetn sim_reset sim_rstlen sim_vcd sim_w sim_zinit_mem ))
+
+#splitnets
+$(eval $(call template,splitnets, splitnets splitnets_format splitnets_ports splitnets_driver splitnets_dpf ))
+$(eval $(call template,splitnets_logic, splitnets splitnets_format splitnets_ports splitnets_driver splitnets_dpf ))
+
+#splice
+$(eval $(call template,splice, splice splice_sel_by_cell splice_sel_by_wire splice_sel_any_bit splice_wires splice_no_outputs splice_port splice_no_port ))
 
 .PHONY: all clean

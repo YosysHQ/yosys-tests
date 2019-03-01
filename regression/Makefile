@@ -20,4 +20,99 @@ endef
 #case_stmt_assertion
 $(eval $(call template,case_stmt_assertion,case_stmt_assertion))
 
+#issue_00018
+$(eval $(call template,issue_00018,issue_00018))
+
+#issue_00041
+$(eval $(call template,issue_00041,issue_00041))
+
+#issue_00059
+$(eval $(call template,issue_00059,issue_00059))
+
+#issue_00065
+$(eval $(call template,issue_00065,issue_00065))
+
+#issue_00067
+$(eval $(call template,issue_00067,issue_00067))
+
+#issue_00071
+$(eval $(call template,issue_00071,issue_00071))
+
+#issue_00078 What should be in top.v?
+$(eval $(call template,issue_00078,issue_00078))
+
+#issue_00081
+$(eval $(call template,issue_00081,issue_00081))
+
+#issue_00082
+#yosys> read_verilog top_fault.v
+#1. Executing Verilog-2005 frontend.
+#Parsing Verilog input from `top_fault.v' to AST representation.
+#top_fault.v:4: ERROR: Internal error - should not happen - no AST_WIRE node.
+#
+#$(eval $(call template,issue_00082,issue_00082))
+
+#issue_00083
+#Warning: Deep recursion in AST simplifier.
+#Does this design contain insanely long expressions?
+#run.sh: line 21: 17264 Segmentation fault      (core dumped) yosys -ql yosys.log ../../scripts/$2.ys
+#make: *** [Makefile:24: issue_00083/work_issue_00083/.stamp] Error 139
+#
+#$(eval $(call template,issue_00083,issue_00083))
+
+#issue_00084
+$(eval $(call template,issue_00084,issue_00084))
+
+#issue_00085
+$(eval $(call template,issue_00085,issue_00085))
+
+#issue_00086
+$(eval $(call template,issue_00086,issue_00086))
+
+#issue_00088
+$(eval $(call template,issue_00088,issue_00088))
+
+#issue_00089
+#1. Executing Verilog-2005 frontend.
+#Parsing Verilog input from `top.v' to AST representation.
+#top.v:6: ERROR: syntax error, unexpected $undefined
+#$(eval $(call template,issue_00089,issue_00089))
+
+#issue_00091
+$(eval $(call template,issue_00091,issue_00091))
+
+#issue_00093
+# correct behavior
+#../top.v:1: syntax error
+#../top.v:1: error: syntax error in left side of continuous assignment.
+#$(eval $(call template,issue_00093,issue_00093))
+
+#issue_00095
+#../top.v:1: syntax error
+#../top.v:1: error: Invalid variable list in port declaration.
+#../top.v:1: error: duplicate declaration for net or variable 'c' in 'a'.
+#$(eval $(call template,issue_00095,issue_00095))
+
+#issue_00096
+#../top.v:2: syntax error
+#../top.v:1: error: syntax error in integer variable list.
+#../top.v:2: syntax error
+#../top.v:2: error: syntax error in left side of continuous assignment.
+#../top.v:2: syntax error
+#../top.v:2: error: syntax error in left side of continuous assignment.
+#$(eval $(call template,issue_00096,issue_00096))
+
+#issue_00098
+$(eval $(call template,issue_00098,issue_00098))
+
+#issue_00099
+$(eval $(call template,issue_00099,issue_00099))
+
+#issue_00102
+$(eval $(call template,issue_00102,issue_00102))
+
+#issue_00111
+$(eval $(call template,issue_00111,issue_00111))
+
+
 .PHONY: all clean
