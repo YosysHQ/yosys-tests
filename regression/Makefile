@@ -6,7 +6,7 @@ clean::
 
 define template
 $(foreach design,$(1),
-$(foreach script,verify falsify $(2),
+$(foreach script,$(2),
 work:: $(design)/work_$(script)/.stamp
 
 $(design)/work_$(script)/.stamp:
@@ -38,7 +38,7 @@ $(eval $(call template,issue_00067,issue_00067))
 #issue_00071
 $(eval $(call template,issue_00071,issue_00071))
 
-#issue_00078 What should be in top.v?
+#issue_00078
 $(eval $(call template,issue_00078,issue_00078))
 
 #issue_00081
@@ -73,34 +73,19 @@ $(eval $(call template,issue_00086,issue_00086))
 $(eval $(call template,issue_00088,issue_00088))
 
 #issue_00089
-#1. Executing Verilog-2005 frontend.
-#Parsing Verilog input from `top.v' to AST representation.
-#top.v:6: ERROR: syntax error, unexpected $undefined
-#$(eval $(call template,issue_00089,issue_00089))
+$(eval $(call template,issue_00089,issue_00089))
 
 #issue_00091
 $(eval $(call template,issue_00091,issue_00091))
 
 #issue_00093
-# correct behavior
-#../top.v:1: syntax error
-#../top.v:1: error: syntax error in left side of continuous assignment.
-#$(eval $(call template,issue_00093,issue_00093))
+$(eval $(call template,issue_00093,issue_00093))
 
 #issue_00095
-#../top.v:1: syntax error
-#../top.v:1: error: Invalid variable list in port declaration.
-#../top.v:1: error: duplicate declaration for net or variable 'c' in 'a'.
-#$(eval $(call template,issue_00095,issue_00095))
+$(eval $(call template,issue_00095,issue_00095))
 
 #issue_00096
-#../top.v:2: syntax error
-#../top.v:1: error: syntax error in integer variable list.
-#../top.v:2: syntax error
-#../top.v:2: error: syntax error in left side of continuous assignment.
-#../top.v:2: syntax error
-#../top.v:2: error: syntax error in left side of continuous assignment.
-#$(eval $(call template,issue_00096,issue_00096))
+$(eval $(call template,issue_00096,issue_00096))
 
 #issue_00098
 $(eval $(call template,issue_00098,issue_00098))
@@ -113,6 +98,54 @@ $(eval $(call template,issue_00102,issue_00102))
 
 #issue_00111
 $(eval $(call template,issue_00111,issue_00111))
+
+#issue_00114
+$(eval $(call template,issue_00114,issue_00114))
+
+#issue_00126
+$(eval $(call template,issue_00126,issue_00126))
+
+#issue_00128
+$(eval $(call template,issue_00128,issue_00128))
+
+#issue_00132
+$(eval $(call template,issue_00132,issue_00132))
+
+#issue_00133
+$(eval $(call template,issue_00133,issue_00133))
+
+#issue_00134
+$(eval $(call template,issue_00134,issue_00134))
+
+#issue_00160
+$(eval $(call template,issue_00160,issue_00160))
+
+#issue_00171
+$(eval $(call template,issue_00171,issue_00171))
+
+#issue_00173
+$(eval $(call template,issue_00173,issue_00173))
+
+#issue_00174
+$(eval $(call template,issue_00174,issue_00174))
+
+#issue_00175
+$(eval $(call template,issue_00175,issue_00175))
+
+#issue_00182
+$(eval $(call template,issue_00182,issue_00182))
+
+#issue_00183
+$(eval $(call template,issue_00183,issue_00183))
+
+#issue_00186
+$(eval $(call template,issue_00186,issue_00186))
+
+#issue_00194
+$(eval $(call template,issue_00194,issue_00194))
+
+#issue_00195
+$(eval $(call template,issue_00195,issue_00195))
 
 
 .PHONY: all clean

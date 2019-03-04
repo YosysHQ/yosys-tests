@@ -21,13 +21,13 @@ module testbench;
     begin
 		state = state + 2300;
 		key = key + 2500;
-	end
+	end*/
 
     top uut (
         .state (state ),
         .key (key ),
         .out (out )
-    );*/
+    );
 
     /*genvar index;
 	generate
