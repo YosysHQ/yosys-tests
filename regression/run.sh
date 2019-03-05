@@ -8,19 +8,27 @@ rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
-iverilog_adds=""
 
-
-# cases where 'syntax error' is expected
+# cases where 'syntax error' or other errors are expected
 if [ "$1" = "issue_00089" ] ||\
    [ "$1" = "issue_00093" ] ||\
    [ "$1" = "issue_00095" ] ||\
-   [ "$1" = "issue_00096" ]; then
+   [ "$1" = "issue_00096" ] ||\
+   [ "$1" = "issue_00196" ] ||\
+   [ "$1" = "issue_00362" ]; then
+
+	expected_string="syntax error"
+    #Change checked string for check other errors
+	if [ "$1" = "issue_00196" ]; then
+		expected_string="Found posedge/negedge event"
+	elif [ "$1" = "issue_00362" ]; then
+		expected_string="is connected to constants:"
+	fi
 
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
 		echo fail > ${1}_${2}.status
 	else
-		if grep 'syntax error' yosys.log; then
+		if grep "$expected_string" yosys.log; then
 			echo pass > ${1}_${2}.status
 		else
 			echo fail > ${1}_${2}.status
@@ -30,6 +38,7 @@ if [ "$1" = "issue_00089" ] ||\
 # cases with simulation checks
 else
 
+	iverilog_adds=""
 	#Additional sources for iverilog simulation
 	if [ "$1" = "issue_00084" ]; then
 		iverilog_adds="../../../../../techlibs/xilinx/brams_bb.v"
