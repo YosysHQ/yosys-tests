@@ -17,8 +17,8 @@ clean::
 ))
 endef
 
-#case_stmt_assertion
-$(eval $(call template,case_stmt_assertion,case_stmt_assertion))
+#issue_00790
+$(eval $(call template,issue_00790,issue_00790))
 
 #issue_00018
 $(eval $(call template,issue_00018,issue_00018))
