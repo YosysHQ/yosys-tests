@@ -213,5 +213,26 @@ $(eval $(call template,issue_00432,issue_00432))
 #issue_00444
 $(eval $(call template,issue_00444,issue_00444))
 
+#issue_00449
+$(eval $(call template,issue_00449,issue_00449))
+
+#issue_00457
+$(eval $(call template,issue_00457,issue_00457))
+
+#issue_00474
+$(eval $(call template,issue_00474,issue_00474))
+
+#issue_00481
+$(eval $(call template,issue_00481,issue_00481))
+
+#issue_00502
+$(eval $(call template,issue_00502,issue_00502))
+
+#issue_00524
+$(eval $(call template,issue_00524,issue_00524))
+
+#issue_00527
+$(eval $(call template,issue_00527,issue_00527))
+
 
 .PHONY: all clean
