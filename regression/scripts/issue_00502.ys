@@ -1,0 +1,4 @@
+read_verilog ../top.v
+select n:\\SUM/N10
+tee -o result.log select -list
+
