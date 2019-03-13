@@ -234,5 +234,111 @@ $(eval $(call template,issue_00524,issue_00524))
 #issue_00527
 $(eval $(call template,issue_00527,issue_00527))
 
+#issue_00567
+$(eval $(call template,issue_00567,issue_00567))
+
+#issue_00582
+$(eval $(call template,issue_00582,issue_00582))
+
+#issue_00589
+$(eval $(call template,issue_00589,issue_00589))
+
+#issue_00594
+$(eval $(call template,issue_00594,issue_00594))
+
+#issue_00603
+$(eval $(call template,issue_00603,issue_00603))
+
+#issue_00628
+$(eval $(call template,issue_00628,issue_00628))
+
+#issue_00630
+$(eval $(call template,issue_00630,issue_00630))
+
+#issue_00635
+$(eval $(call template,issue_00635,issue_00635))
+
+#issue_00639
+$(eval $(call template,issue_00639,issue_00639))
+
+#issue_00642
+$(eval $(call template,issue_00642,issue_00642))
+
+#issue_00644
+$(eval $(call template,issue_00644,issue_00644))
+
+#issue_00655
+$(eval $(call template,issue_00655,issue_00655))
+
+#issue_00675
+$(eval $(call template,issue_00675,issue_00675))
+
+#issue_00685
+$(eval $(call template,issue_00685,issue_00685))
+
+#issue_00689
+$(eval $(call template,issue_00689,issue_00689))
+
+#issue_00699
+$(eval $(call template,issue_00699,issue_00699))
+
+#issue_00705
+$(eval $(call template,issue_00705,issue_00705))
+
+#issue_00708
+$(eval $(call template,issue_00708,issue_00708))
+
+#issue_00737
+$(eval $(call template,issue_00737,issue_00737))
+
+#issue_00763
+$(eval $(call template,issue_00763,issue_00763))
+
+#issue_00767
+$(eval $(call template,issue_00767,issue_00767))
+
+#issue_00774
+$(eval $(call template,issue_00774,issue_00774))
+
+#issue_00781
+$(eval $(call template,issue_00781,issue_00781))
+
+#issue_00785
+$(eval $(call template,issue_00785,issue_00785))
+
+#issue_00807
+$(eval $(call template,issue_00807,issue_00807))
+
+#issue_00809
+$(eval $(call template,issue_00809,issue_00809))
+
+#issue_00810
+$(eval $(call template,issue_00810,issue_00810))
+
+#issue_00814
+$(eval $(call template,issue_00814,issue_00814))
+
+#issue_00823
+$(eval $(call template,issue_00823,issue_00823))
+
+#issue_00826
+$(eval $(call template,issue_00826,issue_00826))
+
+#issue_00831
+$(eval $(call template,issue_00831,issue_00831))
+
+#issue_00835
+$(eval $(call template,issue_00835,issue_00835))
+
+#issue_00857
+$(eval $(call template,issue_00857,issue_00857))
+
+#issue_00862
+$(eval $(call template,issue_00862,issue_00862))
+
+#issue_00865 - test failed (should be ok after merge https://github.com/YosysHQ/yosys/pull/866)
+$(eval $(call template,issue_00865,issue_00865))
+
+
 
 .PHONY: all clean
