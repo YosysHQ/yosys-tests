@@ -51,3 +51,31 @@ design -reset
 verific -sv top.v
 verific -vhdl top.vhd
 tee -o test9.out hierarchy -chparam WIDTH 9999 -chparam WIDTH 2 -chparam INIT 0 -chparam greeting "bonjour  " -chparam nonexistent 12345678 -top top_veri_v2k
+
+# Bind tests to check that bind instance exists
+design -reset
+verific -sv basic04.sv
+verific -vhdl basic04.vhd
+verific -import -all
+hierarchy -top top
+select -assert-count 1 top/properties_inst
+
+design -reset
+verific -sv basic04.sv
+verific -vhdl basic04.vhd
+verific -import top top_properties
+hierarchy -top top
+select -assert-count 1 top/properties_inst
+
+design -reset
+verific -sv basic04.sv
+verific -vhdl basic04.vhd
+verific -import top
+hierarchy -top top
+select -assert-count 1 top/properties_inst
+
+design -reset
+verific -sv basic04.sv
+verific -vhdl basic04.vhd
+hierarchy -top top
+select -assert-count 1 top/properties_inst
