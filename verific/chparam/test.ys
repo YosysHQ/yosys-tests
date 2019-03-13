@@ -35,7 +35,7 @@ verific -sv top.v
 verific -vhdl top.vhd
 tee -o test6.out verific -import -chparam WIDTH 9999 -chparam WIDTH 2 -chparam INIT 0 -chparam greeting "bonjour  " -chparam nonexistent 12345678 -all
 
-# YosysHQ/yosys#XXX
+# YosysHQ/yosys#871
 # Check only top is elaborated and attempting to override (verific)
 design -reset
 verific -sv top2.v
