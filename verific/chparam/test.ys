@@ -29,13 +29,19 @@ verific -sv top.v
 verific -vhdl top.vhd
 tee -o test5.out verific -import -chparam WIDTH 9999 -chparam WIDTH 2 -chparam INIT 0 -chparam greeting "bonjour  " -chparam nonexistent 12345678 top_veri_v2k top_veri_95 top_vhdl
 
+# All of the above (-all)
+design -reset
+verific -sv top.v
+verific -vhdl top.vhd
+tee -o test6.out verific -import -chparam WIDTH 9999 -chparam WIDTH 2 -chparam INIT 0 -chparam greeting "bonjour  " -chparam nonexistent 12345678 -all
+
 # YosysHQ/yosys#XXX
 # Check only top is elaborated and attempting to override (verific)
 design -reset
 verific -sv top2.v
-tee -o test6.out verific -import -chparam ABCD 99 top
+tee -o test7.out verific -import -chparam ABCD 99 top
 
 # Check only top is elaborated and attempting to override (hierarchy)
 design -reset
 verific -sv top2.v
-tee -o test7.out hierarchy -chparam ABCD 99 -top top
+tee -o test8.out hierarchy -chparam ABCD 99 -top top
