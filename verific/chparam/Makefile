@@ -1,4 +1,4 @@
-all: test1.status test2.status test3.status test4.status test5.status test6.status test7.status test8.status
+all: test1.status test2.status test3.status test4.status test5.status test6.status test7.status test8.status test9.status
 	@grep -H . *.status | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t20
 	@touch .stamp
 
@@ -69,6 +69,13 @@ test8.status: test8.out
 	@(grep -q -e "^Importing module top.$$" $< && \
 		  grep -q -v -e "^VERIFIC-WARNING \\[VERI-1928\\]$$" $< && \
           echo PASS > $@) || echo FAIL > $@
+
+test9.status: test9.out
+	@(grep -q -e "^VERIFIC-INFO \\[VERI-1018\\] top.v:[0-9]\\+: compiling module 'top_veri_v2k(WIDTH=2,INIT=0,greeting=\"bonjour  \")'$$" $< && \
+		  grep -q -e "^Importing module top_veri_v2k.$$" $< && \
+          grep -q -e "^VERIFIC-WARNING \\[VERI-1928\\] top.v:1: module 'top_veri_v2k' does not have a parameter named 'nonexistent' to override$$" $< && \
+          echo PASS > $@) || echo FAIL > $@
+
 
 %.out: test.ys $(wildcard *.v *.vhd)
 	@yosys -q -q $<

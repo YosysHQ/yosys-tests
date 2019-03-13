@@ -45,3 +45,9 @@ tee -o test7.out verific -import -chparam ABCD 99 top
 design -reset
 verific -sv top2.v
 tee -o test8.out hierarchy -chparam ABCD 99 -top top
+
+# Prior test but with (hierarchy)
+design -reset
+verific -sv top.v
+verific -vhdl top.vhd
+tee -o test9.out hierarchy -chparam WIDTH 9999 -chparam WIDTH 2 -chparam INIT 0 -chparam greeting "bonjour  " -chparam nonexistent 12345678 -top top_veri_v2k
