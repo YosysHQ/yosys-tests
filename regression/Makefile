@@ -10,7 +10,7 @@ $(foreach script,$(2),
 work:: $(design)/work_$(script)/.stamp
 
 $(design)/work_$(script)/.stamp:
-	bash run.sh $(design) $(script)
+	./run.sh $(design) $(script)
 
 clean::
 	rm -rf $(design)/work_$(script)
@@ -298,7 +298,7 @@ $(eval $(call template,issue_00763,issue_00763))
 $(eval $(call template,issue_00767,issue_00767))
 
 #issue_00774
-$(eval $(call template,issue_00774,issue_00774))
+#$(eval $(call template,issue_00774,issue_00774))
 
 #issue_00781
 $(eval $(call template,issue_00781,issue_00781))
