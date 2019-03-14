@@ -18,8 +18,8 @@ module testbench;
 
     reg [`N-1:0] a;
     reg e;
-    wire [`N-1:0] y1, y2, y3, y4;
-    wire [`N-1:0] z1, z2, z3, z4;
+    wire [`N-1:0] y1, y2, y3, y4, y5, y6;
+    wire [`N-1:0] z1, z2, z3, z4, z5, z6;
 
     top rtl (
         .clk (clk ),
@@ -28,7 +28,9 @@ module testbench;
         .z1 (y1),
         .z2 (y2),
         .z3 (y3),
-        .z4 (y4)
+        .z4 (y4),
+        .z5 (y5),
+        .z6 (y6)
     );
 
     synth uut (
@@ -38,7 +40,9 @@ module testbench;
         .z1 (z1),
         .z2 (z2),
         .z3 (z3),
-        .z4 (z4)
+        .z4 (z4),
+        .z5 (z5),
+        .z6 (z6)
     );
 
     always @(negedge clk)
@@ -57,6 +61,10 @@ module testbench;
             assert_dff z3n_test(.clk(~clk), .test(z3[i]), .pat(y3[i]));
             assert_dff z4p_test(.clk(clk), .test(z4[i]), .pat(y4[i]));
             assert_dff z4n_test(.clk(~clk), .test(z4[i]), .pat(y4[i]));
+            assert_dff z5p_test(.clk(clk), .test(z5[i]), .pat(y5[i]));
+            assert_dff z5n_test(.clk(~clk), .test(z5[i]), .pat(y5[i]));
+            assert_dff z6p_test(.clk(clk), .test(z6[i]), .pat(y6[i]));
+            assert_dff z6n_test(.clk(~clk), .test(z6[i]), .pat(y6[i]));
         end
     endgenerate
 
