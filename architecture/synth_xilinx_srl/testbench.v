@@ -18,8 +18,8 @@ module testbench;
 
     reg [`N-1:0] a;
     reg e;
-    wire [`N-1:0] y1, y2, y3, y4, y5, y6;
-    wire [`N-1:0] z1, z2, z3, z4, z5, z6;
+    wire [`N-1:0] y1, y2, y3, y4, y5, y6, y9, y10;
+    wire [`N-1:0] z1, z2, z3, z4, z5, z6, z9, z10;
 
     top rtl (
         .clk (clk ),
@@ -30,7 +30,9 @@ module testbench;
         .z3 (y3),
         .z4 (y4),
         .z5 (y5),
-        .z6 (y6)
+        .z6 (y6),
+        .z9 (y9),
+        .z10 (y10)
     );
 
     synth uut (
@@ -42,7 +44,9 @@ module testbench;
         .z3 (z3),
         .z4 (z4),
         .z5 (z5),
-        .z6 (z6)
+        .z6 (z6),
+        .z9 (z9),
+        .z10 (z10)
     );
 
     always @(negedge clk)
@@ -50,6 +54,8 @@ module testbench;
 
     generate
         genvar i;
+        // FIXME: https://github.com/YosysHQ/yosys/issues/873
+        //for (i = 0; i < `N; i=i+1) begin
         for (i = 1; i < `N; i=i+1) begin
             always @(posedge clk)
                 a[i] <= $random;
@@ -65,6 +71,10 @@ module testbench;
             assert_dff z5n_test(.clk(~clk), .test(z5[i]), .pat(y5[i]));
             assert_dff z6p_test(.clk(clk), .test(z6[i]), .pat(y6[i]));
             assert_dff z6n_test(.clk(~clk), .test(z6[i]), .pat(y6[i]));
+            assert_dff z9p_test(.clk(clk), .test(z9[i]), .pat(y9[i]));
+            assert_dff z9n_test(.clk(~clk), .test(z9[i]), .pat(y9[i]));
+            assert_dff z10p_test(.clk(clk), .test(z10[i]), .pat(y10[i]));
+            assert_dff z10n_test(.clk(~clk), .test(z10[i]), .pat(y10[i]));
         end
     endgenerate
 
