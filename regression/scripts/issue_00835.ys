@@ -1,0 +1,4 @@
+tee -o result.log read_verilog ../top.v
+prep
+write_verilog synth.v
+
