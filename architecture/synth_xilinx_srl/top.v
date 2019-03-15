@@ -5,47 +5,48 @@ generate
     genvar i;
 `ifdef TEST1
     for (i = 0; i < `N; i=i+1) begin : pos_clk_no_enable_no_init_not_inferred
-        template #(.depth(i+1)) sr(clk, a[i], 1'b1, z[i]);
+        shift_reg #(.depth(i+1)) sr(clk, a[i], 1'b1, z[i]);
     end
 `elsif TEST2
     for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_no_init_not_inferred
-        template #(.depth(i+1)) sr(clk, a[i], e, z[i]);
+        shift_reg #(.depth(i+1)) sr(clk, a[i], e, z[i]);
     end
 `elsif TEST3
     for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_with_init_inferred
-        template #(.depth(i+1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
+        shift_reg #(.depth(i+1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
     end
 `elsif TEST4
     for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_not_inferred
-        template #(.depth(i+1), .neg_clk(1)) sr(clk, a[i], 1'b1, z[i]);
+        shift_reg #(.depth(i+1), .neg_clk(1)) sr(clk, a[i], 1'b1, z[i]);
     end
 `elsif TEST5
     for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_inferred
-        template #(.depth(i+1), .neg_clk(1), .inferred(1)) sr(clk, a[i], 1'b1, z[i]);
+        shift_reg #(.depth(i+1), .neg_clk(1), .inferred(1)) sr(clk, a[i], 1'b1, z[i]);
     end
 `elsif TEST6
     for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred
-        template #(.depth(i+1), .neg_clk(1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
+        shift_reg #(.depth(i+1), .neg_clk(1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
     end
 `elsif TEST7
     // Check that use of resets block shreg
     (* keep *)
-    template #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[0], r, z[0]);
+    shift_reg #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[1], r, z[0]);
     (* keep *)
-    template #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[1], r, z[1]);
+    shift_reg #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[2], r, FIXME /*z[1]*/);
     assign z[`N-1:2] = 'b0; // Suppress no driver warning
 `elsif TEST8
     // Check multi-bit works
     (* keep *)
-    template #(.depth(`N), .width(`N)) pos_clk_no_enable_no_init_not_inferred_N_width(clk, a, r, z);
+    shift_reg #(.depth(`N), .width(`N)) pos_clk_no_enable_no_init_not_inferred_N_width(clk, a, r, z);
 `elsif TEST9
     (* keep *)
-    template #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred_N_width(clk, a, r, z);
+    shift_reg #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred_N_width(clk, a, r, z);
+`elsif TEST10
 `endif
 endgenerate
 endmodule
 
-module template #(parameter width=1) (input clk, input [width-1:0] a, input er, output [width-1:0] z);
+module shift_reg #(parameter width=1) (input clk, input [width-1:0] a, input er, output [width-1:0] z);
 parameter inferred = 0;
 parameter init = 0;
 parameter neg_clk = 0;

@@ -17,7 +17,7 @@ module testbench;
     end
 
     reg [`N-1:0] a;
-    reg e;
+    reg e, r;
     wire [`N-1:0] y;
     wire [`N-1:0] z;
 
@@ -25,6 +25,7 @@ module testbench;
         .clk (clk ),
         .a (a),
         .e (e),
+        .r (r),
         .z (y)
     );
 
@@ -32,11 +33,14 @@ module testbench;
         .clk (clk ),
         .a (a),
         .e (e),
+        .r (r),
         .z (z)
     );
 
-    always @(negedge clk)
+    always @(negedge clk) begin
         e <= $random;
+        r <= $random;
+    end
 
     generate
         genvar i;

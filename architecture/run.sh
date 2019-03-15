@@ -68,6 +68,8 @@ elif [ "$1" = "synth_xilinx_srl" ]; then
     iverilog -DTEST8 synth8.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
     run
     iverilog -DTEST9 synth9.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+    #run
+    #iverilog -DTEST10 synth10.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/greenpak4/cells_sim_digital.v
 else 

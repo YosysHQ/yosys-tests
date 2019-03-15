@@ -15,3 +15,5 @@ design -reset
 script ../test8.ys
 design -reset
 script ../test9.ys
+design -reset
+script ../test10.ys
