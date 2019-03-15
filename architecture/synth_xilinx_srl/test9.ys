@@ -1,0 +1,8 @@
+read_verilog -icells -DTEST9 ../top.v
+synth_xilinx
+rename -top synth
+clean -purge
+write_verilog synth9.v
+
+# Check that wide shift registers are not a problem
+cd $paramod\template\width=131\inferred=1\init=1\neg_clk=1\depth=131; select t:FD* -assert-count 0

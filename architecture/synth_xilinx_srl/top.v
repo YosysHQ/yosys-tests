@@ -1,5 +1,50 @@
 `include "defines.vh"
 
+module top(input clk, input [`N-1:0] a, input e, r, output [`N-1:0] z);
+generate 
+    genvar i;
+`ifdef TEST1
+    for (i = 0; i < `N; i=i+1) begin : pos_clk_no_enable_no_init_not_inferred
+        template #(.depth(i+1)) sr(clk, a[i], 1'b1, z[i]);
+    end
+`elsif TEST2
+    for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_no_init_not_inferred
+        template #(.depth(i+1)) sr(clk, a[i], e, z[i]);
+    end
+`elsif TEST3
+    for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_with_init_inferred
+        template #(.depth(i+1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
+    end
+`elsif TEST4
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_not_inferred
+        template #(.depth(i+1), .neg_clk(1)) sr(clk, a[i], 1'b1, z[i]);
+    end
+`elsif TEST5
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_inferred
+        template #(.depth(i+1), .neg_clk(1), .inferred(1)) sr(clk, a[i], 1'b1, z[i]);
+    end
+`elsif TEST6
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred
+        template #(.depth(i+1), .neg_clk(1), .inferred(1), .init(1)) sr(clk, a[i], e, z[i]);
+    end
+`elsif TEST7
+    // Check that use of resets block shreg
+    (* keep *)
+    template #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[0], r, z[0]);
+    (* keep *)
+    template #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[1], r, z[1]);
+    assign z[`N-1:2] = 'b0; // Suppress no driver warning
+`elsif TEST8
+    // Check multi-bit works
+    (* keep *)
+    template #(.depth(`N), .width(`N)) pos_clk_no_enable_no_init_not_inferred_N_width(clk, a, r, z);
+`elsif TEST9
+    (* keep *)
+    template #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred_N_width(clk, a, r, z);
+`endif
+endgenerate
+endmodule
+
 module template #(parameter width=1) (input clk, input [width-1:0] a, input er, output [width-1:0] z);
 parameter inferred = 0;
 parameter init = 0;
@@ -83,56 +128,4 @@ generate
 endgenerate
 endmodule
 
-module top(input clk, input [`N-1:0] a, input e, r, output [`N-1:0] z1, z2, z3, z4, z5, z6, z7, z8, z9, z10);
-generate 
-    genvar i;
-    for (i = 0; i < `N; i=i+1) begin : pos_clk_no_enable_no_init_not_inferred
-        if (i <= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1)) sr(clk, a[i], 1'b1, z1[i]);
-    end
-    for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_no_init_not_inferred
-        if (i<= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1)) sr(clk, a[i], e, z2[i]);
-    end
-    for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_with_init_inferred
-        if (i <= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1), .inferred(1), .init(1)) sr(clk, a[i], e, z3[i]);
-    end
-    for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_not_inferred
-        if (i <= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1), .neg_clk(1)) sr(clk, a[i], 1'b1, z4[i]);
-    end
-    for (i = 0; i < `N; i=i+1) begin : neg_clk_no_enable_no_init_inferred
-        if (i <= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1), .neg_clk(1), .inferred(1)) sr(clk, a[i], 1'b1, z5[i]);
-    end
-    for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred
-        if (i <= 1 || i == 14 || i == 15 || i == 16 || i == 30 || i == 31 ||
-            i == 46 || i == 47 || i == 62 || i == 63 || i == 78 || i == 79 ||
-            i == 94 || i == 95 || i == 100 || i == 101 || i >= 126)
-        template #(.depth(i+1), .neg_clk(1), .inferred(1), .init(1)) sr(clk, a[i], e, z6[i]);
-    end
 
-    // Check that use of resets block shreg
-    (* keep *)
-    template #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[`N-1], r, z7[`N-1]);
-    (* keep *)
-    template #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[`N-1], r, z8[`N-1]);
-
-    // Check multi-bit works
-    (* keep *)
-    template #(.depth(`N), .width(`N)) pos_clk_no_enable_no_init_not_inferred_N_width(clk, a, r, z9);
-    (* keep *)
-    template #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred_N_width(clk, a, r, z10);
-endgenerate
-endmodule

@@ -1,0 +1,5 @@
+read_verilog -icells -DTEST5 ../top.v
+synth_xilinx
+rename -top synth
+clean -purge
+write_verilog synth5.v
