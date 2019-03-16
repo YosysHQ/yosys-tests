@@ -5,5 +5,5 @@ clean -purge
 write_verilog synth7.v
 
 # Check that shift registers with resets are not inferred into SRLs
-cd $paramod\shift_reg\depth=131\er_is_reset=1; select t:SRL* -assert-count 0
-cd $paramod\shift_reg\depth=131\inferred=1\init=1\neg_clk=1\er_is_reset=1; select t:SRL* -assert-count 0
+cd synth; cd pos_clk_no_enable_no_init_not_inferred_with_reset; select t:SRL* -assert-count 0
+cd synth; cd neg_clk_no_enable_with_init_with_inferred_with_reset; select t:SRL* -assert-count 0

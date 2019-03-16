@@ -5,4 +5,4 @@ clean -purge
 write_verilog synth9.v
 
 # Check that wide shift registers are not a problem
-cd $paramod\shift_reg\width=131\depth=131\inferred=1\init=1\neg_clk=1; select t:FD* -assert-count 0
+cd synth; cd neg_clk_no_enable_with_init_with_inferred_N_width; select t:FD* -assert-count 0

@@ -42,7 +42,7 @@ generate
     (* keep *)
     shift_reg #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred_N_width(clk, a, r, /*l*/, z);
 `elsif TEST10
-    for (i = 1; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred
+    for (i = 1; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred_var_len
         shift_reg #(.depth(i+1), .fixed_length(0)) sr(clk, a[i], 1'b1, l[$clog2(i+1)-1:0], z[i]);
     end
     assign z[0] = 'b0; // Suppress no driver warning
