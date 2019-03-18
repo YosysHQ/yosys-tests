@@ -46,6 +46,10 @@ generate
         shift_reg #(.depth(i+1), .fixed_length(0)) sr(clk, a[i], 1'b1, l[$clog2(i+1)-1:0], z[i]);
     end
     assign z[0] = 'b0; // Suppress no driver warning
+`elsif TEST11
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred_var_len
+        lfsr #(.len(i+3)) sr(clk, z[i]);
+    end
 `endif
 endgenerate
 endmodule
@@ -143,4 +147,4 @@ generate
 endgenerate
 endmodule
 
-
+`include "lfsr.v"

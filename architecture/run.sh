@@ -19,6 +19,9 @@ run() {
     fi
 }
 
+if [ -f ../run.sh ]; then
+    ../run.sh
+fi
 yosys -ql yosys.log ../../scripts/$2.ys
 if [ "$1" = "synth_ecp5" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/ecp5/cells_sim.v
@@ -52,24 +55,10 @@ elif [ "$1" = "synth_xilinx" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
 elif [ "$1" = "synth_xilinx_srl" ]; then
     iverilog -DTEST1 synth1.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST2 synth2.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST3 synth3.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST4 synth4.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST5 synth5.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST6 synth6.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST7 synth7.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST8 synth8.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST9 synth9.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    run
-    iverilog -DTEST10 synth10.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+    for i in {2..11}; do
+        run
+        iverilog -DTEST$i synth$i.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+    done
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/greenpak4/cells_sim_digital.v
 else 
