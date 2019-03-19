@@ -30,11 +30,9 @@ generate
 `elsif TEST7
     // Check that use of resets block shreg
     shift_reg #(.depth(129), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[1], r, /*l*/, z[0], /* state0 */);
-    // FIXME: YosysHQ/yosys#873
-    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[2], r, /*l*/, FIXME1 /*z[1]*/, /* state0 */);
+    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[2], r, /*l*/, z[1], /* state0 */);
     shift_reg #(.depth(128), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset_var_len(clk, a[2], r, l, z[2], /* state0 */);
-    // FIXME: YosysHQ/yosys#873
-    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset_var_len(clk, a[3], r, l, FIXME2 /*z[3]*/, /* state0 */);
+    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset_var_len(clk, a[3], r, l, z[3], /* state0 */);
     assign z[`N-1:4] = 'b0; // Suppress no driver warning
 `elsif TEST8
     // Check multi-bit works
