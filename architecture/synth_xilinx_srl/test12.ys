@@ -1,8 +1,7 @@
 read_verilog -icells -DTEST12 ../top.v
+read_verilog ../lfsr.v
 synth_xilinx
 rename -top synth
-cd synth;
-write_verilog -selected synth12.v
 
 cd synth; cd lfsr[0].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[1].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -136,6 +135,7 @@ cd synth; cd lfsr[126].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -a
 cd synth; cd lfsr[127].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[128].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[129].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[130].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 
 cd synth; flatten
 clean -purge

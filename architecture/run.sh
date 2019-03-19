@@ -54,10 +54,11 @@ elif [ "$1" = "synth_sf2" ]; then
 elif [ "$1" = "synth_xilinx" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
 elif [ "$1" = "synth_xilinx_srl" ]; then
-    iverilog -DTEST1 synth1.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    for i in {2..13}; do
+    iverilog -DTEST1 synth1.v -o testbench  ../testbench.v -I.. ../top.v ../lfsr.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+    for i in {2..14}; do
         run
-        iverilog -DTEST$i synth$i.v -o testbench  ../testbench.v -I.. ../top.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
+        yosys -ql yosys.log -p "script ../yosys.ys TEST$i"
+        iverilog -DTEST$i synth$i.v -o testbench  ../testbench.v -I.. ../top.v ../lfsr.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
     done
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/greenpak4/cells_sim_digital.v

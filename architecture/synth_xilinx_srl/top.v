@@ -61,6 +61,12 @@ generate
     shift_reg #(.depth(128), .output_xor(1)) sr_fixed_length_other_users_xor(clk, a[2], r, /*l*/, z[2], /* state */);
     shift_reg #(.depth(128), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0), .output_xor(1)) sr_var_length_other_users_xor(clk, a[3], e, l[$clog2(128)-1:0], z[3], /* state */);
     assign z[`N-1:4] = 'b0; // Suppress no driver warning
+`elsif TEST14
+    // https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_3/ug901-vivado-synthesis.pdf
+    shift_registers_0 sr0 (.clk(clk), .clken(e), .SI(a[0]), .SO(z[0]));
+    shift_registers_1 sr1 (.clk(clk), .clken(e), .SI(a[1]), .SO(z[1]));
+    dynamic_shift_register_1 sr2 (.CLK(clk), .CE(e), .SEL(l[4:0]), .SI(a[2]), .DO(z[2]));
+    assign z[`N-1:3] = 'b0; // Suppress no driver warning
 `endif
 endgenerate
 endmodule
@@ -171,5 +177,3 @@ generate
     end
 endgenerate
 endmodule
-
-`include "lfsr.v"
