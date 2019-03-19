@@ -48,9 +48,7 @@ module testbench;
 
     generate
         genvar i;
-        // FIXME: https://github.com/YosysHQ/yosys/issues/873
-        //for (i = 0; i < `N; i=i+1) begin
-        for (i = 1; i < `N; i=i+1) begin
+        for (i = 0; i < `N; i=i+1) begin
             always @(posedge clk)
                 a[i] <= $random;
             assert_dff zp_test(.clk(clk), .test(z[i]), .pat(y[i]));
