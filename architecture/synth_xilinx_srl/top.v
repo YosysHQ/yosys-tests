@@ -1,6 +1,6 @@
 `include "defines.vh"
 
-module top(input clk, input [`N-1:0] a, input e, r, input [$clog2(`N)-1:0] l, output [`N-1:0] z);
+module top(input clk, input [`N-1:0] a, input e, r, input [31:0] l, output [`N-1:0] z);
 generate 
     genvar i;
 `ifdef TEST1
@@ -67,6 +67,14 @@ generate
     shift_registers_1 sr1 (.clk(clk), .clken(e), .SI(a[1]), .SO(z[1]));
     dynamic_shift_register_1 sr2 (.CLK(clk), .CE(e), .SEL(l[4:0]), .SI(a[2]), .DO(z[2]));
     assign z[`N-1:3] = 'b0; // Suppress no driver warning
+`elsif TEST15
+    for (i = 0; i < `N; i=i+1) begin : pos_clk_no_enable_no_init_not_inferred_long
+        shift_reg #(.depth(i+128+1)) sr(clk, a[i], 1'b1, /*l*/, z[i], /* state */);
+    end
+`elsif TEST16
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred_var_len_long
+        shift_reg #(.depth(i+128+1), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0)) sr(clk, a[i], e, l[$clog2(i+128+1)-1:0], z[i], /* state */);
+    end
 `endif
 endgenerate
 endmodule

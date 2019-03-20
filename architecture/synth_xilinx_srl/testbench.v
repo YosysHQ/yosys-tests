@@ -18,7 +18,7 @@ module testbench;
 
     reg [`N-1:0] a;
     reg e, r;
-    reg [$clog2(`N)-1:0] l;
+    reg [31:0] l;
     wire [`N-1:0] y;
     wire [`N-1:0] z;
 
