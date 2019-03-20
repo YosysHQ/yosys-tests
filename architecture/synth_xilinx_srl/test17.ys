@@ -1,0 +1,12 @@
+read_verilog -icells -DTEST17 ../top.v
+synth_xilinx -top top
+rename -top synth
+clean -purge
+write_verilog -norename synth17.v
+
+select t:SRL16E %x:+[Q] w:infer1* %i -assert-count 1; select t:FD* %x:+[Q] w:infer1* %i -assert-count 0
+select t:SRL16E %x:+[Q] w:infer2* %i -assert-count 1; select t:FD* %x:+[Q] w:infer2* %i -assert-count 0
+
+select t:SRL16E %x:+[Q] w:keep1* %i -assert-count 2; select t:SRL16E %x:+[Q] w:keep1.a4 %i -assert-count 1; select t:FD* %x:+[Q] w:*keep1* %i -assert-count 0
+select t:SRL16E %x:+[Q] w:keep2* %i -assert-count 2; select t:SRL16E %x:+[Q] w:keep2.a3 %i -assert-count 1; select t:FD* %x:+[Q] w:*keep2.a4* %i -assert-count 1; 
+select t:SRL16E %x:+[Q] w:attr* %i -assert-count 1; select t:FD* %x:+[Q] w:attr* %i -assert-count 0

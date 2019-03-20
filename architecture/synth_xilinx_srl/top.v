@@ -75,6 +75,51 @@ generate
     for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred_var_len_long
         shift_reg #(.depth(i+128+1), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0)) sr(clk, a[i], e, l[$clog2(i+128+1)-1:0], z[i], /* state */);
     end
+`elsif TEST17
+    // Check inference even when not in vector
+    begin: infer1
+        reg a1, a2, a3, a4, a5, a6, a7, a8;
+        always @(posedge clk) a1 <= a[0];
+        always @(posedge clk) a2 <= a1;
+        always @(posedge clk) a3 <= a2;
+        always @(posedge clk) a4 <= a3;
+        always @(posedge clk) a5 <= a4;
+        always @(posedge clk) a6 <= a5;
+        always @(posedge clk) a7 <= a6;
+        always @(posedge clk) a8 <= a7;
+        assign z[0] = a8;
+    end
+    begin: infer2
+        reg a1, a2, a3, a4, a5, a6, a7, a8;
+        always @(posedge clk) if (e) {a8,a7,a6,a5,a4,a3,a2,a1} <= {a7,a6,a5,a4,a3,a2,a1,a[1]};
+        assign z[1] = a8;
+    end
+    // Check inference even when keep attribute specified
+    begin: keep1
+        reg a1, a2, a3;
+        (* keep *) reg a4;
+        reg a5, a6, a7, a8;
+        always @(negedge clk) if (e) {a8,a7,a6,a5,a4,a3,a2,a1} <= {a7,a6,a5,a4,a3,a2,a1,a[2]};
+        assign z[2] = a8;
+    end
+    begin: keep2
+        reg a1, a2;
+        (* keep *) reg a3;
+        (* keep *) reg a4;
+        reg a5, a6, a7, a8;
+        always @(negedge clk) if (e) {a8,a7,a6,a5,a4,a3,a2,a1} <= {a7,a6,a5,a4,a3,a2,a1,a[3]};
+        assign z[3] = a8;
+    end
+    begin: attr
+        reg a1, a2;
+        (* blah *) reg a3;
+        reg a4, a5, a6;
+        (* boo *) reg a7;
+        reg a8;
+        always @(negedge clk) if (e) {a8,a7,a6,a5,a4,a3,a2,a1} <= {a7,a6,a5,a4,a3,a2,a1,a[4]};
+        assign z[4] = a8;
+    end
+    assign z[`N-1:5] = 'b0; // Suppress no driver warning
 `endif
 endgenerate
 endmodule
