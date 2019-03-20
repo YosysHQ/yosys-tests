@@ -134,3 +134,4 @@ cd synth; cd neg_clk_with_enable_with_init_inferred[126].sr; select t:FD* -asser
 cd synth; cd neg_clk_with_enable_with_init_inferred[127].sr; select t:FD* -assert-count 0; select t:SRL16E -assert-count 0; select t:SRLC32E -assert-count 4; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none
 cd synth; cd neg_clk_with_enable_with_init_inferred[128].sr; select t:FD* -assert-count 1; select t:SRL16E -assert-count 0; select t:SRLC32E -assert-count 4; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none
 cd synth; cd neg_clk_with_enable_with_init_inferred[129].sr; select t:FD* -assert-count 0; select t:SRL16E -assert-count 1; select t:SRLC32E -assert-count 4; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none
+cd synth; cd neg_clk_with_enable_with_init_inferred[130].sr; select t:FD* -assert-count 0; select t:SRL16E -assert-count 1; select t:SRLC32E -assert-count 4; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none

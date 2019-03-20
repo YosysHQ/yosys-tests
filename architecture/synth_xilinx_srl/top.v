@@ -29,10 +29,10 @@ generate
     end
 `elsif TEST7
     // Check that use of resets block shreg
-    shift_reg #(.depth(129), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[1], r, /*l*/, z[0], /* state */);
-    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[2], r, /*l*/, z[1], /* state */);
-    shift_reg #(.depth(128), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset_var_len(clk, a[2], r, l[6:0], z[2], /* state */);
-    shift_reg #(.depth(129), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset_var_len(clk, a[3], r, l, z[3], /* state */);
+    shift_reg #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset(clk, a[1], r, /*l*/, z[0], /* state */);
+    shift_reg #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset(clk, a[2], r, /*l*/, z[1], /* state */);
+    shift_reg #(.depth(`N), .er_is_reset(1)) pos_clk_no_enable_no_init_not_inferred_with_reset_var_len(clk, a[2], r, l[$clog2(`N)-1:0], z[2], /* state */);
+    shift_reg #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .er_is_reset(1)) neg_clk_no_enable_with_init_with_inferred_with_reset_var_len(clk, a[3], r, l[$clog2(`N)-1:0], z[3], /* state */);
     assign z[`N-1:4] = 'b0; // Suppress no driver warning
 `elsif TEST8
     // Check multi-bit works
@@ -56,10 +56,10 @@ generate
 `elsif TEST13
     // Check that non chain users block SRLs
     // (i.e. output port, in non flattened case)
-    shift_reg #(.depth(128), .output_index(0)) sr_fixed_length_other_users_port(clk, a[0], r, /*l*/, z[0], /* state */);
-    shift_reg #(.depth(128), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0), .output_index(0)) sr_var_length_other_users_port(clk, a[1], e, l[$clog2(128)-1:0], z[1], /* state */);
-    shift_reg #(.depth(128), .output_xor(1)) sr_fixed_length_other_users_xor(clk, a[2], r, /*l*/, z[2], /* state */);
-    shift_reg #(.depth(128), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0), .output_xor(1)) sr_var_length_other_users_xor(clk, a[3], e, l[$clog2(128)-1:0], z[3], /* state */);
+    shift_reg #(.depth(`N), .output_index(0)) sr_fixed_length_other_users_port(clk, a[0], r, /*l*/, z[0], /* state */);
+    shift_reg #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0), .output_index(0)) sr_var_length_other_users_port(clk, a[1], e, l[$clog2(`N)-1:0], z[1], /* state */);
+    shift_reg #(.depth(`N), .output_xor(1)) sr_fixed_length_other_users_xor(clk, a[2], r, /*l*/, z[2], /* state */);
+    shift_reg #(.depth(`N), .neg_clk(1), .inferred(1), .init(1), .fixed_length(0), .output_xor(1)) sr_var_length_other_users_xor(clk, a[3], e, l[$clog2(`N)-1:0], z[3], /* state */);
     assign z[`N-1:4] = 'b0; // Suppress no driver warning
 `elsif TEST14
     // https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_3/ug901-vivado-synthesis.pdf
