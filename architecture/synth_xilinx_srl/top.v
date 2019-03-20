@@ -123,7 +123,7 @@ generate
             if (init) begin
                 genvar i;
                 for (i = 0; i < depth; i=i+1)
-                    initial int[j][i] = ~((i+j) % 2);
+                    initial int[j][i] <= ~((i+j) % 2);
             end
 
             if (depth == 1) begin

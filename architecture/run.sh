@@ -8,21 +8,11 @@ rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
-run() {
-    if ! vvp -N testbench > testbench.log 2>&1; then
-    	grep 'ERROR' testbench.log
-    	echo fail > ${1}_${2}.status
-    elif grep 'ERROR' testbench.log || ! grep 'OKAY' testbench.log; then
-    	echo fail > ${1}_${2}.status
-    else
-    	echo pass > ${1}_${2}.status
-    fi
-}
-
-if [ -f ../run.sh ]; then
-    ../run.sh
+if [ -f ../Makefile ]; then
+    make -C ..
+else
+    yosys -ql yosys.log ../../scripts/$2.ys
 fi
-yosys -ql yosys.log ../../scripts/$2.ys
 if [ "$1" = "synth_ecp5" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/ecp5/cells_sim.v
 elif [ "$1" = "synth_achronix" ]; then
@@ -54,18 +44,25 @@ elif [ "$1" = "synth_sf2" ]; then
 elif [ "$1" = "synth_xilinx" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
 elif [ "$1" = "synth_xilinx_srl" ]; then
-    iverilog -DTEST1 synth1.v -o testbench  ../testbench.v -I.. ../top.v ../lfsr.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    for i in {2..14}; do
-        run
-        yosys -ql yosys.log -p "script ../yosys.ys TEST$i"
-        iverilog -DTEST$i synth$i.v -o testbench  ../testbench.v -I.. ../top.v ../lfsr.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-    done
+    if grep 'fail' *.status; then
+	    echo fail > ${1}_${2}.status
+    else
+        echo pass > ${1}_${2}.status
+    fi
+    exit
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/greenpak4/cells_sim_digital.v
 else 
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v
 fi
 
-run
+if ! vvp -N testbench > testbench.log 2>&1; then
+	grep 'ERROR' testbench.log
+	echo fail > ${1}_${2}.status
+elif grep 'ERROR' testbench.log || ! grep 'OKAY' testbench.log; then
+	echo fail > ${1}_${2}.status
+else
+	echo pass > ${1}_${2}.status
+fi
 
 touch .stamp
