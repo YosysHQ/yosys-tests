@@ -6,8 +6,8 @@ TARGETS := $(patsubst %.ys,$(OUTDIR)/%.status,$(YS))
 all: $(TARGETS)
 	echo ALL PASSED!
 
-$(OUTDIR)/test%.status:
-	cd $(OUTDIR) && yosys -ql yosys$*.log ../test$*.ys
+$(OUTDIR)/test%.status: test%.ys
+	cd $(OUTDIR) && yosys -ql yosys$*.log ../$<
 	iverilog -DTEST$* $(OUTDIR)/synth$*.v -o $(OUTDIR)/testbench$*  testbench.v top.v ../common.v ../../../../techlibs/common/simcells.v ../../../../techlibs/xilinx/cells_sim.v
 	if ! vvp -N $(OUTDIR)/testbench$* > $(OUTDIR)/testbench$*.log 2>&1; then \
 		grep 'ERROR' $(OUTDIR)/testbench$*.log; \
