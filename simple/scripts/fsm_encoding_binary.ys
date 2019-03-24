@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+fsm -encoding binary
+synth -top top
+write_verilog synth.v

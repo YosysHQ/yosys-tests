@@ -8,7 +8,7 @@ opt_clean
 opt
 wreduce
 alumacc
-share
+share -aggressive -force
 opt
 fsm
 opt -fast

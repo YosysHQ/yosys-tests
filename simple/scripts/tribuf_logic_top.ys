@@ -1,0 +1,5 @@
+read_verilog ../top.v
+tribuf -logic top
+synth -top top
+tribuf -logic top
+write_verilog synth.v

@@ -124,5 +124,37 @@ $(eval $(call template,flowmap_mem,flowmap flowmap_cells flowmap_debug_relax flo
 #iopadmap
 $(eval $(call template,iopadmap,iopadmap))
 
+#tribuf
+$(eval $(call template,tribuf,tribuf tribuf_top tribuf_merge_top tribuf_logic_top tribuf_merge_logic_top))
+
+#expose
+$(eval $(call template,expose,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
+$(eval $(call template,expose_dff,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
+
+#opt_demorgan
+$(eval $(call template,opt_demorgan,opt_demorgan))
+$(eval $(call template,opt_demorgan_reduce,opt_demorgan))
+
+#fsm_expand
+$(eval $(call template,fsm_expand, fsm_expand fsm_expand_full))
+
+#fsm_export
+$(eval $(call template,fsm_export, fsm_export fsm_export_noauto fsm_export_o fsm_export_origenc))
+
+#fsm_recode
+$(eval $(call template,fsm_recode, fsm_recode fsm_recode_encoding_binary fsm_recode_encoding_binary_twice fsm_recode_encoding_one_hot fsm_recode_fm_set_fsm_file fsm_recode_all_opt))
+
+#fsm command
+$(eval $(call template,fsm_command, fsm_command fsm_fm_set_fsm_file fsm_encfile fsm_encoding_binary fsm_encoding_one-hot fsm_encoding_auto fsm_encoding_none fsm_encoding_user fsm_encoding_unknown fsm_nodetect fsm_norecode fsm_nomap fsm_command_expand fsm_fullexpand fsm_command_export ))
+
+#share
+$(eval $(call template,share, share share_force share_aggressive share_fast share_limit))
+$(eval $(call template,share_shr, share share_force share_aggressive share_fast share_limit))
+$(eval $(call template,share_macc, share_force_macc share_aggressive_macc share_fast_macc share_limit_macc share_macc))
+#+ yosys -ql yosys.log ../../scripts/share_force.ys
+#ERROR: Abort in passes/opt/share.cc:724.
+#make: *** [Makefile:152: share_fsm/work_share_force/.stamp] Error 1
+#$(eval $(call template,share_fsm, share share_force share_aggressive share_fast share_limit))
+
 
 .PHONY: all clean
