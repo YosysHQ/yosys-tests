@@ -150,6 +150,8 @@ else
 		 [ "$1" = "issue_00589" ] ||\
 		 [ "$1" = "issue_00628" ]; then
 		iverilog_adds="../../../../../techlibs/ice40/cells_sim.v"
+	elif [ "$1" = "pr_00896" ]; then
+		iverilog_adds="../../../../../techlibs/ecp5/cells_sim.v"
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys
