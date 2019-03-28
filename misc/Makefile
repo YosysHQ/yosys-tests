@@ -171,5 +171,13 @@ $(eval $(call template,log, log log_stdout log_stderr log_nolog log_n))
 #tee
 $(eval $(call template,tee, tee))
 
+#test_autotb
+$(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
+
+#abc
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+
 
 .PHONY: all clean

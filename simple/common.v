@@ -7,7 +7,7 @@ module assert_dff(input clk, input test, input pat);
             $stop;
         end
     end
-endmodule 
+endmodule
 
 module assert_tri(input en, input A, input B);
     always @(posedge en)
@@ -26,6 +26,18 @@ module assert_Z(input clk, input A);
     begin
         //#1;
         if (A === 1'bZ)
+        begin
+            $display("ERROR: ASSERTION FAILED in %m:",$time," ",A);
+            $stop;
+        end
+    end
+endmodule
+
+module assert_X(input clk, input A);
+    always @(posedge clk)
+    begin
+        //#1;
+        if (A === 1'bX)
         begin
             $display("ERROR: ASSERTION FAILED in %m:",$time," ",A);
             $stop;

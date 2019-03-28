@@ -75,13 +75,14 @@ $(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcove
 $(eval $(call template,aigmap,aigmap aigmap_nand))
 
 #memory_memx, memory_nordff(75-101 not covered), memory_unpack(91-108 not covered)
-$(eval $(call template,memory,memory_memx memory_nordff memory_unpack))
+$(eval $(call template,memory,memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
 
 #uniquify
 $(eval $(call template,uniquify,uniquify))
 
 #hierarchy (44% increased to 61,3%)
 $(eval $(call template,hierarchy,hierarchy hierarchy_top hierarchy_check hierarchy_simcheck hierarchy_purge_lib hierarchy_libdir hierarchy_keep_positionals hierarchy_keep_portwidths hierarchy_nokeep_asserts hierarchy_auto_top hierarchy_generate))
+$(eval $(call template,hierarchy_huge,hierarchy_huge))
 
 #attrmap
 $(eval $(call template,attrmap,attrmap attrmap_modattr))
@@ -155,6 +156,39 @@ $(eval $(call template,share_macc, share_force_macc share_aggressive_macc share_
 #ERROR: Abort in passes/opt/share.cc:724.
 #make: *** [Makefile:152: share_fsm/work_share_force/.stamp] Error 1
 #$(eval $(call template,share_fsm, share share_force share_aggressive share_fast share_limit))
+
+#opt_expr
+$(eval $(call template,opt_expr, opt_expr))
+
+#ice40_dsp
+$(eval $(call template,ice40_dsp_mult, ice40_dsp))
+$(eval $(call template,ice40_dsp_mult_b_larger, ice40_dsp))
+$(eval $(call template,ice40_dsp_mult_a_larger, ice40_dsp))
+$(eval $(call template,ice40_dsp_mult_out_larger, ice40_dsp))
+$(eval $(call template,ice40_dsp_mult_acc, ice40_dsp))
+$(eval $(call template,ice40_dsp_mult_signed, ice40_dsp))
+
+#opt_lut
+$(eval $(call template,opt_lut, opt_lut opt_lut_limit opt_lut_dlogic opt_lut_limit_0))
+$(eval $(call template,opt_lut_ice40, opt_lut opt_lut_limit opt_lut_dlogic opt_lut_limit_0))
+
+#wreduce -memx
+$(eval $(call template,wreduce_memx, wreduce_memx))
+
+#opt_merge -share_all
+$(eval $(call template,opt_merge_share_all, opt_merge_share_all))
+$(eval $(call template,opt_merge_reduce, opt_merge_share_all))
+
+#opt
+$(eval $(call template,opt, opt opt_mux_bool opt_clkinv opt_share_all opt_purge opt_keepdc))
+
+#proc_arst
+$(eval $(call template,proc_arst, proc_arst proc_arst_global_rst))
+$(eval $(call template,proc_arst_reduce, proc_arst proc_arst_global_rst  proc_arst_global_rst_a))
+
+#submod
+$(eval $(call template, submod, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier))
+$(eval $(call template, submod_mem, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier submod_mem))
 
 
 .PHONY: all clean
