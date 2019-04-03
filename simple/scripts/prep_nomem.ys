@@ -1,4 +1,4 @@
 read_verilog ../top.v
-greenpak4_dffinv
-synth_greenpak4
+prep -nomem
+synth -top top
 write_verilog synth.v
