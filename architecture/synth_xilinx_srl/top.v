@@ -120,6 +120,17 @@ generate
         assign z[4] = a8;
     end
     assign z[`N-1:5] = 'b0; // Suppress no driver warning
+`elsif TEST18
+    for (i = 0; i < `N; i=i+1) begin : neg_clk_with_enable_with_init_inferred2
+        shift_reg #(.depth(i+1), .neg_clk(1), .inferred(2), .init(1)) sr(clk, a[i], e, /*l*/, z[i], /* state */);
+    end
+`elsif TEST19
+    for (i = 0; i < `N; i=i+1) begin : pos_clk_with_enable_no_init_inferred2_var_len
+        shift_reg #(.depth(i+2), .inferred(2), .fixed_length(0)) sr(clk, a[i], e, l[$clog2(i+2)-1:0], z[i], /* state */);
+    end
+`elsif TEST20
+    (* keep *)
+    shift_reg #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred2_N_width(clk, a, r, /*l*/, z, /* state */);
 `endif
 endgenerate
 endmodule
@@ -168,7 +179,7 @@ generate
         else
             assign state = {depth{1'b0}};
     end
-    else begin
+    else if (inferred == 1) begin
         reg [depth-1:0] int [width-1:0];
 
         genvar j;
@@ -228,5 +239,65 @@ generate
         else
             assign state = {depth{1'b0}};
     end
+    else if (inferred == 2) begin
+        reg [width-1:0] int [depth-1:0];
+
+        genvar i, j;
+        for (i = 0; i < depth; i=i+1) begin
+            for (j = 0; j < width; j=j+1) begin
+                if (init) begin
+                        initial int[i][j] <= ~((i+j) % 2);
+                end
+
+                if (i == 0) begin
+                    if (neg_clk) begin
+                        if (!er_is_reset) begin
+                            always @(negedge clk) if (er) int[i] <= a[i];
+                        end
+                        else begin
+                            always @(negedge clk or posedge er) if (er) int[i] <= 1'b0; else int[i] <= a[i];
+                        end
+                    end
+                    else begin
+                        if (!er_is_reset) begin
+                            always @(posedge clk) if (er) int[i] <= a[i];
+                        end
+                        else begin
+                            always @(posedge clk or posedge er) if (er) int[i] <= 1'b0; else int[i] <= a[i];
+                        end
+                    end
+                end
+                else begin
+                    if (neg_clk) begin
+                        if (!er_is_reset) begin
+                            always @(negedge clk) if (er) int[i][j] <= int[i-1][j];
+                        end
+                        else begin
+                            always @(negedge clk or posedge er) if (er) int[i] <= {depth{1'b0}}; else int[i][j] <= int[i-1][j];
+                        end
+                    end
+                    else begin
+                        if (!er_is_reset) begin
+                            always @(posedge clk) if (er) int[i][j] <= int[i-1][j];
+                        end
+                        else begin
+                            always @(posedge clk or posedge er) if (er) int[i] <= {depth{1'b0}}; else int[i][j] <= int[i-1][j];
+                        end
+                    end
+                end
+            end
+            //if (output_index >= 0)
+            //    assign state = int[output_index];
+            //else if (output_xor)
+            //    assign state = {depth{^int[0]}};
+            //else
+                assign state = {depth{1'b0}};
+        end
+        if (fixed_length > 0)
+            assign z = int[fixed_length-1];
+        else
+            assign z = int[l];
+    end
+
 endgenerate
 endmodule
