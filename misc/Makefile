@@ -179,5 +179,8 @@ $(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 a
 $(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
 $(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
 
+#hilomap
+$(eval $(call template,hilomap, hilomap hilomap_hicell hilomap_locell hilomap_singleton hilomap_hicell_singleton hilomap_locell_singleton hilomap_hicell_locell_singleton))
+
 
 .PHONY: all clean

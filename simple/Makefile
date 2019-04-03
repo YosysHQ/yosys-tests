@@ -190,5 +190,10 @@ $(eval $(call template,proc_arst_reduce, proc_arst proc_arst_global_rst  proc_ar
 $(eval $(call template, submod, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier))
 $(eval $(call template, submod_mem, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier submod_mem))
 
+#prep
+$(eval $(call template, prep, prep prep_top prep_auto_top prep_flatten prep_ifx prep_memx prep_nomem prep_nordff prep_rdff prep_nokeepdc prep_run prep_run_begin))
+
+#synth
+$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare))
 
 .PHONY: all clean

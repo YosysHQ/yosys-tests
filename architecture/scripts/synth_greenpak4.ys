@@ -1,3 +1,4 @@
 read_verilog ../top.v
+greenpak4_dffinv
 synth_greenpak4
-write_verilog synth.v 
+write_verilog synth.v
