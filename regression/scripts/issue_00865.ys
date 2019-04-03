@@ -1,0 +1,9 @@
+read_verilog ../top.v
+write_verilog temp.v
+proc
+opt
+fsm
+opt
+memory
+opt
+tee -o result.log synth_xilinx -top tc

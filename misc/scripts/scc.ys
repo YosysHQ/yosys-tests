@@ -1,3 +1,5 @@
 read_verilog ../top.v
 proc
 tee -o result.log scc top
+synth
+tee -o result.log scc top

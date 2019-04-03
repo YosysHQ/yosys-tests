@@ -1,0 +1,3 @@
+read_verilog ../top.v
+synth
+tee -o result.log splice -no_outputs

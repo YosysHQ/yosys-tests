@@ -30,6 +30,7 @@ $(eval $(call template,torder,torder torder_stop torder_noautostop ))
 
 #trace
 $(eval $(call template,trace,trace ))
+$(eval $(call template,trace_mem,trace_mem ))
 
 #write_file
 $(eval $(call template,write_file,write_file write_file_a ))
@@ -43,6 +44,9 @@ $(eval $(call template,show, show show_colorattr show_colors show_color show_enu
 
 #scc
 $(eval $(call template,scc, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+$(eval $(call template,scc_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+$(eval $(call template,scc_hier_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+
 
 #scatter
 $(eval $(call template,scatter, scatter ))
@@ -134,10 +138,46 @@ $(eval $(call template,miter_assert, miter_assert miter_assert_flatten ))
 $(eval $(call template,miter_assert_assume, miter_assert miter_assert_flatten ))
 
 #sat
-$(eval $(call template,sat, sat_dump_cnf sat_dump_json sat_dump_vcd sat_initsteps sat_maxsteps sat_max sat_prove_x sat_set_all_undef_at sat_set_all_undef sat_set_any_undef_at sat_set_any_undef sat_set_def_at sat_set_def sat_set_init sat_set sat_show sat_stepsize sat_tempinduct_skip sat_unset_at ))
+#sat_tempinduct_def  sat_tempinduct_tempinduct_def
+#ERROR: Assert `!undef_mode || model_undef' failed in ./kernel/satgen.h:90.
+$(eval $(call template,sat, sat_dump_cnf sat_dump_json sat_dump_vcd sat_initsteps sat_maxsteps sat_max sat_prove_x sat_set_all_undef_at sat_set_all_undef sat_set_any_undef_at sat_set_any_undef sat_set_def_at sat_set_def sat_set_init sat_set sat_show sat_stepsize sat_tempinduct_skip sat_unset_at sat_set_at sat_seq sat_prove_skip sat_timeout sat_prove sat_tempinduct sat sat_all sat_ignore_unknown_cells sat_enable_undef sat_max_undef sat_show_inputs sat_show_outputs sat_show_ports sat_show_regs sat_show_public sat_show_all sat_set_assumes sat_set_init_undef sat_set_init_def sat_set_init_zero  sat_tempinduct_baseonly sat_tempinduct_inductonly sat_verify sat_verify_no_timeout sat_falsify sat_falsify_no_timeout sat_prove_asserts sat_tempinduct_tempinduct_baseonly sat_set_def_inputs sat_tempinduct_baseonly_maxsteps ))
 
 #sim
 $(eval $(call template,sim,sim sim_a sim_clock sim_d sim_n sim_rstlen sim_vcd sim_w sim_zinit ))
 $(eval $(call template,sim_mem,sim sim_a sim_clockn sim_clock_mem sim_d sim_n sim_resetn sim_reset sim_rstlen sim_vcd sim_w sim_zinit_mem ))
+
+#splitnets
+$(eval $(call template,splitnets, splitnets splitnets_format splitnets_ports splitnets_driver splitnets_dpf ))
+$(eval $(call template,splitnets_logic, splitnets splitnets_format splitnets_ports splitnets_driver splitnets_dpf ))
+
+#splice
+$(eval $(call template,splice, splice splice_sel_by_cell splice_sel_by_wire splice_sel_any_bit splice_wires splice_no_outputs splice_port splice_no_port ))
+
+#supercover
+$(eval $(call template,supercover, supercover))
+
+#rmports
+$(eval $(call template,rmports, rmports))
+
+#check
+$(eval $(call template,check, check check_noinit check_initdrv check_assert))
+
+#design
+$(eval $(call template,design, design_import design_copy_from design_copy_to design_as))
+
+#log
+$(eval $(call template,log, log log_stdout log_stderr log_nolog log_n))
+
+#tee
+$(eval $(call template,tee, tee))
+
+#test_autotb
+$(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
+
+#abc
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+
 
 .PHONY: all clean

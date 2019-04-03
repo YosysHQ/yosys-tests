@@ -1,0 +1,5 @@
+read_verilog ../top.v
+synth_greenpak4 -part SLG46621V
+select GP_INV
+tee -o result.log select -list
+
