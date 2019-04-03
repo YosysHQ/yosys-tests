@@ -3,18 +3,18 @@ read_verilog ../lfsr.v
 synth_xilinx
 rename -top synth
 
-cd synth; cd lfsr[0].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[0].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-count 0; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[1].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[2].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[3].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[4].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[5].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[5].sr;   flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[6].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[7].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[8].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[9].sr;   flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[10].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[11].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[10].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[11].sr;  flatten; select t:FD* -assert-max 5; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[12].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[13].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[14].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -42,12 +42,12 @@ cd synth; cd lfsr[34].sr;  flatten; select t:FD* -assert-count 5; select t:SRL* 
 
 cd synth; cd lfsr[35].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[36].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[37].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[37].sr;  flatten; select t:FD* -assert-max 5; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[38].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[39].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[40].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[41].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[42].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[42].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[43].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[44].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[45].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -66,12 +66,12 @@ cd synth; cd lfsr[57].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -a
 cd synth; cd lfsr[58].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[59].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[60].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[61].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[61].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[62].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[63].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[64].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[65].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[66].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[66].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[67].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[68].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[69].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -98,10 +98,10 @@ cd synth; cd lfsr[89].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -a
 cd synth; cd lfsr[90].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[91].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[92].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[93].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[93].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[94].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[95].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[96].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[96].sr;  flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[97].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[98].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[99].sr;  flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -109,17 +109,17 @@ cd synth; cd lfsr[100].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -a
 cd synth; cd lfsr[101].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[102].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[103].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[104].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[104].sr; flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[105].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[106].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[107].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[108].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[109].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[109].sr; flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[110].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[111].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[112].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[113].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[114].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[114].sr; flatten; select t:FD* -assert-max 5; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[115].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[116].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[117].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
@@ -130,7 +130,7 @@ cd synth; cd lfsr[121].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -a
 cd synth; cd lfsr[122].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[123].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[124].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
-cd synth; cd lfsr[125].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
+cd synth; cd lfsr[125].sr; flatten; select t:FD* -assert-max 4; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[126].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[127].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
 cd synth; cd lfsr[128].sr; flatten; select t:FD* -assert-max 3; select t:SRL* -assert-min 1; select t:LUT* -assert-max 1; select t:FD* t:SRL* t:LUT* %% %n t:* %i -assert-none
