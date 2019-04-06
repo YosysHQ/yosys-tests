@@ -131,6 +131,12 @@ generate
 `elsif TEST20
     (* keep *)
     shift_reg #(.depth(`N), .width(`N), .neg_clk(1), .inferred(1), .init(1)) neg_clk_no_enable_with_init_with_inferred2_N_width(clk, a, r, /*l*/, z, /* state */);
+`elsif TEST21
+    wire w;
+    assign w = ^a[`N-1:0];
+    shift_reg #(.depth(4)) sr0 (clk, w, 1'b1, /*l*/, z[0], /* state */);
+    shift_reg #(.depth(8), .neg_clk(1), .inferred(1), .init(1)) sr1 (clk, ~w, r, /*l*/, z[1], /* state */);
+    assign z[`N-1:2] = 'b0; // Suppress no driver warning
 `endif
 endgenerate
 endmodule
