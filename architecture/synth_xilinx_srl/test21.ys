@@ -1,9 +1,9 @@
 read_verilog -icells -DTEST21 ../top.v
 synth_xilinx -retime -flatten
-#synth_xilinx -nosrl
 rename -top synth
 clean -purge
 write_verilog synth21.v
 
 # Check that retiming does not infer shift registers
-#select t:SRL* -assert-count 0
+select t:SRL* -assert-count 0
+select t:FD* -assert-min 13
