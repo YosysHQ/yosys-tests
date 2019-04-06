@@ -138,6 +138,11 @@ generate
     assign w2 = ~^a[`N-1:`N/2];
     shift_reg #(.depth(8), .neg_clk(1), .inferred(1), .init(1)) sr1 (clk, w2, r, /*l*/, z[1], /* state */);
     assign z[`N-1:2] = 'b0; // Suppress no driver warning
+`elsif TEST22
+    wire w;
+    assign w = ^a[`N-1:0];
+    shift_reg #(.depth(16), .inferred(1)) sr1 (clk, w, r, /*l*/, z[0], /* state */);
+    assign z[`N-1:1] = 'b0; // Suppress no driver warning
 `endif
 endgenerate
 endmodule
