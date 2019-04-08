@@ -179,7 +179,6 @@ generate
             if (fixed_length > 0)
                 assign z[j] = int[j][fixed_length];
             else begin
-                //assign z[j] = int[j][l+1];
                 assign w = int[j][depth:1];
                 assign z[j] = w[l];
             end
@@ -298,12 +297,7 @@ generate
                     end
                 end
             end
-            //if (output_index >= 0)
-            //    assign state = int[output_index];
-            //else if (output_xor)
-            //    assign state = {depth{^int[0]}};
-            //else
-                assign state = {depth{1'b0}};
+            assign state = {depth{1'b0}};
         end
         if (fixed_length > 0)
             assign z = int[fixed_length-1];
