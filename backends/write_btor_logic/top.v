@@ -7,9 +7,9 @@ module top
  output reg A,
  output reg cout
  );
- 
+
  reg A1,cout1;
- 
+
  initial begin
     A = 0;
     cout = 0;
@@ -20,7 +20,7 @@ always @(posedge x) begin
     A1 <=  ~y + &cin;
 end
 always @(posedge x) begin
-    cout1 <= cin ? |y : ^A;
+    cout1 <= cin ? |y : ~^A;
 end
 
 always @(posedge x) begin
