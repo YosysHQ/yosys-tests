@@ -2,13 +2,18 @@
 
 set -ex
 test -d $1
-test -f scripts/$2.ys
 
 rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
-yosys -ql yosys.log ../../scripts/$2.ys
+if [ -f ../run-test.sh ]; then
+	../run-test.sh
+	touch .stamp
+else
+	test -f scripts/$2.ys
+    yosys -ql yosys.log ../../scripts/$2.ys
+fi
 if [ "$1" = "synth_ecp5" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/ecp5/cells_sim.v
 elif [ "$1" = "synth_ecp5_wide_ffs" ]; then
