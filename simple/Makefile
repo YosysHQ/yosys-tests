@@ -66,7 +66,6 @@ $(eval $(call template,zinit,zinit zinit_singleton))
 $(eval $(call template,clk2fflogic,clk2fflogic))
 $(eval $(call template,clk2fflogic_latch,clk2fflogic))
 $(eval $(call template,clk2fflogic_mem,clk2fflogic_mem))
-# ??? one loop isn't reached  $(eval $(call template,clk2fflogic_mem2,clk2fflogic_mem))
 
 #muxcover
 $(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux8 muxcover_mux8_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode))

@@ -25,6 +25,9 @@ $(eval $(call template,write_blif,write_blif write_blif_top write_blif_buf write
 
 #write_btor
 $(eval $(call template,write_btor,write_btor write_btor_v write_btor_s))
+$(eval $(call template,write_btor_shift,write_btor write_btor_v write_btor_s))
+$(eval $(call template,write_btor_div_mod,write_btor write_btor_v write_btor_s))
+$(eval $(call template,write_btor_fsm,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_btor_logic,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_btor_mem,write_btor_mem write_btor_mem_v write_btor_mem_s))
 $(eval $(call template,write_btor_pmux,write_btor_pmux))
@@ -35,6 +38,7 @@ $(eval $(call template,write_edif,write_edif write_edif_top write_edif_nogndvcc 
 
 #write_firrtl
 $(eval $(call template,write_firrtl,write_firrtl ))
+# - issue #922
 #ERROR: Unclocked write port 0 on memory top.ram.
 #$(eval $(call template,write_firrtl_mem,write_firrtl_mem ))
 
@@ -49,7 +53,7 @@ $(eval $(call template,write_ilang_tri,write_ilang write_ilang_selected))
 $(eval $(call template,write_intersynth,write_intersynth write_intersynth_selected write_intersynth_lib write_intersynth_notypes))
 
 #write_json
-$(eval $(call template,write_json,write_json write_json_aig))
+$(eval $(call template,write_json,write_json write_json_aig json json_o json_o_aig json_aig))
 
 #write_simplec
 $(eval $(call template,write_simplec,write_simplec write_simplec_cmos3 write_simplec_cmos4 write_simplec_verbose write_simplec_i8 write_simplec_i16 write_simplec_i32 write_simplec_i64))
@@ -66,6 +70,8 @@ $(eval $(call template,write_smt2_reduce,write_smt2 write_smt2_synth write_smt2_
 
 #write_smv
 $(eval $(call template,write_smv,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_wide,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_shift,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
 $(eval $(call template,write_smv_fsm,write_smv write_smv_noproc write_smv_verbose write_smv_tpl))
 $(eval $(call template,write_smv_reduce,write_smv_noproc))
 $(eval $(call template,write_smv_logic,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
@@ -77,6 +83,13 @@ $(eval $(call template,write_spice,write_spice write_spice_top write_spice_big_e
 
 #write_table
 $(eval $(call template,write_table,write_table ))
+
+#write_verilog
+$(eval $(call template,write_verilog,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
+$(eval $(call template,write_verilog_tri,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
+$(eval $(call template,write_verilog_ffs,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
+$(eval $(call template,write_verilog_latch,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
+$(eval $(call template,write_verilog_concat,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
 
 
 

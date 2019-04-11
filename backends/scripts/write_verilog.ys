@@ -1,4 +1,5 @@
 read_verilog ../top.v
-synth
-insbuf -buf $_BUF_ in in
+proc
+tribuf
+dff2dffe
 write_verilog synth.v

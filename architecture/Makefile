@@ -29,7 +29,7 @@ $(eval $(call template,synth_anlogic_mem,synth_anlogic synth_anlogic_top synth_a
 $(eval $(call template,synth_coolrunner2,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime))
 $(eval $(call template,synth_coolrunner2_fulladder,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime))
 
-#easic
+#easic - issue #920
 #$(eval $(call template,synth_easic,synth_easic synth_easic_top synth_easic_vlog synth_easic_run synth_easic_noflatten synth_easic_retime))
 
 #ecp5
@@ -41,21 +41,23 @@ $(eval $(call template,synth_gowin,synth_gowin synth_gowin_top synth_gowin_vout 
 $(eval $(call template,synth_gowin_mem,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten ))
 
 #ice40
-$(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr))
-$(eval $(call template,synth_ice40_mem,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr))
-$(eval $(call template,synth_ice40_wide_ffs,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr))
+$(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
+$(eval $(call template,synth_ice40_mem,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
+$(eval $(call template,synth_ice40_wide_ffs,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
 
 #intel
 $(eval $(call template,synth_intel,synth_intel synth_intel_top synth_intel_vqm synth_intel_vpr synth_intel_run synth_intel_noflatten synth_intel_retime synth_intel_noiopads synth_intel_nobram synth_intel_max10 ))
 $(eval $(call template,synth_intel_cycloneiv,synth_intel_cycloneiv  ))
 $(eval $(call template,synth_intel_cycloneive,synth_intel_cycloneive   ))
+
+# - issue #921
 #../../../../../techlibs/intel/cyclonev/cells_sim.v:88: error: Unable to bind wire/reg/memory `upper_mask_value' in `testbench.uut._05_.lut5'
 #$(eval $(call template,synth_intel_cyclonev ,synth_intel_cyclonev ))
-$(eval $(call template,synth_intel_cyclone10,synth_intel_cyclone10  ))
+$(eval $(call template,synth_intel_cyclone10,synth_intel_cyclone10 ))
 $(eval $(call template,synth_intel_a10gx ,synth_intel_a10gx ))
 
 #sf2
-$(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf2_json synth_sf2_run synth_sf2_noflatten synth_sf2_retime ))
+$(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf2_json synth_sf2_run synth_sf2_noflatten synth_sf2_retime synth_sf2_vlog synth_sf2_noiobs synth_sf2_clkbuf ))
 
 #xilinx
 $(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr))
