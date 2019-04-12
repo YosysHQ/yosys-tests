@@ -10,6 +10,7 @@ cd $1/work_$2
 if [ -f ../run-test.sh ]; then
 	../run-test.sh
 	touch .stamp
+	exit
 else
 	test -f scripts/$2.ys
     yosys -ql yosys.log ../../scripts/$2.ys
