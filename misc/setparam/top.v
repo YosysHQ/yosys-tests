@@ -11,12 +11,12 @@ module top
  wire o;
 
 `ifndef BUG
-always @(posedge cin)
-	A <= o;
+//always @(posedge cin)
+//	A <= o;
 
-assign cout =  cin? y : x;
+assign cout =  cin ? y : x;
 
-middle u_mid (x,y,o);
+//middle u_mid (x,y,o);
 `else
 assign {cout,A} =  cin - y * x;
 `endif

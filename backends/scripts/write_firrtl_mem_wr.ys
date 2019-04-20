@@ -1,0 +1,7 @@
+read_verilog ../top.v
+proc
+memory_dff -nordff
+opt_reduce
+clean
+write_firrtl firrtl.firrtl
+write_verilog synth.v

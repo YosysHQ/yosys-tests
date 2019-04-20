@@ -73,9 +73,8 @@ $(eval $(call template,delete_mem, delete_mem ))
 #cover
 $(eval $(call template,cover, cover cover_q cover_o cover_dir cover_a ))
 
-#insbuf ERROR: Found error in internal cell
-#insbuf_cell - issue #924
-$(eval $(call template,insbuf,insbuf))
+#insbuf
+$(eval $(call template,insbuf,insbuf insbuf_cell))
 
 #add
 $(eval $(call template,add, add add_wire add_input add_output add_inout add_global_input ))
@@ -85,7 +84,7 @@ $(eval $(call template,blackbox, blackbox ))
 
 # - issue #925
 #bugpoint ERROR: No such command: autoidx (type 'help' for a command overview)
-#$(eval $(call template,bugpoint, bugpoint bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
+#$(eval $(call template,bugpoint,bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
 
 #chformal
 $(eval $(call template,chformal, chformal chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
@@ -116,7 +115,7 @@ $(eval $(call template,setattr_mem, setattr setattr_mod setattr_set setattr_top 
 #setparam
 #setparam_type - issue #926
 #ERROR: Found error in internal cell \top.$procdff$4 ($dff) at kernel/rtlil.cc:715:
-$(eval $(call template,setparam, setparam setparam_set  setparam_unset setparam_top ))
+$(eval $(call template,setparam, setparam setparam_set  setparam_unset setparam_top setparam_type))
 #chparam
 $(eval $(call template,chparam, chparam chparam_set chparam_top chparam_list ))
 
