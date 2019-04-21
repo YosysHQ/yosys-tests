@@ -5,7 +5,6 @@ rename -top synth
 clean -purge
 write_verilog synth14.v
 
-# Check that non chain users block SRLs
 cd synth; cd sr0; select t:SRLC32E -assert-count 1
 cd synth; cd sr1; select t:SRLC32E -assert-count 1
 cd synth; cd sr2; select t:SRLC32E -assert-count 1
