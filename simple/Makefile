@@ -66,7 +66,6 @@ $(eval $(call template,zinit,zinit zinit_singleton))
 $(eval $(call template,clk2fflogic,clk2fflogic))
 $(eval $(call template,clk2fflogic_latch,clk2fflogic))
 $(eval $(call template,clk2fflogic_mem,clk2fflogic_mem))
-# ??? one loop isn't reached  $(eval $(call template,clk2fflogic_mem2,clk2fflogic_mem))
 
 #muxcover
 $(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux8 muxcover_mux8_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode))
@@ -190,5 +189,10 @@ $(eval $(call template,proc_arst_reduce, proc_arst proc_arst_global_rst  proc_ar
 $(eval $(call template, submod, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier))
 $(eval $(call template, submod_mem, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier submod_mem))
 
+#prep
+$(eval $(call template, prep, prep prep_top prep_auto_top prep_flatten prep_ifx prep_memx prep_nomem prep_nordff prep_rdff prep_nokeepdc prep_run prep_run_begin))
+
+#synth
+$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare))
 
 .PHONY: all clean

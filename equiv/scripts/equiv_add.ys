@@ -10,6 +10,8 @@ design -stash gate
 design -copy-from gold -as gold top
 design -copy-from gate -as gate top
 equiv_make gold gate equiv
+design -save something
+design -push
 equiv_add gold gate
 design -reset
 read_verilog ../top.v

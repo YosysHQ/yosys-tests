@@ -55,7 +55,7 @@ $(eval $(call template,scatter, scatter ))
 $(eval $(call template,rename, rename rename_top rename_src rename_hide rename_enumerate rename_enumerate_pat rename_wire))
 
 #qwp
-#qwp_v - exception
+#qwp_v - exception (issue #923)
 #+ yosys -ql yosys.log ../../scripts/qwp_v.ys
 #run.sh: line 11: 28262 Floating point exception(core dumped) yosys -ql yosys.log ../../scripts/$2.ys
 $(eval $(call template,qwp, qwp qwp_ltr qwp_grid qwp_dump qwp_alpha))
@@ -73,8 +73,8 @@ $(eval $(call template,delete_mem, delete_mem ))
 #cover
 $(eval $(call template,cover, cover cover_q cover_o cover_dir cover_a ))
 
-#insbuf ERROR: Found error in internal cell
-#$(eval $(call template,insbuf,insbuf insbuf_cell))
+#insbuf
+$(eval $(call template,insbuf,insbuf insbuf_cell))
 
 #add
 $(eval $(call template,add, add add_wire add_input add_output add_inout add_global_input ))
@@ -82,8 +82,9 @@ $(eval $(call template,add, add add_wire add_input add_output add_inout add_glob
 #blackbox
 $(eval $(call template,blackbox, blackbox ))
 
+# - issue #925
 #bugpoint ERROR: No such command: autoidx (type 'help' for a command overview)
-#$(eval $(call template,bugpoint, bugpoint bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
+#$(eval $(call template,bugpoint,bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
 
 #chformal
 $(eval $(call template,chformal, chformal chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
@@ -93,8 +94,7 @@ $(eval $(call template,chformal_dff, chformal chformal_assert2assume chformal_as
 $(eval $(call template,chtype, chtype chtype_map chtype_selection chtype_set))
 
 #connect
-#connect_nomap_port connect_port - ERROR: Can't find cell $2.
-$(eval $(call template,connect,  connect_nomap_set connect_nomap_unset connect_nounset_set connect_set connect_unset))
+$(eval $(call template,connect, connect_nomap_set connect_nomap_unset connect_nounset_set connect_set connect_unset connect_port connect_nomap_port))
 
 #connwrappers
 $(eval $(call template,connwrappers, connwrappers connwrappers_signed connwrappers_unsigned connwrappers_port ))
@@ -113,9 +113,9 @@ $(eval $(call template,select_stack,select_%a select_%cie select_%ci select_%coe
 $(eval $(call template,setattr, setattr setattr_mod setattr_set setattr_top setattr_unset setattr_set_proc ))
 $(eval $(call template,setattr_mem, setattr setattr_mod setattr_set setattr_top setattr_unset setattr_set_proc ))
 #setparam
-#setparam_type
+#setparam_type - issue #926
 #ERROR: Found error in internal cell \top.$procdff$4 ($dff) at kernel/rtlil.cc:715:
-$(eval $(call template,setparam, setparam setparam_set  setparam_unset setparam_top ))
+$(eval $(call template,setparam, setparam setparam_set  setparam_unset setparam_top setparam_type))
 #chparam
 $(eval $(call template,chparam, chparam chparam_set chparam_top chparam_list ))
 
@@ -138,7 +138,7 @@ $(eval $(call template,miter_assert, miter_assert miter_assert_flatten ))
 $(eval $(call template,miter_assert_assume, miter_assert miter_assert_flatten ))
 
 #sat
-#sat_tempinduct_def  sat_tempinduct_tempinduct_def
+#sat_tempinduct_def  sat_tempinduct_tempinduct_def - issue #883
 #ERROR: Assert `!undef_mode || model_undef' failed in ./kernel/satgen.h:90.
 $(eval $(call template,sat, sat_dump_cnf sat_dump_json sat_dump_vcd sat_initsteps sat_maxsteps sat_max sat_prove_x sat_set_all_undef_at sat_set_all_undef sat_set_any_undef_at sat_set_any_undef sat_set_def_at sat_set_def sat_set_init sat_set sat_show sat_stepsize sat_tempinduct_skip sat_unset_at sat_set_at sat_seq sat_prove_skip sat_timeout sat_prove sat_tempinduct sat sat_all sat_ignore_unknown_cells sat_enable_undef sat_max_undef sat_show_inputs sat_show_outputs sat_show_ports sat_show_regs sat_show_public sat_show_all sat_set_assumes sat_set_init_undef sat_set_init_def sat_set_init_zero  sat_tempinduct_baseonly sat_tempinduct_inductonly sat_verify sat_verify_no_timeout sat_falsify sat_falsify_no_timeout sat_prove_asserts sat_tempinduct_tempinduct_baseonly sat_set_def_inputs sat_tempinduct_baseonly_maxsteps ))
 
@@ -178,6 +178,9 @@ $(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n t
 $(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
 $(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
 $(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+
+#hilomap
+$(eval $(call template,hilomap, hilomap hilomap_hicell hilomap_locell hilomap_singleton hilomap_hicell_singleton hilomap_locell_singleton hilomap_hicell_locell_singleton))
 
 
 .PHONY: all clean

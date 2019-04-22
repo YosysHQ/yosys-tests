@@ -1,4 +1,4 @@
 read_verilog ../top.v
 synth
-insbuf -buf $_BUF_ in out
+insbuf -buf $_BUF_ A Y
 write_verilog synth.v

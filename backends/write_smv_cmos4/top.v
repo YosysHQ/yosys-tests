@@ -1,22 +1,25 @@
-module top
-(
- input x,
- input y,
- input z,
- input clk,
-
- input A,
- output signed B,
- output signed C,D,E
- );
- 
-`ifndef BUG
-assign  B = (x || y || !z)?  (A & z) : ~x;
-assign {D,C} =  {y,z} >>> 1;
-assign E = {x,y,z} / 3;
+module mux16 (D, S, Y); 
+ 	input  [15:0] D;
+ 	input  [3:0] S;
+ 	output Y;
+`ifndef BUG	
+assign Y = D[S];
 `else
-assign B =  z - y + x;
+assign Y = D[S+1];
+`endif 
+endmodule
 
-`endif
+
+module top (
+input [3:0] S,
+input [15:0] D,
+output M16
+);
+
+mux16 u_mux16 (
+        .S (S[3:0]),
+        .D (D[15:0]),
+        .Y (M16)
+    );
 
 endmodule
