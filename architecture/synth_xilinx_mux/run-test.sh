@@ -17,6 +17,6 @@ if ! which iverilog > /dev/null ; then
   exit 1
 fi
 
-wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/generate.py
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/generate.py -O generate.py
 python3 generate.py
 exec ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9' -l ../../../../../techlibs/xilinx/cells_sim.v"
