@@ -154,7 +154,7 @@ $(eval $(call template,share_macc, share_force_macc share_aggressive_macc share_
 #+ yosys -ql yosys.log ../../scripts/share_force.ys
 #ERROR: Abort in passes/opt/share.cc:724.
 #make: *** [Makefile:152: share_fsm/work_share_force/.stamp] Error 1
-#$(eval $(call template,share_fsm, share share_force share_aggressive share_fast share_limit))
+$(eval $(call template,share_fsm, share share_force share_aggressive share_fast share_limit))
 
 #opt_expr
 $(eval $(call template,opt_expr, opt_expr))
