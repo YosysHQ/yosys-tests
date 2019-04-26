@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -x
 source $1/config
 mkdir $1/work_$2
 cd $1/work_$2
@@ -36,18 +36,28 @@ for fn in $SIM; do
 	iverilog_cmd="$iverilog_cmd ../sim/$fn"
 done
 $iverilog_cmd
+if [ $? != 0 ] ; then
+    echo FAIL > ${1}_${2}.status
+    touch .stamp
+    exit 0
+fi
 
 vvp -N sim | pv -l > output.txt
+if [ $? != 0 ] ; then
+    echo FAIL > ${1}_${2}.status
+    touch .stamp
+    exit 0
+fi
 
 if [ "$2" = "falsify" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
 		echo FAIL > ../../${1}_${2}.status
 	else
-		echo pass > ../../${1}_${2}.status
+		echo PASS > ../../${1}_${2}.status
 	fi
 elif [ "$2" != "sim" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
-		echo pass > ../../${1}_${2}.status
+		echo PASS > ../../${1}_${2}.status
 	else
 		echo FAIL > ../../${1}_${2}.status
 	fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -x
 test -d $1
 test -f scripts/$2.ys
 
@@ -41,12 +41,12 @@ if [ "$1" = "issue_00089" ] ||\
 	fi
 
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
-		echo fail > ${1}_${2}.status
+		echo FAIL > ${1}_${2}.status
 	else
 		if grep "$expected_string" yosys.log; then
-			echo pass > ${1}_${2}.status
+			echo PASS > ${1}_${2}.status
 		else
-			echo fail > ${1}_${2}.status
+			echo FAIL > ${1}_${2}.status
 		fi
 	fi
 
@@ -120,17 +120,22 @@ elif [ "$1" = "issue_00502" ] ||\
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys;
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	fi
 	if grep "$expected_string" result.log; then
 		if [ $expected = "1" ]; then
-			echo pass > ${1}_${2}.status
+			echo PASS > ${1}_${2}.status
 		else
-			echo fail > ${1}_${2}.status
+			echo FAIL > ${1}_${2}.status
 		fi
 	else
 		if [ $expected = "1" ]; then
-			echo fail > ${1}_${2}.status
+			echo FAIL > ${1}_${2}.status
 		else
-			echo pass > ${1}_${2}.status
+			echo PASS > ${1}_${2}.status
 		fi
 	fi
 
@@ -155,14 +160,26 @@ else
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	fi
+
 	iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/common/simlib.v $iverilog_adds
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	fi
+
 	if ! vvp -N testbench > testbench.log 2>&1; then
 		grep 'ERROR' testbench.log
-		echo fail > ${1}_${2}.status
+		echo FAIL > ${1}_${2}.status
 	elif grep 'ERROR' testbench.log || ! grep 'OKAY' testbench.log; then
-		echo fail > ${1}_${2}.status
+		echo FAIL > ${1}_${2}.status
 	else
-		echo pass > ${1}_${2}.status
+		echo PASS > ${1}_${2}.status
 	fi
 
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -x
 test -d $1
 test -f scripts/$2.ys
 
@@ -9,11 +9,16 @@ mkdir $1/work_$2
 cd $1/work_$2
 
 yosys -ql yosys.log ../../scripts/$2.ys
+if [ $? != 0 ] ; then
+    echo FAIL > ${1}_${2}.status
+    touch .stamp
+    exit 0
+fi
 
 if grep 'Assert' result.log || grep 'failed in' result.log || grep 'fail' result.log || grep 'ERROR' result.log; then
-	echo fail > ${1}_${2}.status
+	echo FAIL > ${1}_${2}.status
 else
-	echo pass > ${1}_${2}.status
+	echo PASS > ${1}_${2}.status
 fi
 
 touch .stamp
