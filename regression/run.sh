@@ -142,11 +142,18 @@ elif [ "$1" = "issue_00502" ] ||\
 
 # cases with simulation checks
 else
+	if [ -f "../../../../../techlibs/common/simcells.v" ]; then
+		COMMON_PREFIX=../../../../../techlibs/common
+		TECHLIBS_PREFIX=../../../../../techlibs
+	else
+		COMMON_PREFIX=/usr/local/share/yosys
+		TECHLIBS_PREFIX=/usr/local/share/yosys
+	fi
 
 	iverilog_adds=""
 	#Additional sources for iverilog simulation
 	if [ "$1" = "issue_00084" ]; then
-		iverilog_adds="../../../../../techlibs/xilinx/brams_bb.v"
+		iverilog_adds="$TECHLIBS_PREFIX/xilinx/brams_bb.v"
 	elif [ "$1" = "issue_00160" ] ||\
 		 [ "$1" = "issue_00182" ] ||\
 		 [ "$1" = "issue_00183" ] ||\
@@ -154,9 +161,9 @@ else
 		 [ "$1" = "issue_00567" ] ||\
 		 [ "$1" = "issue_00589" ] ||\
 		 [ "$1" = "issue_00628" ]; then
-		iverilog_adds="../../../../../techlibs/ice40/cells_sim.v"
+		iverilog_adds="$TECHLIBS_PREFIX/ice40/cells_sim.v"
 	elif [ "$1" = "pr_00896" ]; then
-		iverilog_adds="../../../../../techlibs/ecp5/cells_sim.v"
+		iverilog_adds="$TECHLIBS_PREFIX/ecp5/cells_sim.v"
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys
@@ -166,7 +173,7 @@ else
     	exit 0
 	fi
 
-	iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/common/simlib.v $iverilog_adds
+	iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $COMMON_PREFIX/simlib.v $iverilog_adds
 	if [ $? != 0 ] ; then
     	echo FAIL > ${1}_${2}.status
     	touch .stamp

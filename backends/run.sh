@@ -14,9 +14,15 @@ if [ $? != 0 ] ; then
     touch .stamp
     exit 0
 fi
-
 sed -i 's/reg =/dummy =/' ./synth.v
-iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/common/simlib.v
+
+if [ -f "../../../../../techlibs/common/simcells.v" ]; then
+    COMMON_PREFIX=../../../../../techlibs/common
+else
+    COMMON_PREFIX=/usr/local/share/yosys
+fi
+
+iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $COMMON_PREFIX/simlib.v
 if [ $? != 0 ] ; then
     echo FAIL > ${1}_${2}.status
     touch .stamp
