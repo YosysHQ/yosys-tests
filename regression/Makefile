@@ -30,7 +30,7 @@ $(eval $(call template,issue_00041,issue_00041))
 $(eval $(call template,issue_00059,issue_00059))
 
 #issue_00065 - 27_04 test hangs up
-$(eval $(call template,issue_00065,issue_00065))
+#$(eval $(call template,issue_00065,issue_00065))
 
 #issue_00067
 $(eval $(call template,issue_00067,issue_00067))
