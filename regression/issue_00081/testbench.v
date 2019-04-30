@@ -13,11 +13,10 @@ module testbench;
 
         $display("OKAY");
     end
-	wire c;
+
 
     top uut (
-        .b (clk ),
-        .c (c)
+        .b (clk )
     );
 
 endmodule

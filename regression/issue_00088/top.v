@@ -1,11 +1,7 @@
 parameter X = 2;
 
-module top(b,c);
+module top(b);
 input b;
-output c;
-
 parameter Y = 3;
-
-assign c = b;
 endmodule
 

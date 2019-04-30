@@ -1,6 +1,3 @@
-module top(b,c);
+module top(b);
 input b;
-output c;
-
-assign c = b;
 endmodule

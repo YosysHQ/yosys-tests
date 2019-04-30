@@ -1,6 +1,4 @@
 read_verilog ../top.v
 proc
 write_firrtl firrtl.firrtl
-synth
-write_firrtl firrtl2.firrtl
-write_verilog synth.v
+write_verilog synth.v 

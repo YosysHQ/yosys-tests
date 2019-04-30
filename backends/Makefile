@@ -38,7 +38,7 @@ $(eval $(call template,write_btor_shiftx,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_edif,write_edif write_edif_top write_edif_nogndvcc write_edif_pvector_par write_edif_pvector_bra write_edif_pvector_ang write_edif_attrprop ))
 
 #write_firrtl
-$(eval $(call template,write_firrtl,write_firrtl))
+$(eval $(call template,write_firrtl,write_firrtl write_firrtl))
 #write_firrtl_mem_wr - issue #938
 #terminate called after throwing an instance of 'std::out_of_range'
 #  what():  dict::at()
@@ -48,7 +48,6 @@ $(eval $(call template,write_firrtl_logic,write_firrtl ))
 $(eval $(call template,write_firrtl_reduce,write_firrtl ))
 $(eval $(call template,write_firrtl_shift,write_firrtl ))
 $(eval $(call template,write_firrtl_shiftx,write_firrtl ))
-$(eval $(call template,write_firrtl_paramod,write_firrtl))
 
 #write_ilang
 $(eval $(call template,write_ilang,write_ilang write_ilang_selected))

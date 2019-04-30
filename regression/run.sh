@@ -73,13 +73,7 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_00835" ] ||\
 	 [ "$1" = "issue_00857" ] ||\
 	 [ "$1" = "issue_00862" ] ||\
-	 [ "$1" = "issue_00865" ] ||\
-	 [ "$1" = "issue_00867" ] ||\
-	 [ "$1" = "issue_00870" ] ||\
-	 [ "$1" = "issue_00873" ] ||\
-	 [ "$1" = "issue_00888" ] ||\
-	 [ "$1" = "issue_00922" ] ||\
-	 [ "$1" = "issue_00931" ]; then
+	 [ "$1" = "issue_00865" ]; then
 
 	expected_string=""
 	expected="1"
@@ -97,8 +91,7 @@ elif [ "$1" = "issue_00502" ] ||\
 		 [ "$1" = "issue_00689" ] ||\
 		 [ "$1" = "issue_00708" ] ||\
 		 [ "$1" = "issue_00826" ] ||\
-		 [ "$1" = "issue_00862" ] ||\
-		 [ "$1" = "issue_00870" ]; then
+		 [ "$1" = "issue_00862" ]; then
 		expected_string="Successfully finished Verilog frontend"
 	elif [ "$1" = "issue_00655" ]; then
 		expected_string="Executing EDIF backend"
@@ -124,18 +117,6 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="_DFF_P_                        1"
 	elif [ "$1" = "issue_00865" ]; then
 		expected_string="FDRE                           14"
-	elif [ "$1" = "issue_00867" ]; then
-		expected_string="RAMB36E1                        1"
-	elif [ "$1" = "issue_00873" ]; then
-		expected_string="has an unprocessed 'init' attribute."
-		expected="0"
-	elif [ "$1" = "issue_00888" ]; then
-		expected_string="FDRE                            4"
-	elif [ "$1" = "issue_00922" ]; then
-		expected_string="ERROR: Unclocked write port 0 on memory top.ram."
-		expected="0"
-	elif [ "$1" = "issue_00931" ]; then
-		expected_string="Number of cells:                  5"
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys;
@@ -169,7 +150,7 @@ else
 		 [ "$1" = "issue_00589" ] ||\
 		 [ "$1" = "issue_00628" ]; then
 		iverilog_adds="../../../../../techlibs/ice40/cells_sim.v"
-	elif [ "$1" = "issue_00896" ]; then
+	elif [ "$1" = "pr_00896" ]; then
 		iverilog_adds="../../../../../techlibs/ecp5/cells_sim.v"
 	fi
 

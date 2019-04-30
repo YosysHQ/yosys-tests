@@ -7,9 +7,7 @@ module top
  output reg A,
  output reg cout
  );
-
- wire bb_out;
-
+ 
  initial begin
     A = 0;
     cout = 0;
@@ -26,16 +24,12 @@ end
 assign {cout,A} =  cin - y * x;
 `endif
 
-bb ubb (cin,y,x,bb_out);
+bb ubb (cin,y,x);
 
 endmodule
 
-(* black_box *) module bb(in1, in2, clk, out1);
+(* black_box *) module bb(in1, in2, clk);
  input in1;
  input in2;
  input clk;
-  output reg out1;
-
- always @(posedge clk)
-	out1 <= in1 & in2;
 endmodule
