@@ -29,8 +29,8 @@ $(eval $(call template,issue_00041,issue_00041))
 #issue_00059
 $(eval $(call template,issue_00059,issue_00059))
 
-#issue_00065 - 27_04 test hangs up
-#$(eval $(call template,issue_00065,issue_00065))
+#issue_00065
+$(eval $(call template,issue_00065,issue_00065))
 
 #issue_00067
 $(eval $(call template,issue_00067,issue_00067))
@@ -297,7 +297,7 @@ $(eval $(call template,issue_00763,issue_00763))
 #issue_00767
 $(eval $(call template,issue_00767,issue_00767))
 
-#issue_00774 -takes too much time
+#issue_00774
 #$(eval $(call template,issue_00774,issue_00774))
 
 #issue_00781
@@ -336,29 +336,10 @@ $(eval $(call template,issue_00857,issue_00857))
 #issue_00862
 $(eval $(call template,issue_00862,issue_00862))
 
-#issue_00865
+#issue_00865 - test failed (should be ok after merge https://github.com/YosysHQ/yosys/pull/866)
 $(eval $(call template,issue_00865,issue_00865))
 
-#issue_00867
-$(eval $(call template,issue_00867,issue_00867))
-
-#issue_00870
-$(eval $(call template,issue_00870,issue_00870))
-
-#issue_00873
-$(eval $(call template,issue_00873,issue_00873))
-
-#issue_00888
-$(eval $(call template,issue_00888,issue_00888))
-
-#pr_00896
 $(eval $(call template,pr_00896,pr_00896))
-
-#issue_00922
-$(eval $(call template,issue_00922,issue_00922))
-
-#issue_00931
-$(eval $(call template,issue_00931,issue_00931))
 
 
 .PHONY: all clean
