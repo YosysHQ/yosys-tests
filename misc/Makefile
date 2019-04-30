@@ -52,7 +52,7 @@ $(eval $(call template,scc_hier_feedback, scc scc_all_cell_types scc_expect scc_
 $(eval $(call template,scatter, scatter ))
 
 #rename
-$(eval $(call template,rename, rename rename_top rename_src rename_hide rename_enumerate rename_enumerate_pat rename_wire))
+$(eval $(call template,rename, rename rename_top rename_src rename_hide rename_enumerate rename_enumerate_pat rename_wire rename_top_top rename_low))
 
 #qwp
 #qwp_v - exception (issue #923)
@@ -181,6 +181,19 @@ $(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux
 
 #hilomap
 $(eval $(call template,hilomap, hilomap hilomap_hicell hilomap_locell hilomap_singleton hilomap_hicell_singleton hilomap_locell_singleton hilomap_hicell_locell_singleton))
+
+#cutpoint
+$(eval $(call template,cutpoint, cutpoint cutpoint_undef))
+
+#mutate
+$(eval $(call template,mutate, mutate_list mutate_cnot1 mutate_cnot0 mutate_const1 mutate_const0 mutate_inv mutate_all mutate_list_cfg mutate_list_ctrl mutate_list_none mutate_list_o mutate_list_seed mutate_list_s))
+$(eval $(call template,mutate_mem, mutate_list mutate_all))
+
+#fmconbine
+$(eval $(call template,fmcombine, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd))
+
+#pmuxtree
+$(eval $(call template,pmuxtree, pmuxtree))
 
 
 .PHONY: all clean
