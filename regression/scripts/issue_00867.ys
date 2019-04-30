@@ -1,3 +1,0 @@
-read_verilog ../top.v
-synth_xilinx -flatten
-tee -o result.log stat
