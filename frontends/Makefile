@@ -76,4 +76,18 @@ $(eval $(call template,verilog_defaults,verilog_defaults verilog_defaults_push v
 #verilog_defines
 $(eval $(call template,verilog_defines,verilog_defines verilog_defines_val verilog_defines_u verilog_defines_d verilog_defines_u_val))
 
+#verilog_lexer
+$(eval $(call template,verilog_lexer_specify_specparam,verilog_lexer))
+$(eval $(call template,verilog_lexer_package,verilog_lexer))
+$(eval $(call template,verilog_lexer_interface_logic,verilog_lexer))
+$(eval $(call template,verilog_lexer_casez,verilog_lexer))
+$(eval $(call template,verilog_lexer_automatic_task,verilog_lexer))
+$(eval $(call template,verilog_lexer_unique_priority,verilog_lexer))
+$(eval $(call template,verilog_lexer_always_ff_latch,verilog_lexer))
+$(eval $(call template,verilog_lexer_assert_assume_restrict,verilog_lexer_assert))
+#../top.v:88: ERROR: syntax error, unexpected TOK_TYPEDEF
+#$(eval $(call template,verilog_lexer_enum_typedef,verilog_lexer))
+#../top.v:90: ERROR: syntax error, unexpected TOK_SUPPLY1
+#$(eval $(call template,verilog_lexer_supply,verilog_lexer))
+
 .PHONY: all clean
