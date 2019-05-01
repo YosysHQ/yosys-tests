@@ -8,6 +8,7 @@ rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
+touch .start
 
 # cases where 'syntax error' or other errors are expected
 if [ "$1" = "issue_00089" ] ||\

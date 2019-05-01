@@ -14,6 +14,7 @@ done
 
 case "$2" in
 	sim)
+		touch ../../.start
 		iverilog_cmd="$iverilog_cmd $rtl_files"
 		;;
 	falsify)

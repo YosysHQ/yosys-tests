@@ -8,6 +8,8 @@ rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
+touch .start
+
 yosys -ql yosys.log ../../scripts/$2.ys
 if [ $? != 0 ] ; then
     echo FAIL > ${1}_${2}.status

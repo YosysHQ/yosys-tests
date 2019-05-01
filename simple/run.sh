@@ -11,6 +11,8 @@ rm -rf $1/work_$2
 mkdir $1/work_$2
 cd $1/work_$2
 
+touch .start
+
 if [ "$2" = "verify" ]; then
 	iverilog -o testbench ../testbench.v ../../common.v ../top.v
 	if [ $? != 0 ] ; then
