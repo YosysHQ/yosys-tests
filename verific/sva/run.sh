@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -x
 test -f $1.sv
 trap "echo FAIL > $1.status" ERR
 
@@ -23,6 +23,11 @@ while read t; do
 		echo "$1.sv"
 	} > $1.$t.sby
 	sby -f $1.$t.sby
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	fi
 done < <( egrep '^module (pass|fail)_[0-9][0-9]' $1.sv | gawk '{ print $2; }'; )
 
 echo PASS > $1.status

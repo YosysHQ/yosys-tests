@@ -52,13 +52,13 @@ $(eval $(call template,scc_hier_feedback, scc scc_all_cell_types scc_expect scc_
 $(eval $(call template,scatter, scatter ))
 
 #rename
-$(eval $(call template,rename, rename rename_top rename_src rename_hide rename_enumerate rename_enumerate_pat rename_wire))
+$(eval $(call template,rename, rename rename_top rename_src rename_hide rename_enumerate rename_enumerate_pat rename_wire rename_top_top rename_low))
 
 #qwp
 #qwp_v - exception (issue #923)
 #+ yosys -ql yosys.log ../../scripts/qwp_v.ys
 #run.sh: line 11: 28262 Floating point exception(core dumped) yosys -ql yosys.log ../../scripts/$2.ys
-$(eval $(call template,qwp, qwp qwp_ltr qwp_grid qwp_dump qwp_alpha))
+$(eval $(call template,qwp, qwp qwp_v qwp_ltr qwp_grid qwp_dump qwp_alpha))
 
 #ltp
 $(eval $(call template,ltp, ltp ltp_noff ))
@@ -84,7 +84,7 @@ $(eval $(call template,blackbox, blackbox ))
 
 # - issue #925
 #bugpoint ERROR: No such command: autoidx (type 'help' for a command overview)
-#$(eval $(call template,bugpoint,bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
+$(eval $(call template,bugpoint,bugpoint_yosys bugpoint_script bugpoint_grep bugpoint_fast bugpoint_clean bugpoint_modules bugpoint_ports bugpoint_cells bugpoint_connections  ))
 
 #chformal
 $(eval $(call template,chformal, chformal chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
@@ -100,7 +100,7 @@ $(eval $(call template,connect, connect_nomap_set connect_nomap_unset connect_no
 $(eval $(call template,connwrappers, connwrappers connwrappers_signed connwrappers_unsigned connwrappers_port ))
 
 #plugin
-#$(eval $(call template,plugin, plugin plugin_i plugin_a plugin_l ))
+$(eval $(call template,plugin, plugin plugin_i plugin_a plugin_l ))
 
 #select
 $(eval $(call template,select, select select_all select_add select_add_all select_assert_any select_assert_count select_assert_max select_assert_min select_assert_none select_clear select_count select_del select_list select_module select_none select_read select_set select_write select_add_A_eq select_add_a_eq select_add_A_lesseq select_add_a_lesseq select_add_A_less select_add_a_less select_add_A_moreeq select_add_a_moreeq select_add_A_more select_add_a_more select_add_A select_add_a select_add_c select_add_i select_add_mid select_add_m select_add_n select_add_obj select_add_o select_add_p select_add_r_eq select_add_r_lesseq select_add_r_less select_add_r_moreeq select_add_r_more select_add_r select_add_ss select_add_s select_add_t select_add_w select_add_x ))
@@ -181,6 +181,19 @@ $(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux
 
 #hilomap
 $(eval $(call template,hilomap, hilomap hilomap_hicell hilomap_locell hilomap_singleton hilomap_hicell_singleton hilomap_locell_singleton hilomap_hicell_locell_singleton))
+
+#cutpoint
+$(eval $(call template,cutpoint, cutpoint cutpoint_undef))
+
+#mutate
+$(eval $(call template,mutate, mutate_list mutate_cnot1 mutate_cnot0 mutate_const1 mutate_const0 mutate_inv mutate_all mutate_list_cfg mutate_list_ctrl mutate_list_none mutate_list_o mutate_list_seed mutate_list_s))
+$(eval $(call template,mutate_mem, mutate_list mutate_all))
+
+#fmconbine
+$(eval $(call template,fmcombine, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd))
+
+#pmuxtree
+$(eval $(call template,pmuxtree, pmuxtree))
 
 
 .PHONY: all clean

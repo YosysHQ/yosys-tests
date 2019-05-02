@@ -22,30 +22,11 @@ module testbench;
 	reg mem_init = 0;
 
     top uut (
-    data_a[0],
-    data_a[1],
-    data_a[2],
-    data_a[3],
-    data_a[4],
-    data_a[5],
-    data_a[6],
-    data_a[7],
-	addr_a[0],
-	addr_a[1],
-	addr_a[2],
-	addr_a[3],
-	addr_a[4],
-	addr_a[5],
+        data_a,
+	addr_a,
 	we_a,
 	clk,
-	q_a[0],
-	q_a[1],
-	q_a[2],
-	q_a[3],
-	q_a[4],
-	q_a[5],
-	q_a[6],
-	q_a[7]
+	q_a
     );
 
     always @(posedge clk) begin

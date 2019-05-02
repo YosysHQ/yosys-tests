@@ -47,7 +47,7 @@ $(eval $(call template,equiv_mark,equiv_mark ))
 $(eval $(call template,equiv_induct,equiv_induct equiv_induct_undef equiv_induct_seq ))
 
 #equiv_add
-#$(eval $(call template,equiv_add,equiv_add equiv_add_try ))
+$(eval $(call template,equiv_add,equiv_add equiv_add_try ))
 
 #equiv_opt
 $(eval $(call template,equiv_opt,equiv_opt equiv_opt_run equiv_opt_map))

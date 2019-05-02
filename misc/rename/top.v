@@ -28,6 +28,10 @@ module middle
 	input y,
 	output o
 );
+wire dd;
 
 assign o = x + y;
+endmodule
+
+module low ();
 endmodule

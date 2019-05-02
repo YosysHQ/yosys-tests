@@ -30,7 +30,8 @@ $(eval $(call template,issue_00041,issue_00041))
 $(eval $(call template,issue_00059,issue_00059))
 
 #issue_00065
-$(eval $(call template,issue_00065,issue_00065))
+# Takes too long
+#$(eval $(call template,issue_00065,issue_00065))
 
 #issue_00067
 $(eval $(call template,issue_00067,issue_00067))
@@ -50,7 +51,7 @@ $(eval $(call template,issue_00081,issue_00081))
 #Parsing Verilog input from `top_fault.v' to AST representation.
 #top_fault.v:4: ERROR: Internal error - should not happen - no AST_WIRE node.
 #
-#$(eval $(call template,issue_00082,issue_00082))
+$(eval $(call template,issue_00082,issue_00082))
 
 #issue_00083
 #Warning: Deep recursion in AST simplifier.
@@ -58,7 +59,7 @@ $(eval $(call template,issue_00081,issue_00081))
 #run.sh: line 21: 17264 Segmentation fault      (core dumped) yosys -ql yosys.log ../../scripts/$2.ys
 #make: *** [Makefile:24: issue_00083/work_issue_00083/.stamp] Error 139
 #
-#$(eval $(call template,issue_00083,issue_00083))
+$(eval $(call template,issue_00083,issue_00083))
 
 #issue_00084
 $(eval $(call template,issue_00084,issue_00084))
@@ -298,6 +299,7 @@ $(eval $(call template,issue_00763,issue_00763))
 $(eval $(call template,issue_00767,issue_00767))
 
 #issue_00774
+# Takes too long
 #$(eval $(call template,issue_00774,issue_00774))
 
 #issue_00781
@@ -339,7 +341,26 @@ $(eval $(call template,issue_00862,issue_00862))
 #issue_00865 - test failed (should be ok after merge https://github.com/YosysHQ/yosys/pull/866)
 $(eval $(call template,issue_00865,issue_00865))
 
+#issue_00867
+$(eval $(call template,issue_00867,issue_00867))
+
+#issue_00870
+$(eval $(call template,issue_00870,issue_00870))
+
+#issue_00873
+$(eval $(call template,issue_00873,issue_00873))
+
+#issue_00888
+$(eval $(call template,issue_00888,issue_00888))
+
+#pr_00896
 $(eval $(call template,pr_00896,pr_00896))
+
+#issue_00922
+$(eval $(call template,issue_00922,issue_00922))
+
+#issue_00931
+$(eval $(call template,issue_00931,issue_00931))
 
 
 .PHONY: all clean
