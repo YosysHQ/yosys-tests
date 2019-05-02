@@ -1,0 +1,36 @@
+read_verilog ../top.v
+mutate -list 512 -o mutate.ys
+script mutate.ys
+
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$2 -port Y -portbit 0 -wire A -wirebit 0 -src ../top.v:7 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$2 -port Y -portbit 0 -wire A -wirebit 0 -src ../top.v:7 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$2 -port Y -portbit 0 -wire A -wirebit 0 -src ../top.v:7 -src ../top.v:12
+#tee -o result.log mutate -mode cnot0 -module top -cell $add$../top.v:12$2 -port Y -portbit 0 -ctrlbit 1 -wire A -wirebit 0 -src ../top.v:7 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$2 -port Y -portbit 1 -wire cout -wirebit 0 -src ../top.v:8 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$2 -port Y -portbit 1 -wire cout -wirebit 0 -src ../top.v:8 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$2 -port Y -portbit 1 -wire cout -wirebit 0 -src ../top.v:8 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$2 -port B -portbit 0 -wire x -wirebit 0 -src ../top.v:3 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$2 -port B -portbit 0 -wire x -wirebit 0 -src ../top.v:3 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$2 -port B -portbit 0 -wire x -wirebit 0 -src ../top.v:3 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$2 -port A -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$2 -port A -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$2 -port A -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode cnot0 -module top -cell $add$../top.v:12$2 -port A -portbit 0 -ctrlbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode cnot1 -module top -cell $add$../top.v:12$2 -port A -portbit 0 -ctrlbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$2 -port A -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$2 -port A -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$2 -port A -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$1 -port Y -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$1 -port Y -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$1 -port Y -portbit 0 -src ../top.v:12
+#tee -o result.log mutate -mode cnot0 -module top -cell $add$../top.v:12$1 -port Y -portbit 0 -ctrlbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$1 -port Y -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$1 -port Y -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$1 -port Y -portbit 1 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$1 -port B -portbit 0 -wire y -wirebit 0 -src ../top.v:4 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$1 -port B -portbit 0 -wire y -wirebit 0 -src ../top.v:4 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$1 -port B -portbit 0 -wire y -wirebit 0 -src ../top.v:4 -src ../top.v:12
+#tee -o result.log mutate -mode inv -module top -cell $add$../top.v:12$1 -port A -portbit 0 -wire cin -wirebit 0 -src ../top.v:5 -src ../top.v:12
+#tee -o result.log mutate -mode const0 -module top -cell $add$../top.v:12$1 -port A -portbit 0 -wire cin -wirebit 0 -src ../top.v:5 -src ../top.v:12
+#tee -o result.log mutate -mode const1 -module top -cell $add$../top.v:12$1 -port A -portbit 0 -wire cin -wirebit 0 -src ../top.v:5 -src ../top.v:12
+

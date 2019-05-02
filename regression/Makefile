@@ -341,7 +341,26 @@ $(eval $(call template,issue_00862,issue_00862))
 #issue_00865 - test failed (should be ok after merge https://github.com/YosysHQ/yosys/pull/866)
 $(eval $(call template,issue_00865,issue_00865))
 
+#issue_00867
+$(eval $(call template,issue_00867,issue_00867))
+
+#issue_00870
+$(eval $(call template,issue_00870,issue_00870))
+
+#issue_00873
+$(eval $(call template,issue_00873,issue_00873))
+
+#issue_00888
+$(eval $(call template,issue_00888,issue_00888))
+
+#pr_00896
 $(eval $(call template,pr_00896,pr_00896))
+
+#issue_00922
+$(eval $(call template,issue_00922,issue_00922))
+
+#issue_00931
+$(eval $(call template,issue_00931,issue_00931))
 
 
 .PHONY: all clean
