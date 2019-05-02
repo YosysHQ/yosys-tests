@@ -5,6 +5,8 @@ source $1/config
 mkdir $1/work_$2
 cd $1/work_$2
 
+touch .start
+
 iverilog_cmd="iverilog -o sim -s testbench -I../rtl -I../sim"
 
 rtl_files=""
