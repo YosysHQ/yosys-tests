@@ -5,9 +5,9 @@ module adff
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 1'b0;
-`else        
+`else
 			q <= d;
 `endif
 		else
@@ -21,9 +21,9 @@ module adffn
     end
 	always @( posedge clk, negedge clr )
 		if ( !clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 1'b0;
-`else        
+`else
 			q <= d;
 `endif
 		else
@@ -35,11 +35,11 @@ module dffe
     initial begin
       q = 0;
     end
-	always @( posedge clk, posedge en )
+	always @( posedge clk)
 		if ( en )
-`ifndef BUG        
+`ifndef BUG
 			q <= d;
-`else        
+`else
 			q <= 1'b0;
 `endif
 endmodule

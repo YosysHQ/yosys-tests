@@ -63,8 +63,8 @@ module testbench;
 			adffn <= 1'b0;
 		else
             adffn <= dinA[0];
-            
-    always @( posedge clk, posedge dinA[2] )
+
+    always @( posedge clk)
 		if ( dinA[2] )
             dffe <= dinA[0];
             
