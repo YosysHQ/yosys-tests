@@ -17,9 +17,12 @@ if ! which iverilog > /dev/null ; then
   exit 1
 fi
 
-wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/generate.py -O generate_small.py
-wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/common.py -O common.py
-wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_large/mux/generate.py -O generate_large.py
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/generate.py -O generate_small.py -o /dev/null
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mux/common.py -O common.py -o /dev/null
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_large/mux/generate.py -O generate_large.py -o /dev/null
 python3 generate_small.py
 python3 generate_large.py
-exec ${MAKE:-make} -f ../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9' -l ../../../../techlibs/xilinx/cells_sim.v"
+${MAKE:-make} -f ../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9' -l ../../../../techlibs/xilinx/cells_sim.v"
+
+python3 expected_area.py > expected_area.ys
+yosys -q expected_area.ys
