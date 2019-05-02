@@ -6,4 +6,4 @@ write_verilog synth21.v
 
 # Check that retiming does not infer shift registers
 select t:SRL* -assert-count 0
-select t:FD* -assert-min 13
+select t:FD* -assert-min 20
