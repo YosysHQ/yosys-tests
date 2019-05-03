@@ -20,10 +20,12 @@ fi
 
 wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/lfsr/generate.py -O generate_lfsr.py -o /dev/null
 python3 generate_lfsr.py
-python3 generate.py
-${MAKE:-make} -f ../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx' -l ../../../../techlibs/xilinx/cells_sim.v"
-${MAKE:-make} -f ../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx -retime' -l ../../../../techlibs/xilinx/cells_sim.v"
+python3 ../generate.py
+cp ../*.v .
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx' -l ../../../../../techlibs/xilinx/cells_sim.v"
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx -retime' -l ../../../../../techlibs/xilinx/cells_sim.v"
 
+cp ../*.ys .
 for ys in *.ys; do
     yosys -q $ys
 done
