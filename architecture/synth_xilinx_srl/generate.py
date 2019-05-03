@@ -226,3 +226,52 @@ endgenerate
 endmodule
 '''.format(i))
 
+# Test 18: neg_clk_with_enable_with_init_inferred2
+for i in range(1,N+1):
+    with open('test18_%d.v' % i, 'w') as fp:
+        fp.write('''
+module test18_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
+generate 
+    reg [width-1:0] int [depth-1:0];
+
+    genvar w, d;
+    for (d = 0; d < depth; d=d+1) begin
+        for (w = 0; w < width; w=w+1) begin
+            initial int[d][w] <= ~((d+w) % 2);
+
+            if (d == 0) begin
+                always @(negedge clk) if (e) int[d][w] <= i[w];
+            end
+            else begin
+                always @(negedge clk) if (e) int[d][w] <= int[d-1][w];
+            end
+        end
+    end
+    assign z = int[depth-1];
+endgenerate
+endmodule'''.format(i))
+
+# Test 19: pos_clk_with_enable_no_init_inferred2_var_len
+for i in range(1,N+1):
+    with open('test19_%d.v' % i, 'w') as fp:
+        fp.write('''
+module test19_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
+generate 
+    reg [width-1:0] int [depth-1:0];
+
+    genvar w, d;
+    for (d = 0; d < depth; d=d+1) begin
+        for (w = 0; w < width; w=w+1) begin
+            initial int[d][w] <= ~((d+w) % 2);
+
+            if (d == 0) begin
+                always @(posedge clk) if (e) int[d][w] <= i[w];
+            end
+            else begin
+                always @(posedge clk) if (e) int[d][w] <= int[d-1][w];
+            end
+        end
+    end
+    assign z = int[l];
+endgenerate
+endmodule'''.format(i))
