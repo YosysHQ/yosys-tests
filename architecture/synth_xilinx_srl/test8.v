@@ -7,7 +7,7 @@ generate
     for (w = 0; w < width; w=w+1) begin
         assign int[w][0] = i[w];
         for (d = 0; d < depth; d=d+1) begin
-            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(1'b0), .Q(int[w][w+1]));
+            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(1'b0), .Q(int[w][d+1]));
         end
         assign q[w] = int[w][depth];
     end

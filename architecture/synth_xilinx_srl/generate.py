@@ -13,7 +13,7 @@ generate
     for (w = 0; w < width; w=w+1) begin
         assign int[w][0] = i[w];
         for (d = 0; d < depth; d=d+1) begin
-            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(1'b1), .Q(int[w][w+1]));
+            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(1'b1), .Q(int[w][d+1]));
         end
         assign q[w] = int[w][depth];
     end
@@ -32,7 +32,7 @@ generate
     for (w = 0; w < width; w=w+1) begin
         assign int[w][0] = i[w];
         for (d = 0; d < depth; d=d+1) begin
-            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(e), .Q(int[w][w+1]));
+            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(e), .Q(int[w][d+1]));
         end
         assign q[w] = int[w][depth];
     end
@@ -77,7 +77,7 @@ generate
     for (w = 0; w < width; w=w+1) begin
         assign int[w][0] = i[w];
         for (d = 0; d < depth; d=d+1) begin
-            \$_DFFE_NP_ r(.C(clk), .D(int[w][d]), .E(1'b1), .Q(int[w][w+1]));
+            \$_DFFE_NP_ r(.C(clk), .D(int[w][d]), .E(1'b1), .Q(int[w][d+1]));
         end
         assign q[w] = int[w][depth];
     end
@@ -128,6 +128,53 @@ generate
         else begin
             always @(negedge clk) if (e) int[w] <= {{ int[w][depth-2:0], i[w] }};
             assign q[w] = int[w][depth-1];
+        end
+    end
+endgenerate
+endmodule
+'''.format(i))
+
+# Test 10: pos_clk_no_enable_no_init_not_inferred_var_len
+for i in range(1,N+1):
+    with open('test10_%d.v' % i, 'w') as fp:
+        fp.write('''
+module test10_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input [31:0] l, output [width-1:0] q);
+generate 
+    wire [depth:0] int [width-1:0];
+    genvar w, d;
+    for (w = 0; w < width; w=w+1) begin
+        assign int[w][0] = i[w];
+        for (d = 0; d < depth; d=d+1) begin
+            \$_DFFE_PP_ r(.C(clk), .D(int[w][d]), .E(1'b1), .Q(int[w][d+1]));
+        end
+        wire [depth-1:0] t;
+        assign t = int[w][depth:1];
+        assign q[w] = t[l];
+    end
+endgenerate
+endmodule
+'''.format(i))
+
+# Test 11: neg_clk_with_enable_with_init_inferred_var_len
+for i in range(1,N+1):
+    with open('test1_%d.v' % i, 'w') as fp:
+        fp.write('''
+module test11_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
+generate 
+    reg [depth-1:0] int [width-1:0];
+
+    genvar w, d;
+    for (w = 0; w < width; w=w+1) begin
+        for (d = 0; d < depth; d=d+1)
+            initial int[w][d] <= ~((d+w) % 2);
+
+        if (depth == 1) begin
+            always @(negedge clk) if (e) int[w] <= i[w];
+            assign q[w] = int[w];
+        end
+        else begin
+            always @(negedge clk) if (e) int[w] <= {{ int[w][depth-2:0], i[w] }};
+            assign q[w] = int[w][l];
         end
     end
 endgenerate

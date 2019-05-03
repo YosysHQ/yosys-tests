@@ -7,7 +7,7 @@ generate
     for (w = 0; w < width; w=w+1) begin
         assign int[w][0] = i[w];
         for (d = 0; d < depth; d=d+1) begin
-            \$_DFF_PP0_ r(.C(clk), .D(int[w][d]), .R(r), .Q(int[w][w+1]));
+            \$_DFF_PP0_ r(.C(clk), .D(int[w][d]), .R(r), .Q(int[w][d+1]));
         end
         wire [depth-1:0] t;
         assign t = int[w][depth:1];
