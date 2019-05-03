@@ -1,10 +1,10 @@
 module testbench;
     reg [2:0] in;
 
-	wire patt_out = 0;
-	wire patt_carry_out = 0;
-	wire out = 0;
-    wire carryout = 0;
+	wire patt_out;
+	wire patt_carry_out;
+	wire out;
+    wire carryout;
 
     initial begin
         // $dumpfile("testbench.vcd");

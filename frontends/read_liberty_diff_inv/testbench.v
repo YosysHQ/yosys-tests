@@ -1,7 +1,7 @@
 module testbench;
     reg a;
 
-	wire b = 1'bx;
+	wire b;
 
     initial begin
         // $dumpfile("testbench.vcd");
