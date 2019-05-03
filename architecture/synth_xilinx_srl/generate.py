@@ -247,7 +247,7 @@ generate
             end
         end
     end
-    assign z = int[depth-1];
+    assign q = int[depth-1];
 endgenerate
 endmodule'''.format(i))
 
@@ -272,6 +272,6 @@ generate
             end
         end
     end
-    assign z = int[l];
+    assign q = int[l];
 endgenerate
 endmodule'''.format(i))
