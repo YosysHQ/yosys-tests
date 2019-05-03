@@ -17,7 +17,7 @@ if ! which iverilog > /dev/null ; then
   exit 1
 fi
 
-#wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/lfsr/generate.py -O generate_lfsr.py -o /dev/null
-#python3 generate_lfsr.py
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/lfsr/generate.py -O generate_lfsr.py -o /dev/null
+python3 generate_lfsr.py
 python3 generate.py
 ${MAKE:-make} -f ../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx' -l ../../../../techlibs/xilinx/cells_sim.v"

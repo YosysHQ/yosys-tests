@@ -1,11 +1,5 @@
-read_verilog -icells -DTEST7 ../top.v
-synth_xilinx
-rename -top synth
-clean -purge
-write_verilog synth7.v
-
 # Check that shift registers with resets are not inferred into SRLs
-cd synth; cd pos_clk_no_enable_no_init_not_inferred_with_reset; select t:SRL* -assert-count 0
-cd synth; cd neg_clk_no_enable_with_init_with_inferred_with_reset; select t:SRL* -assert-count 0
-cd synth; cd pos_clk_no_enable_no_init_not_inferred_with_reset_var_len; select t:SRL* -assert-count 0
-cd synth; cd neg_clk_no_enable_with_init_with_inferred_with_reset_var_len; select t:SRL* -assert-count 0
+design -reset; read_verilog test7a.out/test7a_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7b.out/test7b_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7c.out/test7c_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7d.out/test7d_syn0.v; select t:SRL* -assert-count 0

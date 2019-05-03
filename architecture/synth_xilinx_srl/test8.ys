@@ -1,8 +1,2 @@
-read_verilog -icells -DTEST8 ../top.v
-synth_xilinx
-rename -top synth
-clean -purge
-write_verilog synth8.v
-
 # Check that wide shift registers are not a problem
-cd synth; cd pos_clk_no_enable_no_init_not_inferred_N_width; select t:FD* -assert-count 0
+read_verilog test8.out/test8_syn0.v; select t:FD* -assert-count 0

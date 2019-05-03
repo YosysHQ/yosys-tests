@@ -1,11 +1,5 @@
-read_verilog -icells -DTEST13 ../top.v
-synth_xilinx
-rename -top synth
-clean -purge
-write_verilog synth13.v
-
 # Check that non chain users block SRLs
-cd synth; cd sr_fixed_length_other_users_port; select t:SRL* -assert-count 0
-cd synth; cd sr_var_length_other_users_port; select t:SRL* -assert-count 0
-cd synth; cd sr_fixed_length_other_users_xor; select t:SRL* -assert-count 0
-cd synth; cd sr_var_length_other_users_xor; select t:SRL* -assert-count 0
+design -reset; read_verilog test13a.out/test13a_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test13b.out/test13b_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test13c.out/test13c_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test13d.out/test13d_syn0.v; select t:SRL* -assert-count 0
