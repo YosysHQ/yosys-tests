@@ -24,5 +24,5 @@ python3 generate_small.py
 python3 generate_large.py
 ${MAKE:-make} -f ../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9' -l ../../../../techlibs/xilinx/cells_sim.v"
 
-python3 expected_area.py > expected_area.ys
-yosys -q expected_area.ys
+python3 assert_area.py > assert_area.ys
+yosys -q assert_area.ys
