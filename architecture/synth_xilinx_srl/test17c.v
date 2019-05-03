@@ -5,6 +5,6 @@ generate
     (* keep *) reg a4;
     reg a5, a6, a7, a8;
     always @(negedge clk) if (e) {a8,a7,a6,a5,a4,a3,a2,a1} <= {a7,a6,a5,a4,a3,a2,a1,i};
-    assign z = a8;
+    assign q = a8;
 endgenerate
 endmodule
