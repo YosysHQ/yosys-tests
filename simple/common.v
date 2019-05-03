@@ -12,7 +12,7 @@ endmodule
 module assert_tri(input en, input A, input B);
     always @(posedge en)
     begin
-        //#1;
+        #1;
         if (A !== B)
         begin
             $display("ERROR: ASSERTION FAILED in %m:",$time," ",A," ",B);
