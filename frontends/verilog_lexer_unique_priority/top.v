@@ -85,7 +85,8 @@ input [15:0] D,
 output M2,M4,M8,M16
 );
 
-wire a,b,c,d,e,f,g,h;
+wire a,c,d,e,g;
+reg b,h,f;
 
 always @(*)
 begin

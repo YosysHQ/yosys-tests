@@ -9,11 +9,6 @@ module top
  output cout
  );
 
- initial begin
-    A = 0;
-    cout = 0;
- end
-
 `ifndef BUG
  assign    A =  y + cin;
  assign   cout =  y + A;

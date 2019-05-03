@@ -1,12 +1,12 @@
 module testbench;
     reg [4:0] in;
 
-	wire [1:0] Ap = 0;
-	wire [2:0] Bp = 0;
-	wire [2:0] Cp = 0;
-	wire [1:0] A = 0;
-	wire [2:0] B = 0;
-	wire [2:0] C = 0;
+	wire [1:0] Ap;
+	wire [2:0] Bp;
+	wire [2:0] Cp;
+	wire [1:0] A;
+	wire [2:0] B;
+	wire [2:0] C;
 
     initial begin
         // $dumpfile("testbench.vcd");

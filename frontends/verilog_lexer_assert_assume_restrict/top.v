@@ -5,8 +5,8 @@ module top
  input cin,
  input clk,
 
- output A,
- output cout
+ output reg A,
+ output reg cout
  );
 
  initial begin
