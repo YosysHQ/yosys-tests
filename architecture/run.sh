@@ -10,15 +10,17 @@ cd $1/work_$2
 
 touch .start
 
-if [ -f ../Makefile ]; then
-    make -C ..
+if [ -f ../run-test.sh ]; then
+	../run-test.sh
+	touch .stamp
+	exit 0
 else
     yosys -ql yosys.log ../../scripts/$2.ys
-fi
-if [ $? != 0 ] ; then
-    echo FAIL > ${1}_${2}.status
-    touch .stamp
-    exit 0
+    if [ $? != 0 ] ; then
+        echo FAIL > ${1}_${2}.status
+        touch .stamp
+        exit 0
+    fi
 fi
 if [ -f "../../../../../techlibs/common/simcells.v" ]; then
     COMMON_PREFIX=../../../../../techlibs/common
@@ -69,14 +71,6 @@ elif [ "$1" = "synth_intel_cyclonev" ]; then
 elif [ "$1" = "synth_sf2" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/sf2/cells_sim.v
 elif [ "$1" = "synth_xilinx" ]; then
-    iverilog -o testbench  ../testbench.v synth.v ../../common.v ../../../../../techlibs/common/simcells.v ../../../../../techlibs/xilinx/cells_sim.v
-elif [ "$1" = "synth_xilinx_srl" ]; then
-    if grep 'fail' *.status; then
-	    echo fail > ${1}_${2}.status
-    else
-        echo pass > ${1}_${2}.status
-    fi
-    exit
     iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/xilinx/cells_sim.v
 elif [ "$1" = "synth_greenpak4" ]; then
     iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v

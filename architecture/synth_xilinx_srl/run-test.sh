@@ -1,4 +1,5 @@
 #!/bin/bash
+shopt -s extglob
 
 OPTIND=1
 seed=""    # default to no seed specified
