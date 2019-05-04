@@ -34,7 +34,13 @@ else
 	    touch .stamp
 	    exit 0
 	fi
-	iverilog -o testbench ../testbench.v ../../common.v synth.v $(yosys-config --datdir/simcells.v)
+
+	if [ -f "../../../../../techlibs/common/simcells.v" ]; then
+		COMMON_PREFIX=../../../../../techlibs/common
+	else
+		COMMON_PREFIX=/usr/local/share/yosys
+	fi	
+	iverilog -o testbench ../testbench.v ../../common.v synth.v $COMMON_PREFIX/simcells.v
 	if [ $? != 0 ] ; then
 	    echo FAIL > ${1}_${2}.status
 	    touch .stamp
