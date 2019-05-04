@@ -4,4 +4,5 @@ proc
 dump -o file.il
 write_ilang ilang.ilang
 dump -n -o file1.il
+synth
 write_verilog synth.v

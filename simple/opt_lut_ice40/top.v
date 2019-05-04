@@ -9,10 +9,16 @@ module top(
     output [2:0] o4,
     input s
 );
-
-assign o1 = (s ? 0 : a + b);
-assign o2 = (s ? a : a - b);
-assign o3 = (s ? 4'b1111 : d + c);
-assign o4 = (s ? d : c - d);
+`ifndef BUG
+        assign o1 = (s ? 0 : a + b);
+		assign o2 = (s ? a : a - b);
+		assign o3 = (s ? 4'b1111 : d + c);
+		assign o4 = (s ? d : c - d);
+`else
+        assign o1 = (s ? 0 : a * b);
+		assign o2 = (s ? a : a / b);
+		assign o3 = (s ? 4'b1111 : d - c);
+		assign o4 = (s ? d : c + d);
+`endif
 
 endmodule

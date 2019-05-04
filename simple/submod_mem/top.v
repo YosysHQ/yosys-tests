@@ -7,33 +7,38 @@ module top
 );
 	// Declare the RAM variable
 	reg [7:0] ram[63:0];
-	
+
 	// Port A
 	always @ (posedge clk)
 	begin
-`ifndef BUG        
-		if (we_a) 
-`else        
-		if (we_b) 
-`endif
+`ifndef BUG
+		if (we_a)
 		begin
 			ram[addr_a] <= data_a;
 			q_a <= data_a;
 		end
-		if (re_b) 
+		if (re_b)
 		begin
 			q_a <= ram[addr_a];
 		end
+`else
+		if (we_a)
+		begin
+			ram[addr_a] <= 8'bXXXXXXXX;
+			q_a <= 8'bXXXXXXXX;
+		end
+		if (re_b)
+		begin
+			q_a <= ram[addr_a];
+		end
+`endif
 	end
-	
+
 	// Port B
 	always @ (posedge clk)
 	begin
-`ifndef BUG        
-		if (we_b) 
-`else        
-		if (we_a) 
-`endif
+`ifndef BUG
+		if (we_b)
 		begin
 			ram[addr_b] <= data_b;
 			q_b <= data_b;
@@ -42,6 +47,17 @@ module top
 		begin
 			q_b <= ram[addr_b];
 		end
+`else
+		if (we_b)
+		begin
+			ram[addr_b] <= 8'bXXXXXXXX;
+			q_b <= 8'bXXXXXXXX;
+		end
+		if (re_b)
+		begin
+			q_b <= ram[addr_b];
+		end
+`endif
 	end
-	
-endmodule								 
+
+endmodule
