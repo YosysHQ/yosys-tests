@@ -1,4 +1,4 @@
-module counter(clk, en);
+module top(clk, en);
 	input clk;
 	input en;
 	reg [3:0] X;

@@ -16,7 +16,7 @@ module top
 
 `ifndef BUG
  assign    A =  y + cin;
- assign   cout =  y + A;
+ assign   cout =  x + A;
 
 `else
 assign {cout,A} =  cin - y * x;

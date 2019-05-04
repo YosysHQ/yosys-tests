@@ -2,8 +2,8 @@ module testbench;
     reg en;
 
     initial begin
-         $dumpfile("testbench.vcd");
-         $dumpvars(0, testbench);
+        // $dumpfile("testbench.vcd");
+        // $dumpvars(0, testbench);
 
         #5 en = 0;
         repeat (10000) begin
@@ -38,6 +38,6 @@ module testbench;
 
 
 
-	assert_dff lat_test(.clk(en), .test(doutB), .pat(lat));
+	assert_dff lat_test(.clk(en), .test(doutB), .pat(~lat));
 
 endmodule

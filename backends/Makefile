@@ -52,7 +52,7 @@ $(eval $(call template,write_firrtl_paramod,write_firrtl))
 
 #write_ilang
 $(eval $(call template,write_ilang,write_ilang write_ilang_selected))
-$(eval $(call template,write_ilang_mem,write_ilang write_ilang_selected))
+$(eval $(call template,write_ilang_mem,write_ilang_mem))
 $(eval $(call template,write_ilang_mux,write_ilang write_ilang_selected))
 $(eval $(call template,write_ilang_fsm,write_ilang write_ilang_selected))
 $(eval $(call template,write_ilang_tri,write_ilang write_ilang_selected))
@@ -79,8 +79,8 @@ $(eval $(call template,write_smt2_shiftx,write_smt2 write_smt2_synth write_smt2_
 
 #write_smv
 $(eval $(call template,write_smv,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
-$(eval $(call template,write_smv_wide,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
-$(eval $(call template,write_smv_shift,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_wide,write_smv write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_shift,write_smv_shift))
 $(eval $(call template,write_smv_fsm,write_smv write_smv_noproc write_smv_verbose write_smv_tpl))
 $(eval $(call template,write_smv_reduce,write_smv_noproc))
 $(eval $(call template,write_smv_logic,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))

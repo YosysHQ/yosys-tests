@@ -15,7 +15,7 @@ module testbench;
     end
 
 
-    reg in;
+    reg in = 0;
     wire [7:0] f;
 
 
@@ -39,7 +39,7 @@ module assert_expr(input clk, input A);
     always @(posedge clk)
     begin
         //#1;
-        if (A == 1'bZ)
+        if (A === 1'bZ)
         begin
             $display("ERROR: ASSERTION FAILED in %m:",$time," ",A);
             $stop;

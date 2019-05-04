@@ -11,13 +11,17 @@ module testbench;
             #5 clk = 0;
         end
 
-        $display("OKAY");    
+        $display("OKAY");
     end
-   
-    
+
+
     reg [2:0] dinA = 0;
     wire doutB,doutB1,doutB2,doutB3,doutB4;
-	reg dff,ndff,adff,adffn,dffe = 0;
+	reg dff = 0;
+	reg ndff= 1;
+	reg adff= 0;
+	reg adffn = 1'bX;
+	reg dffe = 1'bZ;
 
     top uut (
         .clk (clk ),

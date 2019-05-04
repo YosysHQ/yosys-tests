@@ -19,7 +19,11 @@ module top
 	end
 
 	assign r_next = {s_in, r_reg[N-1:1]};
+`ifndef BUG
 	assign s_out = r_reg[0];
+`else
+	assign s_out = 1'bZ;
+`endif
 
 
 endmodule

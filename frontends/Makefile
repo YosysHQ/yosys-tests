@@ -39,7 +39,7 @@ $(eval $(call template,read_ilang_tri,read_ilang read_ilang_selected))
 $(eval $(call template,read_json,read_json))
 $(eval $(call template,read_json_fsm,read_json))
 $(eval $(call template,read_json_logic,read_json))
-$(eval $(call template,read_json_mem,read_json))
+$(eval $(call template,read_json_mem,read_json_mem))
 $(eval $(call template,read_json_mux,read_json))
 $(eval $(call template,read_json_tri,read_json))
 

@@ -102,9 +102,6 @@ $(eval $(call template,extract,extract_cell_attr extract_compat extract_constpor
 #extract_counter
 $(eval $(call template,extract_counter,extract_counter extract_counter_maxwidth extract_counter_pout))
 $(eval $(call template,extract_counter_down,extract_counter extract_counter_maxwidth extract_counter_pout))
-$(eval $(call template,extract_counter_negative_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
-$(eval $(call template,extract_counter_no_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
-$(eval $(call template,extract_counter_sync_reset,extract_counter extract_counter_maxwidth extract_counter_pout))
 
 #shregmap
 $(eval $(call template,shregmap,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))

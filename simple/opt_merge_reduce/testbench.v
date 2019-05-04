@@ -1,12 +1,18 @@
 module testbench;
-    reg [2:0] in;
+    reg [6:0] in;
 
-	reg patt_out = 0;
-	reg patt_carry_out = 0;
-	reg patt_out1 = 0;
-	reg patt_carry_out1 = 0;
+	wire x;
+	wire [2:0] y;
+	wire [2:0] cin;
+
+	wire patt_out = 0;
+	wire patt_carry_out = 0;
+	wire patt_out1 = 0;
+	wire patt_carry_out1 = 0;
 	wire out = 0;
     wire carryout = 0;
+    wire control;
+	wire control_patt;
 
     initial begin
         // $dumpfile("testbench.vcd");
@@ -21,28 +27,30 @@ module testbench;
     end
 
     top uut (
-	.x(in[0]),
-	.y(in[1]),
-	.cin(in[2]),
+	.x(x),
+	.y(y),
+	.cin(cin),
 	.A(out),
-	.cout(carryout)
+	.cout(carryout),
+	.control(control)
 	);
 
-    always @(posedge in[0]) begin
-    patt_out1 <=  ~in[1] + &in[2];
-    end
-    always @(negedge in[0]) begin
-        patt_carry_out1 <= in[2] ? |in[1] : patt_out;
-    end
+	wire A1,cout1;
+	wire [2:0] n_y;
 
-    always @(*) begin
-        if (in[0])
-            patt_out <=  patt_out|in[1]~&in[2];
-    end
-    always @(*) begin
-        if (~in[0])
-            patt_carry_out <=  patt_carry_out1&in[2]~|in[1];
-    end
-	assert_Z out_test(.A(out));
+	wire [2:0] n_cin;
+
+//  initial begin
+//     A = 0;
+//     cout = 0;
+//  end
+
+assign x = in[0];
+assign y = in[3:1];
+assign cin = in[6:4];
+
+assign control_patt = x & y & cin;
+
+    assert_dff out_test(.clk(in[0]), .test(control),.pat(control_patt));
 
 endmodule
