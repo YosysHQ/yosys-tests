@@ -68,7 +68,7 @@ module uut_macc_checker(input clk, input [7:0] A, input [7:0] B, input C, input 
         if (P != p)
         begin
             $display("ERROR: ASSERTION FAILED in %m:",$time," ",P," ",p);
-            //$stop;
+            $stop;
         end
     end
 endmodule
