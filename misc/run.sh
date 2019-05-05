@@ -17,7 +17,7 @@ if [ $? != 0 ] ; then
     exit 0
 fi
 
-if grep 'Assert' result.log || grep 'failed in' result.log || grep 'fail' result.log || grep 'ERROR' result.log; then
+if grep 'Assert' result.log || grep 'failed in' result.log || grep 'ERROR' result.log; then
 	echo FAIL > ${1}_${2}.status
 else
 	echo PASS > ${1}_${2}.status
