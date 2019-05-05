@@ -1,6 +1,6 @@
 module dffcp
     ( input d, clk, pre, clr, output reg q );
-	always @( posedge clk, posedge pre, negedge clr )
+	always @( posedge clk)
 		if ( pre )
 			q <= 1'b1;
 		else if ( clr )
