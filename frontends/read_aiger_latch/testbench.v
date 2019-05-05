@@ -38,6 +38,6 @@ module testbench;
 
 
 
-	assert_dff lat_test(.clk(en), .test(doutB), .pat(~lat));
+	assert_dff lat_test(.clk(en), .test(doutB), .pat(lat));
 
 endmodule
