@@ -80,7 +80,21 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_00873" ] ||\
 	 [ "$1" = "issue_00888" ] ||\
 	 [ "$1" = "issue_00922" ] ||\
-	 [ "$1" = "issue_00931" ]; then
+	 [ "$1" = "issue_00931" ] ||\
+	 [ "$1" = "issue_00935" ] ||\
+	 [ "$1" = "issue_00938" ] ||\
+	 [ "$1" = "issue_00940" ] ||\
+	 [ "$1" = "issue_00948" ] ||\
+	 [ "$1" = "issue_00954" ] ||\
+	 [ "$1" = "issue_00955" ] ||\
+	 [ "$1" = "issue_00956" ] ||\
+	 [ "$1" = "issue_00961" ] ||\
+	 [ "$1" = "issue_00968" ] ||\
+	 [ "$1" = "issue_00981" ] ||\
+	 [ "$1" = "issue_00982" ] ||\
+	 [ "$1" = "issue_00987" ] ||\
+	 [ "$1" = "issue_00993" ] ||\
+	 [ "$1" = "issue_00997" ]; then
 
 	expected_string=""
 	expected="1"
@@ -100,7 +114,9 @@ elif [ "$1" = "issue_00502" ] ||\
 		 [ "$1" = "issue_00708" ] ||\
 		 [ "$1" = "issue_00826" ] ||\
 		 [ "$1" = "issue_00862" ] ||\
-		 [ "$1" = "issue_00870" ]; then
+		 [ "$1" = "issue_00870" ] ||\
+		 [ "$1" = "issue_00948" ] ||\
+		 [ "$1" = "issue_00987" ]; then
 		expected_string="Successfully finished Verilog frontend"
 	elif [ "$1" = "issue_00655" ]; then
 		expected_string="Executing EDIF backend"
@@ -138,6 +154,34 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected="0"
 	elif [ "$1" = "issue_00931" ]; then
 		expected_string="Number of cells:                  5"
+	elif [ "$1" = "issue_00935" ]; then
+		expected_string="Found logic loop in module"
+		expected="0"
+	elif [ "$1" = "issue_00938" ]; then
+		expected_string="terminate called after throwing"
+		expected="0"
+	elif [ "$1" = "issue_00940" ]; then
+		expected_string="failed: return code 134"
+		expected="0"
+	elif [ "$1" = "issue_00954" ]; then
+		expected_string="out = 4'1000"
+	elif [ "$1" = "issue_00955" ]; then
+		expected_string="out = 8'00001000"
+	elif [ "$1" = "issue_00956" ]; then
+		expected_string="Wire inivalue.r_val has an unprocessed 'init' attribute"
+		expected="0"
+	elif [ "$1" = "issue_00961" ]; then
+		expected_string="Executing PROC_DFF pass"
+	elif [ "$1" = "issue_00968" ]; then
+		expected_string="assign o_value = { 4'hx, i_value }"
+	elif [ "$1" = "issue_00981" ]; then
+		expected_string="Executing CHECK pass"
+	elif [ "$1" = "issue_00982" ]; then
+		expected_string="INIT 1'0"
+	elif [ "$1" = "issue_00993" ]; then
+		expected_string="_DFF_P_                        1"
+	elif [ "$1" = "issue_00997" ]; then
+		expected_string="h0"
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys;
