@@ -1,6 +1,7 @@
-read_verilog ../top.v 
+read_verilog ../top.v
 proc
 alumacc
-maccmap -unmap 
+maccmap -unmap
+tee -o result.log dump
 synth -top top
 write_verilog synth.v
