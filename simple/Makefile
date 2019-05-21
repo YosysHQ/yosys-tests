@@ -57,7 +57,8 @@ $(eval $(call template,full_adder,full_adder half_adder))
 $(eval $(call template,reduce,reduce reduce_allow_off_chain))
 
 #nlutmap
-$(eval $(call template,nlutmap,nlutmap nlutmap_luts nlutmap_assert))
+$(eval $(call template,nlutmap,nlutmap))
+$(eval $(call template,nlutmap_opt,nlutmap_luts nlutmap_assert))
 
 #zinit
 $(eval $(call template,zinit,zinit zinit_singleton))
@@ -68,13 +69,14 @@ $(eval $(call template,clk2fflogic_latch,clk2fflogic))
 $(eval $(call template,clk2fflogic_mem,clk2fflogic_mem))
 
 #muxcover
-$(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux8 muxcover_mux8_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode))
+$(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode))
+$(eval $(call template,muxcover_mux8,muxcover_mux8 muxcover_mux8_nodecode))
 
 #aigmap
 $(eval $(call template,aigmap,aigmap aigmap_nand))
 
 #memory_memx, memory_nordff(75-101 not covered), memory_unpack(91-108 not covered)
-$(eval $(call template,memory,memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
+$(eval $(call template,memory,memory memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
 
 #uniquify
 $(eval $(call template,uniquify,uniquify))
@@ -122,7 +124,8 @@ $(eval $(call template,flowmap_mem,flowmap flowmap_cells flowmap_debug_relax flo
 $(eval $(call template,iopadmap,iopadmap))
 
 #tribuf
-$(eval $(call template,tribuf,tribuf tribuf_top tribuf_merge_top tribuf_logic_top tribuf_merge_logic_top))
+$(eval $(call template,tribuf,tribuf tribuf_top tribuf_merge_top))
+$(eval $(call template,tribuf_logic,tribuf_logic_top tribuf_merge_logic_top))
 
 #expose
 $(eval $(call template,expose,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))

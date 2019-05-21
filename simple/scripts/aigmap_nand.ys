@@ -1,5 +1,6 @@
 read_verilog ../top.v
 aigmap -nand
+tee -o result.log dump
 proc
 aigmap -nand
 synth -top top

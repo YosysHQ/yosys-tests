@@ -7,5 +7,6 @@ fsm_map
 fsm
 fsm -encoding binary
 fsm -encoding auto
+tee -o result.log dump
 synth -top top
 write_verilog synth.v

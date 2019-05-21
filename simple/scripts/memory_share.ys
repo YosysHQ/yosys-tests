@@ -3,6 +3,7 @@ proc
 memory_share
 memory
 memory_share
+tee -o result.log dump
 design -reset
 read_verilog ../top.v
 synth -top top
