@@ -1,2 +1,3 @@
 read_verilog -sv ../top.v
-tee -o result.log chformal -assume2assert
+chformal -assume2assert
+tee -o result.log dump

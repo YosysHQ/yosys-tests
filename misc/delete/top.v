@@ -24,10 +24,10 @@ endmodule
 
 module middle
 (
-	input x,
+	input ux,
 	input y,
 	output o
 );
 
-assign o = x + y;
+assign o = ux + y;
 endmodule

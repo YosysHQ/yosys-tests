@@ -1,3 +1,4 @@
 read_verilog ../top.v
 synth
-tee -o result.log splice -port q_b
+splice -port data_a
+tee -o result.log dump
