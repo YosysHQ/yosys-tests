@@ -6,6 +6,9 @@ test -f scripts/$2.ys
 
 rm -rf $1/work_$2
 mkdir $1/work_$2
+if [ $2  == "cover_dir" ]; then
+    mkdir $1/work_$2/out_dir
+fi
 cd $1/work_$2
 
 touch .start
