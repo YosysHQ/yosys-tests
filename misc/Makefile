@@ -44,7 +44,7 @@ $(eval $(call template,show, show show_colorattr show_colors show_color show_enu
 
 #scc
 $(eval $(call template,scc, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
-$(eval $(call template,scc_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
+$(eval $(call template,scc_feedback, scc scc_all_cell_types scc_expect1 scc_max_depth scc_nofeedback scc_select scc_set_attr ))
 $(eval $(call template,scc_hier_feedback, scc scc_all_cell_types scc_expect scc_max_depth scc_nofeedback scc_select scc_set_attr ))
 
 

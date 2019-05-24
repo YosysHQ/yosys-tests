@@ -137,6 +137,9 @@ elif [ "$2" = "scatter" ]; then
 elif [ "$1" = "scc" ] || \
 	 [ "$1" = "scc_hier_feedback" ]; then
 	expected_string="0 SCCs"
+	if [ "$1" = "scc_hier_feedback" ] && [ "$2" = "scc_all_cell_types" ]; then
+		expected="0"
+	fi
 elif [ "$1" = "scc_feedback" ]; then
 	expected_string="0 SCCs"
 	expected="0"
