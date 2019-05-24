@@ -1,2 +1,4 @@
 read_verilog ../top.v
-tee -o result.log delete top/o
+tee -o resul.log dump
+delete top/o
+tee -o result.log dump

@@ -1,3 +1,4 @@
 read_verilog ../top.v
 proc
-tee -o result.log qwp -dump out.html
+qwp -dump out.html
+tee -o result.log dump

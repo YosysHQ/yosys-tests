@@ -1,2 +1,3 @@
 read_verilog ../top.v
-tee -o result.log add -output o 3
+add -output o 3
+tee -o result.log dump

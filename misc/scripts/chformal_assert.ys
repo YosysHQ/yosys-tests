@@ -1,2 +1,3 @@
 read_verilog -sv ../top.v
-tee -o result.log chformal -assert -remove
+chformal -assert -remove
+tee -o result.log dump

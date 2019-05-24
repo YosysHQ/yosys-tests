@@ -1,3 +1,4 @@
 read_verilog ../top.v
 synth
-tee -o result.log splice -no_port q_b
+splice -no_port q_b
+tee -o result.log dump

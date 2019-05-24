@@ -1,3 +1,4 @@
 read_verilog ../top.v
 synth
-tee -o result.log splice -sel_any_bit
+splice -sel_any_bit
+tee -o result.log dump

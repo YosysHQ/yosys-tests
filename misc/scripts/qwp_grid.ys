@@ -1,3 +1,4 @@
 read_verilog ../top.v
 proc
-tee -o result.log qwp -grid 4
+qwp -grid 4
+tee -o result.log dump
