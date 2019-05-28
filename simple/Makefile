@@ -172,7 +172,11 @@ $(eval $(call template,opt_lut, opt_lut opt_lut_limit opt_lut_dlogic opt_lut_lim
 $(eval $(call template,opt_lut_ice40, opt_lut opt_lut_limit opt_lut_dlogic opt_lut_limit_0))
 
 #wreduce -memx
-$(eval $(call template,wreduce_memx, wreduce_memx))
+$(eval $(call template,wreduce_memx, wreduce wreduce_memx wreduce_keepdc wreduce_memx_keepdc))
+$(eval $(call template,wreduce_reduce, wreduce wreduce_memx wreduce_keepdc wreduce_memx_keepdc))
+$(eval $(call template,wreduce_adder, wreduce wreduce_memx wreduce_keepdc wreduce_memx_keepdc))
+$(eval $(call template,wreduce_mul, wreduce wreduce_memx wreduce_keepdc wreduce_memx_keepdc))
+$(eval $(call template,wreduce_div, wreduce wreduce_memx wreduce_keepdc wreduce_memx_keepdc))
 
 #opt_merge -share_all
 $(eval $(call template,opt_merge_share_all, opt_merge_share_all))
