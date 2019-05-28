@@ -36,7 +36,7 @@ $(eval $(call template,trace_mem,trace_mem ))
 $(eval $(call template,write_file,write_file write_file_a ))
 
 #stat
-$(eval $(call template,stat, stat stat_top stat_width stat_liberty ))
+$(eval $(call template,stat, stat stat_top stat_width stat_liberty stat_tech_xilinx))
 
 #show
 # show_pause - skipped
@@ -190,7 +190,7 @@ $(eval $(call template,mutate, mutate_list mutate_cnot1 mutate_cnot0 mutate_cons
 $(eval $(call template,mutate_mem, mutate_list mutate_all))
 
 #fmconbine
-$(eval $(call template,fmcombine, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd))
+$(eval $(call template,fmcombine, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd fmcombine_anyeq fmcombine_initeq))
 
 #pmuxtree
 $(eval $(call template,pmuxtree, pmuxtree))
