@@ -33,9 +33,9 @@ if [ "$1" = "abc_error" ]; then
 	elif [ "$2" = "abc_clk_domain_not_found" ]; then
 		expected_string="ERROR: Clock domain u not found"
 	elif [ "$2" = "abc_script_o" ]; then
-		expected_string="ERROR: Clock domain u not found"
+		expected_string="ERROR: Can't open ABC output file"
 	elif [ "$2" = "abc_script_top" ]; then
-		expected_string="ERROR: Clock domain u not found"
+		expected_string="ERROR: Can't open ABC output file"
 	fi
 
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
