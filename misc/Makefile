@@ -175,9 +175,10 @@ $(eval $(call template,tee, tee))
 $(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
 
 #abc
-$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
-$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff))
 $(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S))
+$(eval $(call template,abc_error, abc_cannot_open abc_constr_no_liberty abc_lut_liberty abc_unsup_gate_type abc_inv_luts_synt abc_dff abc_return_code abc_clk_domain_not_found abc_script_o abc_script_top))
 
 #hilomap
 $(eval $(call template,hilomap, hilomap hilomap_hicell hilomap_locell hilomap_singleton hilomap_hicell_singleton hilomap_locell_singleton hilomap_hicell_locell_singleton))
