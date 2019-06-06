@@ -4,7 +4,7 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'mux_(index|case|if)_(\d+)_(\d+)\.v')
+re_mux = re.compile(r'mux_(index|case|if_bal|if_unbal)_(\d+)_(\d+)\.v')
 
 area = {}
 #              1  2  3  4  5  6 F7 F8
