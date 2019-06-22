@@ -38,9 +38,6 @@ for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
     if not m: continue
 
-    # TODO
-    if m.group(1) == 'if': continue
-
     N,W = map(int, m.group(2,3))
     assert N in area
 
