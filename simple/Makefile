@@ -17,6 +17,19 @@ clean::
 ))
 endef
 
+define template_error
+$(foreach design,$(1),
+$(foreach script,$(2),
+work:: $(design)/work_$(script)/.stamp
+
+$(design)/work_$(script)/.stamp:
+	bash run.sh $(design) $(script)
+
+clean::
+	rm -rf $(design)/work_$(script)
+))
+endef
+
 $(eval $(call template,alu,gates luts))
 
 # DFF with constant drivers
@@ -59,9 +72,11 @@ $(eval $(call template,reduce,reduce reduce_allow_off_chain))
 #nlutmap
 $(eval $(call template,nlutmap,nlutmap))
 $(eval $(call template,nlutmap_opt,nlutmap_luts nlutmap_assert))
+$(eval $(call template_error,nlutmap_error,nlutmap_error))
 
 #zinit
 $(eval $(call template,zinit,zinit zinit_singleton))
+$(eval $(call template_error,zinit_error,zinit_failed_to_handle))
 
 #clk2fflogic (104 - 144,180-195 is not reached)
 $(eval $(call template,clk2fflogic,clk2fflogic))
@@ -77,6 +92,7 @@ $(eval $(call template,aigmap,aigmap aigmap_nand))
 
 #memory_memx, memory_nordff(75-101 not covered), memory_unpack(91-108 not covered)
 $(eval $(call template,memory,memory memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
+$(eval $(call template_error,memory_bram_error, memory_bram_syntax_error_in_rules memory_bram_cant_open_rules_file ))
 
 #uniquify
 $(eval $(call template,uniquify,uniquify))
@@ -84,6 +100,7 @@ $(eval $(call template,uniquify,uniquify))
 #hierarchy (44% increased to 61,3%)
 $(eval $(call template,hierarchy,hierarchy hierarchy_top hierarchy_check hierarchy_simcheck hierarchy_purge_lib hierarchy_libdir hierarchy_keep_positionals hierarchy_keep_portwidths hierarchy_nokeep_asserts hierarchy_auto_top hierarchy_generate))
 $(eval $(call template,hierarchy_huge,hierarchy_huge))
+$(eval $(call template_error,hierarchy_error, hierarchy_no_top_module hierarchy_top_requires_args hierarchy_module_not_found ))
 
 #attrmap
 $(eval $(call template,attrmap,attrmap attrmap_modattr))
@@ -91,6 +108,7 @@ $(eval $(call template,attrmap,attrmap attrmap_modattr))
 #dff2dffe -unmap
 # dff2dffe_unmap_direct - skipped: ERROR: Found error in internal cell \dffe.$procdff$47 ($dffe) at
 $(eval $(call template,dff2dffe_unmap,dff2dffe_unmap dff2dffe_unmap_mince dff2dffe_unmap_direct))
+$(eval $(call template_error,dff2dffe_error,dff2dffe_error))
 
 #dff2dffs
 $(eval $(call template,dff2dffs,dff2dffs))
@@ -100,14 +118,17 @@ $(eval $(call template,dffsr2dff,dffsr2dff))
 
 #extract
 $(eval $(call template,extract,extract_cell_attr extract_compat extract_constports extract_map_design extract_ignore_parameters extract_ignore_param  extract_map extract_mine_cells_span extract_mine_limit_matches_per_module extract_mine_max_fanout extract_mine_min_freq extract_mine_split extract_mine extract_nodefaultswaps extract_perm extract_swap extract_verbose extract_wire_attr ))
+$(eval $(call template_error,extract_error, extract_mine_and_map extract_map_and_mine extract_args_to_perm extract_missing_opt extract_cant_open_map_file extract_cant_open_output ))
 
 #extract_counter
 $(eval $(call template,extract_counter,extract_counter extract_counter_maxwidth extract_counter_pout))
 $(eval $(call template,extract_counter_down,extract_counter extract_counter_maxwidth extract_counter_pout))
+$(eval $(call template_error,extract_counter_error,extract_counter_pout_without_args))
 
 #shregmap
 $(eval $(call template,shregmap,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
 $(eval $(call template,shregmap_resetable,shregmap shregmap_clkpol_any shregmap_clkpol_neg shregmap_clkpol_pos shregmap_enpol_any shregmap_enpol_any_or_none shregmap_enpol_neg shregmap_enpol_none shregmap_enpol_pos shregmap_init shregmap_keep_after shregmap_keep_before shregmap_match shregmap_maxlen shregmap_minlen shregmap_params shregmap_tech shregmap_zinit))
+$(eval $(call template_error,shregmap_error,shregmap_zinit_init shregmap_match_clkpol shregmap_match_enpol shregmap_match_params))
 
 #design_import
 $(eval $(call template,design_import, design_import design_import_as ))
@@ -140,9 +161,11 @@ $(eval $(call template,fsm_expand, fsm_expand fsm_expand_full))
 
 #fsm_export
 $(eval $(call template,fsm_export, fsm_export fsm_export_noauto fsm_export_o fsm_export_origenc))
+$(eval $(call template_error,fsm_export_error, fsm_export_couldnt_open_file))
 
 #fsm_recode
 $(eval $(call template,fsm_recode, fsm_recode fsm_recode_encoding_binary fsm_recode_encoding_binary_twice fsm_recode_encoding_one_hot fsm_recode_fm_set_fsm_file fsm_recode_all_opt))
+$(eval $(call template_error,fsm_recode_error, fsm_recode_encoding_isnt_supported fsm_recode_cant_open_fm_set_fsm_file fsm_recode_cant_open_encfile ))
 
 #fsm command
 $(eval $(call template,fsm_command, fsm_command fsm_fm_set_fsm_file fsm_encfile fsm_encoding_binary fsm_encoding_one-hot fsm_encoding_auto fsm_encoding_none fsm_encoding_user fsm_encoding_unknown fsm_nodetect fsm_norecode fsm_nomap fsm_command_expand fsm_fullexpand fsm_command_export ))
@@ -192,11 +215,15 @@ $(eval $(call template,proc_arst_reduce, proc_arst proc_arst_global_rst  proc_ar
 #submod
 $(eval $(call template, submod, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier))
 $(eval $(call template, submod_mem, submod submod_top submod_copy submod_name submod_no_proc submod_no_hier submod_mem))
+$(eval $(call template_error, submod_error, submod_error))
 
 #prep
 $(eval $(call template, prep, prep prep_top prep_auto_top prep_flatten prep_ifx prep_memx prep_nomem prep_nordff prep_rdff prep_nokeepdc prep_run prep_run_begin))
+$(eval $(call template_error, prep_error, prep_error))
 
 #synth
 $(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare))
+$(eval $(call template_error, synth_error, synth_error))
+
 
 .PHONY: all clean
