@@ -27,7 +27,7 @@ module testbench;
 	);
 
     assign    patt_out =  in[1] + in[2];
-    assign    patt_carry_out =  in[1] + patt_out;
+    assign    patt_carry_out =  in[0] + patt_out;
 
 	assert_comb out_test(.A(patt_out), .B(out));
 	assert_comb carry_test(.A(patt_carry_out), .B(carryout));

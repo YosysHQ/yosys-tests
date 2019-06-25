@@ -1,0 +1,4 @@
+read -sv ../top.v
+synth
+write_verilog result.log
+

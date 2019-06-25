@@ -1,2 +1,3 @@
 read_verilog ../top.v
-tee -o result.log delete top/$7
+delete top/$7
+tee -o result.log dump

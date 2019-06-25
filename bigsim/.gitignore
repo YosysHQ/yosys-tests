@@ -1,7 +1,9 @@
 /.stamp
+/.start
 /*_cmos.status
 /*_ice40.status
 /*_falsify.status
+/*_sim.status
 /*/work_sim
 /*/work_cmos
 /*/work_ice40

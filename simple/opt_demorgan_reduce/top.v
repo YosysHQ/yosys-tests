@@ -5,7 +5,8 @@ module top
  input [2:0] cin,
 
  output A,
- output cout
+ output cout,
+ output control
  );
 
  wire A1,cout1;
@@ -32,8 +33,16 @@ assign cout1 = cin ? |n_y : ^A;
 
 assign A =  A1|y~&(~cin)~^A1;
 assign cout =  cout1&cin~|(~y);
+
+assign control = x & y & cin;
 `else
-assign {cout,A} =  1'bZ;
+assign A1 =  n_y + &(cin);
+assign cout1 = cin ? |n_y : ^A;
+
+assign A =  A1|y~&(~cin)~^A1;
+assign cout =  cout1&cin~|(~y);
+
+assign control = x | y | cin;
 `endif
 
 endmodule

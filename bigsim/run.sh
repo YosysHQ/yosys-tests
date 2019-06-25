@@ -14,6 +14,12 @@ for fn in $RTL; do
 	rtl_files="$rtl_files ../rtl/$fn"
 done
 
+if [ -f "../../../../../techlibs/common/simcells.v" ]; then
+    TECHLIBS_PREFIX=../../../../../techlibs
+else
+    TECHLIBS_PREFIX=/usr/local/share/yosys
+fi
+
 case "$2" in
 	sim)
 		touch ../../.start
@@ -28,7 +34,7 @@ case "$2" in
 		;;
 	ice40)
 		yosys -ql synthlog.txt -p "synth_ice40 -top $TOP; write_verilog synth.v" $rtl_files
-		iverilog_cmd="$iverilog_cmd synth.v $(yosys-config --datdir/ice40/cells_sim.v)"
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
 	*)
 		exit 1
@@ -64,4 +70,6 @@ elif [ "$2" != "sim" ]; then
 	else
 		echo FAIL > ../../${1}_${2}.status
 	fi
+elif [ "$2" == "sim" ]; then
+	echo PASS > ../../${1}_${2}.status
 fi

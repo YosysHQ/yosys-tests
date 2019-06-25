@@ -4,7 +4,7 @@
 `define assume(_expr_)
 `endif
 
-module top(input clk, input [4:0] addr, output reg [31:0] data);
+module top(input clk, input [4:0] addr, output reg [31:0] data, output clk_o);
 	reg [31:0] mem [0:31];
 	always @(posedge clk)
 		data <= mem[addr];
@@ -21,4 +21,9 @@ module top(input clk, input [4:0] addr, output reg [31:0] data);
             //`assume((used_dbits & data) == 0);
         end
     end
+`ifndef BUG
+    assign clk_o = clk;
+    `else
+    assign clk_o = ~clk;
+`endif
 endmodule

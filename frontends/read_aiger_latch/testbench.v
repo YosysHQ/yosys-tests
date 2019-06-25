@@ -2,8 +2,8 @@ module testbench;
     reg en;
 
     initial begin
-         $dumpfile("testbench.vcd");
-         $dumpvars(0, testbench);
+        // $dumpfile("testbench.vcd");
+        // $dumpvars(0, testbench);
 
         #5 en = 0;
         repeat (10000) begin

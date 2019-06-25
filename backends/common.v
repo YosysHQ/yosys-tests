@@ -1,3 +1,14 @@
+module assert_equal(input clk, input test, input pat);
+    always @(posedge clk)
+    begin
+        if (test != pat)
+        begin
+            $display("ERROR: ASSERTION FAILED in %m:",$time);
+            $stop;
+        end
+    end
+endmodule 
+
 module assert_dff(input clk, input test, input pat);
     always @(posedge clk)
     begin

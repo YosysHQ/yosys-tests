@@ -362,5 +362,48 @@ $(eval $(call template,issue_00922,issue_00922))
 #issue_00931
 $(eval $(call template,issue_00931,issue_00931))
 
+#issue_00935
+$(eval $(call template,issue_00935,issue_00935))
+
+#issue_00938
+$(eval $(call template,issue_00938,issue_00938))
+
+#issue_00940
+$(eval $(call template,issue_00940,issue_00940))
+
+#issue_00948
+$(eval $(call template,issue_00948,issue_00948))
+
+#issue_00954
+$(eval $(call template,issue_00954,issue_00954))
+
+#issue_00955
+$(eval $(call template,issue_00955,issue_00955))
+
+#issue_00956
+$(eval $(call template,issue_00956,issue_00956))
+
+#issue_00961
+$(eval $(call template,issue_00961,issue_00961))
+
+#issue_00968
+$(eval $(call template,issue_00968,issue_00968))
+
+#issue_00981
+$(eval $(call template,issue_00981,issue_00981))
+
+#issue_00982
+$(eval $(call template,issue_00982,issue_00982))
+
+#issue_00987
+$(eval $(call template,issue_00987,issue_00987))
+
+#issue_00993
+$(eval $(call template,issue_00993,issue_00993))
+
+#issue_00997
+$(eval $(call template,issue_00997,issue_00997))
+
+
 
 .PHONY: all clean

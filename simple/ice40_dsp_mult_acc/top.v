@@ -37,10 +37,17 @@ module top
 
 		else if (clken)
 		begin
+`ifndef BUG
 			dataa_reg <= dataa;
 			datab_reg <= datab;
 			sload_reg <= sload;
 			adder_out <= old_result + multa;
+`else
+			dataa_reg <= datab;
+			datab_reg <= dataa;
+			sload_reg <= sload;
+			adder_out <= old_result - multa;
+`endif
 		end
 	end
 endmodule

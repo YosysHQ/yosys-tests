@@ -1,0 +1,3 @@
+read -formal ../top.v
+tee -a result.log synth
+#write_verilog rtl_yosys.v

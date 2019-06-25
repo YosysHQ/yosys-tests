@@ -68,7 +68,7 @@ module uut_top_checker(input clk, input [2:0] A, input [2:0] B);
         if (A != B)
         begin
             $display("ERROR: ASSERTION FAILED in %m:",$time," ",A," ",B);
-            //$stop;
+            $stop;
         end
     end
 endmodule

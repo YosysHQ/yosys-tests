@@ -14,7 +14,7 @@ module testbench;
         $display("OKAY");
     end
 
-
+	wire clk_o;
 	reg [4:0] a;
 	wire [31:0] c;
 
@@ -22,13 +22,13 @@ module testbench;
 	begin
 		a = a + 3;
 	end
-	top uut (clk, a, c);
+	top uut (clk, a, c,clk_o);
 
-	uut_checker c_test(.clk(clk), .A(c), .B(c));
+	uut_checker c_test(.clk(clk), .A(clk), .B(clk_o));
 
 endmodule
 
-module uut_checker(input clk, input [31:0] A, input [31:0] B);
+module uut_checker(input clk, input A, input B);
     always @(posedge clk)
     begin
         #1;

@@ -2,7 +2,7 @@ module testbench;
     reg [2:0] in;
 
 	reg patt_out = 0;
-	wire out;
+	wire out = 0;
 
     initial begin
         // $dumpfile("testbench.vcd");

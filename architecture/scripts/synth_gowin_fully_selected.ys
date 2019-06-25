@@ -1,4 +1,4 @@
 read_verilog ../top.v
-synth -top top
-muxcover
+select top2
+synth_gowin
 write_verilog synth.v
