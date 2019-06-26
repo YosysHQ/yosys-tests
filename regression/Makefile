@@ -30,8 +30,9 @@ $(eval $(call template,issue_00041,issue_00041))
 $(eval $(call template,issue_00059,issue_00059))
 
 #issue_00065
-# Takes too long
+ifeq ($(ENABLE_HEAVY_TESTS),1)
 #$(eval $(call template,issue_00065,issue_00065))
+endif
 
 #issue_00067
 $(eval $(call template,issue_00067,issue_00067))
