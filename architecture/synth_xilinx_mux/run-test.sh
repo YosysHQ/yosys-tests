@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchm
 wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_large/mux/generate.py -O generate_large.py -o /dev/null
 python3 generate_small.py
 python3 generate_large.py
-${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9 -minmuxf 5' -l ../../../../../techlibs/xilinx/cells_sim.v"
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="-p 'synth_xilinx -abc9 -widemux 5' -l ../../../../../techlibs/xilinx/cells_sim.v"
 
 python3 ../assert_area.py > assert_area.ys
 yosys -q assert_area.ys
