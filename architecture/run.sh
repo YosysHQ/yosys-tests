@@ -22,7 +22,7 @@ if echo "$1" | grep ".*_error"; then
 	elif [ "$2" = "synth_intel_invalid_family" ]; then
 		expected_string="ERROR: Invalid or not family specified"
 	elif [ "$2" = "synth_xilinx_invalid_arch" ]; then
-		expected_string="ERROR: Invalid Xilinx -arch setting: "
+		expected_string="ERROR: Invalid Xilinx -family setting: "
 	fi
 
 
