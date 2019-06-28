@@ -31,10 +31,10 @@ module testbench;
     dinA <= !dinA;
     end
 	
-	assert_dff b_test(.clk(en), .test(dinA), .pat(dioB[0]));
+	assert_equal b_test(.clk(en), .test(dinA), .pat(dioB[0]));
 	
-	assert_dff c_test(.clk(en), .test(dinA), .pat(doutC[0]));
+	assert_equal c_test(.clk(en), .test(dinA), .pat(doutC[0]));
 	
-	assert_dff cz_test(.clk(!en), .test(1'bZ), .pat(doutC[0]));
+	assert_equal cz_test(.clk(!en), .test(1'bZ), .pat(doutC[0]));
     
 endmodule

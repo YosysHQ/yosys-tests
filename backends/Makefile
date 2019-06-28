@@ -32,19 +32,27 @@ $(eval $(call template,write_btor_logic,write_btor write_btor_v write_btor_s))
 $(eval $(call template,write_btor_mem,write_btor_mem write_btor_mem_v write_btor_mem_s))
 $(eval $(call template,write_btor_pmux,write_btor_pmux))
 $(eval $(call template,write_btor_and_or,write_btor_and_or))
+$(eval $(call template,write_btor_shiftx,write_btor write_btor_v write_btor_s))
 
 #write_edif
 $(eval $(call template,write_edif,write_edif write_edif_top write_edif_nogndvcc write_edif_pvector_par write_edif_pvector_bra write_edif_pvector_ang write_edif_attrprop ))
 
 #write_firrtl
-$(eval $(call template,write_firrtl,write_firrtl ))
-# - issue #922
-#ERROR: Unclocked write port 0 on memory top.ram.
-#$(eval $(call template,write_firrtl_mem,write_firrtl_mem ))
+$(eval $(call template,write_firrtl,write_firrtl))
+#write_firrtl_mem_wr - issue #938
+#terminate called after throwing an instance of 'std::out_of_range'
+#  what():  dict::at()
+#run.sh: line 11:  9808 Aborted                 (core dumped)
+$(eval $(call template,write_firrtl_mem,write_firrtl_mem ))
+$(eval $(call template,write_firrtl_logic,write_firrtl ))
+$(eval $(call template,write_firrtl_reduce,write_firrtl ))
+$(eval $(call template,write_firrtl_shift,write_firrtl ))
+$(eval $(call template,write_firrtl_shiftx,write_firrtl ))
+$(eval $(call template,write_firrtl_paramod,write_firrtl))
 
 #write_ilang
 $(eval $(call template,write_ilang,write_ilang write_ilang_selected))
-$(eval $(call template,write_ilang_mem,write_ilang write_ilang_selected))
+$(eval $(call template,write_ilang_mem,write_ilang_mem))
 $(eval $(call template,write_ilang_mux,write_ilang write_ilang_selected))
 $(eval $(call template,write_ilang_fsm,write_ilang write_ilang_selected))
 $(eval $(call template,write_ilang_tri,write_ilang write_ilang_selected))
@@ -67,16 +75,18 @@ $(eval $(call template,write_smt2_mem,write_smt2 write_smt2_verbose write_smt2_s
 $(eval $(call template,write_smt2_fsm,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 $(eval $(call template,write_smt2_init_assert,write_smt2_init_assert))
 $(eval $(call template,write_smt2_reduce,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
+$(eval $(call template,write_smt2_shiftx,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 
 #write_smv
 $(eval $(call template,write_smv,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
-$(eval $(call template,write_smv_wide,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
-$(eval $(call template,write_smv_shift,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_wide,write_smv write_smv_verbose write_smv_tpl))
+$(eval $(call template,write_smv_shift,write_smv_shift))
 $(eval $(call template,write_smv_fsm,write_smv write_smv_noproc write_smv_verbose write_smv_tpl))
 $(eval $(call template,write_smv_reduce,write_smv_noproc))
 $(eval $(call template,write_smv_logic,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
 $(eval $(call template,write_smv_init_assert,write_smv_init_assert))
 $(eval $(call template,write_smv_cmos4,write_smv_cmos4))
+$(eval $(call template,write_smv_shiftx,write_smv write_smv_synth write_smv_noproc write_smv_verbose write_smv_tpl))
 
 #write_spice
 $(eval $(call template,write_spice,write_spice write_spice_top write_spice_big_endian write_spice_neg_i write_spice_pos_i write_spice_nc_prefix write_spice_inames ))
@@ -90,6 +100,7 @@ $(eval $(call template,write_verilog_tri,write_verilog write_verilog_nostr write
 $(eval $(call template,write_verilog_ffs,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
 $(eval $(call template,write_verilog_latch,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
 $(eval $(call template,write_verilog_concat,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
+$(eval $(call template,write_verilog_shiftx,write_verilog write_verilog_nostr write_verilog_siminit write_verilog_v ))
 
 
 

@@ -35,7 +35,7 @@ module dffe
     initial begin
       q = 0;
     end
-	always @( posedge clk, posedge en )
+	always @( posedge clk )
 		if ( en )
 `ifndef BUG        
 			q <= d;

@@ -1,5 +1,6 @@
 read_verilog ../top.v
 proc
+memory
 dump -o file.il
 write_ilang -selected ilang.ilang
 design -reset

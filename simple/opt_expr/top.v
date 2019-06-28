@@ -23,7 +23,7 @@ dffsr u_dffsr (
         .clr (clr),
         .pre (pre),
 `else
-        .clr (1'b0),
+        .clr (1'b1),
         .pre (1'b0),
 `endif
         .d (a ),

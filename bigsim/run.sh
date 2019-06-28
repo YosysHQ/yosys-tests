@@ -1,9 +1,11 @@
 #!/bin/bash
 
-set -ex
+set -x
 source $1/config
 mkdir $1/work_$2
 cd $1/work_$2
+
+touch .start
 
 iverilog_cmd="iverilog -o sim -s testbench -I../rtl -I../sim"
 
@@ -12,8 +14,15 @@ for fn in $RTL; do
 	rtl_files="$rtl_files ../rtl/$fn"
 done
 
+if [ -f "../../../../../techlibs/common/simcells.v" ]; then
+    TECHLIBS_PREFIX=../../../../../techlibs
+else
+    TECHLIBS_PREFIX=/usr/local/share/yosys
+fi
+
 case "$2" in
 	sim)
+		touch ../../.start
 		iverilog_cmd="$iverilog_cmd $rtl_files"
 		;;
 	falsify)
@@ -25,7 +34,7 @@ case "$2" in
 		;;
 	ice40)
 		yosys -ql synthlog.txt -p "synth_ice40 -top $TOP; write_verilog synth.v" $rtl_files
-		iverilog_cmd="$iverilog_cmd synth.v $(yosys-config --datdir/ice40/cells_sim.v)"
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
 	*)
 		exit 1
@@ -36,19 +45,31 @@ for fn in $SIM; do
 	iverilog_cmd="$iverilog_cmd ../sim/$fn"
 done
 $iverilog_cmd
+if [ $? != 0 ] ; then
+    echo FAIL > ${1}_${2}.status
+    touch .stamp
+    exit 0
+fi
 
 vvp -N sim | pv -l > output.txt
+if [ $? != 0 ] ; then
+    echo FAIL > ${1}_${2}.status
+    touch .stamp
+    exit 0
+fi
 
 if [ "$2" = "falsify" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
 		echo FAIL > ../../${1}_${2}.status
 	else
-		echo pass > ../../${1}_${2}.status
+		echo PASS > ../../${1}_${2}.status
 	fi
 elif [ "$2" != "sim" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
-		echo pass > ../../${1}_${2}.status
+		echo PASS > ../../${1}_${2}.status
 	else
 		echo FAIL > ../../${1}_${2}.status
 	fi
+elif [ "$2" == "sim" ]; then
+	echo PASS > ../../${1}_${2}.status
 fi

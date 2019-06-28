@@ -1,4 +1,5 @@
 read_verilog ../top.v
 synth -top top
 zinit
-write_verilog synth.v 
+tee -o result.log dump
+write_verilog synth.v

@@ -1,6 +1,7 @@
 read_verilog ../top.v
 proc
 ice40_dsp
+tee -o result.log dump
 synth_ice40 -top top
 design -reset
 read_verilog ../top.v

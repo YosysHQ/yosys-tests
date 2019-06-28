@@ -24,7 +24,7 @@ module top
 	SB_RAM40_4K #(
     .READ_MODE(2'h1),
     .WRITE_MODE(2'h1),
-    .INIT_FILE("init.txt")
+    .INIT_FILE("../init.txt")
   ) \ram.0.0.0  (
     .MASK(16'hxxxx),
     .RADDR({ 5'h00, addr_a }),

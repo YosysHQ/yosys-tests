@@ -45,4 +45,7 @@ endmodule
  input clk;
 
  output reg out1;
+
+ always @(posedge clk)
+	out1 <= in1 & in2;
 endmodule

@@ -29,6 +29,6 @@ module testbench;
     dinA <= !dinA;
     end
 
-	assert_tri b_test(.en(en), .A(dinA), .B(doutB));
+	assert_tri out_test(.en(en), .A(dinA), .B(doutB));
 
 endmodule
