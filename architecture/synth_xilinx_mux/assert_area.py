@@ -42,9 +42,13 @@ for fn in glob.glob('*.v'):
     assert N in area
 
     bn,_ = os.path.splitext(fn)
-    
-    print('design -reset')
-    print('read_verilog {0}.out/{0}_syn0.v'.format(bn))
-    for r,v in zip(['LUT1','LUT2','LUT3','LUT4','LUT5','LUT6','MUXF7','MUXF8'], area[N]):
-        print('select t:{0} -assert-count {1}'.format(r,v*W))
 
+    with open(fn, 'a') as f:
+        assert_area = ['select t:{0} -assert-count {1}'.format(r,v*W) for r,v in zip(['LUT1','LUT2','LUT3','LUT4','LUT5','LUT6','MUXF7','MUXF8'], area[N])]
+        print('''
+`ifndef _AUTOTB
+module \$__test ;
+    wire [4095:0] assert_area = "%s";
+endmodule
+`endif
+''' % '; '.join(assert_area), file=f)
