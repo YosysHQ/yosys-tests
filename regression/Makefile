@@ -31,7 +31,7 @@ $(eval $(call template,issue_00059,issue_00059))
 
 #issue_00065
 ifeq ($(ENABLE_HEAVY_TESTS),1)
-#$(eval $(call template,issue_00065,issue_00065))
+$(eval $(call template,issue_00065,issue_00065))
 endif
 
 #issue_00067
@@ -300,8 +300,9 @@ $(eval $(call template,issue_00763,issue_00763))
 $(eval $(call template,issue_00767,issue_00767))
 
 #issue_00774
-# Takes too long
-#$(eval $(call template,issue_00774,issue_00774))
+ifeq ($(ENABLE_HEAVY_TESTS),1)
+$(eval $(call template,issue_00774,issue_00774))
+endif
 
 #issue_00781
 $(eval $(call template,issue_00781,issue_00781))
