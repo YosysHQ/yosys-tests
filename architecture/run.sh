@@ -37,6 +37,11 @@ else
 
 	if [ -f ../run-test.sh ]; then
 		../run-test.sh
+		if [ $? != 0 ] ; then
+			echo FAIL > ${1}_${2}.status
+		else
+			echo PASS > ${1}_${2}.status
+		fi
 		touch .stamp
 		exit
 	else
