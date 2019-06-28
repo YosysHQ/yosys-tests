@@ -24,5 +24,9 @@ python3 generate_small.py
 python3 generate_large.py
 python3 ../assert_area.py
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
-    -p 'synth_xilinx -abc9 -widemux 5; script -select \$__test/w:assert_area'\
+    -p 'design -copy-to __test __test; \
+        synth_xilinx -abc9 -widemux 5; \
+        design -copy-from __test *; \
+        select -assert-any __test; \
+        script -select __test/w:assert_area'\
     -l ../../../../../techlibs/xilinx/cells_sim.v"

@@ -47,7 +47,7 @@ for fn in glob.glob('*.v'):
         assert_area = ['select t:{0} -assert-count {1}'.format(r,v*W) for r,v in zip(['LUT1','LUT2','LUT3','LUT4','LUT5','LUT6','MUXF7','MUXF8'], area[N])]
         print('''
 `ifndef _AUTOTB
-module \$__test ;
+module __test ;
     wire [4095:0] assert_area = "%s";
 endmodule
 `endif
