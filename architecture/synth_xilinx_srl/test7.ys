@@ -1,0 +1,5 @@
+# Check that shift registers with resets are not inferred into SRLs
+design -reset; read_verilog test7a.out/test7a_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7b.out/test7b_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7c.out/test7c_syn0.v; select t:SRL* -assert-count 0
+design -reset; read_verilog test7d.out/test7d_syn0.v; select t:SRL* -assert-count 0

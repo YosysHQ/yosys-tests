@@ -1,0 +1,1 @@
+design -reset; read_verilog test20.out/test20_syn0.v; select t:FD* -assert-count 0

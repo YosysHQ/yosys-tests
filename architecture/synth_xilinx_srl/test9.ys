@@ -1,0 +1,1 @@
+read_verilog test9.out/test9_syn0.v; select t:FD* -assert-count 0

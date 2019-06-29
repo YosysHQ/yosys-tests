@@ -14,7 +14,7 @@ touch .start
 if echo "$1" | grep ".*_error"; then
 
 	expected_string=""
-    #Change checked string for check other errors
+	# Change checked string for check other errors
 	if echo "$2" | grep ".*_fully_selected"; then
 		expected_string="ERROR: This command only operates on fully selected designs!"
 	elif [ "$2" = "synth_greenpak4_invalid_part" ]; then
@@ -37,12 +37,17 @@ if echo "$1" | grep ".*_error"; then
 	fi
 else
 
-
-	yosys -ql yosys.log ../../scripts/$2.ys
-	if [ $? != 0 ] ; then
-		echo FAIL > ${1}_${2}.status
+	if [ -f ../run-test.sh ]; then
+		../run-test.sh
 		touch .stamp
 		exit 0
+	else
+		yosys -ql yosys.log ../../scripts/$2.ys
+		if [ $? != 0 ] ; then
+			echo FAIL > ${1}_${2}.status
+			touch .stamp
+			exit 0
+		fi
 	fi
 	if [ -f "../../../../../techlibs/common/simcells.v" ]; then
 		COMMON_PREFIX=../../../../../techlibs/common
