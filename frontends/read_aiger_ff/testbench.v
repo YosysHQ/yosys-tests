@@ -22,10 +22,10 @@ module testbench;
 
     top uut (
         .clk (clk ),
-        .n1 (n1 ),
-        .n2 (n2 ),
-        .n3 (n3 ),
-        .n3_inv (n3_inv )
+        .__1__ (n1 ),
+        .__2__ (n2 ),
+        .__3__ (n3 ),
+        .__3b__ (n3_inv )
     );
 
     always @(posedge clk) begin
