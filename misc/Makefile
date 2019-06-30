@@ -228,5 +228,7 @@ $(eval $(call template,fmcombine_error, fmcombine_invalid_number_of_param fmcomb
 #pmuxtree
 $(eval $(call template,pmuxtree, pmuxtree))
 
+#opt_rmdff_sat
+$(eval $(call template,opt_rmdff_sat, opt_rmdff_sat))
 
 .PHONY: all clean
