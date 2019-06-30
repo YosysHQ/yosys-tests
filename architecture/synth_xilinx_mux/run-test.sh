@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 OPTIND=1
 seed=""    # default to no seed specified
