@@ -24,4 +24,4 @@ endmodule
 module __test ;
     wire [4095:0] assert_area = "cd test20; select t:FD* -assert-count 0";
 endmodule
-`endi
+`endif

@@ -1,4 +1,5 @@
 // Check inference even when keep attribute specified
+(* top *)
 module test17d (input clk, input i, input e, output q);
 generate 
     reg a1, a2;
