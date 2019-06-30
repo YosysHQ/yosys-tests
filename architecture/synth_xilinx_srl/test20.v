@@ -1,3 +1,4 @@
+(* top *)
 module test20 #(parameter width=130, depth=130) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
 generate 
     reg [width-1:0] int [depth-1:0];
@@ -18,3 +19,9 @@ generate
     assign z = int[depth-1];
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test20; select t:FD* -assert-count 0";
+endmodule
+`endi

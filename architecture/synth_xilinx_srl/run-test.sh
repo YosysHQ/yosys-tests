@@ -22,10 +22,19 @@ wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchm
 python3 generate_lfsr.py
 python3 ../generate.py
 cp ../*.v .
-${MAKE:-make} -f ../../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx' -l ../../../../../techlibs/xilinx/cells_sim.v"
-${MAKE:-make} -f ../../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="-f 'verilog -noblackbox -icells' -p 'synth_xilinx -retime' -l ../../../../../techlibs/xilinx/cells_sim.v"
-
-cp ../*.ys .
-for ys in *.ys; do
-    yosys -q $ys
-done
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="\
+    -f 'verilog -noblackbox -icells' \
+    -p 'design -copy-to __test __test; \
+        synth_xilinx; \
+        design -copy-from __test __test; \
+        select -assert-any __test; \
+        script -select __test/w:assert_area'\
+    -l ../../../../../techlibs/xilinx/cells_sim.v"
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="\
+    -f 'verilog -noblackbox -icells' \
+    -p 'design -copy-to __test __test; \
+        synth_xilinx -retime; \
+        design -copy-from __test __test; \
+        select -assert-any __test; \
+        script -select __test/w:assert_area'\
+    -l ../../../../../techlibs/xilinx/cells_sim.v"

@@ -1,7 +1,8 @@
 // Check that non chain users block SRLs
 // (i.e. output port, in non flattened case)
 // sr_var_length_other_users_xor
-module test13c #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q, output [depth-1:0] state);
+(* top *)
+module test13d #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q, output [depth-1:0] state);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -22,3 +23,9 @@ generate
     assign state = {depth{^int[0]}};
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test13d; select t:SRL* -assert-count 0";
+endmodule
+`endif

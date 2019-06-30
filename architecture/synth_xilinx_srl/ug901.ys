@@ -1,3 +1,0 @@
-design -reset; read_verilog ug901a.out/ug901a_syn0.v; select t:SRLC32E -assert-count 1
-design -reset; read_verilog ug901b.out/ug901b_syn0.v; select t:SRLC32E -assert-count 1
-design -reset; read_verilog ug901c.out/ug901c_syn0.v; select t:SRLC32E -assert-count 1

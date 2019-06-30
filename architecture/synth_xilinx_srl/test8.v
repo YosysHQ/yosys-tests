@@ -1,5 +1,6 @@
 // Check multi-bit works
 // pos_clk_no_enable_no_init_not_inferred_N_width
+(* top *)
 module test8 #(parameter width=130, depth=130) (input clk, input [width-1:0] i, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
@@ -13,3 +14,9 @@ generate
     end
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test8; select t:FD* -assert-none";
+endmodule
+`endif

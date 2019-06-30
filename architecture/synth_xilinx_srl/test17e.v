@@ -11,3 +11,9 @@ generate
 endgenerate
 endmodule
 
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test17e; select t:SRL16E -assert-count 1; select t:* t:SRL16E %d -assert-count 0;";
+endmodule
+`endif
