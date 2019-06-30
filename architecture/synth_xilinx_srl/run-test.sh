@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 shopt -s extglob
 
 OPTIND=1
