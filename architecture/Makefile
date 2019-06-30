@@ -69,7 +69,10 @@ $(eval $(call template,synth_sf2_error,synth_sf2_fully_selected ))
 #xilinx
 $(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl))
 $(eval $(call template,synth_xilinx_error,synth_xilinx_fully_selected synth_xilinx_invalid_arch ))
+ifeq ($(ENABLE_HEAVY_TESTS),1)
+$(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
+endif
 
 #greenpak4
 $(eval $(call template,synth_greenpak4,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))

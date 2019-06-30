@@ -21,8 +21,8 @@ module testbench;
 
     top uut (
         .clk (en ),
-        //.n1 (dinA ),
-        .n1_inv (doutB )
+        //.__1__ (dinA ),
+        .__1b__ (doutB )
     );
 
     always @(posedge en) begin
