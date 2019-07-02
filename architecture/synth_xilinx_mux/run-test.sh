@@ -29,5 +29,5 @@ ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
         synth_xilinx -abc9 -widemux 5; \
         design -copy-from __test *; \
         select -assert-any __test; \
-        script -select __test/w:assert_area'\
+        script -scriptwire __test/w:assert_area'\
     -l ../../../../../techlibs/xilinx/cells_sim.v"
