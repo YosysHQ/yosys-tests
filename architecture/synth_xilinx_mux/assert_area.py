@@ -48,7 +48,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "%s";
+    wire [4095:0] assert_area = "cd; %s";
 endmodule
 `endif
 ''' % '; '.join(assert_area), file=f)
