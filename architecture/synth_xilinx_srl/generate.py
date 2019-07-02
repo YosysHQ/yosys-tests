@@ -24,7 +24,7 @@ def assert_static_area(fp, i, name):
     fp.write('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "select t:FD* -assert-count {0}; select t:SRL16E -assert-count {1}; select t:SRLC32E -assert-count {2}; cd {3}_{4}; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none";
+    wire [4095:0] assert_area = "cd; select t:FD* -assert-count {0}; select t:SRL16E -assert-count {1}; select t:SRLC32E -assert-count {2}; cd {3}_{4}; select t:FD* t:SRL16E t:SRLC32E %% %n t:* %i -assert-none";
 endmodule
 `endif
 '''.format(fd, srl16, srl32, name, i))
@@ -62,7 +62,7 @@ def assert_dynamic_area(fp, i, name):
     fp.write('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "select t:FD* -assert-count {0}; select t:SRL16E -assert-count {1}; select t:SRLC32E -assert-count {2}; select t:MUXF7 -assert-count {3}; select t:MUXF8 -assert-count {4}; select t:LUT3 -assert-count {5}; select t:LUT5 -assert-count {6}; cd {7}_{8}; select t:FD* t:SRL16E t:SRLC32E t:MUXF7 t:MUXF8 t:LUT3 t:LUT5 %% %n t:* %i -assert-none";
+    wire [4095:0] assert_area = "cd; select t:FD* -assert-count {0}; select t:SRL16E -assert-count {1}; select t:SRLC32E -assert-count {2}; select t:MUXF7 -assert-count {3}; select t:MUXF8 -assert-count {4}; select t:LUT3 -assert-count {5}; select t:LUT5 -assert-count {6}; cd {7}_{8}; select t:FD* t:SRL16E t:SRLC32E t:MUXF7 t:MUXF8 t:LUT3 t:LUT5 %% %n t:* %i -assert-none";
 endmodule
 `endif
 '''.format(fd, srl16, srl32, muxf7, muxf8, lut3, lut5, name, i))
