@@ -29,7 +29,7 @@ ${MAKE:-make} -f ../../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="\
         synth_xilinx; \
         design -copy-from __test __test; \
         select -assert-any __test; \
-        script -select __test/w:assert_area'\
+        script -scriptwire __test/w:assert_area'\
     -l ../../../../../techlibs/xilinx/cells_sim.v"
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="\
     -f 'verilog -noblackbox -icells' \
@@ -37,5 +37,5 @@ ${MAKE:-make} -f ../../../../tools/autotest.mk $seed test21*.v EXTRA_FLAGS="\
         synth_xilinx -retime; \
         design -copy-from __test __test; \
         select -assert-any __test; \
-        script -select __test/w:assert_area'\
+        script -scriptwire __test/w:assert_area'\
     -l ../../../../../techlibs/xilinx/cells_sim.v"
