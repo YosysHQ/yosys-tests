@@ -76,7 +76,7 @@ $(eval $(call template,write_simplec_error,write_simplec_no_c_model write_simple
 #write_smt2
 $(eval $(call template,write_smt2,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 $(eval $(call template,write_smt2_logic,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
-$(eval $(call template,write_smt2_mem,write_smt2 write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_mem_memtest write_smt2_memtest write_smt2_stbv_memtest))
+$(eval $(call template,write_smt2_mem,write_smt2 write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_mem_memtest write_smt2_memtest write_smt2_stbv_memtest))
 $(eval $(call template,write_smt2_fsm,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 $(eval $(call template,write_smt2_init_assert,write_smt2_init_assert))
 $(eval $(call template,write_smt2_reduce,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
