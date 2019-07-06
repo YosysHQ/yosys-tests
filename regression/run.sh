@@ -237,6 +237,13 @@ else
     	touch .stamp
     	exit 0
 	fi
+	# cases where we do not run iverilog
+	if [ "$1" = "issue_00449" ]; then
+		echo PASS > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	fi
+
 
 	iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $COMMON_PREFIX/simlib.v $iverilog_adds
 	if [ $? != 0 ] ; then
