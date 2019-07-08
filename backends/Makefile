@@ -35,7 +35,7 @@ $(eval $(call template,write_btor_mem,write_btor_mem write_btor_mem_v write_btor
 $(eval $(call template,write_btor_pmux,write_btor_pmux))
 $(eval $(call template,write_btor_and_or,write_btor_and_or))
 $(eval $(call template,write_btor_shiftx,write_btor write_btor_v write_btor_s))
-$(eval $(call template,write_btor_error, write_btor_no_top_module write_btor_unsupported_cell_type write_btor_no_driver))
+$(eval $(call template,write_btor_error, write_btor_no_top_module write_btor_unsupported_cell_type))
 
 #write_edif
 $(eval $(call template,write_edif,write_edif write_edif_top write_edif_nogndvcc write_edif_pvector_par write_edif_pvector_bra write_edif_pvector_ang write_edif_attrprop ))
