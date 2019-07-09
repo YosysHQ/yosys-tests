@@ -51,7 +51,12 @@ set -e
 ../../../../../yosys -qp "synth_xilinx -widemux 3; select -assert-count 6 t:MUXF*" mux_case_3_3.v
 ../../../../../yosys -qp "synth_xilinx -widemux 2; select -assert-count 6 t:MUXF*" mux_case_3_3.v
 
-../../../../../yosys -qp "synth_xilinx -widemux 9; select -assert-none t:MUXF*" mux_index_7_5.v
-../../../../../yosys -qp "synth_xilinx -widemux 8; select -assert-none t:MUXF*" mux_index_7_5.v
-../../../../../yosys -qp "synth_xilinx -widemux 7; select -assert-count 15 t:MUXF*" mux_index_7_5.v
-../../../../../yosys -qp "synth_xilinx -widemux 6; select -assert-count 15 t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 9; select -assert-none t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 8; select -assert-none t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 7; select -assert-count 15 t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 6; select -assert-count 15 t:MUXF*" mux_index_7_5.v
+
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 18; select -assert-none t:MUXF*" mux_if_unbal_16_8.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 17; select -assert-none t:MUXF*" mux_if_unbal_16_8.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 16; select -assert-count 24 t:MUXF*" mux_if_unbal_16_8.v
+../../../../../yosys -qp "synth_xilinx -nowidelut -widemux 15; select -assert-count 24 t:MUXF*" mux_if_unbal_16_8.v
