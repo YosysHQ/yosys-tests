@@ -7,6 +7,7 @@ synth -top top
 write_btor -v btor1.btor
 design -reset
 read_verilog -sv ../top.v
+proc_prune
 proc_init
 proc_mux
 proc_dff
@@ -51,4 +52,4 @@ write_btor -v btor10.btor
 design -reset
 read_verilog  -sv ../top_clean.v
 synth -top top
-write_verilog synth.v 
+write_verilog synth.v
