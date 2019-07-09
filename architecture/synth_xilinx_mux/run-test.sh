@@ -31,3 +31,27 @@ ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
         select -assert-any __test; \
         script -scriptwire __test/w:assert_area'\
     -l ../../../../../techlibs/xilinx/cells_sim.v"
+
+# Spot tests for -widemux thresholds
+set +e
+../../../../../yosys -qp "synth_xilinx -widemux 1" 2> /dev/null
+if [ $? -eq 0 ]; then
+    echo "Expected error"
+    exit 1
+fi
+set -e
+
+../../../../../yosys -qp "synth_xilinx -widemux 5; select -assert-none t:MUXF*" mux_if_bal_2_1.v
+../../../../../yosys -qp "synth_xilinx -widemux 4; select -assert-none t:MUXF*" mux_if_bal_2_1.v
+../../../../../yosys -qp "synth_xilinx -widemux 3; select -assert-none t:MUXF*" mux_if_bal_2_1.v
+../../../../../yosys -qp "synth_xilinx -widemux 2; select -assert-count 1 t:MUXF7" mux_if_bal_2_1.v
+
+../../../../../yosys -qp "synth_xilinx -widemux 5; select -assert-none t:MUXF*" mux_case_3_3.v
+../../../../../yosys -qp "synth_xilinx -widemux 4; select -assert-none t:MUXF*" mux_case_3_3.v
+../../../../../yosys -qp "synth_xilinx -widemux 3; select -assert-count 6 t:MUXF*" mux_case_3_3.v
+../../../../../yosys -qp "synth_xilinx -widemux 2; select -assert-count 6 t:MUXF*" mux_case_3_3.v
+
+../../../../../yosys -qp "synth_xilinx -widemux 9; select -assert-none t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -widemux 8; select -assert-none t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -widemux 7; select -assert-count 15 t:MUXF*" mux_index_7_5.v
+../../../../../yosys -qp "synth_xilinx -widemux 6; select -assert-count 15 t:MUXF*" mux_index_7_5.v
