@@ -404,6 +404,73 @@ $(eval $(call template,issue_00993,issue_00993))
 #issue_00997
 $(eval $(call template,issue_00997,issue_00997))
 
+#issue_01002
+$(eval $(call template,issue_01002,issue_01002))
+
+#issue_01009
+$(eval $(call template,issue_01009,issue_01009))
+
+#issue_01016
+$(eval $(call template,issue_01016,issue_01016))
+
+#issue_01022
+$(eval $(call template,issue_01022,issue_01022))
+
+#issue_01023
+$(eval $(call template,issue_01023,issue_01023))
+
+#issue_01033
+$(eval $(call template,issue_01033,issue_01033))
+
+#issue_01034
+$(eval $(call template,issue_01034,issue_01034))
+
+#issue_01040
+$(eval $(call template,issue_01040,issue_01040))
+
+#issue_01047
+$(eval $(call template,issue_01047,issue_01047))
+
+#issue_01063
+$(eval $(call template,issue_01063,issue_01063))
+
+#issue_01065
+$(eval $(call template,issue_01065,issue_01065))
+
+#issue_01070
+$(eval $(call template,issue_01070,issue_01070))
+
+#issue_01084
+$(eval $(call template,issue_01084,issue_01084))
+
+#issue_01091
+$(eval $(call template,issue_01091,issue_01091))
+
+#issue_01093
+$(eval $(call template,issue_01093,issue_01093))
+
+#issue_01115
+$(eval $(call template,issue_01115,issue_01115))
+
+#issue_01118
+$(eval $(call template,issue_01118,issue_01118))
+
+#issue_01128
+$(eval $(call template,issue_01128,issue_01128))
+
+#issue_01131
+$(eval $(call template,issue_01131,issue_01131))
+
+#issue_01132
+$(eval $(call template,issue_01132,issue_01132))
+
+#issue_01135
+$(eval $(call template,issue_01135,issue_01135))
+
+#issue_01144
+$(eval $(call template,issue_01144,issue_01144))
+
+
 
 
 .PHONY: all clean

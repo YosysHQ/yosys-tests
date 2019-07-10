@@ -22,7 +22,11 @@ if [ "$1" = "issue_00089" ] ||\
    [ "$1" = "issue_00603" ] ||\
    [ "$1" = "issue_00635" ] ||\
    [ "$1" = "issue_00763" ] ||\
-   [ "$1" = "issue_00814" ]; then
+   [ "$1" = "issue_00814" ] ||\
+   [ "$1" = "issue_01063" ] ||\
+   [ "$1" = "issue_01093" ] ||\
+   [ "$1" = "issue_01131" ] ||\
+   [ "$1" = "issue_01144" ]; then
 
 	expected_string="syntax error"
     #Change checked string for check other errors
@@ -38,6 +42,12 @@ if [ "$1" = "issue_00089" ] ||\
 		expected_string="Invalid nesting"
 	elif [ "$1" = "issue_00814" ]; then
 		expected_string="is implicitly declared"
+	elif [ "$1" = "issue_01063" ]; then
+		expected_string="Gate cell u_mid8 not found in module top."
+	elif [ "$1" = "issue_01093" ]; then
+		expected_string="ERROR: Design has no top module, use the 'hierarchy' command to specify one."
+	elif [ "$1" = "issue_01131" ]; then
+		expected_string="ERROR: Value conversion failed"
 	fi
 
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
@@ -94,7 +104,25 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_00982" ] ||\
 	 [ "$1" = "issue_00987" ] ||\
 	 [ "$1" = "issue_00993" ] ||\
-	 [ "$1" = "issue_00997" ]; then
+	 [ "$1" = "issue_00997" ] ||\
+	 [ "$1" = "issue_01002" ] ||\
+	 [ "$1" = "issue_01009" ] ||\
+	 [ "$1" = "issue_01016" ] ||\
+	 [ "$1" = "issue_01022" ] ||\
+	 [ "$1" = "issue_01023" ] ||\
+	 [ "$1" = "issue_01033" ] ||\
+	 [ "$1" = "issue_01034" ] ||\
+	 [ "$1" = "issue_01040" ] ||\
+	 [ "$1" = "issue_01047" ] ||\
+	 [ "$1" = "issue_01065" ] ||\
+	 [ "$1" = "issue_01070" ] ||\
+	 [ "$1" = "issue_01084" ] ||\
+	 [ "$1" = "issue_01091" ] ||\
+	 [ "$1" = "issue_01115" ] ||\
+	 [ "$1" = "issue_01118" ] ||\
+	 [ "$1" = "issue_01128" ] ||\
+	 [ "$1" = "issue_01132" ] ||\
+	 [ "$1" = "issue_01135" ]; then
 
 	expected_string=""
 	expected="1"
@@ -182,6 +210,45 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="_DFF_P_                        1"
 	elif [ "$1" = "issue_00997" ]; then
 		expected_string="h0"
+	elif [ "$1" = "issue_01002" ]; then
+		expected_string="Estimated number of LCs:         95"
+	elif [ "$1" = "issue_01009" ]; then
+		expected_string="attribute \\\p_hello"
+	elif [ "$1" = "issue_01016" ]; then
+		expected_string="cell \$mux \$ternary\$../top.v:5"
+	elif [ "$1" = "issue_01022" ]; then
+		expected_string="connect \\\b 32'11111111111111111111111111111111"
+	elif [ "$1" = "issue_01023" ]; then
+		expected_string="Continuing TECHMAP pass"
+	elif [ "$1" = "issue_01033" ]; then
+		expected_string="RAM64X1D         "
+		expected="0"
+	elif [ "$1" = "issue_01034" ]; then
+		expected_string="FDRE         "
+		expected="0"
+	elif [ "$1" = "issue_01040" ]; then
+		expected_string=".subckt dut_sub a\[2\]=a\[2\] a\[3\]=a\[3\] a\[4\]=a\[4\] a\[5\]=a\[5\] a\[6\]=a\[6\]"
+	elif [ "$1" = "issue_01047" ]; then
+		expected_string="assign y = ~(w\[0\] | w\[1\]);"
+	elif [ "$1" = "issue_01065" ]; then
+		expected_string="Driver-driver conflict for"
+		expected="0"
+	elif [ "$1" = "issue_01070" ]; then
+		expected_string="cell \$_DFF_N_"
+	elif [ "$1" = "issue_01084" ]; then
+		expected_string="Successfully finished Verilog frontend"
+	elif [ "$1" = "issue_01091" ]; then
+		expected_string="\$_MUX4_                         1"
+	elif [ "$1" = "issue_01115" ]; then
+		expected_string="connect \\\o 33'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	elif [ "$1" = "issue_01118" ]; then
+		expected_string="connect \\\o \[0\] 1'0"
+	elif [ "$1" = "issue_01128" ]; then
+		expected_string="\$_BUF_                          1"
+	elif [ "$1" = "issue_01132" ]; then
+		expected_string="\$_MUX4_                         1"
+	elif [ "$1" = "issue_01135" ]; then
+		expected_string="\$pmux                           1"
 	fi
 
 	yosys -ql yosys.log ../../scripts/$2.ys;

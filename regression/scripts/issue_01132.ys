@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc; opt; wreduce; simplemap; muxcover -mux4=150
+tee -o result.log stat
