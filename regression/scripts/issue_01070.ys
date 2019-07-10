@@ -1,0 +1,8 @@
+read_verilog ../top.v
+proc
+dff2dffe
+simplemap
+opt
+opt_rmdff
+stat
+tee -o result.log dump
