@@ -407,9 +407,6 @@ $(eval $(call template,issue_00997,issue_00997))
 #issue_01002
 $(eval $(call template,issue_01002,issue_01002))
 
-#issue_01009
-$(eval $(call template,issue_01009,issue_01009))
-
 #issue_01016
 $(eval $(call template,issue_01016,issue_01016))
 
