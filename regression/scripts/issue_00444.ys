@@ -1,5 +1,6 @@
 read_verilog -formal ../top.v
 hierarchy
+proc_prune
 proc_init
 proc_mux
 proc_dff
