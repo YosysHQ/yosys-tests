@@ -294,7 +294,7 @@ else
 		 [ "$1" = "issue_00589" ] ||\
 		 [ "$1" = "issue_00628" ]; then
 		iverilog_adds="$TECHLIBS_PREFIX/ice40/cells_sim.v"
-	elif [ "$1" = "pr_00896" ]; then
+	elif [ "$1" = "issue_00896" ]; then
 		iverilog_adds="$TECHLIBS_PREFIX/ecp5/cells_sim.v"
 	fi
 
