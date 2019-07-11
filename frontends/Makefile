@@ -27,6 +27,7 @@ $(eval $(call template,read_blif_mux,read_blif read_blif_attr read_blif_buf read
 $(eval $(call template,read_blif_pmux,read_blif read_blif_attr read_blif_buf read_blif_cname read_blif_conn read_blif_param read_blif_sop read_blif_wideports))
 $(eval $(call template,read_blif_tri,read_blif read_blif_attr read_blif_buf read_blif_conn read_blif_param read_blif_sop read_blif_wideports))
 $(eval $(call template,read_blif_eblif,read_blif_eblif))
+$(eval $(call template,read_blif_error, read_blif_syntax_error read_blif_duplicate_defenition ))
 
 #read_ilang
 $(eval $(call template,read_ilang,read_ilang read_ilang_selected))
@@ -34,6 +35,7 @@ $(eval $(call template,read_ilang_fsm,read_ilang read_ilang_selected))
 $(eval $(call template,read_ilang_mem,read_ilang read_ilang_selected))
 $(eval $(call template,read_ilang_mux,read_ilang read_ilang_selected))
 $(eval $(call template,read_ilang_tri,read_ilang read_ilang_selected))
+$(eval $(call template,read_ilang_error,read_ilang_parse_error))
 
 #read_json
 $(eval $(call template,read_json,read_json))
@@ -42,6 +44,7 @@ $(eval $(call template,read_json_logic,read_json))
 $(eval $(call template,read_json_mem,read_json_mem))
 $(eval $(call template,read_json_mux,read_json))
 $(eval $(call template,read_json_tri,read_json))
+$(eval $(call template,read_json_error, read_json_nonstring_key read_json_nonarray_bits_attr read_json_unexpected_eof read_json_invalid_direction read_json_no_bits read_json_no_direction read_json_unexpected_char ))
 
 #read_liberty  read_liberty_lib
 $(eval $(call template,read_liberty,read_liberty read_liberty_nooverwrite read_liberty_ignore_miss_func read_liberty_ignore_miss_dir read_liberty_ignore_miss_data_latch read_liberty_setattr ))
@@ -55,6 +58,7 @@ $(eval $(call template,read_liberty_latch,read_liberty read_liberty_nooverwrite 
 $(eval $(call template,read_liberty_latch_n,read_liberty read_liberty_nooverwrite read_liberty_ignore_miss_func read_liberty_ignore_miss_dir read_liberty_ignore_miss_data_latch read_liberty_setattr ))
 $(eval $(call template,read_liberty_diff_inv,read_liberty read_liberty_nooverwrite read_liberty_ignore_miss_func read_liberty_ignore_miss_dir read_liberty_ignore_miss_data_latch read_liberty_setattr ))
 $(eval $(call template,read_liberty_tri,read_liberty read_liberty_nooverwrite read_liberty_ignore_miss_func read_liberty_ignore_miss_dir read_liberty_ignore_miss_data_latch read_liberty_setattr ))
+$(eval $(call template,read_liberty_error, read_liberty_invalid_bus_type read_liberty_unsupp_type_for_bus read_liberty_bus_interface_only_in_lib_mode read_liberty_latch_has_no_data_in read_liberty_miss_func_on_output read_liberty_ff_has_no_next_stage_attr read_liberty_parse_error_in_function read_liberty_cant_resolve_wire_name read_liberty_missing_direction read_liberty_cant_open_input_file read_liberty_redefenition_of_module ))
 
 #read_aiger
 $(eval $(call template,read_aiger,read_aiger read_aiger_proc read_aiger_ascii read_aiger_module read_aiger_clk read_aiger_clk_module ))
@@ -62,6 +66,7 @@ $(eval $(call template,read_aiger_latch,read_aiger_aig))
 $(eval $(call template,read_aiger_logic,read_aiger_aig))
 $(eval $(call template,read_aiger_ff,read_aiger_aig))
 $(eval $(call template,read_aiger_mult,read_aiger_aig))
+$(eval $(call template,read_aiger_error, read_aiger_cant_interpret_first_char read_aiger_unsup_aiger_file read_aiger_invalid_aiger_header read_aiger_cant_interpret_as_input read_aiger_cant_interpret_as_and read_aiger_bad_state_property read_aiger_invalid_reset_literal read_aiger_duplicate_definition ))
 
 #read
 # read_vhdl87 read_vhdl93 read_vhdl2k read_vhdl2008 read_vhdl - ERROR: This version of Yosys is built without Verific support.
@@ -72,9 +77,11 @@ $(eval $(call template,read_verilog,read_verilog read_verilog_assert_assumes rea
 
 #verilog_defaults
 $(eval $(call template,verilog_defaults,verilog_defaults verilog_defaults_push verilog_defaults_pop verilog_defaults_clear))
+$(eval $(call template,verilog_defaults_error,verilog_defaults_missing_arg verilog_defaults_extra_arg))
 
 #verilog_defines
 $(eval $(call template,verilog_defines,verilog_defines verilog_defines_val verilog_defines_u verilog_defines_d verilog_defines_u_val))
+$(eval $(call template,verilog_defines_error,verilog_defines_extra_arg))
 
 #verilog_lexer
 $(eval $(call template,verilog_lexer_specify_specparam,verilog_lexer))

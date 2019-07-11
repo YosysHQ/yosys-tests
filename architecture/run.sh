@@ -2,7 +2,6 @@
 
 set -x
 test -d $1
-test -f scripts/$2.ys
 
 rm -rf $1/work_$2
 mkdir $1/work_$2
@@ -25,7 +24,6 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: Invalid Xilinx -family setting: "
 	fi
 
-
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
 		echo FAIL > ${1}_${2}.status
 	else
@@ -41,10 +39,13 @@ else
 		../run-test.sh
 		if [ $? != 0 ] ; then
 			echo FAIL > ${1}_${2}.status
+		else
+			echo PASS > ${1}_${2}.status
 		fi
 		touch .stamp
-		exit 0
+		exit
 	else
+		test -f scripts/$2.ys
 		yosys -ql yosys.log ../../scripts/$2.ys
 		if [ $? != 0 ] ; then
 			echo FAIL > ${1}_${2}.status

@@ -1,0 +1,3 @@
+read -formal ../top.v
+synth
+write_verilog -noattr result.log

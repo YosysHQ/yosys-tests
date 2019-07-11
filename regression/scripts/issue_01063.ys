@@ -1,0 +1,3 @@
+read -formal ../top.v
+proc
+fmcombine top u_mid1 u_mid8
