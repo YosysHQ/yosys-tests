@@ -1,5 +1,6 @@
 // Check inference even when keep attribute specified
-module test17d (input clk, input i, input e, output q);
+(* top *)
+module test17e (input clk, input i, input e, output q);
 generate 
     reg a1, a2;
     (* blah *) reg a3;
@@ -11,3 +12,9 @@ generate
 endgenerate
 endmodule
 
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test17e; select t:SRL16E -assert-count 1; select t:* t:SRL16E %d -assert-count 0;";
+endmodule
+`endif

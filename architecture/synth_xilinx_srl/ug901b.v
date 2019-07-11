@@ -5,6 +5,7 @@
 // Active high clock enable
 // For-loop based template
 // File: shift_registers_1.v
+(* top *)
 module shift_registers_1 (clk, clken, SI, SO);
 parameter WIDTH = 32;
 input clk, clken, SI;
@@ -23,3 +24,8 @@ end
 assign SO = shreg[WIDTH-1];
 endmodule
 
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd shift_registers_1; select t:SRLC32E -assert-count 1; select t:SRLC32E %% %n t:* %i -assert-none";
+endmodule
+`endif

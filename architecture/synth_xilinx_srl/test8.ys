@@ -1,2 +1,0 @@
-# Check that wide shift registers are not a problem
-read_verilog test8.out/test8_syn0.v; select t:FD* -assert-count 0

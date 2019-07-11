@@ -3,6 +3,7 @@
 // 32-bit dynamic shift register.
 // Download:
 // File: dynamic_shift_registers_1.v
+(* top *)
 module dynamic_shift_register_1 (CLK, CE, SEL, SI, DO);
 parameter SELWIDTH = 5;
 input CLK, CE, SI;
@@ -17,3 +18,9 @@ always @(posedge CLK)
  data <= {data[DATAWIDTH-2:0], SI};
  end
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd dynamic_shift_register_1; select t:SRLC32E -assert-count 1; select t:SRLC32E %% %n t:* %i -assert-none";
+endmodule
+`endif
