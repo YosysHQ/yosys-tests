@@ -5,6 +5,7 @@
 // Active high clock enable
 // Concatenation-based template
 // File: shift_registers_0.v
+(* top *)
 module shift_registers_0 (clk, clken, SI, SO);
 parameter WIDTH = 32;
 input clk, clken, SI;
@@ -17,3 +18,9 @@ begin
 end
 assign SO = shreg[WIDTH-1];
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd shift_registers_0; select t:SRLC32E -assert-count 1; select t:SRLC32E %% %n t:* %i -assert-none";
+endmodule
+`endif

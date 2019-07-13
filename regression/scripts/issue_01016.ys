@@ -1,0 +1,5 @@
+read_verilog -sv ../top.v
+proc
+wreduce -keepdc
+tee -a result.log dump
+

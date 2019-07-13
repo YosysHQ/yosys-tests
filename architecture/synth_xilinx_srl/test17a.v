@@ -1,4 +1,5 @@
 // Check inference even when not in vector
+(* top *)
 module test17a (input clk, input i, output q);
 generate 
     reg a1, a2, a3, a4, a5, a6, a7, a8;
@@ -13,3 +14,9 @@ generate
     assign q = a8;
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test17a; select t:SRL16E -assert-count 1; select t:* t:SRL16E %d -assert-count 0;";
+endmodule
+`endif

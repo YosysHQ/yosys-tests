@@ -35,7 +35,7 @@ $(eval $(call template,write_btor_mem,write_btor_mem write_btor_mem_v write_btor
 $(eval $(call template,write_btor_pmux,write_btor_pmux))
 $(eval $(call template,write_btor_and_or,write_btor_and_or))
 $(eval $(call template,write_btor_shiftx,write_btor write_btor_v write_btor_s))
-$(eval $(call template,write_btor_error, write_btor_no_top_module write_btor_unsupported_cell_type write_btor_no_driver))
+$(eval $(call template,write_btor_error, write_btor_no_top_module write_btor_unsupported_cell_type))
 
 #write_edif
 $(eval $(call template,write_edif,write_edif write_edif_top write_edif_nogndvcc write_edif_pvector_par write_edif_pvector_bra write_edif_pvector_ang write_edif_attrprop ))
@@ -76,7 +76,7 @@ $(eval $(call template,write_simplec_error,write_simplec_no_c_model write_simple
 #write_smt2
 $(eval $(call template,write_smt2,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 $(eval $(call template,write_smt2_logic,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
-$(eval $(call template,write_smt2_mem,write_smt2 write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_mem_memtest write_smt2_memtest write_smt2_stbv_memtest))
+$(eval $(call template,write_smt2_mem,write_smt2 write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_mem_memtest write_smt2_memtest write_smt2_stbv_memtest))
 $(eval $(call template,write_smt2_fsm,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))
 $(eval $(call template,write_smt2_init_assert,write_smt2_init_assert))
 $(eval $(call template,write_smt2_reduce,write_smt2 write_smt2_synth write_smt2_verbose write_smt2_stbv write_smt2_stdt write_smt2_nomem write_smt2_wires write_smt2_tpl write_smt2_bv write_smt2_mem write_smt2_nobv))

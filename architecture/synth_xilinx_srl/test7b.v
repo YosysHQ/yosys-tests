@@ -1,5 +1,6 @@
 // Check that use of resets block shreg
 // neg_clk_no_enable_with_init_with_inferred_with_reset
+(* top *)
 module test7b #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input r, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
@@ -20,3 +21,9 @@ generate
     end
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test7b; select t:SRL* -assert-none";
+endmodule
+`endif

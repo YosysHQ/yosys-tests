@@ -1,3 +1,4 @@
+(* top *)
 module test21a #(parameter width=130, depth=4) (input clk, input [width-1:0] i, output q);
     genvar d;
     wire [depth:0] int;
@@ -9,3 +10,9 @@ module test21a #(parameter width=130, depth=4) (input clk, input [width-1:0] i, 
     endgenerate 
     assign q = int[depth];
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test21a; select t:SRL* -assert-count 0; select t:FD* -assert-min 20";
+endmodule
+`endif

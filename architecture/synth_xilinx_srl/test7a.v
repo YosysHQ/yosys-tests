@@ -1,5 +1,6 @@
 // Check that use of resets block shreg
 // pos_clk_no_enable_no_init_not_inferred_with_reset
+(* top *)
 module test7a #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input r, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
@@ -13,3 +14,9 @@ generate
     end
 endgenerate
 endmodule
+
+`ifndef _AUTOTB
+module __test ;
+    wire [4095:0] assert_area = "cd test7a; select t:SRL* -assert-none";
+endmodule
+`endif

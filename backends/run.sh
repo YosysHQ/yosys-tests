@@ -33,8 +33,6 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: No top module found."
 	elif [ "$2" = "write_btor_unsupported_cell_type" ]; then
 		expected_string="ERROR: Unsupported cell type: "
-	elif [ "$2" = "write_btor_no_driver" ]; then
-		expected_string="ERROR: No driver for signal bit "
 	elif [ "$2" = "write_edif_cyclic_dependency" ]; then
 		expected_string="ERROR: Cyclic dependency between modules found! Cycle includes module "
 	elif [ "$2" = "write_edif_constant_nodes" ]; then
