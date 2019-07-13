@@ -40,6 +40,22 @@ case "$2" in
 		yosys -ql synthlog.txt -p "synth_ice40 -abc9 -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
+	ecp5)
+		yosys -ql synthlog.txt -p "synth_ecp5 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v"
+		;;
+	ecp5_abc9)
+		yosys -ql synthlog.txt -p "synth_ecp5 -abc9 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v"
+		;;
+	xilinx)
+		yosys -ql synthlog.txt -p "synth_xilinx -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
+		;;
+	xilinx_abc9)
+		yosys -ql synthlog.txt -p "synth_xilinx -abc9 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
+		;;
 	*)
 		exit 1
 		;;
