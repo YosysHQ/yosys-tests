@@ -36,6 +36,10 @@ case "$2" in
 		yosys -ql synthlog.txt -p "synth_ice40 -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
+	ice40_abc9)
+		yosys -ql synthlog.txt -p "synth_ice40 -abc9 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
+		;;
 	*)
 		exit 1
 		;;
@@ -48,19 +52,20 @@ $iverilog_cmd
 if [ $? != 0 ] ; then
     echo FAIL > ${1}_${2}.status
     touch .stamp
-    exit 0
+	exit 1
 fi
 
 vvp -N sim | pv -l > output.txt
 if [ $? != 0 ] ; then
     echo FAIL > ${1}_${2}.status
     touch .stamp
-    exit 0
+	exit 1
 fi
 
 if [ "$2" = "falsify" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
 		echo FAIL > ../../${1}_${2}.status
+		exit 1
 	else
 		echo PASS > ../../${1}_${2}.status
 	fi
@@ -69,6 +74,7 @@ elif [ "$2" != "sim" ]; then
 		echo PASS > ../../${1}_${2}.status
 	else
 		echo FAIL > ../../${1}_${2}.status
+		exit 1
 	fi
 elif [ "$2" == "sim" ]; then
 	echo PASS > ../../${1}_${2}.status
