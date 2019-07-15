@@ -72,6 +72,7 @@ $(eval $(call template,synth_xilinx_error,synth_xilinx_fully_selected synth_xili
 ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
+$(eval $(call template,synth_xilinx_dsp,synth_xilinx_dsp))
 endif
 
 #greenpak4
