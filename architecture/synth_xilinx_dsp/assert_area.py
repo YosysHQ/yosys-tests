@@ -4,7 +4,7 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'mul_(\d+)_(\d+)\.v')
+re_mux = re.compile(r'mul_(\d+)_(\d+)_A?B?P?_A?B?P?\.v')
 
 for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
@@ -18,7 +18,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd; select t:DSP48E1 -assert-count 1";
+    wire [4095:0] assert_area = "cd %s; select t:DSP48E1 -assert-count 1; select t:* t:DSP48E1 %%d -assert-none";
 endmodule
 `endif
-''', file=f)
+''' % os.path.splitext(fn)[0], file=f)
