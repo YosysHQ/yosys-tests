@@ -32,6 +32,6 @@ module testbench;
         patt_B <=  in[7] | in[1:2];
 end
 	
-	assert_comb out_test(.A(patt_B), .B(B));
+	assert_tri out_test(.A(patt_B), .B(B), .en(1'b1));
 
 endmodule
