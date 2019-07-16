@@ -31,7 +31,7 @@ module testbench;
     always @(negedge in[0])
         patt_carry_out <=  in[1] + patt_out;
 
-	assert_comb out_test(.A(patt_out), .B(out));
-	assert_comb carry_test(.A(patt_carry_out), .B(carryout));
+	assert_tri out_test(.A(patt_out), .B(out), .en(1'b1));
+	assert_tri carry_test(.A(patt_carry_out), .B(carryout), .en(1'b1));
 
 endmodule
