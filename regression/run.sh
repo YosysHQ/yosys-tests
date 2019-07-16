@@ -282,7 +282,7 @@ else
 	iverilog_adds=""
 	#Additional sources for iverilog simulation
 	if [ "$1" = "issue_00084" ]; then
-		iverilog_adds="$TECHLIBS_PREFIX/xilinx/brams_bb.v"
+		iverilog_adds="$TECHLIBS_PREFIX/xilinx/xc7_brams_bb.v"
 	elif [ "$1" = "issue_00160" ] ||\
 		 [ "$1" = "issue_00182" ] ||\
 		 [ "$1" = "issue_00183" ] ||\
