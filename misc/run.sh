@@ -17,6 +17,7 @@ touch .start
 if echo "$1" | grep ".*_error"; then
 
 	expected_string=""
+	expect_fail=0
     #Change checked string for check other errors
 	if [ "$2" = "abc_constr_no_liberty" ]; then
 		expected_string="ERROR: Got -constr but no -liberty!"
@@ -217,14 +218,16 @@ if echo "$1" | grep ".*_error"; then
  		expected_string="ERROR: Called with -falsify and found a model"
 	elif [ "$2" = "sat_verify_fail" ]; then
  		expected_string="ERROR: Called with -verify and proof did fail!"
-	elif [ "$2" = "sat_all_with_tempinduct" ] || \
-		 [ "$2" = "sat_maxundef_with_tempinduct" ] || \
+	elif [ "$2" = "sat_maxundef_with_tempinduct" ] || \
 		 [ "$2" = "sat_max_with_tempinduct" ] || \
 		 [ "$2" = "sat_max_max_undef_with_tempinduct" ] || \
-		 [ "$2" = "sat_max_all_with_tempinduct" ] || \
 		 [ "$2" = "sat_max_maxundef_with_tempinduct" ] || \
 		 [ "$2" = "sat_max_maxundef_all_with_tempinduct" ]; then
  		expected_string="ERROR: The options -max, -all, and -max_undef are not supported for temporal induction proofs!"
+	elif [ "$2" = "sat_all_with_tempinduct" ] || \
+		 [ "$2" = "sat_max_all_with_tempinduct" ]; then
+		expect_fail=1
+ 		expected_string="SAT temporal induction proof finished - model found for base case: FAIL!"
 	elif [ "$2" = "sat_maxsteps_only_for_tempinduct" ]; then
  		expected_string="ERROR: The options -maxsteps is only supported for temporal induction proofs!"
 	elif [ "$2" = "sat_si_def_zero" ] || \
@@ -378,13 +381,25 @@ if echo "$1" | grep ".*_error"; then
 	fi
 
 
-	if yosys -ql yosys.log ../../scripts/$2.ys; then
-		echo FAIL > ${1}_${2}.status
+	if   [ "$expect_fail" = "0" ]; then
+		if yosys -ql yosys.log ../../scripts/$2.ys; then
+			echo FAIL > ${1}_${2}.status
+		else
+			if  grep "$expected_string" yosys.log && [ "$expected_string" != "" ]; then
+				echo PASS > ${1}_${2}.status
+			else
+				echo FAIL > ${1}_${2}.status
+			fi
+		fi
 	else
-		if  grep "$expected_string" yosys.log && [ "$expected_string" != "" ]; then
+		if yosys -ql yosys.log ../../scripts/$2.ys; then
 			echo PASS > ${1}_${2}.status
 		else
-			echo FAIL > ${1}_${2}.status
+			if  grep "$expected_string" yosys.log && [ "$expected_string" != "" ]; then
+				echo FAIL > ${1}_${2}.status
+			else
+				echo PASS > ${1}_${2}.status
+			fi
 		fi
 	fi
 else
