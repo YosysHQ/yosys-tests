@@ -66,22 +66,20 @@ for fn in $SIM; do
 done
 $iverilog_cmd
 if [ $? != 0 ] ; then
-    echo FAIL > ${1}_${2}.status
-    touch .stamp
-	exit 1
+	echo FAIL > ${1}_${2}.status
+	touch .stamp
+	exit 0
 fi
 
 vvp -N sim $PLUSARGS | pv -l > output.txt
 if [ $? != 0 ] ; then
     echo FAIL > ${1}_${2}.status
     touch .stamp
-	exit 1
 fi
 
 if [ "$2" = "falsify" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
 		echo FAIL > ../../${1}_${2}.status
-		exit 1
 	else
 		echo PASS > ../../${1}_${2}.status
 	fi
@@ -90,7 +88,6 @@ elif [ "$2" != "sim" ]; then
 		echo PASS > ../../${1}_${2}.status
 	else
 		echo FAIL > ../../${1}_${2}.status
-		exit 1
 	fi
 elif [ "$2" == "sim" ]; then
 	echo PASS > ../../${1}_${2}.status
