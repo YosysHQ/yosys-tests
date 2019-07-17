@@ -6,41 +6,42 @@ module top
 
  output reg A,
  output reg cout,
- output reg B,C
+ output X
  );
 
- reg ASSERT = 1;
- (* allconst *) reg foo;
- (* allseq *) reg too;
-
+ reg ASSERT = 1'bX;
+ (* anyconst *) reg foo;
+ (* anyseq *) reg too;
 
 
 
  initial begin
     begin
-        A = 0;
-        cout = 0;
+        A = 1'bX;
+        cout = 1'bZ;
     end
  end
 
 `ifndef BUG
 always @(posedge x) begin
     if ($initstate)
-        A <= 0;
+        A <= 1'bX;
     A <=  y + cin + too;
     assume(too);
     assume(s_eventually too);
 end
-always @(posedge x) begin
+always @(negedge x) begin
     if ($initstate)
-        cout <= 0;
+        cout <= 1'bZ;
         cout <=  y + A + foo;
     assert(ASSERT);
     assert(s_eventually ASSERT);
 end
-assign {B,C} =  {cout,A} << 1;
+
+assign X = 1'bX;
 `else
 assign {cout,A} =  cin - y * x;
 `endif
 
 endmodule
+
