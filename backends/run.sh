@@ -23,6 +23,10 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: Running AIGER back-end in -miter mode, but design contains \$assert, \$assume, \$live and/or \$fair cells!"
 	elif [ "$2" = "write_aiger_unsupported_cell_type" ]; then
 		expected_string="ERROR: Unsupported cell type: "
+	elif [ "$2" = "write_xaiger_cant_find_top_module" ]; then
+		expected_string="ERROR: Can't find top module in current design!"
+	elif [ "$2" = "write_xaiger_cant_open_file" ]; then
+		expected_string="ERROR: Can't open file "
 	elif [ "$2" = "write_blif_unmapped_mem" ]; then
 		expected_string="ERROR: Found unmapped memories in module "
 	elif [ "$2" = "write_blif_cant_find_top_module" ]; then
@@ -33,6 +37,8 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: No top module found."
 	elif [ "$2" = "write_btor_unsupported_cell_type" ]; then
 		expected_string="ERROR: Unsupported cell type: "
+	elif [ "$2" = "write_btor_no_driver" ]; then
+		expected_string="ERROR: No driver for signal bit "
 	elif [ "$2" = "write_edif_cyclic_dependency" ]; then
 		expected_string="ERROR: Cyclic dependency between modules found! Cycle includes module "
 	elif [ "$2" = "write_edif_constant_nodes" ]; then
