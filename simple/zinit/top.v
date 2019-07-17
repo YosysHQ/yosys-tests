@@ -65,7 +65,7 @@ endmodule
 module ndffnsnr
     ( input d, clk, pre, clr, output reg q );
     initial begin
-      q = 1;
+      q = 1'bx;
     end
 	always @( negedge clk, negedge pre, negedge clr )
 		if ( !clr )

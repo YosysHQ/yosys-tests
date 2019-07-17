@@ -197,8 +197,6 @@ else
 			elif [ "$1" = "tribuf_logic" ]; then
 				expected_string="cell \$tribuf"
 				expected="0"
-			elif [ "$1" = "zinit" ]; then
-				expected_string="cell \$_NOT_ \$auto\$zinit"
 			fi
 			if test -f "result.log"; then
 				if grep "$expected_string" result.log; then
