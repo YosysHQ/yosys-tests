@@ -4,13 +4,15 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'mul_(\d+)_(\d+)_A?B?P?_A?B?P?\.v')
+re_mux = re.compile(r'mul_(\d+)(s?)_(\d+)(s?)_A?B?P?_A?B?P?\.v')
 
 for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
     if not m: continue
 
-    A,B = map(int, m.group(1,2))
+    A,B = map(int, m.group(1,3))
+    if not m.group(2): A += 1
+    if not m.group(4): B += 1
 
     bn,_ = os.path.splitext(fn)
 
