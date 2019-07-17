@@ -25,6 +25,7 @@ clean::
 endef
 
 $(eval $(call template,navre,cmos ice40 ice40_abc9 ecp5 ecp5_abc9 xilinx xilinx_abc9))
+ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,picorv32,cmos ice40 ice40_abc9 ecp5 ecp5_abc9 xilinx xilinx_abc9))
-
+endif
 .PHONY: all clean
