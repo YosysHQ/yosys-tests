@@ -92,6 +92,7 @@ $(eval $(call template,aigmap,aigmap aigmap_nand))
 
 #memory_memx, memory_nordff(75-101 not covered), memory_unpack(91-108 not covered)
 $(eval $(call template,memory,memory memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
+$(eval $(call template,memory_single_port,memory memory_memx memory_nordff memory_unpack memory_nomap memory_nordff_opt memory_memx_opt memory_bram_opt memory_share))
 $(eval $(call template_error,memory_bram_error, memory_bram_syntax_error_in_rules memory_bram_cant_open_rules_file ))
 
 #uniquify

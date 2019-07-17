@@ -8,14 +8,14 @@ module top
  output reg cout,
  output reg B,C
  );
- 
- reg ASSERT = 1;
- (* anyconst *) reg foo;
- (* anyseq *) reg too;
- 
- 
 
- 
+ reg ASSERT = 1;
+ (* allconst *) reg foo;
+ (* allseq *) reg too;
+
+
+
+
  initial begin
     begin
         A = 0;
@@ -25,14 +25,14 @@ module top
 
 `ifndef BUG
 always @(posedge x) begin
-    if ($initstate) 
+    if ($initstate)
         A <= 0;
     A <=  y + cin + too;
-    assume(too);    
+    assume(too);
     assume(s_eventually too);
 end
 always @(posedge x) begin
-    if ($initstate) 
+    if ($initstate)
         cout <= 0;
         cout <=  y + A + foo;
     assert(ASSERT);

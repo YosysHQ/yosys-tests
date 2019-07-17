@@ -175,7 +175,8 @@ else
 			elif [ "$1" = "macc" ]; then
 				expected_string="cell \$macc"
 				expected="0"
-			elif [ "$1" = "memory" ]; then
+			elif [ "$1" = "memory" ] ||
+				[ "$1" = "memory_single_port" ]; then
 				expected_string="cell \$mem "
 				expected="0"
 			elif [ "$1" = "muxcover" ] ||\

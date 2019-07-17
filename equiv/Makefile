@@ -59,7 +59,7 @@ $(eval $(call template,equiv_add,equiv_add equiv_add_try ))
 $(eval $(call template,equiv_add_error,equiv_add_module_context ))
 
 #equiv_opt
-$(eval $(call template,equiv_opt,equiv_opt equiv_opt_run equiv_opt_map))
+$(eval $(call template,equiv_opt,equiv_opt equiv_opt_run equiv_opt_map equiv_opt_undef))
 $(eval $(call template,equiv_opt_error,equiv_opt_unknown_option equiv_opt_no_opt equiv_opt_fully_selected_des))
 
 .PHONY: all clean
