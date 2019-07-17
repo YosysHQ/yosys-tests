@@ -231,4 +231,16 @@ $(eval $(call template,pmuxtree, pmuxtree))
 #opt_rmdff_sat
 $(eval $(call template,opt_rmdff_sat, opt_rmdff_sat))
 
+#wbflip
+$(eval $(call template,wbflip, wbflip wbflip_top))
+
+#pmux2shiftx
+$(eval $(call template,pmux2shiftx, pmux2shiftx_norange pmux2shiftx_onehot_shiftx pmux2shiftx_onehot_pmux pmux2shiftx_onehot_ignore pmux2shiftx_min_choices_0 pmux2shiftx_min_choices_3000 pmux2shiftx_min_dens_3000 pmux2shiftx_min_dens_0 pmux2shiftx_vv pmux2shiftx_v pmux2shiftx_top pmux2shiftx ))
+$(eval $(call template,pmux2shiftx_2, pmux2shiftx_norange pmux2shiftx_onehot_shiftx pmux2shiftx_onehot_pmux pmux2shiftx_onehot_ignore pmux2shiftx_min_choices_0 pmux2shiftx_min_choices_3000 pmux2shiftx_min_dens_3000 pmux2shiftx_min_dens_0 pmux2shiftx_vv pmux2shiftx_v pmux2shiftx_top pmux2shiftx ))
+$(eval $(call template,pmux2shiftx_fsm, pmux2shiftx_norange pmux2shiftx_onehot_shiftx pmux2shiftx_onehot_pmux pmux2shiftx_onehot_ignore pmux2shiftx_min_choices_0 pmux2shiftx_min_choices_3000 pmux2shiftx_min_dens_3000 pmux2shiftx_min_dens_0 pmux2shiftx_vv pmux2shiftx_v pmux2shiftx_top pmux2shiftx ))
+
+#onehot
+$(eval $(call template,onehot, onehot onehot_v onehot_vv ))
+
+
 .PHONY: all clean

@@ -514,6 +514,12 @@ else
 	elif [ "$2" = "pmuxtree" ]; then
 		expected_string="cell \$pmux"
 		expected="0"
+	elif [ "$1" = "pmux2shiftx" ]; then
+		if [ "$2" = "pmux2shiftx_min_choices_3000" ] || \
+		   [ "$2" = "pmux2shiftx_min_dens_3000" ]; then
+		   expected="0"
+		fi
+		expected_string="cell \$shiftx"
 	elif [ "$1" = "qwp" ]; then
 		expected_string="attribute \\\qwp_position"
 	elif [ "$2" = "rename" ]; then
