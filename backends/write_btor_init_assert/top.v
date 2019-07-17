@@ -29,8 +29,8 @@ always @(posedge x) begin
     assume(too);    
     assume(s_eventually too);
 end
-always @(negedge x) begin
-    if ($initstate) 
+always @(posedge x) begin
+    if ($initstate)
         cout <= 0;
         cout <=  y + A + foo;
     assert(ASSERT);
