@@ -242,5 +242,11 @@ $(eval $(call template,pmux2shiftx_fsm, pmux2shiftx_norange pmux2shiftx_onehot_s
 #onehot
 $(eval $(call template,onehot, onehot onehot_v onehot_vv ))
 
+#help
+$(eval $(call template,help, help_celltype_plus help_celltype help_cells help_all help_command help help_no_such_command ))
+
+#echo
+$(eval $(call template,echo, echo echo_off echo_on ))
+
 
 .PHONY: all clean

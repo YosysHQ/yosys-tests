@@ -571,6 +571,22 @@ else
 		expected_string="middle                          1"
 	elif [ "$1" = "supercover" ]; then
 		expected_string="cell \$cover \$auto\$supercover"
+	elif [ "$1" = "help" ]; then
+		if [ "$2" = "help" ]; then
+		expected_string="abc                  use ABC for technology mapping"
+		elif [ "$2" = "help_all" ]; then
+		expected_string="abc  --  use ABC for technology mapping"
+		elif [ "$2" = "help_cells" ]; then
+		expected_string="\$_ANDNOT_        (A, B, Y)"
+		elif [ "$2" = "help_celltype" ]; then
+		expected_string="\$dff (CLK, D, Q)"
+		elif [ "$2" = "help_celltype_plus" ]; then
+		expected_string="\$dff (CLK, D, Q);"
+		elif [ "$2" = "help_command" ]; then
+		expected_string="read_verilog \[options\] \[filename\]"
+		elif [ "$2" = "help_no_such_command" ]; then
+		expected_string="No such command or cell type:"
+		fi
 	fi
 
 	if [ "$expected_string" != "" ]; then
