@@ -88,6 +88,7 @@ $(eval $(call template,add_error, add_error ))
 
 #blackbox
 $(eval $(call template,blackbox, blackbox ))
+$(eval $(call template,blackbox_mem, blackbox blackbox_top))
 
 # - issue #925
 #bugpoint ERROR: No such command: autoidx (type 'help' for a command overview)
@@ -96,8 +97,9 @@ $(eval $(call template,bugpoint_error, bugpoint_missing_script bugpoint_do_not_c
 #bugpoint_grep_string_not_found - no error
 
 #chformal
-$(eval $(call template,chformal, chformal chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
-$(eval $(call template,chformal_dff, chformal chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
+$(eval $(call template,chformal, chformal chformal_ff chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
+$(eval $(call template,chformal_dff, chformal chformal_ff chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
+$(eval $(call template,chformal_ff, chformal chformal_ff chformal_assert2assume chformal_assert chformal_assume2assert chformal_assume chformal_cover chformal_delay chformal_early chformal_proc_early chformal_fair2live_assert2assume chformal_fair2live chformal_fair chformal_live2fair chformal_live chformal_skip ))
 $(eval $(call template,chformal_error, chformal_error ))
 
 #chtype
@@ -143,6 +145,7 @@ $(eval $(call template,setundef_error, setundef_expose_without_undriven setundef
 
 #assertpmux
 $(eval $(call template,assertpmux, assertpmux assertpmux_noinit assertpmux_always))
+$(eval $(call template,assertpmux_mux, assertpmux assertpmux_noinit assertpmux_always))
 
 #eval
 $(eval $(call template,eval, eval eval_set eval_set_undef eval_table eval_show eval_brute_force_equiv_checker eval_show_not_set eval_table_set eval_vloghammer_report eval_vloghammer_report_rtl))
@@ -151,6 +154,7 @@ $(eval $(call template,eval_error, eval_only_one_module eval_failed_to_parse_lhs
 #freduce
 $(eval $(call template,freduce, freduce freduce_v freduce_vv freduce_inv freduce_stop freduce_dump ))
 $(eval $(call template,freduce_dff, freduce freduce_v freduce_vv freduce_inv freduce_stop freduce_dump ))
+$(eval $(call template,freduce_ffs, freduce freduce_v freduce_vv freduce_inv freduce_stop freduce_dump ))
 $(eval $(call template,freduce_mem, freduce freduce_v freduce_vv freduce_inv freduce_stop freduce_dump ))
 $(eval $(call template,freduce_error, freduce_logic_loop ))
 
@@ -204,9 +208,9 @@ $(eval $(call template,tee_error, tee_o_cant_create_file tee_a_cant_create_file 
 $(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
 
 #abc
-$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff))
-$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff))
-$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff))
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
 $(eval $(call template,abc_error, abc_cannot_open abc_constr_no_liberty abc_lut_liberty abc_unsup_gate_type abc_inv_luts_synt  abc_return_code abc_clk_domain_not_found abc_script_o abc_script_top))
 
 #hilomap
@@ -223,6 +227,7 @@ $(eval $(call template,mutate_error, mutate_error))
 #fmconbine
 #fmcombine_gate_cell_not_found - failed #1063
 $(eval $(call template,fmcombine, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd fmcombine_anyeq fmcombine_initeq))
+$(eval $(call template,fmcombine_assert_assume, fmcombine fmcombine_fwd fmcombine_bwd fmcombine_nop fmcombine_bwd_fwd fmcombine_anyeq fmcombine_initeq))
 $(eval $(call template,fmcombine_error, fmcombine_invalid_number_of_param fmcombine_module_not_found fmcombine_gold_cell_not_found fmcombine_gate_cell_not_found fmcombine_types_not_match fmcombine_nop_with_fwd fmcombine_nop_with_bwd fmcombine_nop_with_fwd_bwd))
 
 #pmuxtree
@@ -247,6 +252,24 @@ $(eval $(call template,help, help_celltype_plus help_celltype help_cells help_al
 
 #echo
 $(eval $(call template,echo, echo echo_off echo_on ))
+
+#debug
+$(eval $(call template,debug, debug ))
+
+#muxpack
+$(eval $(call template,muxpack, muxpack ))
+
+#history
+$(eval $(call template,history, history ))
+
+#script
+$(eval $(call template,script, script script_from_to script_scriptwire ))
+
+#tcl
+$(eval $(call template,tcl, tcl ))
+
+#abc9
+$(eval $(call template,abc9, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D ))
 
 
 .PHONY: all clean
