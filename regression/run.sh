@@ -248,7 +248,13 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="\$pmux                           1"
 	fi
 
-	yosys -ql yosys.log ../../scripts/$2.ys;
+	if [ "$1" = "issue_01118" ]; then
+		# This issue manifests as an infinite loop.
+		timeout 5s yosys -ql yosys.log ../../scripts/$2.ys;
+	else
+		yosys -ql yosys.log ../../scripts/$2.ys;
+	fi
+
 	if [ $? != 0 ] ; then
     	echo FAIL > ${1}_${2}.status
     	touch .stamp
