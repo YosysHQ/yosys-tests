@@ -152,7 +152,7 @@ $(eval $(call template,tribuf_logic,tribuf_logic_top tribuf_merge_logic_top))
 #expose
 $(eval $(call template,expose,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
 $(eval $(call template,expose_dff,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
-$(eval $(call template,expose_ffs,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
+$(eval $(call template,expose_ffs,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_shared expose_evert_dff_shared))
 
 #opt_demorgan
 $(eval $(call template,opt_demorgan,opt_demorgan))

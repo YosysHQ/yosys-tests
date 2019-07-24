@@ -15,9 +15,9 @@ module adff
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 1'b0;
-`else        
+`else
 			q <= d;
 `endif
 		else
@@ -32,9 +32,9 @@ module adffn
     end
 	always @( posedge clk, negedge clr )
 		if ( !clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 1'b0;
-`else        
+`else
 			q <= d;
 `endif
 		else
@@ -49,9 +49,9 @@ module dffe
     end
 	always @( posedge clk )
 		if ( en )
-`ifndef BUG        
+`ifndef BUG
 			q <= d;
-`else        
+`else
 			q <= 1'b0;
 `endif
 endmodule
@@ -63,9 +63,9 @@ module dffsr
     end
 	always @( posedge clk, posedge pre, posedge clr )
 		if ( clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 1'b0;
-`else        
+`else
 			q <= d;
 `endif
 		else if ( pre )
@@ -78,18 +78,18 @@ module ndffnsnr
     ( d, clk, pre, clr, q );
     parameter s=2;
     parameter l=1;
-    input [s-1:l] d; 
-    input clk, pre, clr; 
+    input [s-1:l] d;
+    input clk, pre, clr;
     output reg [s-1:l] q;
-    
+
     initial begin
       q = 2'b11;
     end
 	always @( negedge clk, negedge pre, negedge clr )
 		if ( !clr )
-`ifndef BUG        
+`ifndef BUG
 			q <= 2'b00;
-`else        
+`else
 			q <= d;
 `endif
 		else if ( !pre )
@@ -108,6 +108,8 @@ output b,b1,b2,b3,b4
 
 wire a1,b11;
 
+parameter x = 0;
+
 dffsr u_dffsr (
         .clk (clk ),
         .clr (clr),
@@ -115,7 +117,7 @@ dffsr u_dffsr (
         .d (a ),
         .q (b )
     );
-    
+
 ndffnsnr #(4) u_ndffnsnr (
         .clk (clk ),
         .clr (clr),
@@ -123,23 +125,23 @@ ndffnsnr #(4) u_ndffnsnr (
         .d ({a,a1} ),
         .q ({b1,b11} )
     );
-    
+
 defparam u_ndffnsnr.l = 0;
-    
+
 adff u_adff (
         .clk (clk ),
         .clr (clr),
         .d (a ),
         .q (b2 )
     );
-    
+
 adffn u_adffn (
         .clk (clk ),
         .clr (clr),
         .d (a ),
         .q (b3 )
     );
-    
+
 dffe u_dffe (
         .clk (clk ),
         .en (clr),
