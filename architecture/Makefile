@@ -54,7 +54,7 @@ $(eval $(call template,synth_ice40_wide_ffs,synth_ice40 synth_ice40_top synth_ic
 $(eval $(call template,synth_ice40_error,synth_ice40_fully_selected))
 
 #intel
-$(eval $(call template,synth_intel,synth_intel synth_intel_top synth_intel_vqm synth_intel_vpr synth_intel_run synth_intel_noflatten synth_intel_retime synth_intel_noiopads synth_intel_nobram synth_intel_max10 ))
+$(eval $(call template,synth_intel,synth_intel synth_intel_top synth_intel_vqm synth_intel_vpr synth_intel_run synth_intel_noflatten synth_intel_retime synth_intel_iopads synth_intel_nobram synth_intel_max10 ))
 $(eval $(call template,synth_intel_cycloneiv,synth_intel_cycloneiv  ))
 $(eval $(call template,synth_intel_cycloneive,synth_intel_cycloneive   ))
 $(eval $(call template,synth_intel_cyclonev ,synth_intel_cyclonev ))

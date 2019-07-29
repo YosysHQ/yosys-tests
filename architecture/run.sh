@@ -19,7 +19,7 @@ if echo "$1" | grep ".*_error"; then
 	elif [ "$2" = "synth_greenpak4_invalid_part" ]; then
 		expected_string="ERROR: Invalid part name: "
 	elif [ "$2" = "synth_intel_invalid_family" ]; then
-		expected_string="ERROR: Invalid or not family specified"
+		expected_string="ERROR: Invalid or no family specified:"
 	elif [ "$2" = "synth_xilinx_invalid_arch" ]; then
 		expected_string="ERROR: Invalid Xilinx -family setting: "
 	fi
