@@ -99,7 +99,7 @@ $(eval $(call template_error,memory_bram_error, memory_bram_syntax_error_in_rule
 $(eval $(call template,uniquify,uniquify))
 
 #hierarchy (44% increased to 61,3%)
-$(eval $(call template,hierarchy,hierarchy hierarchy_top hierarchy_check hierarchy_simcheck hierarchy_purge_lib hierarchy_libdir hierarchy_keep_positionals hierarchy_keep_portwidths hierarchy_nokeep_asserts hierarchy_auto_top hierarchy_generate))
+$(eval $(call template,hierarchy,hierarchy hierarchy_top hierarchy_check hierarchy_simcheck hierarchy_purge_lib hierarchy_libdir hierarchy_keep_positionals hierarchy_keep_portwidths hierarchy_nokeep_asserts hierarchy_auto_top hierarchy_generate hierarchy_chparam hierarchy_chparam_overwr))
 $(eval $(call template,hierarchy_huge,hierarchy_huge))
 $(eval $(call template_error,hierarchy_error, hierarchy_no_top_module hierarchy_top_requires_args hierarchy_module_not_found ))
 
@@ -152,6 +152,7 @@ $(eval $(call template,tribuf_logic,tribuf_logic_top tribuf_merge_logic_top))
 #expose
 $(eval $(call template,expose,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
 $(eval $(call template,expose_dff,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_dff expose_evert_shared expose_evert_dff_shared))
+$(eval $(call template,expose_ffs,expose_cut expose_input expose_evert expose_sep expose_shared expose_dff expose_evert_shared expose_evert_dff_shared))
 
 #opt_demorgan
 $(eval $(call template,opt_demorgan,opt_demorgan))
