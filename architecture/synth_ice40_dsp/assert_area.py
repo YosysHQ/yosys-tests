@@ -4,19 +4,27 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'mul_(\d+)(s?)_(\d+)(s?)_A?B?P?_A?B?P?\.v')
+re_mux = re.compile(r'mul_(\d+)(s?)_(\d+)(s?)_(A?B?P?)_A?B?P?\.v')
 
 for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
     if not m: continue
 
     A,B = map(int, m.group(1,3))
-    X = (A+15) // 16
-    Y = (B+15) // 16
+    Asigned, Bsigned = m.group(2,4)
+    Areg = 'A' in m.group(5)
+    Breg = 'B' in m.group(5)
+    Preg = 'P' in m.group(5)
+    X = (A+14) // 16
+    Y = (B+14) // 16
     count_MAC = X * Y
-    count_CARRY = 0
-    if X > 1 and Y > 1:
-        count_CARRY = X + Y - 16
+    count_DFF = 0
+    # TODO: Tighter bounds on count_DFF
+    if A % 16 == 1 or B % 16 == 1:
+        count_DFF += A + B
+    if Preg:
+        count_DFF += A + B
+    # TODO: Assert on number of SB_CARRY and SB_LUT too
 
     bn,_ = os.path.splitext(fn)
 
@@ -24,7 +32,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd {0}; select t:SB_MAC16 -assert-count {1}; select t:SB_CARRY -assert-count {2}; select t:SB_LUT -assert-count {2}; select t:* t:SB_MAC16 t:SB_CARRY t:SB_LUT %D %D %D -assert-none";
+    wire [4095:0] assert_area = "cd {0}; select t:SB_MAC16 -assert-count {1}; select t:SB_DFF* -assert-max {2}";
 endmodule
 `endif
-'''.format(os.path.splitext(fn)[0], count_MAC, count_CARRY), file=f)
+'''.format(os.path.splitext(fn)[0], count_MAC, count_DFF), file=f)
