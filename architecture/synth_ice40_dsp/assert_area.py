@@ -19,9 +19,14 @@ for fn in glob.glob('*.v'):
     Y = (B+14) // 16
     count_MAC = X * Y
     count_DFF = 0
-    # TODO: Tighter bounds on count_DFF
-    if A % 16 == 1 or B % 16 == 1:
-        count_DFF += A + B
+    if A % 16 > 1 and B % 16 > 1 and (A % 16 + B % 16) < 11:
+        count_MAC -= 1
+        if Areg or Breg:
+            count_DFF += A%16 + B%16
+    else:
+        # TODO: Tighter bounds on count_DFF
+        if Areg or Breg and (A % 16 == 1 or B % 16 == 1):
+            count_DFF += A + B
     if Preg:
         count_DFF += A + B
     # TODO: Assert on number of SB_CARRY and SB_LUT too
