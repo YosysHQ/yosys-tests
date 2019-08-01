@@ -34,6 +34,7 @@ for fn in glob.glob('*.v'):
     count_DFF = 0
     if Preg:
         count_DFF += A + B
+    # TODO: Assert on number of FD* too
     # TODO: Assert on number of CARRY4s too
 
     bn,_ = os.path.splitext(fn)
