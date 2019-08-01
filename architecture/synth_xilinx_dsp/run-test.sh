@@ -19,12 +19,12 @@ if ! which iverilog > /dev/null ; then
 fi
 
 #wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mul/generate.py -O generate_mul.py -o /dev/null
-cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/generate.py generate_mul.py
-python3 generate_mul.py
+cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
+PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
 python3 ../assert_area.py
-${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed *__.v EXTRA_FLAGS="\
     -p 'design -copy-to __test __test; \
-        synth_xilinx -abc9; \
+        synth_xilinx; \
         design -copy-from __test *; \
         select -assert-any __test; \
         script -scriptwire __test/w:assert_area'\
