@@ -22,12 +22,14 @@ for fn in glob.glob('*.v'):
     if A < B:
         A,B = B,A
         Asigned,Bsigned = Bsigned,Asigned
-    X = (A + 23) // 24
-    if X > 1 and A % 24 == 1:
-        X -= 1 # No headroom needed on last multiplier
-    Y = (B+16) // 17
-    if Y > 1 and B % 17 == 1:
-        Y -= 1 # No headroom needed on last multiplier
+    if A == 25:
+        X = 1 # No headroom needed on single multiplier
+    else:
+        X = (A + 23) // 24
+    if B == 18:
+        Y = 1 # No headroom needed on single multiplier
+    else:
+        Y = (B+16) // 17
     count_MAC = X * Y
     count_DFF = 0
     if Preg:
