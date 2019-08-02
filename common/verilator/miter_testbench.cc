@@ -16,6 +16,9 @@
 		- din: an arbitrary width test vector input, set to random data at every cycle
 		- miter: an arbitrary width miter output (each bit considering to a single test).
 		         a bit going high means that test has failed.
+
+	To flush uninitialised registers, a number of warmup cycles are run before testing. din
+	is set to all ones for this time
 */
 
 // Based on https://www.jstatsoft.org/article/view/v008i14
@@ -32,11 +35,13 @@ uint64_t xorshift64()
 template <typename ModuleT>
 struct ModuleWrapper {
 	ModuleT tb;
+	bool is_warmup = true;
 	int tick_count = 0;
 	// From https://zipcpu.com/blog/2017/06/21/looking-at-verilator.html
 	void tick()
 	{
-		++tick_count;
+		if (!is_warmup)
+			++tick_count;
 		tb.clk = 0;
 		tb.eval();
 		tb.clk = 1;
@@ -51,13 +56,13 @@ struct ModuleWrapper {
 	*/
 	template <typename Tm> void set_input_impl(Tm &in)
 	{
-		in = xorshift64();
+		in = is_warmup ? Tm(0xFFFFFFFFFFFFFFFFUL) : xorshift64();
 	}
 
 	template <typename Tm, int N> void set_input_impl(Tm(&in)[N])
 	{
 		for (int i = 0; i < N; i++)
-			in[i] = int32_t(xorshift64());
+			in[i] = is_warmup ? 0xFFFFFFFF : int32_t(xorshift64());
 	}
 
 	std::vector<int> failing;
@@ -146,9 +151,10 @@ int main(int argc, char **argv)
 
 	int rc = 0;
 	for (int i = 0; i < (N + Nwarmup); i++) {
+		mod.is_warmup = (i >= Nwarmup);
 		mod.set_input();
 		mod.tick();
-		if (N > Nwarmup)
+		if (i >= Nwarmup)
 			if (!mod.check_miter())
 				rc = 1;
 	}
