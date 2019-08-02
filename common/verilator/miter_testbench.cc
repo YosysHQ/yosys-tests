@@ -1,7 +1,9 @@
 #include <stdint.h>
+#include <stdlib.h>
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 #include "Vtop.h"
 #include "verilated.h"
@@ -120,12 +122,29 @@ struct ModuleWrapper {
 
 int main(int argc, char **argv)
 {
+	int opt;
+	int N = 1000000;
+	int Nwarmup = 10;
+
+	while ((opt = getopt(argc, argv, "N:w:")) != -1) {
+		switch (opt) {
+			case 'N':
+				N = std::atoi(optarg);
+				break;
+			case 'w':
+				Nwarmup = std::atoi(optarg);
+				break;
+			default:
+				std::cerr << "Miter testbench wrapper" << std::endl;
+				std::cerr << "Usage: " << argv[0] << " [-N numcycles] [-w warmupcycles]" << std::endl;
+				return 2;
+		}
+	}
+
 	Verilated::commandArgs(argc, argv);
 	ModuleWrapper<Vtop> mod;
 
 	int rc = 0;
-	int N = 1000000;
-	int Nwarmup = 10;
 	for (int i = 0; i < (N + Nwarmup); i++) {
 		mod.set_input();
 		mod.tick();
