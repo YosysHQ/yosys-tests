@@ -151,7 +151,7 @@ int main(int argc, char **argv)
 
 	int rc = 0;
 	for (int i = 0; i < (N + Nwarmup); i++) {
-		mod.is_warmup = (i >= Nwarmup);
+		mod.is_warmup = (i < Nwarmup);
 		mod.set_input();
 		mod.tick();
 		if (i >= Nwarmup)
