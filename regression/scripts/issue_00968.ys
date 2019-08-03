@@ -1,4 +1,4 @@
-read -sv ../top.v
+read_verilog ../top.v
 synth
 write_verilog result.log
 
