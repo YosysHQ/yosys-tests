@@ -68,6 +68,8 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: More than one module selected:"
 	elif [ "$2" = "synth_error" ]; then
 		expected_string="ERROR: This command only operates on fully selected designs!"
+	elif [ "$2" = "synth_abc9_no_lut" ]; then
+		expected_string="ERROR: ABC9 flow only supported for FPGA synthesis (using '-lut' option)"
 	elif [ "$2" = "zinit_failed_to_handle" ]; then
 		expected_string="ERROR: Failed to handle init bit"
 	fi

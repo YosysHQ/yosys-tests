@@ -224,8 +224,8 @@ $(eval $(call template, prep, prep prep_top prep_auto_top prep_flatten prep_ifx 
 $(eval $(call template_error, prep_error, prep_error))
 
 #synth
-$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare))
-$(eval $(call template_error, synth_error, synth_error))
+$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare synth_abc9))
+$(eval $(call template_error, synth_error, synth_error synth_abc9_no_lut))
 
 #simplemap
 $(eval $(call template, simplemap, simplemap simplemap_top simplemap_slice_concat))
