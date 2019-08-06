@@ -269,7 +269,11 @@ $(eval $(call template,script, script script_from_to script_scriptwire ))
 $(eval $(call template,tcl, tcl ))
 
 #abc9
-$(eval $(call template,abc9, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D ))
+$(eval $(call template,abc9, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth abc9_box abc9_script))
+$(eval $(call template,abc9_dff, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_mux, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_mem, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_error, abc9_invalid_luts_syntax abc9_cant_open_output_file))
 
 
 .PHONY: all clean
