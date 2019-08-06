@@ -23,7 +23,7 @@ $(eval $(call template,test_abcloop,test_abcloop test_abcloop_n test_abcloop_s )
 #test_cell
 #test_cell_map - takes a lot of time
 # test_cell_mux, test_cell_pmux - is not supported
-$(eval $(call template,test_cell,test_cell test_cell_aigmap test_cell_const test_cell_edges test_cell_f  test_cell_div test_cell_muxdiv test_cell_n test_cell_noeval test_cell_nosat test_cell_s test_cell_script test_cell_simlib test_cell_v test_cell_vlog test_cell_w test_cell_alu test_cell_sop test_cell_lut test_cell_macc test_cell_lcu test_cell_fa))
+$(eval $(call template,test_cell,test_cell test_cell_aigmap test_cell_const test_cell_edges test_cell_f  test_cell_div test_cell_muxdiv test_cell_n test_cell_noeval test_cell_nosat test_cell_s test_cell_script test_cell_simlib test_cell_v test_cell_vlog test_cell_w test_cell_alu test_cell_sop test_cell_lut test_cell_macc test_cell_lcu test_cell_fa test_cell_wo_synth test_cell_map))
 $(eval $(call template,test_cell_error, test_cell_failed_to_open test_cell_unexpected_opt test_cell_cell_type_not_supported test_cell_no_cell_t_specified test_cell_dont_spec_cell_type_with_f ))
 
 #torder
