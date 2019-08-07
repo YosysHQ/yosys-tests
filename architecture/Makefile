@@ -38,20 +38,21 @@ $(eval $(call template,synth_coolrunner2_error,synth_coolrunner2_fully_selected)
 $(eval $(call template,synth_easic_error,synth_easic_fully_selected))
 
 #ecp5
-$(eval $(call template,synth_ecp5,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit))
-$(eval $(call template,synth_ecp5_wide_ffs,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit))
+$(eval $(call template,synth_ecp5,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit synth_ecp5_abc9 synth_ecp5_abc9_nowidelut))
+$(eval $(call template,synth_ecp5_wide_ffs,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit  synth_ecp5_abc9 synth_ecp5_abc9_nowidelut))
 $(eval $(call template,synth_ecp5_error,synth_ecp5_fully_selected))
 
 #gowin
-$(eval $(call template,synth_gowin,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten ))
-$(eval $(call template,synth_gowin_mem,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten ))
+$(eval $(call template,synth_gowin,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten synth_gowin_nodram synth_gowin_nodffe ))
+$(eval $(call template,synth_gowin_mem,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten synth_gowin_nodram synth_gowin_nodffe ))
 $(eval $(call template,synth_gowin_error,synth_gowin_fully_selected ))
 
 #ice40
-$(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
-$(eval $(call template,synth_ice40_mem,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
-$(eval $(call template,synth_ice40_wide_ffs,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc))
-$(eval $(call template,synth_ice40_error,synth_ice40_fully_selected))
+$(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc synth_ice40_device_u synth_ice40_device_lp synth_ice40_device_hx synth_ice40_opt))
+$(eval $(call template,synth_ice40_mem,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc synth_ice40_device_u synth_ice40_device_lp synth_ice40_device_hx synth_ice40_abc9 synth_ice40_unlut synth_ice40_opt))
+$(eval $(call template,synth_ice40_wide_ffs,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc synth_ice40_device_u synth_ice40_device_lp synth_ice40_device_hx synth_ice40_opt))
+$(eval $(call template,synth_ice40_fulladder,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc synth_ice40_device_u synth_ice40_device_lp synth_ice40_device_hx synth_ice40_opt))
+$(eval $(call template,synth_ice40_error,synth_ice40_fully_selected synth_ice40_abc9_retime synth_ice40_device_unknown))
 
 #intel
 $(eval $(call template,synth_intel,synth_intel synth_intel_top synth_intel_vqm synth_intel_vpr synth_intel_run synth_intel_noflatten synth_intel_retime synth_intel_iopads synth_intel_nobram synth_intel_max10 ))
@@ -67,8 +68,8 @@ $(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf
 $(eval $(call template,synth_sf2_error,synth_sf2_fully_selected ))
 
 #xilinx
-$(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl))
-$(eval $(call template,synth_xilinx_error,synth_xilinx_fully_selected synth_xilinx_invalid_arch ))
+$(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl synth_xilinx_widemux synth_xilinx_nowidelut synth_xilinx_nocarry synth_xilinx_arch_xc6s_abc9 synth_xilinx_widemux_9 synth_xilinx_widemux_2 synth_xilinx_widemux_3 synth_xilinx_nowidelut_abc9))
+$(eval $(call template,synth_xilinx_error,synth_xilinx_fully_selected synth_xilinx_invalid_arch synth_xilinx_abc9_retime synth_xilinx_widemux_1))
 ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
@@ -77,6 +78,7 @@ endif
 #greenpak4
 $(eval $(call template,synth_greenpak4,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
 $(eval $(call template,synth_greenpak4_wide_ffs,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
+$(eval $(call template,synth_greenpak4_dffs_r,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
 $(eval $(call template,synth_greenpak4_error,synth_greenpak4_fully_selected synth_greenpak4_invalid_part))
 
 .PHONY: all clean
