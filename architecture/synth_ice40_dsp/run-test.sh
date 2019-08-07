@@ -22,6 +22,7 @@ fi
 cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
 python3 ../assert_area.py
+cp ../*.v .
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
     -p 'design -copy-to __test __test; \
         synth_ice40 -dsp; \
