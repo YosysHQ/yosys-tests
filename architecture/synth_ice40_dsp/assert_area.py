@@ -25,9 +25,9 @@ for fn in glob.glob('*.v'):
             count_DFF += A%16 + B%16
     else:
         # TODO: Tighter bounds on count_DFF
-        if Areg or Breg and (A % 16 == 1 or B % 16 == 1):
+        if (Areg or Breg) and (A % 16 == 1 or B % 16 == 1):
             count_DFF += A + B
-    if Preg:
+    if Preg and (A > 16 or B > 16):
         count_DFF += A + B
     # TODO: Assert on number of SB_CARRY and SB_LUT too
 
