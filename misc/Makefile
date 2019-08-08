@@ -23,7 +23,7 @@ $(eval $(call template,test_abcloop,test_abcloop test_abcloop_n test_abcloop_s )
 #test_cell
 #test_cell_map - takes a lot of time
 # test_cell_mux, test_cell_pmux - is not supported
-$(eval $(call template,test_cell,test_cell test_cell_aigmap test_cell_const test_cell_edges test_cell_f  test_cell_div test_cell_muxdiv test_cell_n test_cell_noeval test_cell_nosat test_cell_s test_cell_script test_cell_simlib test_cell_v test_cell_vlog test_cell_w test_cell_alu test_cell_sop test_cell_lut test_cell_macc test_cell_lcu test_cell_fa))
+$(eval $(call template,test_cell,test_cell test_cell_aigmap test_cell_const test_cell_edges test_cell_f  test_cell_div test_cell_muxdiv test_cell_n test_cell_noeval test_cell_nosat test_cell_s test_cell_script test_cell_simlib test_cell_v test_cell_vlog test_cell_w test_cell_alu test_cell_sop test_cell_lut test_cell_macc test_cell_lcu test_cell_fa test_cell_wo_synth test_cell_map))
 $(eval $(call template,test_cell_error, test_cell_failed_to_open test_cell_unexpected_opt test_cell_cell_type_not_supported test_cell_no_cell_t_specified test_cell_dont_spec_cell_type_with_f ))
 
 #torder
@@ -208,9 +208,9 @@ $(eval $(call template,tee_error, tee_o_cant_create_file tee_a_cant_create_file 
 $(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
 
 #abc
-$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
-$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
-$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
 $(eval $(call template,abc_error, abc_cannot_open abc_constr_no_liberty abc_lut_liberty abc_unsup_gate_type abc_inv_luts_synt  abc_return_code abc_clk_domain_not_found abc_script_o abc_script_top))
 
 #hilomap
@@ -269,7 +269,11 @@ $(eval $(call template,script, script script_from_to script_scriptwire ))
 $(eval $(call template,tcl, tcl ))
 
 #abc9
-$(eval $(call template,abc9, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D ))
+$(eval $(call template,abc9, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth abc9_box abc9_script))
+$(eval $(call template,abc9_dff, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_mux, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_mem, abc9_markgroups abc9_showtmp abc9_nocleanup abc9_luts abc9_lut abc9_fast abc9_D abc9_W abc9_wo_proc abc9_wo_synth))
+$(eval $(call template,abc9_error, abc9_invalid_luts_syntax abc9_cant_open_output_file))
 
 
 .PHONY: all clean

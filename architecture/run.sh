@@ -22,6 +22,14 @@ if echo "$1" | grep ".*_error"; then
 		expected_string="ERROR: Invalid or no family specified:"
 	elif [ "$2" = "synth_xilinx_invalid_arch" ]; then
 		expected_string="ERROR: Invalid Xilinx -family setting: "
+	elif [ "$2" = "synth_xilinx_widemux_1" ]; then
+		expected_string="ERROR: -widemux value must be 0 or >= 2."
+	elif [ "$2" = "synth_xilinx_abc9_retime" ]; then
+		expected_string="ERROR: -retime option not currently compatible with -abc9!"
+	elif [ "$2" = "synth_ice40_abc9_retime" ]; then
+		expected_string="ERROR: -retime option not currently compatible with -abc9!"
+	elif [ "$2" = "synth_ice40_device_unknown" ]; then
+		expected_string="ERROR: Invalid or no device specified: "
 	fi
 
 	if yosys -ql yosys.log ../../scripts/$2.ys; then
@@ -87,6 +95,8 @@ else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
 	elif [ "$1" = "synth_ice40_wide_ffs" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
+	elif [ "$1" = "synth_ice40_fulladder" ]; then
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
 	elif [ "$1" = "synth_intel" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/intel/max10/cells_sim.v
 	elif [ "$1" = "synth_intel_a10gx" ]; then
@@ -106,6 +116,8 @@ else
 	elif [ "$1" = "synth_greenpak4" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v
 	elif [ "$1" = "synth_greenpak4_wide_ffs" ]; then
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v
+	elif [ "$1" = "synth_greenpak4_dffs_r" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v
 	else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v

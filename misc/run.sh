@@ -378,6 +378,10 @@ if echo "$1" | grep ".*_error"; then
 	elif [ "$2" = "write_file_missing_name" ] || \
 		 [ "$2" = "write_file_a_missing_name" ]; then
  		expected_string="ERROR: Missing output filename."
+	elif [ "$2" = "abc9_invalid_luts_syntax" ]; then
+ 		expected_string="ERROR: Invalid -luts syntax."
+	elif [ "$2" = "abc9_cant_open_output_file" ]; then
+ 		expected_string="ERROR: Can't open ABC output file"
 	fi
 
 

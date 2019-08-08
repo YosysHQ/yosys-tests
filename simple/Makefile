@@ -64,7 +64,7 @@ $(eval $(call template,fsm, fsm))
 $(eval $(call template,fsm_opt, fsm))
 
 #Extract full and half adders
-$(eval $(call template,full_adder,full_adder half_adder))
+$(eval $(call template,full_adder,full_adder half_adder full_adder_d full_adder_b full_adder_wo_opt))
 
 #Extract reduce
 $(eval $(call template,reduce,reduce reduce_allow_off_chain))
@@ -84,7 +84,7 @@ $(eval $(call template,clk2fflogic_latch,clk2fflogic))
 $(eval $(call template,clk2fflogic_mem,clk2fflogic_mem))
 
 #muxcover
-$(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode))
+$(eval $(call template,muxcover,muxcover muxcover_nodecode muxcover_mux4 muxcover_mux4_nodecode muxcover_mux16 muxcover_mux16_nodecode muxcover_4_8_16_nodecode muxcover_mux2 muxcover_dmux))
 $(eval $(call template,muxcover_mux8,muxcover_mux8 muxcover_mux8_nodecode))
 
 #aigmap
@@ -143,7 +143,7 @@ $(eval $(call template,flowmap_latch,flowmap flowmap_cells flowmap_debug_relax f
 $(eval $(call template,flowmap_mem,flowmap flowmap_cells flowmap_debug_relax flowmap_debug flowmap_maxlut flowmap_minlut flowmap_optarea flowmap_r_alpha flowmap_r_beta flowmap_r_gamma flowmap_relax flowmap_relax_debug flowmap_relax_debug_relax flowmap_top))
 
 #iopadmap
-$(eval $(call template,iopadmap,iopadmap))
+$(eval $(call template,iopadmap,iopadmap iopadmap_dont_map))
 
 #tribuf
 $(eval $(call template,tribuf,tribuf tribuf_top tribuf_merge_top))
@@ -224,8 +224,15 @@ $(eval $(call template, prep, prep prep_top prep_auto_top prep_flatten prep_ifx 
 $(eval $(call template_error, prep_error, prep_error))
 
 #synth
-$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare))
-$(eval $(call template_error, synth_error, synth_error))
+$(eval $(call template, synth, synth synth_top synth_auto_top synth_encfile synth_run synth_run_full synth_flatten synth_lut synth_nofsm synth_noabc synth_noabc_lut synth_noalumacc synth_nordff synth_noshare synth_abc9))
+$(eval $(call template_error, synth_error, synth_error synth_abc9_no_lut))
 
+#simplemap
+$(eval $(call template, simplemap, simplemap simplemap_top simplemap_slice_concat))
+$(eval $(call template, simplemap_reduce, simplemap simplemap_top simplemap_slice_concat))
+$(eval $(call template, simplemap_mem_slice_concat, simplemap simplemap_top simplemap_slice_concat))
+
+#techmap
+$(eval $(call template, techmap, techmap techmap_wb techmap_autoproc techmap_recursive techmap_extern techmap_assert techmap_i techmap_d techmap_max_iter techmap_map))
 
 .PHONY: all clean
