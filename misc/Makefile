@@ -208,9 +208,9 @@ $(eval $(call template,tee_error, tee_o_cant_create_file tee_a_cant_create_file 
 $(eval $(call template,test_autotb, test_autotb test_autotb_file test_autotb_n test_autotb_seed))
 
 #abc
-$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
-$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
-$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_dff, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
+$(eval $(call template,abc_mux, abc_D abc_g_aig abc_g_cmos2 abc_g_cmos abc_g_simple abc_mux16 abc_mux4 abc_mux8 abc_S abc_dff abc_constr_liberty))
 $(eval $(call template,abc_error, abc_cannot_open abc_constr_no_liberty abc_lut_liberty abc_unsup_gate_type abc_inv_luts_synt  abc_return_code abc_clk_domain_not_found abc_script_o abc_script_top))
 
 #hilomap

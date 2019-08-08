@@ -59,6 +59,9 @@ $(eval $(call template,write_firrtl_reduce,write_firrtl ))
 $(eval $(call template,write_firrtl_shift,write_firrtl ))
 $(eval $(call template,write_firrtl_shiftx,write_firrtl ))
 $(eval $(call template,write_firrtl_paramod,write_firrtl))
+$(eval $(call template,write_firrtl_mul,write_firrtl))
+$(eval $(call template,write_firrtl_sub,write_firrtl))
+$(eval $(call template,write_firrtl_pow,write_firrtl))
 $(eval $(call template,write_firrtl_error, write_firrtl_fully_selected write_firrtl_negative_edge_ff write_firrtl_inout_port write_firrtl_unclocked_write_port write_firrtl_complex_write_enable ))
 
 #write_ilang
