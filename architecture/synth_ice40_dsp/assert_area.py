@@ -29,7 +29,10 @@ for fn in glob.glob('*.v'):
             count_DFF += A + B
     if Preg and (A > 16 or B > 16):
         count_DFF += A + B
-    # TODO: Assert on number of SB_CARRY and SB_LUT too
+    # TODO: More assert on number of CARRY and LUTs
+    count_CARRY = ''
+    if A <= 16 or B <= 16:
+        count_CARRY = '; select t:SB_CARRY -assert-none; select t:SB_LUT -assert-none';
 
     bn,_ = os.path.splitext(fn)
 

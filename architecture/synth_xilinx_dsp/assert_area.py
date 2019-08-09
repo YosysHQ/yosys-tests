@@ -32,9 +32,12 @@ for fn in glob.glob('*.v'):
         Y = (B+16) // 17
     count_MAC = X * Y
     count_DFF = 0
-    if Preg:
+    if Preg and (A > 25 or B > 18):
         count_DFF += A + B
-    # TODO: Assert on number of CARRY4s too
+    # TODO: More assert on number of CARRY and LUTs
+    count_CARRY = ''
+    if A <= 25 or B <= 18:
+        count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
 
     bn,_ = os.path.splitext(fn)
 
@@ -42,8 +45,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd {0}; select t:DSP48E1 -assert-count {1}; select t:FD* -assert-max {2}";
-    // {3} {4} {5} {6} X={7} Y={8}
+    wire [4095:0] assert_area = "cd {0}; select t:DSP48E1 -assert-count {1}; select t:FD* -assert-max {2}{3}";
 endmodule
 `endif
-'''.format(os.path.splitext(fn)[0], count_MAC, count_DFF, A,B,Asigned,Bsigned,X,Y), file=f)
+'''.format(os.path.splitext(fn)[0], count_MAC, count_DFF, count_CARRY), file=f)
