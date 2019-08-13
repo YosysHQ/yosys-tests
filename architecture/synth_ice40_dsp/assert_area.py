@@ -31,8 +31,9 @@ for fn in glob.glob('*.v'):
         count_DFF += A + B
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
-    if A <= 16 or B <= 16:
+    if (A <= 16 or B <= 16) and A % 16 != 1 and B % 16 != 1:
         count_CARRY = '; select t:SB_CARRY -assert-none; select t:SB_LUT -assert-none';
+        count_DFF = 0
 
     bn,_ = os.path.splitext(fn)
 
@@ -40,7 +41,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd {0}; select t:SB_MAC16 -assert-count {1}; select t:SB_DFF* -assert-max {2}";
+    wire [4095:0] assert_area = "cd {0}; select t:SB_MAC16 -assert-count {1}; select t:SB_DFF* -assert-max {2}{3}";
 endmodule
 `endif
-'''.format(os.path.splitext(fn)[0], count_MAC, count_DFF), file=f)
+'''.format(os.path.splitext(fn)[0], count_MAC, count_DFF, count_CARRY), file=f)
