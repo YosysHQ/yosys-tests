@@ -15,22 +15,17 @@ for fn in glob.glob('*.v'):
     Areg = 'A' in m.group(5)
     Breg = 'B' in m.group(5)
     Preg = 'P' in m.group(5)
+    if A < B:
+        A,B = B,A
+        Asigned,Bsigned = Bsigned,Asigned
     if not (Asigned and Bsigned):
         A += 1
         B += 1
         Asigned = Bsigned = 1
-    if A < B:
-        A,B = B,A
-        Asigned,Bsigned = Bsigned,Asigned
-    if A == 25:
-        X = 1 # No headroom needed on single multiplier
-    else:
-        X = (A + 23) // 24
-    if B == 18:
-        Y = 1 # No headroom needed on single multiplier
-    else:
-        Y = (B+16) // 17
+    X = 1 + max(0,A-25+16) // 17
+    Y = 1 + max(0,B-18+16) // 17
     count_MAC = X * Y
+
     count_DFF = 0
     if Preg and (A > 25 or B > 18):
         count_DFF += A + B
