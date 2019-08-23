@@ -2,7 +2,7 @@
 // (i.e. output port, in non flattened case)
 // sr_var_length_other_users_port
 (* top *)
-module test13b #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q, output [depth-1:0] state);
+module sr_var_length_other_users_port #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q, output [depth-1:0] state);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -26,6 +26,6 @@ endmodule
 
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd test13b; select t:SRL* -assert-count 0";
+    wire [4095:0] assert_area = "cd sr_var_length_other_users_port; select t:SRL* -assert-count 0";
 endmodule
 `endif

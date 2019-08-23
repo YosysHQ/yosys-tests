@@ -1,8 +1,8 @@
 // Check that non chain users block SRLs
 // (i.e. output port, in non flattened case)
-// sr_fixed_length_other_users_xor
+// sr_fixed_length_other_users_port
 (* top *)
-module test13c #(parameter width=1, depth=130) (input clk, input [width-1:0] i, input e, output [width-1:0] q, output [depth-1:0] state);
+module sr_fixed_length_other_users_port #(parameter width=1, depth=130) (input clk, input [width-1:0] i, output [width-1:0] q, output [depth-1:0] state);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -19,6 +19,6 @@ endmodule
 
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd test13c; select t:SRL* -assert-count 0";
+    wire [4095:0] assert_area = "cd sr_fixed_length_other_users_port; select t:SRL* -assert-count 0";
 endmodule
 `endif
