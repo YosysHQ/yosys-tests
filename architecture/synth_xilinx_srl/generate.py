@@ -70,10 +70,10 @@ endmodule
 
 # Test 1: pos_clk_no_enable_no_init_not_inferred
 for i in range(1,N+1):
-    with open('test1_%d.v' % i, 'w') as fp:
+    with open('pos_clk_no_enable_no_init_not_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test1_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
+module pos_clk_no_enable_no_init_not_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -87,14 +87,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test1')
+        assert_static_area(fp, i, 'pos_clk_no_enable_no_init_not_inferred')
 
 # Test 2: pos_clk_with_enable_no_init_not_inferred
 for i in range(1,N+1):
-    with open('test2_%d.v' % i, 'w') as fp:
+    with open('pos_clk_with_enable_no_init_not_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test2_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
+module pos_clk_with_enable_no_init_not_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -108,14 +108,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test2')
+        assert_static_area(fp, i, 'pos_clk_with_enable_no_init_not_inferred')
 
 # Test 3: pos_clk_with_enable_with_init_inferred
 for i in range(1,N+1):
-    with open('test3_%d.v' % i, 'w') as fp:
+    with open('pos_clk_with_enable_with_init_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test3_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
+module pos_clk_with_enable_with_init_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -136,14 +136,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test3')
+        assert_static_area(fp, i, 'pos_clk_with_enable_with_init_inferred')
 
 # Test 4: neg_clk_no_enable_no_init_not_inferred
 for i in range(1,N+1):
-    with open('test4_%d.v' % i, 'w') as fp:
+    with open('neg_clk_no_enable_no_init_not_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test4_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
+module neg_clk_no_enable_no_init_not_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -157,14 +157,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test4')
+        assert_static_area(fp, i, 'neg_clk_no_enable_no_init_not_inferred')
 
 # Test 5: neg_clk_no_enable_no_init_inferred
 for i in range(1,N+1):
-    with open('test5_%d.v' % i, 'w') as fp:
+    with open('neg_clk_no_enable_no_init_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test5_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
+module neg_clk_no_enable_no_init_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -182,14 +182,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test5')
+        assert_static_area(fp, i, 'neg_clk_no_enable_no_init_inferred')
 
 # Test 6: neg_clk_with_enable_with_init_inferred
 for i in range(1,N+1):
-    with open('test6_%d.v' % i, 'w') as fp:
+    with open('neg_clk_with_enable_with_init_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test6_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
+module neg_clk_with_enable_with_init_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -210,14 +210,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test6')
+        assert_static_area(fp, i, 'neg_clk_with_enable_with_init_inferred')
 
 # Test 10: pos_clk_no_enable_no_init_not_inferred_var_len
 for i in range(1,N+1):
-    with open('test10_%d.v' % i, 'w') as fp:
+    with open('pos_clk_no_enable_no_init_not_inferred_var_len_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test10_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input [31:0] l, output [width-1:0] q);
+module pos_clk_no_enable_no_init_not_inferred_var_len_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input [31:0] l, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -233,14 +233,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_dynamic_area(fp, i, 'test10')
+        assert_dynamic_area(fp, i, 'pos_clk_no_enable_no_init_not_inferred_var_len')
 
 # Test 11: neg_clk_with_enable_with_init_inferred_var_len
 for i in range(1,N+1):
-    with open('test11_%d.v' % i, 'w') as fp:
+    with open('neg_clk_with_enable_with_init_inferred_var_len_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test11_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
+module neg_clk_with_enable_with_init_inferred_var_len_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -261,7 +261,7 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_dynamic_area(fp, i, 'test11')
+        assert_dynamic_area(fp, i, 'neg_clk_with_enable_with_init_inferred_var_len')
 
 import lfsr_area
 re_lfsr = re.compile(r'lfsr_(\d+)\.v')
@@ -282,10 +282,10 @@ endmodule
 
 # Test 15: pos_clk_no_enable_no_init_not_inferred
 for i in range(128+1,128+N+1):
-    with open('test15_%d.v' % i, 'w') as fp:
+    with open('pos_clk_no_enable_no_init_not_inferred_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test15_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
+module pos_clk_no_enable_no_init_not_inferred_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, output [width-1:0] q);
 generate 
     wire [depth:0] int [width-1:0];
     genvar w, d;
@@ -299,14 +299,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_static_area(fp, i, 'test15')
+        assert_static_area(fp, i, 'pos_clk_no_enable_no_init_not_inferred')
 
 # Test 16: neg_clk_with_enable_with_init_inferred_var_len
 for i in range(128+1,128+N+1):
-    with open('test16_%d.v' % i, 'w') as fp:
+    with open('neg_clk_with_enable_with_init_inferred_var_len_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test16_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
+module neg_clk_with_enable_with_init_inferred_var_len_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
 generate 
     reg [depth-1:0] int [width-1:0];
 
@@ -327,14 +327,14 @@ generate
 endgenerate
 endmodule
 '''.format(i))
-        assert_dynamic_area(fp, i, 'test16')
+        assert_dynamic_area(fp, i, 'neg_clk_with_enable_with_init_inferred_var_len')
 
 # Test 18: neg_clk_with_enable_with_init_inferred2
 for i in range(1,N+1):
-    with open('test18_%d.v' % i, 'w') as fp:
+    with open('neg_clk_with_enable_with_init_inferred2_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test18_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
+module neg_clk_with_enable_with_init_inferred2_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, output [width-1:0] q);
 generate 
     reg [width-1:0] int [depth-1:0];
 
@@ -354,14 +354,14 @@ generate
     assign q = int[depth-1];
 endgenerate
 endmodule'''.format(i))
-        assert_static_area(fp, i, 'test18')
+        assert_static_area(fp, i, 'neg_clk_with_enable_with_init_inferred2')
 
 # Test 19: pos_clk_with_enable_no_init_inferred2_var_len
 for i in range(1,N+1):
-    with open('test19_%d.v' % i, 'w') as fp:
+    with open('pos_clk_with_enable_no_init_inferred2_var_len_%d.v' % i, 'w') as fp:
         fp.write('''
 (* top *)
-module test19_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
+module pos_clk_with_enable_no_init_inferred2_var_len_{0} #(parameter width=1, depth={0}) (input clk, input [width-1:0] i, input e, input [31:0] l, output [width-1:0] q);
 generate 
     reg [width-1:0] int [depth-1:0];
 
@@ -381,4 +381,4 @@ generate
     assign q = int[l];
 endgenerate
 endmodule'''.format(i))
-        assert_dynamic_area(fp, i, 'test19')
+        assert_dynamic_area(fp, i, 'pos_clk_with_enable_no_init_inferred2_var_len')
