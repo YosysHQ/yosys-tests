@@ -20,8 +20,8 @@ if ! which iverilog > /dev/null ; then
 fi
 
 wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/lfsr/generate.py -O generate_lfsr.py -o /dev/null
-python3 generate_lfsr.py
-python3 ../generate.py
+#python3 generate_lfsr.py
+#python3 ../generate.py
 cp ../*.v .
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed !(test21*).v EXTRA_FLAGS="\
     -f 'verilog -noblackbox -icells' \

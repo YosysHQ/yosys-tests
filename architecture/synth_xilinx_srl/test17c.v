@@ -12,6 +12,6 @@ endmodule
 
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd test17c; select t:SRL16E -assert-count 2; select t:* t:SRL16E %d -assert-count 0;";
+    wire [4095:0] assert_area = "cd test17c; select t:SRL16E -assert-count 2; select t:BUFG t:SRL16E %% %n t:* %i -assert-none";
 endmodule
 `endif
