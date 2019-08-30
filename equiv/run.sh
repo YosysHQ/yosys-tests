@@ -44,9 +44,9 @@ if echo "$1" | grep ".*_error"; then
 	elif [ "$2" = "equiv_make_equiv_mod_already_exists" ]; then
 		expected_string="ERROR: Equiv module equiv already exists."
 	elif [ "$2" = "equiv_make_gold_mod_contains_proc" ]; then
-		expected_string="ERROR: Gold module contains memories or procresses. Run 'memory' or 'proc' respectively."
+		expected_string="ERROR: Gold module contains memories or processes. Run 'memory' or 'proc' respectively."
 	elif [ "$2" = "equiv_make_gate_mod_contains_proc" ]; then
-		expected_string="ERROR: Gate module contains memories or procresses. Run 'memory' or 'proc' respectively."
+		expected_string="ERROR: Gate module contains memories or processes. Run 'memory' or 'proc' respectively."
 	elif [ "$2" = "equiv_miter_invalid_num_of_args" ]; then
 		expected_string="ERROR: Invalid number of arguments."
 	elif [ "$2" = "equiv_miter_miter_module_already_exists" ]; then
