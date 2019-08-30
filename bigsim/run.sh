@@ -42,7 +42,7 @@ case "$2" in
 		;;
 	ecp5)
 		yosys -ql synthlog.txt -p "$PRESYN; synth_ecp5 -top $TOP; write_verilog synth.v" $rtl_files
-		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v"
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v -I$TECHLIBS_PREFIX/ecp5"
 		;;
 	ecp5_abc9)
 		yosys -ql synthlog.txt -p "$PRESYN; synth_ecp5 -abc9 -top $TOP; write_verilog synth.v" $rtl_files
