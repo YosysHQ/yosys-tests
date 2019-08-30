@@ -287,9 +287,7 @@ else
 
 	iverilog_adds=""
 	#Additional sources for iverilog simulation
-	if [ "$1" = "issue_00084" ]; then
-		iverilog_adds="$TECHLIBS_PREFIX/xilinx/xc7_brams_bb.v"
-	elif [ "$1" = "issue_00160" ] ||\
+	if [ "$1" = "issue_00160" ] ||\
 		 [ "$1" = "issue_00182" ] ||\
 		 [ "$1" = "issue_00183" ] ||\
 		 [ "$1" = "issue_00481" ] ||\
@@ -308,7 +306,8 @@ else
     	exit 0
 	fi
 	# cases where we do not run iverilog
-	if [ "$1" = "issue_00449" ]; then
+	if [ "$1" = "issue_00449" ] ||\
+	   [ "$1" = "issue_00084" ]; then
 		echo PASS > ${1}_${2}.status
     	touch .stamp
     	exit 0
