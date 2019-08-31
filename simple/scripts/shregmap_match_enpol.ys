@@ -1,6 +1,6 @@
 read_verilog ../top.v
 synth_greenpak4 -run begin:map_luts
-shregmap -tech greenpak4 -match -enpol any
+shregmap -match -enpol any
 design -reset
 read_verilog ../top.v
 write_verilog synth.v
