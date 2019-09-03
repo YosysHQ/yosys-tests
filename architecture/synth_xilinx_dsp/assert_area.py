@@ -4,7 +4,7 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'mul_(\d+)(s?)_(\d+)(s?)_(A?B?P?)_A?B?P?\.v')
+re_mux = re.compile(r'mul_(\d+)(s?)_(\d+)(s?)_(A?B?M?P?)_A?B?M?P?\.v')
 
 for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
@@ -14,6 +14,7 @@ for fn in glob.glob('*.v'):
     Asigned, Bsigned = m.group(2,4)
     Areg = 'A' in m.group(5)
     Breg = 'B' in m.group(5)
+    Mreg = 'M' in m.group(5)
     Preg = 'P' in m.group(5)
     if A < B:
         A,B = B,A
@@ -27,6 +28,8 @@ for fn in glob.glob('*.v'):
     count_MAC = X * Y
 
     count_DFF = 0
+    if Mreg and (A > 25 or B > 18):
+        count_DFF += A + B
     if Preg and (A > 25 or B > 18):
         count_DFF += A + B
     # TODO: More assert on number of CARRY and LUTs
