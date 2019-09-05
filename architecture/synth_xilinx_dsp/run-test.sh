@@ -21,7 +21,10 @@ fi
 #wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mul/generate.py -O generate_mul.py -o /dev/null
 cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
+cp ~/yosys/yosys-bench/verilog/benchmarks_small/macc/common.py common_macc.py
+PYTHONPATH=".:$PYTHONPATH" python3 ../generate_macc.py
 python3 ../assert_area.py
+cp ../*.v .
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
     -p 'design -copy-to __test __test; \
         synth_xilinx; \
