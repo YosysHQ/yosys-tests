@@ -10,12 +10,13 @@ for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
     if not m: continue
 
+    macc = m.group(1) == 'macc'
     A,B = map(int, m.group(2,4))
     Asigned, Bsigned = m.group(3,5)
     Areg = 'A' in m.group(6)
     Breg = 'B' in m.group(6)
     Mreg = 'M' in m.group(6)
-    Preg = 'P' in m.group(6)
+    Preg = 'P' in m.group(6) or macc
     if A < B:
         A,B = B,A
         Asigned,Bsigned = Bsigned,Asigned
@@ -29,12 +30,15 @@ for fn in glob.glob('*.v'):
 
     count_DFF = 0
     if Mreg and (A > 25 or B > 18):
-        count_DFF += A + B
+        count_DFF += A + B - 1
     if Preg and (A > 25 or B > 18):
-        count_DFF += A + B
+        count_DFF += A + B - 1
+        if macc:
+            count_DFF += 5 # In my testcases, accumulator is always
+                           # 5bits bigger than multiplier result
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
-    if A <= 25 or B <= 18:
+    if not macc and (A <= 25 or B <= 18):
         count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
 
     bn,_ = os.path.splitext(fn)
