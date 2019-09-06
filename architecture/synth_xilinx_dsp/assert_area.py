@@ -30,12 +30,18 @@ for fn in glob.glob('*.v'):
 
     count_DFF = 0
     if Mreg and (A > 25 or B > 18):
-        count_DFF += A + B - 1
+        count_DFF += A + B
+        if not macc:
+            count_DFF -= 1 # For pure multipliers, expect last slice to absorb
+                           # at least one register
     if Preg and (A > 25 or B > 18):
-        count_DFF += A + B - 1
+        count_DFF += A + B
         if macc:
             count_DFF += 5 # In my testcases, accumulator is always
                            # 5bits bigger than multiplier result
+        else:
+            count_DFF -= 1 # For pure multipliers, expect last slice to absorb
+                           # at least one register
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
     if not macc and (A <= 25 or B <= 18):

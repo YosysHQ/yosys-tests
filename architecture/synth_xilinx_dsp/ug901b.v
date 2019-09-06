@@ -51,6 +51,7 @@ generate
 	endgenerate
 endmodule
 
+(* gentb_skip *) // Prevents Yosys' test_autotb from operating on this module
 (* dont_touch = "yes" *)
 module sfir_shifter #(parameter dsize = 16, nbtap = 4) (
      input clk, 
@@ -68,6 +69,7 @@ end
 assign dataout = tmp[2*nbtap-1];
 endmodule
 
+(* gentb_skip *) // Prevents Yosys' test_autotb from operating on this module
 module sfir_even_symmetric_systolic_element #(parameter dsize = 16) (
     input clk, 
     input signed [dsize-1:0] coeffin, datain, datazin,
@@ -98,7 +100,7 @@ endmodule
 
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd ug901b; select t:DSP48E1 -assert-count 1; select t:FDRE -assert-count 1; select -assert-none t:DSP48E1 t:BUFG t:FDRE %% t:* %D";
+    wire [4095:0] assert_area = "cd ug901b; flatten; select t:DSP48E1 -assert-count 4; select t:FDRE -assert-count 128; select t:SRL16E -assert-count 16; select -assert-none t:DSP48E1 t:BUFG t:FDRE t:SRL16E %% t:* %D";
 endmodule
 `endif
 
