@@ -39,7 +39,7 @@ always @(posedge clk)
 	// Output accumulation result
 	assign accum_out = adder_out;
 
-	endmodule
+endmodule
 
 `ifndef _AUTOTB
 module __test ;
