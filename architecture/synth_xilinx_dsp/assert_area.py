@@ -4,7 +4,7 @@ import glob
 import re
 import os
 
-re_mux = re.compile(r'(mul|macc)_(\d+)(s?)_(\d+)(s?)_(A?B?M?P?)_A?B?M?P?\.v')
+re_mux = re.compile(r'(mul|muladd|macc)_(\d+)(s?)_(\d+)(s?)(_(\d+)(s?))?_(A?B?C?M?P?)_A?B?C?M?P?\.v')
 
 for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
@@ -12,11 +12,14 @@ for fn in glob.glob('*.v'):
 
     macc = m.group(1) == 'macc'
     A,B = map(int, m.group(2,4))
-    Asigned, Bsigned = m.group(3,5)
-    Areg = 'A' in m.group(6)
-    Breg = 'B' in m.group(6)
-    Mreg = 'M' in m.group(6)
-    Preg = 'P' in m.group(6) or macc
+    Asigned,Bsigned = m.group(3,5)
+    if m.group(6):
+        C = map(int, m.group(7))
+        Csigned = m.group(8)
+    Areg = 'A' in m.group(9)
+    Breg = 'B' in m.group(9)
+    Mreg = 'M' in m.group(9)
+    Preg = 'P' in m.group(9) or macc
     if A < B:
         A,B = B,A
         Asigned,Bsigned = Bsigned,Asigned
