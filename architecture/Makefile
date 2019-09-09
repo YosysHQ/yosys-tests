@@ -82,4 +82,8 @@ $(eval $(call template,synth_greenpak4_wide_ffs,synth_greenpak4 synth_greenpak4_
 $(eval $(call template,synth_greenpak4_dffs_r,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
 $(eval $(call template,synth_greenpak4_error,synth_greenpak4_fully_selected synth_greenpak4_invalid_part))
 
+#efinix
+$(eval $(call template,synth_efinix, synth_efinix synth_efinix_edif synth_efinix_json synth_efinix_noflatten synth_efinix_retime synth_efinix_run synth_efinix_top))
+$(eval $(call template,synth_efinix_fulladder, synth_efinix synth_efinix_edif synth_efinix_json synth_efinix_noflatten synth_efinix_retime synth_efinix_run synth_efinix_top))
+
 .PHONY: all clean

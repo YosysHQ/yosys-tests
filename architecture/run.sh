@@ -121,6 +121,10 @@ else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v
 	elif [ "$1" = "synth_greenpak4_dffs_r" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/greenpak4/cells_sim_digital.v
+	elif [ "$1" = "synth_efinix" ]; then
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
+	elif [ "$1" = "synth_efinix_fulladder" ]; then
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
 	else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v
 	fi
