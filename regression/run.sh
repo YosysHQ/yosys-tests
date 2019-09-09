@@ -173,7 +173,6 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="RAMB36E1                        1"
 	elif [ "$1" = "issue_00873" ]; then
 		expected_string="has an unprocessed 'init' attribute."
-		expected="0"
 	elif [ "$1" = "issue_00888" ]; then
 		expected_string="FDRE                            4"
 	elif [ "$1" = "issue_00922" ]; then
