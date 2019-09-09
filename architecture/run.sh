@@ -79,6 +79,8 @@ else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/anlogic/cells_sim.v
 	elif [ "$1" = "synth_anlogic_fulladder" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/anlogic/cells_sim.v
+	elif [ "$1" = "synth_anlogic_fsm" ]; then
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/anlogic/cells_sim.v
 	elif [ "$1" = "synth_anlogic_mem" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/anlogic/cells_sim.v  $TECHLIBS_PREFIX/anlogic/eagle_bb.v
 	elif [ "$1" = "synth_coolrunner2" ]; then

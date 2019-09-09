@@ -24,6 +24,7 @@ $(eval $(call template,synth_achronix_error,synth_achronix_fully_selected))
 #anlogic
 $(eval $(call template,synth_anlogic,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
 $(eval $(call template,synth_anlogic_fulladder,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
+$(eval $(call template,synth_anlogic_fsm,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime))
 $(eval $(call template,synth_anlogic_mem,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime anlogic_determine_init_eqn))
 $(eval $(call template,synth_anlogic_error,synth_anlogic_fully_selected))
 
