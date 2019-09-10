@@ -235,4 +235,7 @@ $(eval $(call template, simplemap_mem_slice_concat, simplemap simplemap_top simp
 #techmap
 $(eval $(call template, techmap, techmap techmap_wb techmap_autoproc techmap_recursive techmap_extern techmap_assert techmap_i techmap_d techmap_max_iter techmap_map))
 
+#test_pmgen
+$(eval $(call template, test_pmgen, test_pmgen_eqpmux test_pmgen_generate_eqpmux test_pmgen_generate_ice40_dsp test_pmgen_generate_peepopt_muldiv test_pmgen_generate_peepopt_shiftmul test_pmgen_generate_reduce test_pmgen_generate_xilinx_srl_fixed test_pmgen_generate_xilinx_srl_variable test_pmgen_reduce_chain test_pmgen_reduce_tree))
+
 .PHONY: all clean
