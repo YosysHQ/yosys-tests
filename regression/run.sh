@@ -121,7 +121,14 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_01118" ] ||\
 	 [ "$1" = "issue_01128" ] ||\
 	 [ "$1" = "issue_01132" ] ||\
-	 [ "$1" = "issue_01135" ]; then
+	 [ "$1" = "issue_01135" ] ||\
+	 [ "$1" = "issue_01145" ] ||\
+	 [ "$1" = "issue_01220" ] ||\
+	 [ "$1" = "issue_01223" ] ||\
+	 [ "$1" = "issue_01231" ] ||\
+	 [ "$1" = "issue_01243" ] ||\
+	 [ "$1" = "issue_01273" ] ||\
+	 [ "$1" = "issue_01329" ]; then
 
 	expected_string=""
 	expected="1"
@@ -246,6 +253,19 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="\$_MUX4_                         1"
 	elif [ "$1" = "issue_01135" ]; then
 		expected_string="\$pmux                           1"
+	elif [ "$1" = "issue_01145" ] ||\
+		 [ "$1" = "issue_01220" ]; then
+		expected_string="Executing FLATTEN pass (flatten design)."
+	elif [ "$1" = "issue_01223" ]; then
+		expected_string=" Executing CHECK pass (checking for obvious problems)."
+	elif [ "$1" = "issue_01231" ]; then
+		expected_string="Successfully finished Verilog frontend."
+	elif [ "$1" = "issue_01243" ]; then
+		expected_string="assign y = reg_assign;"
+	elif [ "$1" = "issue_01273" ]; then
+		expected_string="\$_MUX8_                         9"
+	elif [ "$1" = "issue_01329" ]; then
+		expected_string="\$mux                            1"
 	fi
 
 	if [ "$1" = "issue_01118" ]; then
