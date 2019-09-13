@@ -469,6 +469,30 @@ $(eval $(call template,issue_01135,issue_01135))
 #issue_01144
 $(eval $(call template,issue_01144,issue_01144))
 
+#issue_01145
+$(eval $(call template,issue_01145,issue_01145))
+
+#issue_01220
+$(eval $(call template,issue_01220,issue_01220))
+
+#issue_01223
+$(eval $(call template,issue_01223,issue_01223))
+
+#issue_01231
+$(eval $(call template,issue_01231,issue_01231))
+
+#issue_01243
+$(eval $(call template,issue_01243,issue_01243))
+
+#issue_01273
+$(eval $(call template,issue_01273,issue_01273))
+
+#issue_01284
+$(eval $(call template,issue_01284,issue_01284))
+
+#issue_01329
+$(eval $(call template,issue_01329,issue_01329))
+
 
 
 

@@ -62,7 +62,7 @@ $(eval $(call template,read_liberty_tech,read_liberty read_liberty_nooverwrite r
 $(eval $(call template,read_liberty_error, read_liberty_invalid_bus_type read_liberty_unsupp_type_for_bus read_liberty_bus_interface_only_in_lib_mode read_liberty_latch_has_no_data_in read_liberty_miss_func_on_output read_liberty_ff_has_no_next_stage_attr read_liberty_parse_error_in_function read_liberty_cant_resolve_wire_name read_liberty_missing_direction read_liberty_cant_open_input_file read_liberty_redefenition_of_module ))
 
 #read_aiger
-$(eval $(call template,read_aiger,read_aiger read_aiger_proc read_aiger_ascii read_aiger_module read_aiger_clk read_aiger_clk_module ))
+$(eval $(call template,read_aiger,read_aiger read_aiger_proc read_aiger_ascii read_aiger_module read_aiger_map read_aiger_clk read_aiger_clk_module ))
 $(eval $(call template,read_aiger_latch,read_aiger_aig))
 $(eval $(call template,read_aiger_logic,read_aiger_aig))
 $(eval $(call template,read_aiger_ff,read_aiger_aig))
