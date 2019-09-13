@@ -75,6 +75,9 @@ $(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
 endif
 
+#xilinx_ug901_synthesis_examples
+$(eval $(call template,xilinx_ug901_synthesis_examples,xilinx_ug901_synthesis_examples))
+
 #greenpak4
 $(eval $(call template,synth_greenpak4,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
 $(eval $(call template,synth_greenpak4_wide_ffs,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140))
