@@ -1,14 +1,14 @@
 module testbench;
-    reg [2:0] in;
+    reg [11:0] in;
 
-	wire patt_out,out;
-	wire patt_carry_out,carryout;
+	wire [4:0] patt_out,out;
+	wire [4:0] patt_carry_out,carryout;
 
     initial begin
         // $dumpfile("testbench.vcd");
         // $dumpvars(0, testbench);
 
-        #5 in = 0;
+        in = 0;
         repeat (10000) begin
             #5 in = in + 1;
         end
@@ -17,16 +17,17 @@ module testbench;
     end
 
     top uut (
-	.x(in[0]),
-	.y(in[1]),
-	.cin(in[2]),
+	.x(in[3:0]),
+	.y(in[7:4]),
+	.cin(in[11:8]),
 	.A(out),
 	.cout(carryout)
 	);
-	
-	assign {patt_carry_out,patt_out} =  in[2] + in[1] + in[0];
 
-	assert_comb out_test(.A(patt_out), .B(out));
-	assert_comb carry_test(.A(patt_carry_out), .B(carryout));
+	assign {patt_carry_out,patt_out} =  in[11:8] + in[7:4] + in[3:0];
+
+	assert_comb out_test(.A(patt_out[3]), .B(out[3]));
+	assert_comb carry_test(.A(patt_carry_out[3]), .B(carryout[3]));
 
 endmodule
+

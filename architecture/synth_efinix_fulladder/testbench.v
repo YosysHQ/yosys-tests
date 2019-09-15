@@ -8,7 +8,7 @@ module testbench;
         // $dumpfile("testbench.vcd");
         // $dumpvars(0, testbench);
 
-        #5 in = 0;
+        in = 0;
         repeat (10000) begin
             #5 in = in + 1;
         end
@@ -30,3 +30,4 @@ module testbench;
 	assert_comb carry_test(.A(patt_carry_out[3]), .B(carryout[3]));
 
 endmodule
+
