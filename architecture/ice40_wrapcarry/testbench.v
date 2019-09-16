@@ -24,24 +24,22 @@ module testbench;
 	);
 
 
-	//assign poutA =  in[3:0] % in[7:4];
 	assign poutB =  in[3:0] / in[7:4];
 
-	//check_comb mod_test(outA, poutA);
-	check_comb div_test(outB, poutB);
-	assert_comb div2_test(outB[2], poutB[2]);
+	check_comb div_test(in[7:4], outB, poutB);
 
 endmodule
 
-module check_comb(input [3:0] test, input [3:0] pat);
+module check_comb(input [3:0] div, input [3:0] test, input [3:0] pat);
     always @*
     begin
         #1;
-        if (test !== pat)
-        begin
-            $display("ERROR: ASSERTION FAILED in %m:",$time," ",test," ",pat);
-            $stop;
-        end
+        if (div != 4'b0000)
+			if (test !== pat)
+			begin
+				$display("ERROR: ASSERTION FAILED in %m:",$time," ",test," ",pat);
+				$stop;
+			end
     end
 endmodule
 

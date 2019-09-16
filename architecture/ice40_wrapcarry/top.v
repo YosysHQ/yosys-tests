@@ -7,7 +7,6 @@ module top
  output [3:0] B
  );
 
-//assign A =  x % y;
 assign B =  x / y;
 
 endmodule
