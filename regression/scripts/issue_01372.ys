@@ -1,0 +1,4 @@
+read -define BROKEN_CODE
+read -formal ../top.v
+prep -top mcvesix
+write_verilog result.log

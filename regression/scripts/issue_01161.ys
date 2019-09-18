@@ -1,0 +1,13 @@
+read_verilog ../top.v
+
+hierarchy
+proc
+
+write_ilang error_design.proc.il
+show -format svg -prefix error_design.proc error_design
+write_verilog result_old.log
+
+opt_clean
+write_ilang error_design.opt_clean.il
+show -format svg -prefix error_design.opt_clean error_design
+write_verilog result.log
