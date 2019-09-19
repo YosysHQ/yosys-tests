@@ -23,7 +23,7 @@ endmodule
 
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd mul_16_16_keepABP_; select t:SB_MAC16 -assert-count 1; select t:SB_DFF* -assert-count 64";
+    wire [4095:0] assert_area = "cd mul_16_16_keepABP_; select t:SB_MAC16 -assert-count 1; select t:SB_DFF* -assert-count 32";
 endmodule
 `endif
 

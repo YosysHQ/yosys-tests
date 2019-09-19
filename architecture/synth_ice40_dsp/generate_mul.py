@@ -6,4 +6,4 @@ ARange = ['16','16s','17','17s','24','24s','31','31s','32','32s','33','33s','47'
 BRange = ['15','15s','16','16s','17','17s','24','24s','31','31s','32','32s']
 
 if __name__ == "__main__":
-    gen_mul(ARange, BRange)
+    gen_mul(ARange, BRange, "ABP")

@@ -10,6 +10,7 @@ for fn in glob.glob('*.v'):
     m = re_mux.match(fn)
     if not m: continue
 
+    macc = False
     A,B = map(int, m.group(1,3))
     Asigned, Bsigned = m.group(2,4)
     Areg = 'A' in m.group(5)
@@ -29,6 +30,12 @@ for fn in glob.glob('*.v'):
             count_DFF += A + B
     if Preg and (A > 16 or B > 16):
         count_DFF += A + B
+        if macc:
+            count_DFF += 5 # In my testcases, accumulator is always
+                           # 5bits bigger than multiplier result
+        elif (A > 16) ^ (B > 16):
+            count_DFF -= 1 # For pure multipliers with just one big dimension,
+                           #   expect last slice to absorb at least one register
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
     if (A <= 16 or B <= 16) and A % 16 != 1 and B % 16 != 1:
