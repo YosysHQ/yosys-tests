@@ -34,17 +34,17 @@ for fn in glob.glob('*.v'):
     count_DFF = 0
     if Mreg and (A > 25 or B > 18):
         count_DFF += A + B
-        if not macc:
-            count_DFF -= 1 # For pure multipliers, expect last slice to absorb
-                           # at least one register
+        if not macc and (A > 25) ^ (B > 18):
+            count_DFF -= 1 # For pure multipliers with just one big dimension,
+                           #   expect last slice to absorb at least one register
     if Preg and (A > 25 or B > 18):
         count_DFF += A + B
         if macc:
             count_DFF += 5 # In my testcases, accumulator is always
                            # 5bits bigger than multiplier result
-        else:
-            count_DFF -= 1 # For pure multipliers, expect last slice to absorb
-                           # at least one register
+        elif (A > 25) ^ (B > 18):
+            count_DFF -= 1 # For pure multipliers with just one big dimension,
+                           #   expect last slice to absorb at least one register
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
     if not macc and (A <= 25 or B <= 18):
@@ -56,7 +56,7 @@ for fn in glob.glob('*.v'):
         print('''
 `ifndef _AUTOTB
 module __test ;
-    wire [4095:0] assert_area = "cd {0}; select t:DSP48E1 -assert-count {1}; select t:FD* -assert-max {2}{3}";
+    wire [4095:0] assert_area = "cd {0}; select t:DSP48E1 -assert-max {1}; select t:FD* -assert-max {2}{3}";
 endmodule
 `endif
 '''.format(os.path.splitext(fn)[0], count_MAC, count_DFF, count_CARRY), file=f)
