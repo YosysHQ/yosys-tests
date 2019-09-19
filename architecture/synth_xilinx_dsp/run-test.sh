@@ -23,6 +23,8 @@ cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
 cp ~/yosys/yosys-bench/verilog/benchmarks_small/macc/common.py common_macc.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_macc.py
+cp ~/yosys/yosys-bench/verilog/benchmarks_small/muladd/common.py common_muladd.py
+PYTHONPATH=".:$PYTHONPATH" python3 ../generate_muladd.py
 python3 ../assert_area.py
 cp ../*.v .
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="\
