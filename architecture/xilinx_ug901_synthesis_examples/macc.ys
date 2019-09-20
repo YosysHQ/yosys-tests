@@ -10,14 +10,14 @@ cd macc
 stat
 select -assert-count 1 t:BUFG
 select -assert-count 53 t:FDRE
-select -assert-count 64 t:LUT2
-select -assert-count 10 t:LUT3
+select -assert-count 63 t:LUT2
+select -assert-count 11 t:LUT3
 select -assert-count 22 t:LUT4
-select -assert-count 14 t:LUT5
-select -assert-count 123 t:LUT6
+select -assert-count 13 t:LUT5
+select -assert-count 129 t:LUT6
 select -assert-count 34 t:MUXCY
-select -assert-count 41 t:MUXF7
-select -assert-count 14 t:MUXF8
+select -assert-count 45 t:MUXF7
+select -assert-count 15 t:MUXF8
 select -assert-count 36 t:XORCY
 
 select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXCY t:MUXF7 t:MUXF8 t:XORCY %% t:* %D
