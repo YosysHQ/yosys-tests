@@ -18,7 +18,6 @@ if ! which iverilog > /dev/null ; then
   exit 1
 fi
 
-#wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mul/generate.py -O generate_mul.py -o /dev/null
 
 EXTRA_FLAGS="\
     -p 'design -copy-to __test __test; \
@@ -31,9 +30,9 @@ EXTRA_FLAGS="\
 cp ../*.v .
 ${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="$EXTRA_FLAGS"
 
-cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
-cp ~/yosys/yosys-bench/verilog/benchmarks_small/macc/common.py common_macc.py
-cp ~/yosys/yosys-bench/verilog/benchmarks_small/muladd/common.py common_muladd.py
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mul/common.py -O common_mul.py -o /dev/null
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/macc/common.py -O common_macc.py -o /dev/null
+wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/muladd/common.py -O common_muladd.py -o /dev/null
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_macc.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_muladd.py
