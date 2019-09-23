@@ -29,7 +29,7 @@ EXTRA_FLAGS="\
     -l ../../../../../techlibs/xilinx/cells_sim.v"
 
 cp ../*.v .
-${MAKE:-make} -f ../../../../tools/autotest.mk $seed mul_*.v EXTRA_FLAGS="$EXTRA_FLAGS"
+${MAKE:-make} -f ../../../../tools/autotest.mk $seed *.v EXTRA_FLAGS="$EXTRA_FLAGS"
 
 cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
 cp ~/yosys/yosys-bench/verilog/benchmarks_small/macc/common.py common_macc.py
