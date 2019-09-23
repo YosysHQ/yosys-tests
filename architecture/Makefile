@@ -77,6 +77,7 @@ $(eval $(call template,xilinx_srl,xilinx_srl_minlen xilinx_srl_fixed xilinx_srl_
 ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
+$(eval $(call template,synth_xilinx_dsp,synth_xilinx_dsp))
 endif
 
 #xilinx_ug901_synthesis_examples
