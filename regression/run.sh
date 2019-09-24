@@ -60,6 +60,29 @@ if [ "$1" = "issue_00089" ] ||\
 		fi
 	fi
 
+# cases without any additional checks (only checks in .ys script)
+elif [ "$1" = "issue_01364" ] ||\
+	 [ "$1" = "issue_01372" ] ||\
+	 [ "$1" = "issue_00623" ] ||\
+	 [ "$1" = "issue_00656" ] ||\
+	 [ "$1" = "issue_01014" ] ||\
+	 [ "$1" = "issue_01193" ] ||\
+	 [ "$1" = "issue_01206" ] ||\
+	 [ "$1" = "issue_01216" ] ||\
+	 [ "$1" = "issue_01225" ] ||\
+	 [ "$1" = "issue_01259" ] ||\
+	 [ "$1" = "issue_01360" ]; then
+
+	yosys -ql yosys.log ../../scripts/$2.ys;
+
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	else
+		echo PASS > ${1}_${2}.status
+	fi
+
 # cases where some object names are/aren't expected in output file (tee -o result.log in the test script)
 elif [ "$1" = "issue_00502" ] ||\
      [ "$1" = "issue_00524" ] ||\
@@ -129,19 +152,10 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_01243" ] ||\
 	 [ "$1" = "issue_01273" ] ||\
 	 [ "$1" = "issue_01329" ] ||\
-	 [ "$1" = "issue_01364" ] ||\
-	 [ "$1" = "issue_01372" ] ||\
 	 [ "$1" = "issue_00329" ] ||\
-	 [ "$1" = "issue_00623" ] ||\
-	 [ "$1" = "issue_01014" ] ||\
 	 [ "$1" = "issue_01126" ] ||\
 	 [ "$1" = "issue_01161" ] ||\
-	 [ "$1" = "issue_01193" ] ||\
-	 [ "$1" = "issue_01206" ] ||\
-	 [ "$1" = "issue_01216" ] ||\
 	 [ "$1" = "issue_01217" ] ||\
-	 [ "$1" = "issue_01225" ] ||\
-	 [ "$1" = "issue_01259" ] ||\
 	 [ "$1" = "issue_01291" ]; then
 
 	expected_string=""
@@ -271,8 +285,7 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="Executing FLATTEN pass (flatten design)."
 	elif [ "$1" = "issue_01223" ]; then
 		expected_string=" Executing CHECK pass (checking for obvious problems)."
-	elif [ "$1" = "issue_01231" ] ||\
-		 [ "$1" = "issue_01364" ]; then
+	elif [ "$1" = "issue_01231" ]; then
 		expected_string="Successfully finished Verilog frontend."
 	elif [ "$1" = "issue_01243" ]; then
 		expected_string="assign y = reg_assign;"
@@ -280,40 +293,19 @@ elif [ "$1" = "issue_00502" ] ||\
 		expected_string="\$_MUX8_                         9"
 	elif [ "$1" = "issue_01329" ]; then
 		expected_string="\$mux                            1"
-	elif [ "$1" = "issue_01372" ]; then
-		expected_string="input \\[1:0\\] s"
 	elif [ "$1" = "issue_00329" ]; then
 		expected_string="wire \\[-1"
-	elif [ "$1" = "issue_00623" ]; then
-		expected_string="IOBUF _4_"
-	elif [ "$1" = "issue_00656" ]; then
-		expected_string="Successfully finished Verilog frontend."
-	elif [ "$1" = "issue_01014" ]; then
-		expected_string="Successfully finished Verilog frontend."
+		expected="0"
 	elif [ "$1" = "issue_01126" ]; then
 		expected_string="assign d = c\\[5:0\\]"
 	elif [ "$1" = "issue_01161" ]; then
 		expected_string="assign z0 = b"
-	elif [ "$1" = "issue_01193" ]; then
-		expected_string="cell \$dlatch"
-		expected="0"
-	elif [ "$1" = "issue_01206" ]; then
-		expected_string="Executing PROC_INIT pass"
-	elif [ "$1" = "issue_01216" ]; then
-		expected_string="ERROR: Assert"
-		expected="0"
 	elif [ "$1" = "issue_01217" ]; then
 		expected_string="is implicitly declared."
 		expected="0"
-	elif [ "$1" = "issue_01225" ]; then
-		expected_string="cell \OBUFT"
-	elif [ "$1" = "issue_01259" ]; then
-		expected_string="Executing SMT2 backend"
 	elif [ "$1" = "issue_01291" ]; then
 		expected_string="connect \\\out 1'x"
 		expected="0"
-	elif [ "$1" = "issue_01360" ]; then
-		expected_string="Executing BLIF backend"
 	fi
 
 	if [ "$1" = "issue_01118" ]; then
