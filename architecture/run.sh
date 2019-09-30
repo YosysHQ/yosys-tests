@@ -131,6 +131,8 @@ else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
 	elif [ "$1" = "synth_efinix_fulladder" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
+	elif [ "$1" = "xilinx_ug901_synthesis_examples" ]; then
+		:
 	else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v
 	fi
@@ -139,14 +141,17 @@ else
 		touch .stamp
 		exit 0
 	fi
-
-	if ! vvp -N testbench > testbench.log 2>&1; then
-		grep 'ERROR' testbench.log
-		echo FAIL > ${1}_${2}.status
-	elif grep 'ERROR' testbench.log || ! grep 'OKAY' testbench.log; then
-		echo FAIL > ${1}_${2}.status
-	else
+	if [ "$1" = "xilinx_ug901_synthesis_examples" ]; then
 		echo PASS > ${1}_${2}.status
+	else
+		if ! vvp -N testbench > testbench.log 2>&1; then
+			grep 'ERROR' testbench.log
+			echo FAIL > ${1}_${2}.status
+		elif grep 'ERROR' testbench.log || ! grep 'OKAY' testbench.log; then
+			echo FAIL > ${1}_${2}.status
+		else
+			echo PASS > ${1}_${2}.status
+		fi
 	fi
 
 fi
