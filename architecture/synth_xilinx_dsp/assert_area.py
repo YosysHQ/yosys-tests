@@ -11,6 +11,7 @@ for fn in glob.glob('*.v'):
     if not m: continue
 
     macc = m.group(1) == 'macc'
+    muladd = m.group(1) == 'muladd'
     A,B = map(int, m.group(2,4))
     Asigned,Bsigned = m.group(3,5)
     if m.group(6):
@@ -47,7 +48,10 @@ for fn in glob.glob('*.v'):
                            #   expect last slice to absorb at least one register
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
-    if not macc and (A <= 25 or B <= 18):
+    if macc or muladd:
+        if A <= 25 and B <= 18:
+            count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
+    elif A <= 25 or B <= 18:
         count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
 
     bn,_ = os.path.splitext(fn)
