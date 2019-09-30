@@ -21,6 +21,7 @@ if [ "$1" = "issue_00089" ] ||\
    [ "$1" = "issue_00594" ] ||\
    [ "$1" = "issue_00603" ] ||\
    [ "$1" = "issue_00635" ] ||\
+   [ "$1" = "issue_00639" ] ||\
    [ "$1" = "issue_00763" ] ||\
    [ "$1" = "issue_00814" ] ||\
    [ "$1" = "issue_01063" ] ||\
@@ -38,6 +39,8 @@ if [ "$1" = "issue_00089" ] ||\
 		expected_string="Failed to detect width for identifier"
 	elif [ "$1" = "issue_00594" ]; then
 		expected_string="Single range expected"
+	elif [ "$1" = "issue_00639" ]; then
+		expected_string="ERROR: Found 3 unproven \$equiv cells in 'equiv_status -assert'."
 	elif [ "$1" = "issue_00763" ]; then
 		expected_string="Invalid nesting"
 	elif [ "$1" = "issue_00814" ]; then
@@ -61,42 +64,17 @@ if [ "$1" = "issue_00089" ] ||\
 	fi
 
 # cases without any additional checks (only checks in .ys script)
-elif [ "$1" = "issue_01364" ] ||\
-	 [ "$1" = "issue_01372" ] ||\
-	 [ "$1" = "issue_00623" ] ||\
-	 [ "$1" = "issue_00656" ] ||\
-	 [ "$1" = "issue_01014" ] ||\
-	 [ "$1" = "issue_01193" ] ||\
-	 [ "$1" = "issue_01206" ] ||\
-	 [ "$1" = "issue_01216" ] ||\
-	 [ "$1" = "issue_01225" ] ||\
-	 [ "$1" = "issue_01259" ] ||\
-	 [ "$1" = "issue_01360" ]; then
-
-	yosys -ql yosys.log ../../scripts/$2.ys;
-
-	if [ $? != 0 ] ; then
-    	echo FAIL > ${1}_${2}.status
-    	touch .stamp
-    	exit 0
-	else
-		echo PASS > ${1}_${2}.status
-	fi
-
-# cases where some object names are/aren't expected in output file (tee -o result.log in the test script)
 elif [ "$1" = "issue_00502" ] ||\
      [ "$1" = "issue_00524" ] ||\
      [ "$1" = "issue_00527" ] ||\
-     [ "$1" = "issue_00639" ] ||\
      [ "$1" = "issue_00642" ] ||\
      [ "$1" = "issue_00644" ] ||\
-	 [ "$1" = "issue_00655" ] ||\
-	 [ "$1" = "issue_00675" ] ||\
-	 [ "$1" = "issue_00685" ] ||\
+     [ "$1" = "issue_00655" ] ||\
+     [ "$1" = "issue_00675" ] ||\
+     [ "$1" = "issue_00685" ] ||\
 	 [ "$1" = "issue_00689" ] ||\
 	 [ "$1" = "issue_00699" ] ||\
 	 [ "$1" = "issue_00708" ] ||\
-	 [ "$1" = "issue_00737" ] ||\
 	 [ "$1" = "issue_00774" ] ||\
 	 [ "$1" = "issue_00781" ] ||\
 	 [ "$1" = "issue_00785" ] ||\
@@ -118,30 +96,16 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_00938" ] ||\
 	 [ "$1" = "issue_00940" ] ||\
 	 [ "$1" = "issue_00948" ] ||\
-	 [ "$1" = "issue_00954" ] ||\
-	 [ "$1" = "issue_00955" ] ||\
-	 [ "$1" = "issue_00956" ] ||\
 	 [ "$1" = "issue_00961" ] ||\
-	 [ "$1" = "issue_00968" ] ||\
 	 [ "$1" = "issue_00981" ] ||\
-	 [ "$1" = "issue_00982" ] ||\
 	 [ "$1" = "issue_00987" ] ||\
 	 [ "$1" = "issue_00993" ] ||\
-	 [ "$1" = "issue_00997" ] ||\
-	 [ "$1" = "issue_01002" ] ||\
 	 [ "$1" = "issue_01016" ] ||\
-	 [ "$1" = "issue_01022" ] ||\
-	 [ "$1" = "issue_01023" ] ||\
 	 [ "$1" = "issue_01033" ] ||\
 	 [ "$1" = "issue_01034" ] ||\
-	 [ "$1" = "issue_01040" ] ||\
 	 [ "$1" = "issue_01047" ] ||\
-	 [ "$1" = "issue_01065" ] ||\
 	 [ "$1" = "issue_01070" ] ||\
-	 [ "$1" = "issue_01084" ] ||\
 	 [ "$1" = "issue_01091" ] ||\
-	 [ "$1" = "issue_01115" ] ||\
-	 [ "$1" = "issue_01118" ] ||\
 	 [ "$1" = "issue_01128" ] ||\
 	 [ "$1" = "issue_01132" ] ||\
 	 [ "$1" = "issue_01135" ] ||\
@@ -149,9 +113,47 @@ elif [ "$1" = "issue_00502" ] ||\
 	 [ "$1" = "issue_01220" ] ||\
 	 [ "$1" = "issue_01223" ] ||\
 	 [ "$1" = "issue_01231" ] ||\
-	 [ "$1" = "issue_01243" ] ||\
 	 [ "$1" = "issue_01273" ] ||\
 	 [ "$1" = "issue_01329" ] ||\
+     [ "$1" = "issue_01364" ] ||\
+	 [ "$1" = "issue_01372" ] ||\
+	 [ "$1" = "issue_00623" ] ||\
+	 [ "$1" = "issue_00656" ] ||\
+	 [ "$1" = "issue_01014" ] ||\
+	 [ "$1" = "issue_01023" ] ||\
+	 [ "$1" = "issue_01084" ] ||\
+	 [ "$1" = "issue_01193" ] ||\
+	 [ "$1" = "issue_01206" ] ||\
+	 [ "$1" = "issue_01216" ] ||\
+	 [ "$1" = "issue_01225" ] ||\
+	 [ "$1" = "issue_01259" ] ||\
+	 [ "$1" = "issue_01360" ]; then
+
+	yosys -ql yosys.log ../../scripts/$2.ys;
+
+	if [ $? != 0 ] ; then
+    	echo FAIL > ${1}_${2}.status
+    	touch .stamp
+    	exit 0
+	else
+		echo PASS > ${1}_${2}.status
+	fi
+
+# cases where some object names are/aren't expected in output file (tee -o result.log in the test script)
+elif [ "$1" = "issue_00737" ] ||\
+	 [ "$1" = "issue_00954" ] ||\
+	 [ "$1" = "issue_00955" ] ||\
+	 [ "$1" = "issue_00956" ] ||\
+	 [ "$1" = "issue_00968" ] ||\
+	 [ "$1" = "issue_00982" ] ||\
+	 [ "$1" = "issue_00997" ] ||\
+	 [ "$1" = "issue_01002" ] ||\
+	 [ "$1" = "issue_01022" ] ||\
+	 [ "$1" = "issue_01040" ] ||\
+	 [ "$1" = "issue_01065" ] ||\
+	 [ "$1" = "issue_01115" ] ||\
+	 [ "$1" = "issue_01118" ] ||\
+	 [ "$1" = "issue_01243" ] ||\
 	 [ "$1" = "issue_00329" ] ||\
 	 [ "$1" = "issue_01126" ] ||\
 	 [ "$1" = "issue_01161" ] ||\
@@ -160,70 +162,8 @@ elif [ "$1" = "issue_00502" ] ||\
 
 	expected_string=""
 	expected="1"
-	if [ "$1" = "issue_00502" ]; then
-		expected_string="\\SUM/N10"
-	elif [ "$1" = "issue_00524" ]; then
-		expected_string="GP_INV"
-	elif [ "$1" = "issue_00527" ]; then
-		expected_string="DFFSR"
-		expected="0"
-	elif [ "$1" = "issue_00639" ]; then
-		expected_string="Found a total"
-	elif [ "$1" = "issue_00642" ] ||\
-		 [ "$1" = "issue_00644" ] ||\
-		 [ "$1" = "issue_00689" ] ||\
-		 [ "$1" = "issue_00699" ] ||\
-		 [ "$1" = "issue_00708" ] ||\
-		 [ "$1" = "issue_00826" ] ||\
-		 [ "$1" = "issue_00862" ] ||\
-		 [ "$1" = "issue_00870" ] ||\
-		 [ "$1" = "issue_00948" ] ||\
-		 [ "$1" = "issue_00987" ]; then
-		expected_string="Successfully finished Verilog frontend"
-	elif [ "$1" = "issue_00655" ]; then
-		expected_string="Executing EDIF backend"
-	elif [ "$1" = "issue_00675" ]; then
-		expected_string="Presumably equivalent wires"
-	elif [ "$1" = "issue_00685" ]; then
-		expected_string="Imported 0 cell"
-	elif [ "$1" = "issue_00737" ]; then
-		expected_string="A:"
-	elif [ "$1" = "issue_00774" ] ||\
-		 [ "$1" = "issue_00781" ] ||\
-		 [ "$1" = "issue_00785" ]; then
-		expected_string="Executing BLIF backend"
-	elif [ "$1" = "issue_00810" ]; then
-		expected_string="Executing ILANG backend"
-	elif [ "$1" = "issue_00823" ]; then
-		expected_string="Executing Verilog backend"
-	elif [ "$1" = "issue_00831" ]; then
-		expected_string="Executing SMT2 backend"
-	elif [ "$1" = "issue_00835" ]; then
-		expected_string="Replacing memory"
-	elif [ "$1" = "issue_00857" ]; then
-		expected_string="_DFF_P_                        1"
-	elif [ "$1" = "issue_00865" ]; then
-		expected_string="FDRE                           12"
-	elif [ "$1" = "issue_00867" ]; then
-		expected_string="RAMB36E1                        1"
-	elif [ "$1" = "issue_00873" ]; then
-		expected_string="has an unprocessed 'init' attribute."
-	elif [ "$1" = "issue_00888" ]; then
-		expected_string="FDRE                            4"
-	elif [ "$1" = "issue_00922" ]; then
-		expected_string="ERROR: Unclocked write port 0 on memory top.ram."
-		expected="0"
-	elif [ "$1" = "issue_00931" ]; then
-		expected_string="Number of cells:                  5"
-	elif [ "$1" = "issue_00935" ]; then
-		expected_string="Found logic loop in module"
-		expected="0"
-	elif [ "$1" = "issue_00938" ]; then
-		expected_string="terminate called after throwing"
-		expected="0"
-	elif [ "$1" = "issue_00940" ]; then
-		expected_string="failed: return code 134"
-		expected="0"
+	if [ "$1" = "issue_00737" ]; then
+		expected_string="ATTR \\\A:"
 	elif [ "$1" = "issue_00954" ]; then
 		expected_string="out = 4'1000"
 	elif [ "$1" = "issue_00955" ]; then
@@ -231,73 +171,32 @@ elif [ "$1" = "issue_00502" ] ||\
 	elif [ "$1" = "issue_00956" ]; then
 		expected_string="Wire inivalue.r_val has an unprocessed 'init' attribute"
 		expected="0"
-	elif [ "$1" = "issue_00961" ]; then
-		expected_string="Executing PROC_DFF pass"
 	elif [ "$1" = "issue_00968" ]; then
 		expected_string="assign o_value = { 4'hx, i_value }"
-	elif [ "$1" = "issue_00981" ]; then
-		expected_string="Executing CHECK pass"
 	elif [ "$1" = "issue_00982" ]; then
 		expected_string="INIT 1'0"
-	elif [ "$1" = "issue_00993" ]; then
-		expected_string="_DFF_P_                        1"
 	elif [ "$1" = "issue_00997" ]; then
 		expected_string="h0"
 	elif [ "$1" = "issue_01002" ]; then
 		expected_string="Estimated number of LCs:         87"
-	elif [ "$1" = "issue_01016" ]; then
-		expected_string="cell \$mux \$ternary\$../top.v:5"
 	elif [ "$1" = "issue_01022" ]; then
 		expected_string="connect \\\b 32'11111111111111111111111111111111"
-	elif [ "$1" = "issue_01023" ]; then
-		expected_string="Continuing TECHMAP pass"
-	elif [ "$1" = "issue_01033" ]; then
-		expected_string="RAM64X1D         "
-		expected="0"
-	elif [ "$1" = "issue_01034" ]; then
-		expected_string="FDRE         "
-		expected="0"
 	elif [ "$1" = "issue_01040" ]; then
 		expected_string=".subckt dut_sub a\[2\]=a\[2\] a\[3\]=a\[3\] a\[4\]=a\[4\] a\[5\]=a\[5\] a\[6\]=a\[6\]"
-	elif [ "$1" = "issue_01047" ]; then
-		expected_string="assign y = ~(w\[0\] | w\[1\]);"
 	elif [ "$1" = "issue_01065" ]; then
 		expected_string="Driver-driver conflict for"
 		expected="0"
-	elif [ "$1" = "issue_01070" ]; then
-		expected_string="cell \$_DFF_N_"
-	elif [ "$1" = "issue_01084" ]; then
-		expected_string="Successfully finished Verilog frontend"
-	elif [ "$1" = "issue_01091" ]; then
-		expected_string="\$_MUX4_                         1"
 	elif [ "$1" = "issue_01115" ]; then
 		expected_string="connect \\\o 33'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	elif [ "$1" = "issue_01118" ]; then
 		expected_string="connect \\\o \[0\] 1'0"
-	elif [ "$1" = "issue_01128" ]; then
-		expected_string="\$_BUF_                          1"
-	elif [ "$1" = "issue_01132" ]; then
-		expected_string="\$_MUX4_                         1"
-	elif [ "$1" = "issue_01135" ]; then
-		expected_string="\$pmux                           1"
-	elif [ "$1" = "issue_01145" ] ||\
-		 [ "$1" = "issue_01220" ]; then
-		expected_string="Executing FLATTEN pass (flatten design)."
-	elif [ "$1" = "issue_01223" ]; then
-		expected_string=" Executing CHECK pass (checking for obvious problems)."
-	elif [ "$1" = "issue_01231" ]; then
-		expected_string="Successfully finished Verilog frontend."
+	elif [ "$1" = "issue_01126" ]; then
+		expected_string="assign d = c\\[5:0\\]"
 	elif [ "$1" = "issue_01243" ]; then
 		expected_string="assign y = reg_assign;"
-	elif [ "$1" = "issue_01273" ]; then
-		expected_string="\$_MUX8_                         9"
-	elif [ "$1" = "issue_01329" ]; then
-		expected_string="\$mux                            1"
 	elif [ "$1" = "issue_00329" ]; then
 		expected_string="wire \\[-1"
 		expected="0"
-	elif [ "$1" = "issue_01126" ]; then
-		expected_string="assign d = c\\[5:0\\]"
 	elif [ "$1" = "issue_01161" ]; then
 		expected_string="assign z0 = b"
 	elif [ "$1" = "issue_01217" ]; then

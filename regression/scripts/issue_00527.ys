@@ -19,6 +19,5 @@ abc -liberty ../osu018_stdcells_edit.lib
 
 clean
 
-select DFFSR
-tee -o result.log select -list
+select -assert-count 0 t:DFFSR
 

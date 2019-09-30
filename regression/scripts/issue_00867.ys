@@ -1,3 +1,3 @@
 read_verilog ../top.v
 synth_xilinx -flatten
-tee -o result.log stat
+select -assert-count 1 t:RAMB36E1

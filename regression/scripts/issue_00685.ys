@@ -1,2 +1,1 @@
-tee -o result.log read_liberty ../lib.lib
-write_verilog synth.v
+read_liberty ../lib.lib

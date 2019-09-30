@@ -3,4 +3,4 @@ proc
 memory_dff -nordff
 opt_reduce
 clean
-tee -a result.log write_firrtl firrtl.firrtl
+write_firrtl firrtl.firrtl
