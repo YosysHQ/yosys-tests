@@ -1,3 +1,4 @@
 read_verilog ../top.v
-tee -a result.log synth_xilinx -nodram
+synth_xilinx -nodram
+select -assert-none t:FDRE
 

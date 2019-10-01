@@ -1,4 +1,4 @@
-tee -o result.log read_verilog ../top.v
+read_verilog ../top.v
 prep
-write_verilog synth.v
+select -assert-count 4 t:$dff
 

@@ -20,5 +20,5 @@ design -copy-from netlist_v2 -as netlist_new netlist_v2
 equiv_make -inames netlist_old netlist_new miter_netlist
 equiv_simple -undef -seq 10
 equiv_induct -undef -seq 10
-tee -o result.log equiv_status
+tee -o result.log equiv_status -assert
 

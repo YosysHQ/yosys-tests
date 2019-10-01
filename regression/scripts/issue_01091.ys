@@ -3,4 +3,6 @@ proc
 opt
 techmap
 muxcover -nopartial
-tee -o result.log stat
+stat
+select -assert-count 1 t:$_MUX4_
+select -assert-none t:$_MUX4_ %% t:* %D

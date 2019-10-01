@@ -4,4 +4,4 @@ read_verilog ../top.v;
 rename -top gate; design -stash gate;
 design -copy-from gold -as gold gold;
 design -copy-from gate -as gate gate;
-tee -o result.log equiv_make gold gate equiv
+equiv_make gold gate equiv

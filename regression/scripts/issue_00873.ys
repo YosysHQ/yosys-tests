@@ -1,5 +1,7 @@
-tee -a result.log read_verilog ../top.v
-tee -a result.log synth_xilinx
-tee -a result.log flatten
-tee -a result.log dump top
-
+read_verilog ../top.v
+synth_xilinx
+flatten
+stat
+select -assert-count 1 t:BUFG
+select -assert-count 1 t:FDRE
+select -assert-count 1 t:FDRE_1

@@ -1,2 +1,2 @@
 read_verilog ../*.v
-tee -a result.log synth_ice40 -top SuperTopEntity -json TopEntity.json
+synth_ice40 -top SuperTopEntity -json TopEntity.json

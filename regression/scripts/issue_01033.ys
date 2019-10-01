@@ -1,3 +1,4 @@
 read_verilog ../top.v
-tee -a result.log synth_xilinx
+synth_xilinx
+select -assert-none t:RAM64X1D
 

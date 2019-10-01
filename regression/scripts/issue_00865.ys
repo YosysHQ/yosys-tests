@@ -6,4 +6,5 @@ fsm
 opt
 memory
 opt
-tee -o result.log synth_xilinx -top tc
+synth_xilinx -top tc
+select -assert-count 12 t:FDRE

@@ -1,4 +1,5 @@
 read_verilog ../top.v
-tee -o result.log synth -top top
-write_verilog synth.v
+synth -top top
+select -assert-count 1 t:$_DFF_P_
+select -assert-none t:$_DFF_P_ %% t:* %D
 
