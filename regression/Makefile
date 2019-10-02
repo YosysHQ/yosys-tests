@@ -9,8 +9,13 @@ $(foreach design,$(1),
 $(foreach script,$(2),
 work:: $(design)/work_$(script)/.stamp
 
+ifeq ($(shell test -e $(design)/run.sh && echo -n yes),yes)
+$(design)/work_$(script)/.stamp:
+	$(design)/run.sh $(design) $(script)
+else
 $(design)/work_$(script)/.stamp:
 	./run.sh $(design) $(script)
+endif
 
 clean::
 	rm -rf $(design)/work_$(script)

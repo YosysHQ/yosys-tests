@@ -1,6 +1,5 @@
-module top(b,c);
+module top(b);
 input b;
-output c;
-
-assign c = b;
+reg [31:0] reg_32 = 32'bX;
 endmodule
+
