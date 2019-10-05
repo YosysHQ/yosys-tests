@@ -15,8 +15,10 @@ for fn in glob.glob('*.v'):
     A,B = map(int, m.group(2,4))
     Asigned,Bsigned = m.group(3,5)
     if m.group(6):
-        C = map(int, m.group(7))
+        C = int(m.group(7))
         Csigned = m.group(8)
+    else:
+        C = 0
     Areg = 'A' in m.group(9)
     Breg = 'B' in m.group(9)
     Mreg = 'M' in m.group(9)
@@ -28,6 +30,9 @@ for fn in glob.glob('*.v'):
         A += 1
         B += 1
         Asigned = Bsigned = 1
+    if C > 0 and not Csigned:
+        C += 1
+        Csigned = 1
     X = 1 + max(0,A-25+16) // 17
     Y = 1 + max(0,B-18+16) // 17
     count_MAC = X * Y
@@ -38,18 +43,18 @@ for fn in glob.glob('*.v'):
         if not macc and (A > 25) ^ (B > 18):
             count_DFF -= 1 # For pure multipliers with just one big dimension,
                            #   expect last slice to absorb at least one register
-    if Preg and (A > 25 or B > 18):
-        count_DFF += A + B
+    if Preg and (A > 25 or B > 18 or C > 48):
+        count_DFF += max(A + B, C)
         if macc:
             count_DFF += 5 # In my testcases, accumulator is always
                            # 5bits bigger than multiplier result
-        elif (A > 25) ^ (B > 18):
+        elif ((A > 25) ^ (B > 18)) and C <= 48:
             count_DFF -= 1 # For pure multipliers with just one big dimension,
                            #   expect last slice to absorb at least one register
     # TODO: More assert on number of CARRY and LUTs
     count_CARRY = ''
     if macc or muladd:
-        if A <= 25 and B <= 18:
+        if A <= 25 and B <= 18 and C <= 48:
             count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
     elif A <= 25 or B <= 18:
         count_CARRY = '; select t:XORCY -assert-none; select t:LUT* -assert-none';
