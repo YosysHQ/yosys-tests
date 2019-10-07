@@ -9,15 +9,9 @@ cd presubmult
 #Vivado synthesizes 1 DSP48E1. (When SIZEIN = 8)
 stat
 select -assert-count 1 t:BUFG
-select -assert-count 51 t:FDRE
-select -assert-count 75 t:LUT2
-select -assert-count 10 t:LUT3
-select -assert-count 24 t:LUT4
-select -assert-count 15 t:LUT5
-select -assert-count 136 t:LUT6
-select -assert-count 24 t:MUXCY
-select -assert-count 46 t:MUXF7
-select -assert-count 14 t:MUXF8
-select -assert-count 26 t:XORCY
+select -assert-count 1 t:DSP48E1
+select -assert-count 16 t:LUT2
+select -assert-count 8 t:MUXCY
+select -assert-count 9 t:XORCY
 
-select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXCY t:MUXF7 t:MUXF8 t:XORCY %% t:* %D
+select -assert-none t:BUFG t:DSP48E1 t:LUT2 t:MUXCY t:XORCY %% t:* %D
