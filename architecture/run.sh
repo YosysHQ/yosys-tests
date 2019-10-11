@@ -100,9 +100,9 @@ else
 	elif [ "$1" = "synth_ice40_fulladder" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
 	elif [ "$1" = "ice40_wrapcarry" ]; then
-		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc_model.v
 	elif [ "$1" = "ice40_wrapcarry_adders" ]; then
-		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc_model.v
 	elif [ "$1" = "synth_intel" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/intel/max10/cells_sim.v
 	elif [ "$1" = "synth_intel_a10gx" ]; then

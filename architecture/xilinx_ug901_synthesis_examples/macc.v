@@ -2,10 +2,7 @@
 // File: macc.v
 //
 module macc  # (
-				//Default parameters were changed because of slow test
-               // parameter SIZEIN = 16, SIZEOUT = 40
-               // parameter SIZEIN = 12, SIZEOUT = 30
-                parameter SIZEIN = 8, SIZEOUT = 20
+		parameter SIZEIN = 16, SIZEOUT = 40
                )
                (
                 input clk, ce, sload,
