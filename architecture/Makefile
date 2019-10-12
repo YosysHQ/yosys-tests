@@ -39,7 +39,7 @@ $(eval $(call template,synth_coolrunner2_error,synth_coolrunner2_fully_selected)
 $(eval $(call template,synth_easic_error,synth_easic_fully_selected))
 
 #ecp5
-$(eval $(call template,synth_ecp5,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit synth_ecp5_abc9 synth_ecp5_abc9_nowidelut))
+$(eval $(call template,synth_ecp5,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit synth_ecp5_abc9 synth_ecp5_abc9_nowidelut synth_ecp5_nodsp))
 $(eval $(call template,synth_ecp5_wide_ffs,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit  synth_ecp5_abc9 synth_ecp5_abc9_nowidelut))
 $(eval $(call template,synth_ecp5_error,synth_ecp5_fully_selected))
 
@@ -71,9 +71,10 @@ $(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf
 $(eval $(call template,synth_sf2_error,synth_sf2_fully_selected ))
 
 #xilinx
-$(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl synth_xilinx_widemux synth_xilinx_nowidelut synth_xilinx_nocarry synth_xilinx_arch_xc6s_abc9 synth_xilinx_widemux_9 synth_xilinx_widemux_2 synth_xilinx_widemux_3 synth_xilinx_nowidelut_abc9 xilinx_srl_minlen_variable xilinx_srl_minlen))
+$(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl synth_xilinx_widemux synth_xilinx_nowidelut synth_xilinx_nocarry synth_xilinx_arch_xc6s_abc9 synth_xilinx_widemux_9 synth_xilinx_widemux_2 synth_xilinx_widemux_3 synth_xilinx_nowidelut_abc9 xilinx_srl_minlen_variable xilinx_srl_minlen synth_xilinx_nodsp synth_xilinx_noclkbuf synth_xilinx_noiopad synth_xilinx_iopad synth_xilinx_ise synth_xilinx_flatten_before_abc synth_xilinx_arch_xc6v))
 $(eval $(call template,synth_xilinx_error,synth_xilinx_fully_selected synth_xilinx_invalid_arch synth_xilinx_abc9_retime synth_xilinx_widemux_1))
 $(eval $(call template,xilinx_srl,xilinx_srl_minlen xilinx_srl_fixed xilinx_srl_variable xilinx_srl_minlen_variable))
+$(eval $(call template,synth_xilinx_dsp_cov,synth_xilinx_dsp))
 ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
 $(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))

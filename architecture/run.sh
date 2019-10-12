@@ -100,9 +100,9 @@ else
 	elif [ "$1" = "synth_ice40_fulladder" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v
 	elif [ "$1" = "ice40_wrapcarry" ]; then
-		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc_model.v
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc9_model.v
 	elif [ "$1" = "ice40_wrapcarry_adders" ]; then
-		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc_model.v
+		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/ice40/cells_sim.v  $TECHLIBS_PREFIX/ice40/abc9_model.v
 	elif [ "$1" = "synth_intel" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/intel/max10/cells_sim.v
 	elif [ "$1" = "synth_intel_a10gx" ]; then
@@ -131,7 +131,8 @@ else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
 	elif [ "$1" = "synth_efinix_fulladder" ]; then
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v $TECHLIBS_PREFIX/efinix/cells_sim.v
-	elif [ "$1" = "xilinx_ug901_synthesis_examples" ]; then
+	elif [ "$1" = "xilinx_ug901_synthesis_examples" ] || \
+		 [ "$1" = "synth_xilinx_dsp_cov" ]; then
 		:
 	else
 		iverilog -o testbench  ../testbench.v synth.v ../../common.v $COMMON_PREFIX/simcells.v
@@ -141,7 +142,8 @@ else
 		touch .stamp
 		exit 0
 	fi
-	if [ "$1" = "xilinx_ug901_synthesis_examples" ]; then
+	if  [ "$1" = "xilinx_ug901_synthesis_examples" ] || \
+		[ "$1" = "synth_xilinx_dsp_cov" ]; then
 		echo PASS > ${1}_${2}.status
 	else
 		if ! vvp -N testbench > testbench.log 2>&1; then

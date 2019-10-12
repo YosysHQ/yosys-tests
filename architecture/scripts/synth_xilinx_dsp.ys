@@ -1,0 +1,3 @@
+read_verilog ../top.v
+synth_xilinx
+select -assert-count 3 t:DSP48E1

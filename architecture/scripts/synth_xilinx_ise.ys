@@ -1,0 +1,3 @@
+read_verilog ../top.v
+synth_xilinx -ise
+write_verilog synth.v
