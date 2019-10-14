@@ -1,0 +1,2 @@
+read_verilog -defer ../top.v
+chparam -set incr 42 topmod

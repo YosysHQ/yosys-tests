@@ -1,0 +1,3 @@
+read_verilog ../top.v
+hierarchy -top test
+write_verilog -noexpr -norename result.out

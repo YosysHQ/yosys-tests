@@ -36,12 +36,19 @@ else
 		exit 0
 	else
 		#3 Output log check
-		if [ -f "../$2.pat" ]; then
+		if [ -f "../$2.pat" ]; then # Expected behavior
 			expectation=$(<../$2.pat)
 			if grep "$expectation" result.out; then
 				echo PASS > ${1}_${2}.status
 			else
 				echo FAIL > ${1}_${2}.status
+			fi
+		elif [ -f "../$2_n.pat" ]; then # Not expected behavior
+			expectation=$(<../$2_n.pat)
+			if grep "$expectation" result.out; then
+				echo FAIL > ${1}_${2}.status
+			else
+				echo PASS > ${1}_${2}.status
 			fi
 		#1 Iverilog run when testbench exists
 		elif [ -f "../testbench.v" ]; then

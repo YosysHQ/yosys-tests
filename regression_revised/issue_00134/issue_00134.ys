@@ -1,0 +1,4 @@
+read_verilog ../top.v
+hierarchy -top task_bug
+proc; opt; memory; dff2dffe; wreduce; clean; opt
+write_verilog -noexpr -norename result.out
