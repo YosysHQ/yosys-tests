@@ -1,0 +1,2 @@
+read_verilog -formal ../top.v
+prep -top top
