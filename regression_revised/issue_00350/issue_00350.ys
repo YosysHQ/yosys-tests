@@ -1,0 +1,9 @@
+read_verilog -sv ../top.v
+synth
+abc -dff -g AND
+opt
+write_aiger -ascii -symbols <file.out>
+design -reset
+read_aiger <file.out>
+write_verilog result.out
+

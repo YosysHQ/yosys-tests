@@ -1,0 +1,3 @@
+read_verilog -sv ../top.v
+prep -top top -nordff
+write_smt2 top.smt2

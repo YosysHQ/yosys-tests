@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc; opt
+tee -o result.out fsm -encoding binary
+techmap; opt
