@@ -323,6 +323,66 @@ $(eval $(call template,issue_00814,issue_00814_fail))
 #issue_00823
 $(eval $(call template,issue_00823,issue_00823))
 
+#issue_00826
+$(eval $(call template,issue_00826,issue_00826))
+
+#issue_00831
+$(eval $(call template,issue_00831,issue_00831))
+
+#issue_00835
+$(eval $(call template,issue_00835,issue_00835))
+
+#issue_00857
+$(eval $(call template,issue_00857,issue_00857))
+
+#issue_00862
+$(eval $(call template,issue_00862,issue_00862))
+
+#issue_00865
+$(eval $(call template,issue_00865,issue_00865))
+
+#issue_00867
+$(eval $(call template,issue_00867,issue_00867))
+
+#issue_00870
+$(eval $(call template,issue_00870,issue_00870))
+
+#issue_00873
+$(eval $(call template,issue_00873,issue_00873))
+
+#issue_00888
+$(eval $(call template,issue_00888,issue_00888))
+
+#issue_00896
+$(eval $(call template,issue_00896,issue_00896))
+
+#issue_00922
+$(eval $(call template,issue_00922,issue_00922))
+
+#issue_00931
+$(eval $(call template,issue_00931,issue_00931))
+
+#issue_00935
+$(eval $(call template,issue_00935,issue_00935))
+
+#issue_00938
+$(eval $(call template,issue_00938,issue_00938))
+
+#issue_00940
+$(eval $(call template,issue_00940,issue_00940))
+
+#issue_00948
+$(eval $(call template,issue_00948,issue_00948))
+
+#issue_00954
+$(eval $(call template,issue_00954,issue_00954))
+
+#issue_00955
+$(eval $(call template,issue_00955,issue_00955))
+
+#issue_00956
+$(eval $(call template,issue_00956,issue_00956))
+
 #Still open bugs (should be failed):
 #issue_00329
 $(eval $(call template,issue_00329,issue_00329))
