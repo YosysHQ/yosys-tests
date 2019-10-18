@@ -17,62 +17,6 @@ clean::
 ))
 endef
 
-#issue_00961
-$(eval $(call template,issue_00961,issue_00961))
-
-#issue_00968
-$(eval $(call template,issue_00968,issue_00968))
-
-#issue_00981
-$(eval $(call template,issue_00981,issue_00981))
-
-#issue_00982
-$(eval $(call template,issue_00982,issue_00982))
-
-#issue_00987
-$(eval $(call template,issue_00987,issue_00987))
-
-#issue_00993
-$(eval $(call template,issue_00993,issue_00993))
-
-#issue_00997
-$(eval $(call template,issue_00997,issue_00997))
-
-#issue_01002
-$(eval $(call template,issue_01002,issue_01002))
-
-#issue_01016
-$(eval $(call template,issue_01016,issue_01016))
-
-#issue_01022
-$(eval $(call template,issue_01022,issue_01022))
-
-#issue_01023
-$(eval $(call template,issue_01023,issue_01023))
-
-#issue_01033
-$(eval $(call template,issue_01033,issue_01033))
-
-#issue_01034
-$(eval $(call template,issue_01034,issue_01034))
-
-#issue_01040
-$(eval $(call template,issue_01040,issue_01040))
-
-#issue_01047
-$(eval $(call template,issue_01047,issue_01047))
-
-#issue_01063
-$(eval $(call template,issue_01063,issue_01063))
-
-#issue_01065
-$(eval $(call template,issue_01065,issue_01065))
-
-#issue_01070
-$(eval $(call template,issue_01070,issue_01070))
-
-#issue_01084
-$(eval $(call template,issue_01084,issue_01084))
 
 #issue_01091
 $(eval $(call template,issue_01091,issue_01091))
@@ -135,9 +79,6 @@ $(eval $(call template,issue_01372,issue_01372))
 
 
 #Still open bugs (should be failed):
-#issue_01014
-$(eval $(call template,issue_01014,issue_01014))
-
 #issue_01126
 $(eval $(call template,issue_01126,issue_01126))
 
