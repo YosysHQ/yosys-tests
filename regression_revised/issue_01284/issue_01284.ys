@@ -1,0 +1,13 @@
+read_verilog ../top.v
+proc
+synth -top top
+equiv_opt -assert extract_fa -ha -v
+design -load postopt
+cd top
+select -assert-count 1 t:$_ANDNOT_
+select -assert-count 1 t:$_AND_
+select -assert-count 2 t:$_NOT_
+select -assert-count 1 t:$_OR_
+select -assert-count 2 t:$_XNOR_
+select -assert-count 2 t:$fa
+select -assert-none t:$_ANDNOT_ t:$_AND_ t:$_NOT_ t:$_OR_ t:$_XNOR_ t:$fa %% t:* %D
