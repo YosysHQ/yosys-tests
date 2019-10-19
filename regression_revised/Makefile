@@ -443,6 +443,46 @@ $(eval $(call template,issue_01070,issue_01070))
 #issue_01084
 $(eval $(call template,issue_01084,issue_01084))
 
+#issue_01091
+$(eval $(call template,issue_01091,issue_01091))
+
+#issue_01093
+$(eval $(call template,issue_01093,issue_01093_fail))
+
+#issue_01115
+$(eval $(call template,issue_01115,issue_01115))
+
+#issue_01118
+$(eval $(call template,issue_01118,issue_01118))
+
+#issue_01128
+$(eval $(call template,issue_01128,issue_01128))
+
+#issue_01131
+$(eval $(call template,issue_01131,issue_01131_fail))
+
+#issue_01132
+$(eval $(call template,issue_01132,issue_01132))
+
+#issue_01135
+$(eval $(call template,issue_01135,issue_01135))
+
+#issue_01144
+$(eval $(call template,issue_01144,issue_01144_fail))
+
+#issue_01145
+$(eval $(call template,issue_01145,issue_01145))
+
+#issue_01220
+$(eval $(call template,issue_01220,issue_01220))
+
+#issue_01223
+$(eval $(call template,issue_01223,issue_01223))
+
+#issue_01231
+$(eval $(call template,issue_01231,issue_01231))
+
+
 #Still open bugs (should be failed):
 #issue_00329
 $(eval $(call template,issue_00329,issue_00329))
@@ -452,5 +492,26 @@ $(eval $(call template,issue_00623,issue_00623))
 
 #issue_00656
 $(eval $(call template,issue_00656,issue_00656))
+
+#issue_01126
+$(eval $(call template,issue_01126,issue_01126))
+
+#issue_01161
+$(eval $(call template,issue_01161,issue_01161))
+
+#issue_01193
+$(eval $(call template,issue_01193,issue_01193))
+
+#issue_01206
+$(eval $(call template,issue_01206,issue_01206))
+
+#issue_01216
+$(eval $(call template,issue_01216,issue_01216))
+
+#issue_01217
+$(eval $(call template,issue_01217,issue_01217))
+
+#issue_01225
+$(eval $(call template,issue_01225,issue_01225))
 
 .PHONY: all clean
