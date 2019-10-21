@@ -1,0 +1,17 @@
+read_verilog ../outreg.v
+hierarchy -top dut
+proc
+memory -nomap
+equiv_opt -run :prove -map +/ecp5/cells_sim.v synth_ecp5
+memory
+opt -full
+
+miter -equiv -flatten -make_assert -make_outputs gold gate miter
+sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+
+design -load postopt
+cd dut
+stat
+select -assert-count 1 t:TRELLIS_DPR16X4
+select -assert-count 4 t:TRELLIS_FF
+select -assert-none t:TRELLIS_FF t:TRELLIS_DPR16X4 %% t:* %D

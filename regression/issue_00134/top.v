@@ -1,4 +1,4 @@
-module top ( in_data, do );
+module task_bug ( in_data, do );
 
    input [15:0] in_data;
    output [15:0]  do;

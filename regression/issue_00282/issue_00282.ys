@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth -top top
+#synth_ice40 -top top
+select -assert-count 1 t:$_DFF_P_

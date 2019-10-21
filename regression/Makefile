@@ -17,9 +17,6 @@ clean::
 ))
 endef
 
-#issue_00790
-$(eval $(call template,issue_00790,issue_00790))
-
 #issue_00018
 $(eval $(call template,issue_00018,issue_00018))
 
@@ -30,9 +27,7 @@ $(eval $(call template,issue_00041,issue_00041))
 $(eval $(call template,issue_00059,issue_00059))
 
 #issue_00065
-ifeq ($(ENABLE_HEAVY_TESTS),1)
 $(eval $(call template,issue_00065,issue_00065))
-endif
 
 #issue_00067
 $(eval $(call template,issue_00067,issue_00067))
@@ -52,7 +47,7 @@ $(eval $(call template,issue_00081,issue_00081))
 #Parsing Verilog input from `top_fault.v' to AST representation.
 #top_fault.v:4: ERROR: Internal error - should not happen - no AST_WIRE node.
 #
-$(eval $(call template,issue_00082,issue_00082))
+$(eval $(call template,issue_00082,issue_00082_fail))
 
 #issue_00083
 #Warning: Deep recursion in AST simplifier.
@@ -60,7 +55,7 @@ $(eval $(call template,issue_00082,issue_00082))
 #run.sh: line 21: 17264 Segmentation fault      (core dumped) yosys -ql yosys.log ../../scripts/$2.ys
 #make: *** [Makefile:24: issue_00083/work_issue_00083/.stamp] Error 139
 #
-$(eval $(call template,issue_00083,issue_00083))
+$(eval $(call template,issue_00083,issue_00083_fail))
 
 #issue_00084
 $(eval $(call template,issue_00084,issue_00084))
@@ -75,25 +70,25 @@ $(eval $(call template,issue_00086,issue_00086))
 $(eval $(call template,issue_00088,issue_00088))
 
 #issue_00089
-$(eval $(call template,issue_00089,issue_00089))
+$(eval $(call template,issue_00089,issue_00089_fail))
 
 #issue_00091
 $(eval $(call template,issue_00091,issue_00091))
 
 #issue_00093
-$(eval $(call template,issue_00093,issue_00093))
+$(eval $(call template,issue_00093,issue_00093_fail))
 
 #issue_00095
-$(eval $(call template,issue_00095,issue_00095))
+$(eval $(call template,issue_00095,issue_00095_fail))
 
 #issue_00096
-$(eval $(call template,issue_00096,issue_00096))
+$(eval $(call template,issue_00096,issue_00096_fail))
 
 #issue_00098
 $(eval $(call template,issue_00098,issue_00098))
 
 #issue_00099
-$(eval $(call template,issue_00099,issue_00099))
+$(eval $(call template,issue_00099,issue_00099_fail))
 
 #issue_00102
 $(eval $(call template,issue_00102,issue_00102))
@@ -150,7 +145,7 @@ $(eval $(call template,issue_00194,issue_00194))
 $(eval $(call template,issue_00195,issue_00195))
 
 #issue_00196
-$(eval $(call template,issue_00196,issue_00196))
+$(eval $(call template,issue_00196,issue_00196_fail))
 
 #issue_00210
 $(eval $(call template,issue_00210,issue_00210))
@@ -201,7 +196,7 @@ $(eval $(call template,issue_00350,issue_00350))
 $(eval $(call template,issue_00361,issue_00361))
 
 #issue_00362
-$(eval $(call template,issue_00362,issue_00362))
+$(eval $(call template,issue_00362,issue_00362_fail))
 
 #issue_00372
 $(eval $(call template,issue_00372,issue_00372))
@@ -240,16 +235,16 @@ $(eval $(call template,issue_00527,issue_00527))
 $(eval $(call template,issue_00567,issue_00567))
 
 #issue_00582
-$(eval $(call template,issue_00582,issue_00582))
+$(eval $(call template,issue_00582,issue_00582_fail))
 
 #issue_00589
 $(eval $(call template,issue_00589,issue_00589))
 
 #issue_00594
-$(eval $(call template,issue_00594,issue_00594))
+$(eval $(call template,issue_00594,issue_00594_fail))
 
 #issue_00603
-$(eval $(call template,issue_00603,issue_00603))
+$(eval $(call template,issue_00603,issue_00603_fail))
 
 #issue_00628
 $(eval $(call template,issue_00628,issue_00628))
@@ -258,10 +253,10 @@ $(eval $(call template,issue_00628,issue_00628))
 $(eval $(call template,issue_00630,issue_00630))
 
 #issue_00635
-$(eval $(call template,issue_00635,issue_00635))
+$(eval $(call template,issue_00635,issue_00635_fail))
 
 #issue_00639
-$(eval $(call template,issue_00639,issue_00639))
+$(eval $(call template,issue_00639,issue_00639_fail))
 
 #issue_00642
 $(eval $(call template,issue_00642,issue_00642))
@@ -294,7 +289,7 @@ $(eval $(call template,issue_00708,issue_00708))
 $(eval $(call template,issue_00737,issue_00737))
 
 #issue_00763
-$(eval $(call template,issue_00763,issue_00763))
+$(eval $(call template,issue_00763,issue_00763_fail))
 
 #issue_00767
 $(eval $(call template,issue_00767,issue_00767))
@@ -310,6 +305,9 @@ $(eval $(call template,issue_00781,issue_00781))
 #issue_00785
 $(eval $(call template,issue_00785,issue_00785))
 
+#issue_00790
+$(eval $(call template,issue_00790,issue_00790))
+
 #issue_00807
 $(eval $(call template,issue_00807,issue_00807))
 
@@ -320,7 +318,7 @@ $(eval $(call template,issue_00809,issue_00809))
 $(eval $(call template,issue_00810,issue_00810))
 
 #issue_00814
-$(eval $(call template,issue_00814,issue_00814))
+$(eval $(call template,issue_00814,issue_00814_fail))
 
 #issue_00823
 $(eval $(call template,issue_00823,issue_00823))
@@ -340,7 +338,7 @@ $(eval $(call template,issue_00857,issue_00857))
 #issue_00862
 $(eval $(call template,issue_00862,issue_00862))
 
-#issue_00865 - test failed (should be ok after merge https://github.com/YosysHQ/yosys/pull/866)
+#issue_00865
 $(eval $(call template,issue_00865,issue_00865))
 
 #issue_00867
@@ -409,6 +407,9 @@ $(eval $(call template,issue_00997,issue_00997))
 #issue_01002
 $(eval $(call template,issue_01002,issue_01002))
 
+#issue_01014
+$(eval $(call template,issue_01014,issue_01014))
+
 #issue_01016
 $(eval $(call template,issue_01016,issue_01016))
 
@@ -431,7 +432,7 @@ $(eval $(call template,issue_01040,issue_01040))
 $(eval $(call template,issue_01047,issue_01047))
 
 #issue_01063
-$(eval $(call template,issue_01063,issue_01063))
+$(eval $(call template,issue_01063,issue_01063_fail))
 
 #issue_01065
 $(eval $(call template,issue_01065,issue_01065))
@@ -446,7 +447,7 @@ $(eval $(call template,issue_01084,issue_01084))
 $(eval $(call template,issue_01091,issue_01091))
 
 #issue_01093
-$(eval $(call template,issue_01093,issue_01093))
+$(eval $(call template,issue_01093,issue_01093_fail))
 
 #issue_01115
 $(eval $(call template,issue_01115,issue_01115))
@@ -458,7 +459,7 @@ $(eval $(call template,issue_01118,issue_01118))
 $(eval $(call template,issue_01128,issue_01128))
 
 #issue_01131
-$(eval $(call template,issue_01131,issue_01131))
+$(eval $(call template,issue_01131,issue_01131_fail))
 
 #issue_01132
 $(eval $(call template,issue_01132,issue_01132))
@@ -467,7 +468,7 @@ $(eval $(call template,issue_01132,issue_01132))
 $(eval $(call template,issue_01135,issue_01135))
 
 #issue_01144
-$(eval $(call template,issue_01144,issue_01144))
+$(eval $(call template,issue_01144,issue_01144_fail))
 
 #issue_01145
 $(eval $(call template,issue_01145,issue_01145))
@@ -500,8 +501,6 @@ $(eval $(call template,issue_01364,issue_01364))
 $(eval $(call template,issue_01372,issue_01372))
 
 
-
-
 #Still open bugs (should be failed):
 #issue_00329
 $(eval $(call template,issue_00329,issue_00329))
@@ -511,9 +510,6 @@ $(eval $(call template,issue_00623,issue_00623))
 
 #issue_00656
 $(eval $(call template,issue_00656,issue_00656))
-
-#issue_01014
-$(eval $(call template,issue_01014,issue_01014))
 
 #issue_01126
 $(eval $(call template,issue_01126,issue_01126))
@@ -544,8 +540,5 @@ $(eval $(call template,issue_01291,issue_01291))
 
 #issue_01360
 $(eval $(call template,issue_01360,issue_01360))
-
-
-
 
 .PHONY: all clean

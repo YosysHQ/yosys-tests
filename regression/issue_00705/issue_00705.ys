@@ -1,0 +1,5 @@
+read_verilog  ../top.v
+synth_ice40 -top top -blif top.blif
+design -reset
+read_blif -wideports top.blif
+write_verilog result.out

@@ -1,0 +1,15 @@
+read_verilog -lib  +/ice40/cells_sim.v
+read_verilog ../top.v
+hierarchy -top main
+proc
+flatten
+opt_expr
+opt_clean
+opt
+wreduce
+alumacc
+share -aggressive -force
+opt
+fsm
+opt -fast
+select -assert-count 1 t:$memrd

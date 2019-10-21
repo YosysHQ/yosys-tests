@@ -1,6 +1,6 @@
-module top(in, out, out1, out2, out3);
+module task_func_test04(in, output, out1, out2, out3);
     input [7:0] in;
-    output [7:0] out;
+    output [7:0] output;
     output out1;
     output out2;
     output out3;

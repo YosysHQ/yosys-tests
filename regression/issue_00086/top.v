@@ -1,6 +1,5 @@
-module top(b,c);
+module top(b);
 input b;
-output c;
-
-assign c = b;
+reg N=0.0/0'H0;
 endmodule
+

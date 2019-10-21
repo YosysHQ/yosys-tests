@@ -1,11 +1,11 @@
-module top (
+module test (
   a, b
 );
 
   input a;
-  output [35:0] b;
+  output [1535:0] b;
 
-  reg [35:0] G;
+  reg [1535:0] G;
   reg F;
   reg H;
   reg I;
@@ -17,8 +17,8 @@ module top (
 
   assign b = muxer(G, {L , H , F , M, J , I}, K, 24, 0);
 
-  function [35:0] muxer;
-    input [35:0] vector;
+  function [1535:0] muxer;
+    input [1535:0] vector;
     input [23:0] slice;
     input [5:0] index;
     input size;
@@ -26,7 +26,7 @@ module top (
     input offset;
     integer offset;
     integer i;
-    reg [35:0] muxed_value;
+    reg [1535:0] muxed_value;
   begin
     muxed_value = vector;
     for (i = 0; i < 24; i = i+1)

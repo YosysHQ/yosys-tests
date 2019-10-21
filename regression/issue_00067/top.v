@@ -1,6 +1,4 @@
-module top(b,c);
-input b;
-output c;
-
-assign c = b;
+module test(input en, output reg y);
+  always @*
+    y = en & !y;
 endmodule

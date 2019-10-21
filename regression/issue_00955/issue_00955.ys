@@ -1,0 +1,6 @@
+read_verilog ../top.v
+synth
+tee -a result1.out eval -set addr 24
+abc
+tee -a result.out eval -set addr 24
+

@@ -1,0 +1,1 @@
+tee -o result.out read_verilog -sv ../top.v

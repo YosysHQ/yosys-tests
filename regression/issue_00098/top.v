@@ -1,4 +1,4 @@
-module top(a,z);
+module bug_mika(a,z);
    input [7:0] a;
    output [7:0] z;
    parameter pos = 1;

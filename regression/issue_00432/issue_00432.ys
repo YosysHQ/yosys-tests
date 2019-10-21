@@ -1,0 +1,5 @@
+read_verilog -sv ../top.v
+write_verilog result.v
+design -reset
+read_verilog result.v
+hierarchy -check

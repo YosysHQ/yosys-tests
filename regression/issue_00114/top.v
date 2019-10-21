@@ -1,5 +1,6 @@
-module top(
-  input wire clock
+module TestCase(
+  input wire clock,
+
 );
 
 localparam COUNT = 1600;
