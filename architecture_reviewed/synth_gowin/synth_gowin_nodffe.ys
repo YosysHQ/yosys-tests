@@ -1,0 +1,30 @@
+read_verilog ../top_dffe.v
+design -save read
+
+hierarchy -top top
+proc
+#-assert option was skipped because of unproven cells
+#equiv_opt -assert -map +/gowin/cells_sim.v synth_gowin # equivalency check
+equiv_opt -map +/gowin/cells_sim.v synth_gowin # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd top # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:$_DFFE_PP_
+select -assert-count 3 t:IBUF
+select -assert-count 1 t:OBUF
+select -assert-none t:$_DFFE_PP_ t:IBUF t:OBUF %% t:* %D
+
+design -load read
+hierarchy -top top
+proc
+#-assert option was skipped because of unproven cells
+equiv_opt -assert -map +/gowin/cells_sim.v synth_gowin -nodffe # equivalency check
+#equiv_opt -map +/gowin/cells_sim.v synth_gowin -nodffe # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd top # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:DFF
+select -assert-count 3 t:IBUF
+select -assert-count 1 t:LUT3
+select -assert-count 1 t:OBUF
+select -assert-none t:DFF t:IBUF t:LUT3 t:OBUF %% t:* %D

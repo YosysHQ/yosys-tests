@@ -1,0 +1,26 @@
+read_verilog ../top_mux.v
+design -save read
+
+hierarchy -top mux8
+proc
+equiv_opt -assert -map +/ecp5/cells_sim.v synth_ecp5 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux8 # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:L6MUX21
+select -assert-count 7 t:LUT4
+select -assert-count 2 t:PFUMX
+
+select -assert-none t:LUT4 t:L6MUX21 t:PFUMX %% t:* %D
+
+design -load read
+hierarchy -top mux8
+proc
+equiv_opt -assert -map +/ecp5/cells_sim.v synth_ecp5 -nomux # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux8 # Constrain all select calls below inside the top module
+stat
+
+select -assert-count 5 t:LUT4
+
+select -assert-none t:LUT4 %% t:* %D

@@ -1,0 +1,17 @@
+read_verilog ../top_fulladder.v
+
+hierarchy -top top
+proc
+#-assert option skipped because of unproven cells
+#equiv_opt -assert -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
+equiv_opt -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd top # Constrain all select calls below inside the top module
+stat
+select -assert-count 7 t:ANDTERM
+select -assert-count 3 t:IBUF
+select -assert-count 2 t:IOBUFE
+select -assert-count 2 t:MACROCELL_XOR
+select -assert-count 2 t:ORTERM
+
+select -assert-none t:ANDTERM t:IBUF t:IOBUFE t:MACROCELL_XOR t:ORTERM %% t:* %D

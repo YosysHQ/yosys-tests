@@ -1,0 +1,22 @@
+read_verilog ../top_mem.v
+hierarchy -top top
+proc
+memory -nomap
+equiv_opt -run :prove -map +/gowin/cells_sim.v synth_gowin -nobram
+memory
+opt -full
+
+miter -equiv -flatten -make_assert -make_outputs gold gate miter
+
+#sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+design -load postopt
+cd top
+stat
+select -assert-count 35 t:DFF
+select -assert-count 16 t:IBUF
+select -assert-count 6 t:LUT2
+select -assert-count 1 t:LUT3
+select -assert-count 24 t:LUT4
+select -assert-count 8 t:OBUF
+select -assert-count 8 t:RAM16S4
+select -assert-none t:DFF t:IBUF t:LUT2 t:LUT3 t:LUT4 t:OBUF t:RAM16S4 %% t:* %D

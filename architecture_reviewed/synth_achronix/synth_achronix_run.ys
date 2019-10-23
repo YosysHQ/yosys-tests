@@ -1,0 +1,13 @@
+read_verilog ../top.v
+hierarchy -top top
+proc
+flatten
+equiv_opt -assert -map +/achronix/speedster22i/cells_sim.v synth_achronix -run begin:vout # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+
+cd top
+select -assert-count 2 t:LUT4
+select -assert-count 3 t:PADIN
+select -assert-count 2 t:PADOUT
+
+select -assert-none t:LUT4 t:PADIN t:PADOUT %% t:* %D

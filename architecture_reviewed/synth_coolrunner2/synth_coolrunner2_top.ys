@@ -1,0 +1,32 @@
+read_verilog ../top.v
+design -save read
+
+hierarchy -top dff
+proc
+#-assert option skipped because of unproven cells
+#equiv_opt -assert -map +/coolrunner2/cells_sim.v synth_coolrunner2 -top dff # equivalency check
+equiv_opt -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd dff # Constrain all select calls below inside the top module
+
+select -assert-count 1 t:FDCP
+select -assert-count 2 t:IBUF
+select -assert-count 1 t:IOBUFE
+select -assert-none t:FDCP t:IBUF t:IOBUFE %% t:* %D
+
+design -load read
+hierarchy -top dffe
+proc
+#-assert option skipped because of unproven cells
+#equiv_opt -assert -map +/coolrunner2/cells_sim.v synth_coolrunner2 -top dffe # equivalency check
+equiv_opt -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd dffe # Constrain all select calls below inside the top module
+
+select -assert-count 2 t:ANDTERM
+select -assert-count 1 t:FDCP
+select -assert-count 3 t:IBUF
+select -assert-count 1 t:IOBUFE
+select -assert-count 1 t:MACROCELL_XOR
+select -assert-count 1 t:ORTERM
+select -assert-none t:ANDTERM t:FDCP t:IBUF t:IOBUFE t:MACROCELL_XOR t:ORTERM %% t:* %D
