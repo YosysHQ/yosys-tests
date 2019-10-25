@@ -10,7 +10,7 @@ for x in *; do
 				if [ -f "$x/heavy_test" ]; then
 					if [ -z "$ENABLE_HEAVY_TESTS" ] || [ "$ENABLE_HEAVY_TESTS" -ne "1" ]; then
 						echo "	@echo 'Skipping heavy test $x..'"
-						break
+						continue
 					fi
 					echo "	@echo 'Running heavy test $x..'"
 				else
@@ -27,7 +27,7 @@ for x in *; do
 				if [ -f "$x/heavy_test" ]; then
 					if [ -z "$ENABLE_HEAVY_TESTS" ] || [ "$ENABLE_HEAVY_TESTS" -ne "1" ]; then
 						echo "	@echo 'Skipping heavy test $x..'"
-						break
+						continue
 					fi
 					echo "	@echo 'Running heavy test $x..'"
 				else
