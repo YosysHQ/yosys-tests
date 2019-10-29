@@ -1,0 +1,61 @@
+read_verilog ../top_gp_dffs.v
+design -save read
+
+hierarchy -top gp_dff
+proc
+equiv_opt -assert -map +/greenpak4/cells_sim.v synth_greenpak4 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd gp_dff # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:GP_DFFI
+select -assert-count 3 t:GP_IBUF
+select -assert-count 1 t:GP_OBUF
+select -assert-none t:GP_DFFI t:GP_IBUF t:GP_OBUF %% t:* %D
+
+design -load read
+hierarchy -top gp_dffr
+proc
+equiv_opt -map +/greenpak4/cells_sim.v synth_greenpak4 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd gp_dffr # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:GP_DFFSRI
+select -assert-count 3 t:GP_IBUF
+select -assert-count 1 t:GP_OBUF
+select -assert-none t:GP_DFFSRI t:GP_IBUF t:GP_OBUF %% t:* %D
+
+design -load read
+hierarchy -top gp_dffs
+proc
+equiv_opt -map +/greenpak4/cells_sim.v synth_greenpak4 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd gp_dffs # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:GP_DFFSRI
+select -assert-count 3 t:GP_IBUF
+select -assert-count 1 t:GP_OBUF
+select -assert-none t:GP_DFFSRI t:GP_IBUF t:GP_OBUF %% t:* %D
+
+design -load read
+hierarchy -top gp_dffsi
+proc
+equiv_opt -map +/greenpak4/cells_sim.v synth_greenpak4 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd gp_dffsi # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:GP_DFFSR
+select -assert-count 3 t:GP_IBUF
+select -assert-count 1 t:GP_OBUF
+select -assert-none t:GP_DFFSR t:GP_IBUF t:GP_OBUF %% t:* %D
+
+design -load read
+hierarchy -top gp_latchs
+proc
+equiv_opt -map +/greenpak4/cells_sim.v synth_greenpak4 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd gp_latchs # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:GP_DLATCHSRI
+select -assert-count 3 t:GP_IBUF
+select -assert-count 1 t:GP_OBUF
+select -assert-none t:GP_DLATCHSRI t:GP_IBUF t:GP_OBUF %% t:* %D

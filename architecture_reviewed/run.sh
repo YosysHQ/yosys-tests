@@ -11,6 +11,16 @@ cd $1/work_$2
 touch .start
 
 #
+if [ -f ../run-test.sh ]; then
+	../run-test.sh
+	if [ $? != 0 ] ; then
+		echo FAIL > ${1}_${2}.status
+	else
+		echo PASS > ${1}_${2}.status
+	fi
+	touch .stamp
+	exit
+fi
 if [[ $2 =~ "_fail" ]]; then
 	#4 - An error expected
 	if yosys -ql yosys.log ../$2.ys; then
