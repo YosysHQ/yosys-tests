@@ -1,5 +1,5 @@
 
-SUBDIRS := architecture architecture_reviewed backends bigsim equiv frontends misc regression simple yosys
+SUBDIRS := architecture_reviewed backends bigsim equiv frontends misc regression simple yosys
 
 ifeq ($(VERIFIC),1)
 export VERIFIC=1
