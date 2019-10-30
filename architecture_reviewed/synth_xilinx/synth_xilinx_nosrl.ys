@@ -1,0 +1,25 @@
+read_verilog ../top_nosrl.v
+design -save read
+
+hierarchy -top xilinx_srl_static_test
+proc
+#equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
+equiv_opt -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd xilinx_srl_static_test # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:BUFG
+select -assert-count 1 t:SRL16E
+select -assert-none t:BUFG t:SRL16E %% t:* %D
+
+design -load read
+hierarchy -top xilinx_srl_static_test
+proc
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -nosrl # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd xilinx_srl_static_test # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:BUFG
+select -assert-count 5 t:FDRE
+select -assert-none t:BUFG t:FDRE %% t:* %D
+

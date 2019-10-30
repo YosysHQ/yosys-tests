@@ -1,4 +1,4 @@
-read_verilog ../top_.v
+read_verilog ../top_fulladder.v
 
 hierarchy -top top
 proc

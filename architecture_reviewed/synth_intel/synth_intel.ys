@@ -1,0 +1,11 @@
+read_verilog ../top.v
+hierarchy -top top
+proc
+#-assert option was skipped because of unproven cells
+#equiv_opt -assert -map +/intel/max10/cells_sim.v synth_intel # equivalency check
+equiv_opt -map +/intel/max10/cells_sim.v synth_intel # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd top # Constrain all select calls below inside the top module
+stat
+select -assert-count 14 t:fiftyfivenm_lcell_comb
+select -assert-none t:fiftyfivenm_lcell_comb %% t:* %D
