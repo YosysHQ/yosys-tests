@@ -1,0 +1,43 @@
+read_verilog ../top_dpram.v
+design -save read
+
+hierarchy -top top
+proc
+memory -nomap
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx
+memory
+opt -full
+
+miter -equiv -flatten -make_assert -make_outputs gold gate miter
+
+#sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+
+design -load postopt
+cd top
+select -assert-count 2 t:BUFG
+select -assert-count 6 t:FDRE
+select -assert-count 6 t:RAM64X1D
+select -assert-none t:BUFG t:FDRE t:RAM64X1D %% t:* %D
+
+design -load read
+hierarchy -top top
+proc
+memory -nomap
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx -nodram
+memory
+opt -full
+
+miter -equiv -flatten -make_assert -make_outputs gold gate miter
+
+#sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+design -load postopt
+cd top
+
+select -assert-count 2 t:BUFG
+select -assert-count 390 t:FDRE
+select -assert-count 90 t:LUT2
+select -assert-count 10 t:LUT4
+select -assert-count 155 t:LUT6
+select -assert-count 32 t:MUXF7
+select -assert-count 2 t:MUXF8
+select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT4 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D

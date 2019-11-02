@@ -1,0 +1,49 @@
+read_verilog ../top_mux.v
+design -save read
+
+hierarchy -top mux16
+proc
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -widemux 2 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux16 # Constrain all select calls below inside the top module
+stat
+select -assert-count 14 t:MUXF7
+select -assert-count 1 t:MUXF8
+select -assert-none t:MUXF7 t:MUXF8 %% t:* %D
+
+design -load read
+hierarchy -top mux16
+proc
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -widemux 3 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux16 # Constrain all select calls below inside the top module
+stat
+select -assert-count 4 t:LUT6
+select -assert-count 2 t:MUXF7
+select -assert-count 1 t:MUXF8
+select -assert-none t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
+
+design -load read
+hierarchy -top mux16
+proc
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -widemux 5 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux16 # Constrain all select calls below inside the top module
+stat
+select -assert-count 4 t:LUT6
+select -assert-count 2 t:MUXF7
+select -assert-count 1 t:MUXF8
+select -assert-none t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
+
+design -load read
+hierarchy -top mux16
+proc
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -widemux 9 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd mux16 # Constrain all select calls below inside the top module
+stat
+select -assert-count 4 t:LUT6
+select -assert-count 2 t:MUXF7
+select -assert-count 1 t:MUXF8
+select -assert-none t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
+

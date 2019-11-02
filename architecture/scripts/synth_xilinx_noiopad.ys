@@ -1,3 +1,0 @@
-read_verilog ../top.v
-synth_xilinx -noiopad
-write_verilog synth.v

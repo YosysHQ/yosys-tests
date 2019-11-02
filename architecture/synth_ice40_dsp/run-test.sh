@@ -19,7 +19,7 @@ if ! which iverilog > /dev/null ; then
 fi
 
 wget https://raw.githubusercontent.com/YosysHQ/yosys-bench/master/verilog/benchmarks_small/mul/common.py -O common_mul.py -o /dev/null
-cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
+#cp ~/yosys/yosys-bench/verilog/benchmarks_small/mul/common.py common_mul.py
 PYTHONPATH=".:$PYTHONPATH" python3 ../generate_mul.py
 python3 ../assert_area.py
 cp ../*.v .

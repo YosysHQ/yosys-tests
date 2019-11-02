@@ -1,0 +1,38 @@
+read_verilog ../top_srl.v
+design -save read
+
+hierarchy -top top
+proc
+synth_xilinx
+xilinx_srl -fixed
+stat
+select -assert-count 1 t:BUFG
+select -assert-count 8 t:FDRE
+#select -assert-none t:BUFG t:FDRE %% t:* %D
+
+design -load read
+hierarchy -top top
+proc
+synth_xilinx
+xilinx_srl -fixed -minlen 1
+stat
+select -assert-count 8 t:$__XILINX_SHREG_
+select -assert-count 1 t:BUFG
+
+design -load read
+hierarchy -top top
+proc
+synth_xilinx
+xilinx_srl -fixed -variable
+stat
+select -assert-count 1 t:BUFG
+select -assert-count 8 t:FDRE
+
+design -load read
+hierarchy -top top
+proc
+synth_xilinx
+xilinx_srl -fixed -variable -minlen 1
+stat
+select -assert-count 8 t:$__XILINX_SHREG_
+select -assert-count 1 t:BUFG

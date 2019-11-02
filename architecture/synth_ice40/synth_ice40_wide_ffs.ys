@@ -1,0 +1,48 @@
+read_verilog ../top_wide_ffs.v
+design -save read
+
+hierarchy -top dff
+proc
+equiv_opt -assert -map +/ice40/cells_sim.v synth_ice40 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd dff # Constrain all select calls below inside the top module
+stat
+select -assert-count 2 t:SB_DFFSR
+select -assert-count 2 t:SB_DFFSS
+select -assert-none t:SB_DFFSR t:SB_DFFSS %% t:* %D
+
+design -load read
+hierarchy -top adff
+proc
+#equiv_opt -assert -map +/ice40/cells_sim.v synth_ice40 # equivalency check
+equiv_opt -map +/ice40/cells_sim.v synth_ice40 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd adff # Constrain all select calls below inside the top module
+stat
+select -assert-count 2 t:SB_DFFR
+select -assert-count 2 t:SB_DFFS
+select -assert-none t:SB_DFFR t:SB_DFFS %% t:* %D
+
+design -load read
+hierarchy -top dffe
+proc
+equiv_opt -assert -map +/ice40/cells_sim.v synth_ice40 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd dffe # Constrain all select calls below inside the top module
+stat
+select -assert-count 4 t:SB_DFFE
+select -assert-count 2 t:SB_LUT4
+select -assert-none t:SB_DFFE t:SB_LUT4 %% t:* %D
+
+design -load read
+hierarchy -top dffse
+proc
+equiv_opt -assert -map +/ice40/cells_sim.v synth_ice40 # equivalency check
+design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
+cd dffse # Constrain all select calls below inside the top module
+stat
+select -assert-count 1 t:SB_DFFE
+select -assert-count 2 t:SB_DFFESR
+select -assert-count 1 t:SB_DFFESS
+select -assert-count 4 t:SB_LUT4
+select -assert-none t:SB_DFFE t:SB_DFFESR t:SB_DFFESS t:SB_LUT4 %% t:* %D
