@@ -7,7 +7,7 @@ clean:: run-test.mk
 	@rm -f .stamp
 	@$(MAKE) -f run-test.mk clean
 
-run-test.mk: generate.py
-	@$(PYTHON_EXECUTABLE) generate.py > run-test.mk
+run-test.mk: ../generate.py
+	@$(PYTHON_EXECUTABLE) ../generate.py > run-test.mk
 
 .PHONY: all clean

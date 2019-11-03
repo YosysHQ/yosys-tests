@@ -12,7 +12,7 @@ for root, dirs, files in sorted(os.walk(".")):
                 print("\t@echo 'Skipping heavy test {0}..'".format(dir, work))
                 continue                
             print("\t@echo 'Running {2}{1}..'\n"
-                  "\t@./run.sh {0} {1}\n"
+                  "\t@../run.sh {0} {1}\n"
                   "clean::\n"
                   "\t@echo 'Cleaning {1}..'\n"
                   "\t@rm -rf {0}/work_{1}".format(dir, work, "heavy " if heavy else ""))
