@@ -1,68 +1,13 @@
-all: work
-	touch .stamp
+PYTHON_EXECUTABLE := $(shell if python3 -c ""; then echo "python3"; else echo "python"; fi)
 
-clean::
-	rm -f .stamp
+all:: run-test.mk
+	@touch .stamp
+	@$(MAKE) -f run-test.mk 
+clean:: run-test.mk
+	@rm -f .stamp
+	@$(MAKE) -f run-test.mk clean
 
-define template
-$(foreach design,$(1),
-$(foreach script,$(2),
-work:: $(design)/work_$(script)/.stamp
-
-$(design)/work_$(script)/.stamp:
-	bash run.sh $(design) $(script)
-
-clean::
-	rm -rf $(design)/work_$(script)
-))
-endef
-
-#achronix
-$(eval $(call template,synth_achronix,synth_achronix synth_achronix_top synth_achronix_vout synth_achronix_run synth_achronix_noflatten synth_achronix_retime synth_achronix_fail))
-
-#anlogic
-$(eval $(call template,synth_anlogic,synth_anlogic synth_anlogic_top synth_anlogic_edif synth_anlogic_json synth_anlogic_run synth_anlogic_noflatten synth_anlogic_retime synth_anlogic_fail synth_anlogic_fulladder anlogic_determine_init_eqn))
-
-#coolrunner2
-$(eval $(call template,synth_coolrunner2,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime synth_coolrunner2_fail synth_coolrunner2_for_lcov synth_coolrunner2_fulladder ))
-$(eval $(call template,synth_coolrunner2_lcov,synth_coolrunner2 synth_coolrunner2_top synth_coolrunner2_vout synth_coolrunner2_run synth_coolrunner2_noflatten synth_coolrunner2_retime))
-
-#easic - issue #920
-# we do not have eTools anymore available, commented until aquired
-#$(eval $(call template,synth_easic,synth_easic synth_easic_top synth_easic_vlog synth_easic_run synth_easic_noflatten synth_easic_retime synth_easic_fail))
-$(eval $(call template,synth_easic, synth_easic_fail))
-
-#ecp5
-$(eval $(call template,synth_ecp5,synth_ecp5 synth_ecp5_top synth_ecp5_blif synth_ecp5_edif synth_ecp5_json synth_ecp5_run synth_ecp5_flatten synth_ecp5_noflatten synth_ecp5_retime synth_ecp5_noccu2 synth_ecp5_nodffe synth_ecp5_nobram synth_ecp5_nodram synth_ecp5_nomux synth_ecp5_abc2 synth_ecp5_vpr ecp5_ffinit synth_ecp5_abc9 synth_ecp5_abc9_nowidelut synth_ecp5_nodsp synth_ecp5_fail synth_ecp5_wide_ffs))
-
-#efinix
-$(eval $(call template,synth_efinix, synth_efinix synth_efinix_edif synth_efinix_json synth_efinix_noflatten synth_efinix_retime synth_efinix_run synth_efinix_top synth_efinix_fulladder))
-
-#gowin
-$(eval $(call template,synth_gowin,synth_gowin synth_gowin_top synth_gowin_vout synth_gowin_run synth_gowin_retime synth_gowin_nobram synth_gowin_noflatten synth_gowin_nodram synth_gowin_nodffe))
-
-#greenpak4
-$(eval $(call template,synth_greenpak4,synth_greenpak4 synth_greenpak4_top synth_greenpak4_json synth_greenpak4_run synth_greenpak4_noflatten synth_greenpak4_retime synth_greenpak4_part621 synth_greenpak4_part620 synth_greenpak4_part140 synth_greenpak4_fully_selected_fail synth_greenpak4_invalid_part_fail synth_greenpak4_adffs synth_greenpak4_adffsr synth_greenpak4_gp_dffs synth_greenpak4_inv_inputs))
-
-#ice40
-$(eval $(call template,synth_ice40,synth_ice40 synth_ice40_top synth_ice40_blif synth_ice40_edif synth_ice40_json synth_ice40_run synth_ice40_noflatten synth_ice40_flatten synth_ice40_retime synth_ice40_nocarry synth_ice40_nodffe synth_ice40_nobram synth_ice40_abc2 synth_ice40_vpr synth_ice40_relut synth_ice40_dsp synth_ice40_min_ce synth_ice40_noabc synth_ice40_device_u synth_ice40_device_lp synth_ice40_device_hx synth_ice40_opt synth_ice40_fully_selected_fail synth_ice40_device_unknown_fail synth_ice40_abc9 synth_ice40_abc9_retime_fail synth_ice40_mem_init synth_ice40_wide_ffs))
-
-#intel
-$(eval $(call template,synth_intel,synth_intel synth_intel_a10gx synth_intel_cyclone10 synth_intel_cycloneiv synth_intel_cycloneive synth_intel_cyclonev synth_intel_fully_selected_fail synth_intel_invalid_family_fail synth_intel_iopads synth_intel_max10 synth_intel_nobram synth_intel_noflatten synth_intel_retime synth_intel_run synth_intel_top synth_intel_vpr synth_intel_vqm ))
-
-#sf2
-$(eval $(call template,synth_sf2,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf2_json synth_sf2_run synth_sf2_noflatten synth_sf2_retime synth_sf2_vlog synth_sf2_noiobs synth_sf2_clkbuf synth_sf2_fully_selected_fail ))
-$(eval $(call template,synth_sf2_lcov,synth_sf2 synth_sf2_top synth_sf2_edif synth_sf2_json synth_sf2_run synth_sf2_noflatten synth_sf2_retime synth_sf2_vlog synth_sf2_noiobs synth_sf2_clkbuf ))
-
-#xilinx
-$(eval $(call template,synth_xilinx,synth_xilinx synth_xilinx_top synth_xilinx_blif synth_xilinx_edif synth_xilinx_run synth_xilinx_flatten synth_xilinx_retime synth_xilinx_vpr synth_xilinx_arch_xcup synth_xilinx_arch_xcu synth_xilinx_arch_xc7 synth_xilinx_arch_xc6s synth_xilinx_nobram synth_xilinx_nodram synth_xilinx_nosrl synth_xilinx_widemux synth_xilinx_nowidelut synth_xilinx_nocarry synth_xilinx_arch_xc6s_abc9  synth_xilinx_nowidelut_abc9 synth_xilinx_nodsp synth_xilinx_noclkbuf synth_xilinx_noiopad synth_xilinx_iopad synth_xilinx_ise synth_xilinx_flatten_before_abc synth_xilinx_arch_xc6v synth_xilinx_abc9_retime_fail synth_xilinx_fully_selected_fail synth_xilinx_invalid_arch_fail synth_xilinx_widemux_1_fail xilinx_srl synth_xilinx_dsp))
-ifeq ($(ENABLE_HEAVY_TESTS),1)
-$(eval $(call template,synth_xilinx_srl,synth_xilinx_srl))
-$(eval $(call template,synth_xilinx_mux,synth_xilinx_mux))
-$(eval $(call template,synth_xilinx_dsp,synth_xilinx_dsp))
-endif
-
-#xilinx_ug901_synthesis_examples
-$(eval $(call template,xilinx_ug901_synthesis_examples, xilinx_ug901_asym_ram_sdp_read_wider xilinx_ug901_asym_ram_sdp_write_wider xilinx_ug901_asym_ram_tdp_read_first xilinx_ug901_asym_ram_tdp_write_first xilinx_ug901_black_box_1 xilinx_ug901_bytewrite_ram_1b xilinx_ug901_bytewrite_tdp_ram_nc xilinx_ug901_bytewrite_tdp_ram_readfirst2 xilinx_ug901_bytewrite_tdp_ram_rf xilinx_ug901_bytewrite_tdp_ram_wf xilinx_ug901_cmacc xilinx_ug901_cmult xilinx_ug901_dynamic_shift_registers_1 xilinx_ug901_dynpreaddmultadd xilinx_ug901_fsm_1 xilinx_ug901_latches xilinx_ug901_macc xilinx_ug901_mult_unsigned xilinx_ug901_presubmult xilinx_ug901_rams_dist xilinx_ug901_ram_simple_dual_one_clock xilinx_ug901_ram_simple_dual_two_clocks xilinx_ug901_rams_init_file xilinx_ug901_rams_pipeline xilinx_ug901_rams_sp_nc xilinx_ug901_rams_sp_rf xilinx_ug901_rams_sp_rf_rst xilinx_ug901_rams_sp_rom xilinx_ug901_rams_sp_rom_1 xilinx_ug901_rams_sp_wf xilinx_ug901_rams_tdp_rf_rf xilinx_ug901_registers_1 xilinx_ug901_sfir_shifter xilinx_ug901_shift_registers_0 xilinx_ug901_shift_registers_1 xilinx_ug901_squarediffmacc xilinx_ug901_squarediffmult xilinx_ug901_top_mux xilinx_ug901_tristates_1 xilinx_ug901_tristates_2 xilinx_ug901_xilinx_ultraram_single_port_no_change xilinx_ug901_xilinx_ultraram_single_port_read_first xilinx_ug901_xilinx_ultraram_single_port_write_first))
+run-test.mk: generate.py
+	@$(PYTHON_EXECUTABLE) generate.py > run-test.mk
 
 .PHONY: all clean
