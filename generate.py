@@ -6,8 +6,12 @@ for root, dirs, files in sorted(os.walk(".")):
             dir = os.path.basename(root)
             work = os.path.splitext(file)[0]
             heavy = os.path.exists(os.path.join(dir, "heavy_test"))
+            is_disabled = os.path.exists(os.path.join(dir, work + ".disable"))
             print("all:: {0}/work_{1}/.stamp\n"
                   "{0}/work_{1}/.stamp:".format(dir, work))
+            if (is_disabled):
+                print("\t@echo 'Skipping disabled test {0}..'".format(dir, work))
+                continue                
             if (heavy and not is_heavy_enabled):
                 print("\t@echo 'Skipping heavy test {0}..'".format(dir, work))
                 continue                
