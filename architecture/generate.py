@@ -2,7 +2,7 @@ import os
 is_heavy_enabled = int(os.getenv('ENABLE_HEAVY_TESTS', '0')) == 1
 for root, dirs, files in sorted(os.walk(".")):
     for file in files:
-        if file.endswith('.ys'):
+        if file.endswith('.ys') or file.endswith('run-test.sh'):
             dir = os.path.basename(root)
             work = os.path.splitext(file)[0]
             heavy = os.path.exists(os.path.join(dir, "heavy_test"))
