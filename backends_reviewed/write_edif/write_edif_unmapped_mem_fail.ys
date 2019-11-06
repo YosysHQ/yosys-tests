@@ -1,0 +1,3 @@
+read_verilog ../top_unmap_mem.v
+proc
+write_edif -top top edif.edif

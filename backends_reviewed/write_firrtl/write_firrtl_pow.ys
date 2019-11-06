@@ -1,0 +1,3 @@
+read_verilog -noopt ../top_pow.v
+proc
+write_firrtl result.out

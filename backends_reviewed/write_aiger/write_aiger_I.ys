@@ -1,0 +1,5 @@
+read_verilog -sv ../top3.v
+aigmap
+write_aiger -I aiger.aiger
+design -reset
+read_aiger aiger.aiger

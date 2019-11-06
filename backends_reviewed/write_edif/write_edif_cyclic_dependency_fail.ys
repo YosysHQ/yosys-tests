@@ -1,0 +1,3 @@
+read_verilog -sv ../top_cyclic_dep.v
+proc
+write_edif edif.edif

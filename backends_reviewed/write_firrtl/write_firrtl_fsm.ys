@@ -1,0 +1,5 @@
+read_verilog ../top_fsm.v
+proc
+pmux2shiftx
+clean
+write_firrtl firrtl.firrtl

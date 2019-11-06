@@ -1,0 +1,3 @@
+read_verilog -sv ../top_two_mods.v
+aigmap
+write_aiger aiger.aiger

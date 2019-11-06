@@ -1,0 +1,3 @@
+read_verilog -sv ../top_x_z.v
+synth
+write_aiger aiger.aiger

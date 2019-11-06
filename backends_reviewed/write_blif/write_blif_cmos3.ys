@@ -1,0 +1,6 @@
+read_verilog -sv ../top.v
+synth
+abc -g cmos3
+write_blif blif.blif
+design -reset
+read_blif blif.blif

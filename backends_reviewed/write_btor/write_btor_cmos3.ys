@@ -1,0 +1,4 @@
+read_verilog -sv ../top.v
+synth -top top
+abc -g cmos3
+write_btor btor6.btor

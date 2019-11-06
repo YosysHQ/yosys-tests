@@ -1,0 +1,4 @@
+read_verilog -sv ../top_unsupp_cell.v
+synth
+abc
+write_btor btor.btor

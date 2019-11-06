@@ -1,0 +1,4 @@
+read_verilog -sv ../top_fsm.v
+abc -g OAI4
+synth -top top
+write_btor btor.btor
