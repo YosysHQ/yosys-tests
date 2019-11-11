@@ -1,0 +1,2 @@
+read_verilog ../top_noproc_reduce.v
+write_smv result.out

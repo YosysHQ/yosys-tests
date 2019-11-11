@@ -1,0 +1,4 @@
+read_verilog ../top_logic.v
+synth -top top
+abc -g cmos3
+write_verilog result.out

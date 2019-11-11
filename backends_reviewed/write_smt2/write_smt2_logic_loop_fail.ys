@@ -1,0 +1,4 @@
+read_verilog ../top_logic_loop.v
+proc
+memory
+write_smt2 smt2.smt2

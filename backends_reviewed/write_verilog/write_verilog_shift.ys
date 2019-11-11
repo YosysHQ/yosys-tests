@@ -1,0 +1,4 @@
+read_verilog ../top_shift_fsm.v
+proc
+pmux2shiftx
+write_verilog result.out
