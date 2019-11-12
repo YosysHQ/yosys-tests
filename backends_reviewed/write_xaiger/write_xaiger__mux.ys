@@ -1,0 +1,3 @@
+read_verilog -sv ../../common/mux.v
+aigmap
+write_xaiger result.out

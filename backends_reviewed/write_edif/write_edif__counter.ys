@@ -1,0 +1,3 @@
+read_verilog ../../common/counter.v
+proc
+write_edif result.out

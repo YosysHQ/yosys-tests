@@ -1,0 +1,5 @@
+read_verilog ../../common/dffs.v
+proc
+write_json result.out
+design -reset
+read_json result.out

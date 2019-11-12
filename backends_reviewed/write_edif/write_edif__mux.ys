@@ -1,0 +1,3 @@
+read_verilog ../../common/mux.v
+proc
+write_edif result.out

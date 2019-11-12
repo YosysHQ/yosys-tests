@@ -1,0 +1,5 @@
+read_verilog ../../common/mux.v
+proc
+write_ilang result.out
+design -reset
+read_ilang result.out

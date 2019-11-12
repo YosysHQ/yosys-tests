@@ -1,0 +1,4 @@
+read_verilog -sv ../../common/mul.v
+hierarchy -top top
+proc
+write_btor result.out

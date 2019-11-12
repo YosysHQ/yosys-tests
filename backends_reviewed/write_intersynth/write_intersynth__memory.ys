@@ -1,0 +1,4 @@
+read_verilog ../../common/memory.v
+proc
+memory_collect
+write_intersynth result.out

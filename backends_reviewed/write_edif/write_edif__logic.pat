@@ -1,0 +1,76 @@
+    (cell (rename id00001 "$not")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port A (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00002 "$and")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port A (direction INPUT))
+          (port B (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00003 "$or")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port A (direction INPUT))
+          (port B (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00004 "$xor")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port A (direction INPUT))
+          (port B (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00005 "$xnor")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port A (direction INPUT))
+          (port B (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00006 "$logic_and")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port (array A 2) (direction INPUT))
+          (port (array B 2) (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
+    (cell (rename id00007 "$logic_or")
+      (cellType GENERIC)
+      (view VIEW_NETLIST
+        (viewType NETLIST)
+        (interface
+          (port (array A 2) (direction INPUT))
+          (port (array B 2) (direction INPUT))
+          (port Y (direction OUTPUT))
+        )
+      )
+    )
