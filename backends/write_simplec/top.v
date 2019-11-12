@@ -1,35 +1,26 @@
-module tristate (en, i, o);
-    input en;
-    input i;    
-    output [1:0] o;
-    
-    wire [1:0] io;
-`ifndef BUG  
-    assign	io[0] = i & ~en;
-    assign	io[1] = i ? en : ~en;
-		
-    assign o = io;
-`else
-	assign 	io[0] = (en)? ~i : 1'bZ;
-		
-    assign 	io[1] = (i)? ~en : 1'bZ;
-		
-    assign o = ~io;
-`endif
+module mux16 (D, S, Y);
+ 	input  [15:0] D;
+ 	input  [3:0] S;
+ 	output Y;
+assign Y = D[S];
 endmodule
 
 
 module top (
-input en,
-input a,
-inout [1:0] b,
-output [1:0] c
+input [3:0] S,
+input [15:0] D,
+output M16
 );
+reg A;
 
-tristate u_tri (
-        .en (en ),
-        .i (a ),
-        .o (c )
+initial begin
+    A = 0;
+ end
+
+mux16 u_mux16 (
+        .S (S[3:0]),
+        .D (D[15:0]),
+        .Y (M16)
     );
 
 endmodule
