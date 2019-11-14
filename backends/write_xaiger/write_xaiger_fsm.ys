@@ -1,0 +1,3 @@
+read_verilog -sv ../top_fsm.v
+aigmap
+write_xaiger result.out

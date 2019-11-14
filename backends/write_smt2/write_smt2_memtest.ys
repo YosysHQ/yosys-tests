@@ -1,0 +1,4 @@
+read_verilog ../top_mem.v
+proc
+memory
+write_smt2  result.out 

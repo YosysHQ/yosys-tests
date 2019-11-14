@@ -1,0 +1,4 @@
+read_verilog -sv ../../common/shifter.v
+hierarchy -top top
+proc
+write_btor result.out

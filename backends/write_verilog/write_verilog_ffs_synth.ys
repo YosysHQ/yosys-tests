@@ -1,0 +1,4 @@
+read_verilog ../top_ffs.v
+proc
+synth
+write_verilog result.out

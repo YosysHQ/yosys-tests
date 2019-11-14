@@ -1,0 +1,4 @@
+read_verilog ../top_cmos4_mux.v
+synth -top top
+abc -g cmos4
+write_smv result.out

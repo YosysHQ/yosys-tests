@@ -1,0 +1,4 @@
+read_verilog ../top_complex_write_enable.v
+proc
+memory
+write_firrtl firrtl.firrtl

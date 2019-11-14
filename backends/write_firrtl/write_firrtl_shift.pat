@@ -1,0 +1,7 @@
+    _shl____top_shift_v_18_7 <= bits(shl(cat(cout, A), 1), 1, 0)
+    _sshr____top_shift_v_17_6 <= asUInt(shr(asSInt(_add____top_shift_v_17_5_Y), 2))
+    _add____top_shift_v_17_5 <= asUInt(add(asSInt(y), asSInt(A)))
+    _shr____top_shift_v_16_4 <= asUInt(shr(asUInt(asSInt(y)), 2))
+    _sshr____top_shift_v_15_3 <= asUInt(dshr(asSInt(_add____top_shift_v_15_2_Y), asUInt(y)))
+    _add____top_shift_v_15_2 <= asUInt(add(asSInt(y), asSInt(A)))
+    _shr____top_shift_v_14_1 <= asUInt(dshr(asUInt(asSInt(y)), asUInt(x)))

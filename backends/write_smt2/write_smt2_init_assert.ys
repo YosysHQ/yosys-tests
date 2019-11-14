@@ -1,0 +1,5 @@
+read_verilog -sv ../top_init_assert.v
+proc
+write_smt2 -stbv smt2.smt2
+synth -top top
+write_smt2 -stbv smt2.smt2

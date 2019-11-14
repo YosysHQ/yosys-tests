@@ -1,0 +1,5 @@
+read_verilog -sv ../../common/latches.v
+aigmap
+write_aiger result.out
+design -reset
+read_aiger result.out

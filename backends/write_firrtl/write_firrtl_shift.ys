@@ -1,0 +1,3 @@
+read_verilog ../top_shift.v
+proc
+write_firrtl result.out

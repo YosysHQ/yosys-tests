@@ -1,0 +1,5 @@
+read_verilog ../top_mem.v
+proc
+setundef -anyseq
+memory
+write_smt2 -mem result.out

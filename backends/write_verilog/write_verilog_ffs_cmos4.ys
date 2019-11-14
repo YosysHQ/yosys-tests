@@ -1,0 +1,5 @@
+read_verilog ../top_mux.v
+synth -top top
+abc -g cmos4
+stat
+write_verilog result.out

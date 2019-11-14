@@ -1,0 +1,4 @@
+read_verilog -sv ../top_init_assert.v
+hierarchy -top top
+proc
+write_btor btor.btor

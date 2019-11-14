@@ -1,0 +1,3 @@
+read_verilog -sv ../top.v
+aigmap
+write_xaiger -map tt/tt.map xaiger.xaiger

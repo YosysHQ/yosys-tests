@@ -1,0 +1,3 @@
+read_verilog -sv ../top.v
+aigmap
+write_xaiger -vmap a.map result.out

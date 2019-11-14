@@ -1,0 +1,10 @@
+read_verilog ../top_mem.v
+write_ilang result2.out
+proc
+write_ilang result1.out
+memory
+dump -o file.il
+write_ilang result.out
+dump -n -o file1.il
+design -reset
+read_ilang result.out

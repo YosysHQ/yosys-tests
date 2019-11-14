@@ -1,0 +1,4 @@
+read_verilog -sv ../top_mem.v
+memory
+proc
+write_btor -v btor.btor

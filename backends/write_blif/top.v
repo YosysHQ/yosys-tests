@@ -7,15 +7,14 @@ module top
  output reg A,
  output reg cout
  );
- 
+
  reg A1,cout1;
- 
+
  initial begin
     A = 0;
     cout = 0;
  end
 
-`ifndef BUG
 always @(posedge x) begin
     A1 <=  ~y + &cin;
 end
@@ -31,9 +30,6 @@ always @(*) begin
     if (~x)
         cout <=  cout1&cin~|y;
 end
-`else
-assign {cout,A} =  1'bZ;
-`endif
 
 bb ubb (cin,y,x,A);
 

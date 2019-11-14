@@ -1,0 +1,3 @@
+read_verilog -sv ../top_diff_cells.v
+aigmap
+write_aiger -symbols aiger.aiger

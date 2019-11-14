@@ -1,0 +1,3 @@
+read_verilog ../top_shiftx.v
+proc
+write_smv result.out

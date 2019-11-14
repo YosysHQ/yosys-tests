@@ -1,0 +1,3 @@
+read_verilog ../top_fsm.v
+synth
+write_smt2 -nobv result.out

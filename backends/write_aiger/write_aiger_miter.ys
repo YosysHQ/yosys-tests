@@ -1,0 +1,6 @@
+read_verilog -sv ../top3.v
+synth -top top
+aigmap
+write_aiger -miter result.out
+design -reset
+read_aiger result.out
