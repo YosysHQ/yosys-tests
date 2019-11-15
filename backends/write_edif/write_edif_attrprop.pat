@@ -1,1 +1,1 @@
-            (property src (string "../top.v:39")))
+            (property src (string "../top.v:35")))
