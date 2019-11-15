@@ -1,0 +1,13 @@
+read_verilog ../top_fsm.v
+proc
+fsm_detect
+fsm_extract
+fsm_recode -encfile encfile.fsm
+design -stash gold
+read_verilog ../synth_top_fsm.v
+read_verilog ../logic_fsm.v
+proc
+design -stash gate
+design -copy-from gold -as gold top
+design -copy-from gate -as gate top
+equiv_make -encfile ../encfile_redef.fsm -encfile ../encfile.fsm gold gate equiv
