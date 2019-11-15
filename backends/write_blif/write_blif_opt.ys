@@ -1,6 +1,0 @@
-read_verilog -sv ../top.v
-proc
-opt
-write_blif blif.blif
-design -reset
-read_blif blif.blif
