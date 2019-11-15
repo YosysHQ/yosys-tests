@@ -2,15 +2,20 @@ read_verilog ../fsm_1.v
 hierarchy -top fsm_1
 proc
 flatten
-equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx
+miter -equiv -make_assert -flatten gold gate miter
+sat -verify -prove-asserts -show-public -set-at 1 in_reset 1 -seq 20 -prove-skip 1 miter
+
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd fsm_1 # Constrain all select calls below inside the top module
 #Vivado synthesizes 2 LUT5, 2 LUT4, 1 LUT3, 4 FDRE.
 stat
 select -assert-count 1 t:BUFG
-select -assert-count 4 t:FDRE
-select -assert-count 2 t:LUT4
-select -assert-count 2 t:LUT5
-select -assert-count 1 t:LUT6
+select -assert-count 6 t:FDRE
+select -assert-count 2 t:LUT2
+select -assert-count 3 t:LUT3
+select -assert-count 4 t:LUT6
+select -assert-count 2 t:MUXF7
+select -assert-count 1 t:MUXF8
 
-select -assert-none t:BUFG t:FDRE t:LUT4 t:LUT5 t:LUT6 %% t:* %D
+select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D

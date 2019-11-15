@@ -33,5 +33,5 @@ cd top
 
 select -assert-count 6 t:SB_DFF
 select -assert-count 384 t:SB_DFFE
-select -assert-count 368 t:SB_LUT4
+select -assert-count 377 t:SB_LUT4
 select -assert-none t:SB_DFF t:SB_DFFE t:SB_LUT4 %% t:* %D
