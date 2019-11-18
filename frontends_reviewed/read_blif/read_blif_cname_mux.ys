@@ -1,0 +1,10 @@
+read_verilog ../top_mux.v
+synth -top top
+write_blif -cname blif1.blif
+design -reset
+read_blif blif1.blif
+stat
+select -assert-count 58 t:$lut
+select -assert-count 1 t:$paramod\mux4\dw?4
+
+#select -assert-none t:$lut t:$paramod\mux4\dw?4 %% t:* %D

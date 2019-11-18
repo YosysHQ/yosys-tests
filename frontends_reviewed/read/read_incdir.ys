@@ -1,0 +1,2 @@
+read -formal ../top.v
+read -incdir ../include_dir

@@ -1,0 +1,10 @@
+read_verilog ../top_tri.v
+proc
+memory
+dump -o file.il
+write_ilang ilang.ilang
+design -reset
+read_ilang ilang.ilang
+dump -n -o file1.il
+stat
+select -assert-count 2 t:$mux

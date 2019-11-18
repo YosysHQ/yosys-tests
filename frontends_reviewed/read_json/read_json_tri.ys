@@ -1,0 +1,7 @@
+read_verilog ../top_tri.v
+proc
+write_json json.json
+design -reset
+read_json json.json
+stat
+select -assert-count 2 t:$mux

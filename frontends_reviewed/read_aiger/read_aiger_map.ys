@@ -1,0 +1,10 @@
+read_verilog -sv ../top.v
+aigmap
+write_aiger aiger.aiger
+design -reset
+read_aiger -map aig.map aiger.aiger
+
+select -assert-count 6 t:$_AND_
+select -assert-count 7 t:$_NOT_
+
+select -assert-none t:$_AND_ t:$_NOT_  %% t:* %D

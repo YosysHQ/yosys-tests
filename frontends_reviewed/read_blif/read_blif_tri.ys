@@ -1,0 +1,5 @@
+read_verilog ../top_tri.v
+synth -top top
+write_blif blif1.blif
+design -reset
+read_blif blif1.blif

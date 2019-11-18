@@ -1,0 +1,14 @@
+read_verilog ../top_mem.v
+proc
+memory
+dump -o file.il
+write_ilang ilang.ilang
+design -reset
+read_ilang ilang.ilang
+dump -n -o file1.il
+stat
+select -assert-count 2 t:$dff
+select -assert-count 1 t:$mem
+select -assert-count 10 t:$mux
+
+select -assert-none t:$dff t:$mem t:$mux %% t:* %D

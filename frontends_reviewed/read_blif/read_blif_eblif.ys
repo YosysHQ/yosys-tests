@@ -1,0 +1,6 @@
+read_blif -wideports ../eblif.eblif
+stat
+select -assert-count 1 t:$dff
+select -assert-count 2 t:$lut
+
+select -assert-none t:$dff t:$lut  %% t:* %D
