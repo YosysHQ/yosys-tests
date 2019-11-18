@@ -1,1 +1,1 @@
-ERROR: Cyclic dependency between modules found! Cycle includes module bb.
+ERROR: Cyclic dependency between modules found! Cycle includes module top.
