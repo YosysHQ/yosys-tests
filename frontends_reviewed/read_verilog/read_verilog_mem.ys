@@ -1,0 +1,4 @@
+read_verilog ../top_mem.v
+
+select -assert-count 2 t:$memrd
+select -assert-count 2 t:$memwr

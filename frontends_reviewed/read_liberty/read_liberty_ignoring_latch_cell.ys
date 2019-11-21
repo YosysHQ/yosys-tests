@@ -1,0 +1,1 @@
+tee -o result.out read_liberty  -ignore_miss_data_latch ../liblat.lib

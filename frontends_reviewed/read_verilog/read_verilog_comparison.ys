@@ -1,0 +1,8 @@
+read_verilog ../top_comparison.v
+
+select -assert-count 1 t:$eqx
+select -assert-count 1 t:$ge
+select -assert-count 1 t:$le
+select -assert-count 1 t:$lt
+select -assert-count 1 t:$ne
+select -assert-count 1 t:$nex

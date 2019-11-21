@@ -1,0 +1,1 @@
+read_verilog -dump_ast2 ../top.v

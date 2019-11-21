@@ -1,0 +1,13 @@
+read_verilog ../top_logic.v
+
+select -assert-count 1 t:$add
+select -assert-count 2 t:$and
+select -assert-count 2 t:$mux
+select -assert-count 4 t:$not
+select -assert-count 2 t:$or
+select -assert-count 1 t:$reduce_and
+select -assert-count 2 t:$reduce_or
+select -assert-count 1 t:$reduce_xnor
+select -assert-count 1 t:$reduce_xor
+select -assert-count 1 t:$xnor
+select -assert-count 1 t:$xor

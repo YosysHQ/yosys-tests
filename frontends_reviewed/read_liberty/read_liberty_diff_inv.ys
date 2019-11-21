@@ -1,0 +1,6 @@
+read_liberty ../lib_diff_inv.lib
+stat
+
+select -assert-count 2 t:$_NOT_
+
+select -assert-none t:$_NOT_  %% t:* %D

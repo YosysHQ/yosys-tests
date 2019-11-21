@@ -1,0 +1,8 @@
+read_liberty ../lib_latch.lib
+stat
+select -assert-count 1 t:$_AND_
+select -assert-count 1 t:$_DLATCH_P_
+select -assert-count 2 t:$_NOT_
+select -assert-count 1 t:$_OR_
+
+select -assert-none t:$_AND_ t:$_DLATCH_P_ t:$_NOT_ t:$_OR_ %% t:* %D

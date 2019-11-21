@@ -1,0 +1,1 @@
+read_liberty -nooverwrite ../lib.lib

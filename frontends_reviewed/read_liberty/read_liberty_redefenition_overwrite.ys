@@ -1,0 +1,2 @@
+read_liberty ../lib.lib
+tee -o result.out read_liberty -overwrite ../lib.lib

@@ -1,0 +1,3 @@
+verilog_defines -Dtype
+verilog_defines -Utype
+read_verilog ../top.v

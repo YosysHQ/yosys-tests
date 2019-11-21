@@ -1,0 +1,1 @@
+read_liberty -lib ../liblat2.lib
