@@ -1,0 +1,6 @@
+read_verilog ../top_mux.v
+synth -top top
+tee -o result.out abc -g cmos3
+ abc -g cmos3
+select -assert-count 144 t:$_AOI3_
+select -assert-count 169 t:$_OAI3_

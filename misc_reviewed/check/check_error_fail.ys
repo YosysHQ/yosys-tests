@@ -1,0 +1,3 @@
+read_verilog -sv ../top1.v
+proc
+check -assert

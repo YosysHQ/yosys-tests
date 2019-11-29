@@ -1,0 +1,4 @@
+read_verilog ../top_logic.v
+proc
+synth -top top
+tee -o result.out abc

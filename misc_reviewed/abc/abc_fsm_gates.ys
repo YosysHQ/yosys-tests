@@ -1,0 +1,3 @@
+read_verilog ../top_fsm.v
+synth -top top
+abc -g gates

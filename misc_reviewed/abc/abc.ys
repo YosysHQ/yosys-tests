@@ -1,0 +1,10 @@
+read_verilog ../top.v
+proc
+dff2dffe
+synth -top top
+abc
+
+select -assert-count 3 t:$_NAND_
+select -assert-count 2 t:$_XOR_
+
+select -assert-none t:$_NAND_ t:$_XOR_ %% t:* %D

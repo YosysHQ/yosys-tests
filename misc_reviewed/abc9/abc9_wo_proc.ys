@@ -1,0 +1,2 @@
+read_verilog ../top_dff.v
+abc9 -lut 2

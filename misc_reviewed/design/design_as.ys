@@ -1,0 +1,5 @@
+read_verilog -sv ../top.v
+proc
+design -save first
+design -copy-from first -as top_2 top
+design -copy-to first -as top_2 top

@@ -1,0 +1,4 @@
+read_verilog -sv ../top.v
+proc
+connect -nounset -set d1 q
+tee -o result.out dump

@@ -1,0 +1,7 @@
+read_verilog ../top.v
+synth -top top
+abc -g cmos2
+
+select -assert-count 4 t:$_NAND_
+select -assert-count 5 t:$_NOR_
+select -assert-count 3 t:$_NOT_

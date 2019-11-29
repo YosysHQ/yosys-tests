@@ -1,0 +1,4 @@
+read_verilog -sv ../top.v
+proc
+connect -port $procdff$2 D d1
+tee -o result.out dump
