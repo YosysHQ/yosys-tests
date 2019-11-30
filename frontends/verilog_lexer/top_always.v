@@ -4,10 +4,10 @@ module mux2 (S,A,B,Y,Y1);
     output reg Y,Y1;
 
     always_ff @(*)
-		Y = (S)? B : A;
+		  Y = (S)? B : A;
 
-    always_latch @(*)
-		Y1 = (~S)? B : A;
+    always_latch
+		  Y1 = (~S)? B : A;
 
 endmodule
 
