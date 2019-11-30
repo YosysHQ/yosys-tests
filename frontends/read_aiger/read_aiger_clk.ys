@@ -1,0 +1,7 @@
+read_aiger -clk_name clk ../aiger_ff.aig
+
+select -assert-count 4 t:$_AND_
+select -assert-count 1 t:$_DFF_P_
+select -assert-count 4 t:$_NOT_
+
+select -assert-none t:$_AND_ t:$_DFF_P_ t:$_NOT_  %% t:* %D

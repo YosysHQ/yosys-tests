@@ -1,0 +1,2 @@
+verilog_defines -Dtype=str
+read_verilog ../top.v

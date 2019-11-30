@@ -1,0 +1,2 @@
+verilog_defaults -add "../top.v"
+read_verilog

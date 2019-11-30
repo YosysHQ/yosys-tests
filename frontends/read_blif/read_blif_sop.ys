@@ -1,0 +1,10 @@
+read_verilog ../top.v
+synth -top top
+write_blif blif1.blif
+design -reset
+read_blif -sop blif1.blif
+
+select -assert-count 2 t:$dff
+select -assert-count 2 t:$sop
+
+select -assert-none t:$dff t:$sop  %% t:* %D

@@ -1,0 +1,1 @@
+read_verilog -dump_rtlil ../top.v

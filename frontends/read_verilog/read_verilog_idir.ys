@@ -1,0 +1,1 @@
+read_verilog -Idir ../top.v

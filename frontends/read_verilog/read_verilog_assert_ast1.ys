@@ -1,0 +1,1 @@
+read_verilog -sv -dump_ast1 ../top_assert_assume.v

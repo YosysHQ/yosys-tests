@@ -1,0 +1,1 @@
+read_verilog -ppdump ../top.v

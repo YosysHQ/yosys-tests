@@ -1,0 +1,3 @@
+read_verilog -mem2reg ../top_mem.v
+select -assert-none t:$memrd
+select -assert-none t:$memwr

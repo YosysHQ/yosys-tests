@@ -1,0 +1,1 @@
+read_verilog -setattr attr ../top.v

@@ -1,0 +1,48 @@
+library (read_only_memory) {
+	type(bus4) {
+		base_type : array;
+		data_type : bit;
+		bit_width : 4;
+		bit_from : 0;
+		bit_to : 3;
+		downto : false;
+	}
+cell (rom) {
+	memory() {
+	type : rom;
+	address_width : 4;
+	word_width : 4;
+	}
+		bus (ADDR) {
+			bus_type  : "bus4";
+			direction : input;
+			capacitance : 1.46;
+			timing () {
+				timing_type : setup_falling;
+				intrinsic_rise : 3.20;
+				intrinsic_fall : 3.20;
+				related_pin : "CLK";
+			}
+		}
+		pin (CLK) {
+			direction : input;
+			capacitance : 1.13;
+			clock : true;
+		}
+		bus(QO){
+			bus_type  : "bus4";
+			direction : output;
+			memory_read() {
+				address : ADDR;
+			}
+			timing () {
+				timing_sense : non_unate;
+				intrinsic_rise : 5.25;
+				rise_resistance : 0.020;
+				intrinsic_fall : 5.50;
+				fall_resistance : 0.017;
+				related_bus_pins : "ADDR";
+			}
+		}
+	}
+}

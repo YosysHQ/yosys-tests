@@ -1,0 +1,20 @@
+read_verilog ../top_fsm.v
+proc
+memory
+dump -o file.il
+write_ilang ilang.ilang
+design -reset
+read_ilang -overwrite ilang.ilang
+dump -n -o file1.il
+stat
+select -assert-count 1 t:$add
+select -assert-count 2 t:$dff
+select -assert-count 33 t:$eq
+select -assert-count 2 t:$gt
+select -assert-count 1 t:$logic_and
+select -assert-count 3 t:$logic_or
+select -assert-count 19 t:$mux
+select -assert-count 1 t:$not
+select -assert-count 1 t:$pmux
+
+#select -assert-none t:$add t:$dff t:$eq t:$gt t:$logic_and t:$logic_or t:$mux t:$not t:$pmux %% t:* %D

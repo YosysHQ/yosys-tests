@@ -1,0 +1,1 @@
+read_verilog -no_dump_ptr ../top.v

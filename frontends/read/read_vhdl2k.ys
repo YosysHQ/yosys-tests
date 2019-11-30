@@ -1,0 +1,1 @@
+read -vhdl2k ../top.vhd

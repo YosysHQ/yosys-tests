@@ -1,0 +1,10 @@
+read_verilog ../top_mem.v
+synth -top top
+write_blif blif1.blif
+design -reset
+read_blif blif1.blif
+stat
+select -assert-count 528 t:$dff
+select -assert-count 2372 t:$lut
+
+select -assert-none t:$dff t:$lut  %% t:* %D

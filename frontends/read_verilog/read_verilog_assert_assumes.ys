@@ -1,0 +1,1 @@
+read_verilog -assert-assumes ../top.v

@@ -1,0 +1,7 @@
+read_verilog ../top_div_mod.v
+
+select -assert-count 1 t:$div
+select -assert-count 1 t:$mod
+select -assert-count 1 t:$neg
+select -assert-count 1 t:$pos
+select -assert-count 1 t:$pow

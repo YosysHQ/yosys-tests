@@ -1,0 +1,6 @@
+read_liberty ../lib_ff_pn.lib
+stat
+select -assert-count 1 t:$_DFFSR_PPP_
+select -assert-count 1 t:$_NOT_
+
+select -assert-none t:$_DFFSR_PPP_ t:$_NOT_ %% t:* %D

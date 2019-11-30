@@ -1,0 +1,1 @@
+read_verilog -nomem2reg ../top.v

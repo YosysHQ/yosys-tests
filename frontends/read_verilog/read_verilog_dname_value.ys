@@ -1,0 +1,1 @@
+read_verilog -Dname=9 ../top.v

@@ -1,0 +1,1 @@
+ERROR: Invalid AIGER header

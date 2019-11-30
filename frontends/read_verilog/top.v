@@ -2,15 +2,8 @@ module mux2 (S,A,B,Y);
     input S;
     input A,B;
     output reg Y;
-`ifndef BUG 
-    
     always @(*)
 		Y = (S)? B : A;
-`else
-	
-    always @(*)
-		Y = (~S)? B : A;
-`endif
 endmodule
 
 module mux4 ( S, D, Y );
@@ -28,11 +21,7 @@ begin
     case( S )
        0 : Y = D[0];
        1 : Y = D[1];
-`ifndef BUG 
        2 : Y = D[2];
-`else
-       2 : Y = D[3];
-`endif
        3 : Y = D[3];
    endcase
 end
@@ -56,11 +45,7 @@ begin
        1 : Y = D[1];
        2 : Y = D[2];
        3 : Y = D[3];
-`ifndef BUG 
        4 : Y = D[4];
-`else
-       4 : Y = D[7];
-`endif
        5 : Y = D[5];
        6 : Y = D[6];
        7 : Y = D[7];
@@ -69,13 +54,13 @@ end
 
 endmodule
 
-module mux16 (D, S, Y); 
+module mux16 (D, S, Y);
  	input  [15:0] D;
  	input  [3:0] S;
  	output Y;
-	
+
 assign Y = D[S];
- 
+
 endmodule
 
 
@@ -91,20 +76,20 @@ mux2 u_mux2 (
         .B (D[1]),
         .Y (M2)
     );
-    
-    
+
+
 mux4 u_mux4 (
         .S (S[1:0]),
         .D (D[3:0]),
         .Y (M4)
     );
-    
+
 mux8 u_mux8 (
         .S (S[2:0]),
         .D (D[7:0]),
         .Y (M8)
     );
-    
+
 mux16 u_mux16 (
         .S (S[3:0]),
         .D (D[15:0]),

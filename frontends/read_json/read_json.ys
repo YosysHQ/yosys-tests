@@ -1,0 +1,10 @@
+read_verilog ../top.v
+proc
+write_json json.json
+design -reset
+read_json json.json
+
+select -assert-count 2 t:$dff
+select -assert-count 2 t:$add
+
+select -assert-none t:$dff t:$add  %% t:* %D

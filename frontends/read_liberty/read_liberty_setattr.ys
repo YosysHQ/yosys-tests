@@ -1,0 +1,1 @@
+read_liberty -setattr a ../lib.lib

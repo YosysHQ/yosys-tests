@@ -1,0 +1,2 @@
+verilog_defines -aa
+read_verilog

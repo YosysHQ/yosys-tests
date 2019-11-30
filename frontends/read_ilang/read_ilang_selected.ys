@@ -1,0 +1,18 @@
+read_verilog ../top.v
+proc
+memory
+dump -o file.il
+write_ilang -selected ilang.ilang
+design -reset
+read_ilang ilang.ilang
+dump -n -o file1.il
+
+select -assert-count 1 t:$and
+select -assert-count 1 t:$dff
+select -assert-count 2 t:$logic_and
+select -assert-count 1 t:$logic_not
+select -assert-count 2 t:$logic_or
+select -assert-count 2 t:$mux
+select -assert-count 1 t:$or
+
+select -assert-none t:$and t:$dff t:$logic_and t:$logic_not t:$logic_or t:$mux t:$or %% t:* %D

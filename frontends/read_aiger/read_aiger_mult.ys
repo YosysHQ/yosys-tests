@@ -1,0 +1,7 @@
+read_aiger -clk_name clk -module_name top ../aiger_mult.aig
+stat
+select -assert-count 8 t:$_AND_
+select -assert-count 2 t:$dff
+select -assert-count 9 t:$_NOT_
+
+select -assert-none t:$_AND_ t:$dff t:$_NOT_  %% t:* %D

@@ -1,0 +1,1 @@
+read_verilog -icells ../top.v
