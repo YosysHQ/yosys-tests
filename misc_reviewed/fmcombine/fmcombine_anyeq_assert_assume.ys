@@ -1,0 +1,3 @@
+read_verilog -sv ../top_assert_assume.v
+tee -o result.log fmcombine -anyeq top u_mid1 u_mid2
+
