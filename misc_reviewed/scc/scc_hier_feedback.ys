@@ -1,0 +1,6 @@
+read_verilog ../top_hier_feedback.v
+ scc top
+proc
+ scc top
+synth
+ scc top

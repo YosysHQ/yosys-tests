@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+ select -del top
+tee -o result.out select -list

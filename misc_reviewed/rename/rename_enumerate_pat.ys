@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+rename -enumerate -pattern '_%_top' top
+tee -o result.out dump

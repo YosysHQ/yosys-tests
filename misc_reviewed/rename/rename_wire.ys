@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+tee -o resulta.out dump
+rename -wire top/o top/t_o
+tee -o result.out dump

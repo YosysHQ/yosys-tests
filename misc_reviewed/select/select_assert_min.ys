@@ -1,0 +1,4 @@
+read_verilog ../top.v
+ select -assert-min 2 top
+proc
+ select -assert-min 2 top

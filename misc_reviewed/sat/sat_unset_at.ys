@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc
+tee -o result.out sat -prove x 0 -unset-at 1 o -tempinduct middle

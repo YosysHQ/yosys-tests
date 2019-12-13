@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth
+insbuf -buf $_NOT_ A Y
+select -assert-count 1 t:$_NOT_

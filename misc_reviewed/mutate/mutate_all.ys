@@ -1,0 +1,7 @@
+read_verilog ../top.v
+mutate -list 512 -o mutate.yss
+script mutate.yss
+select -assert-count 2 t:$add
+select -assert-count 9 t:$not
+select -assert-count 3 t:$xnor
+select -assert-count 1 t:$xor

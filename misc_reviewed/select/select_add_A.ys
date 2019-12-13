@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+ select -del *
+ select -add A:\cells_not_processed
+tee -o result.out select -list

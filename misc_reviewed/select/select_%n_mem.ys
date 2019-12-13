@@ -1,0 +1,6 @@
+read_verilog ../top_mem.v
+ select */p:$proc %coe:+[Y] */p:$proc %n
+ select */t:$memrd %coe:+[Y] */t:$memwr %n
+proc
+ select */t:$memrd %coe:+[Y] */t:$memwr %n
+ select -list

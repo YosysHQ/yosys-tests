@@ -1,0 +1,5 @@
+read_verilog ../top_mem.v
+proc
+ select -del *
+ select -add r:\MEMID<="\\ram"
+tee -o result.out select -list

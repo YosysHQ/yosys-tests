@@ -1,0 +1,3 @@
+read_verilog ../top_mux.v
+proc
+tee -o result.out select -list

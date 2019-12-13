@@ -1,0 +1,5 @@
+read_verilog ../top_fsm.v
+proc
+pmux2shiftx -onehot ignore
+onehot
+

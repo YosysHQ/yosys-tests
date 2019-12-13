@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc
+tee -o result.out select -count

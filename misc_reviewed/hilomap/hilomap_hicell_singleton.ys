@@ -1,0 +1,6 @@
+read_verilog ../top.v
+proc
+hilomap -hicell VCC V -singleton
+
+select -assert-count 2 t:VCC
+select -assert-count 0 t:GND

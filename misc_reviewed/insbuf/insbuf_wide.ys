@@ -1,0 +1,4 @@
+read_verilog ../top_wide.v
+synth
+insbuf
+select -assert-count 16 t:$_BUF_

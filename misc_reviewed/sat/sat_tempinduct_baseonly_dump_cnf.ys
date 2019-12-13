@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+# sat -prove x 1 -tempinduct-baseonly -maxsteps 6 -dump_cnf cnf.cnf  middle
+tee -o result.out sat -prove x 0 -set-def-at 3 x -dump_cnf cnf.cnf -tempinduct-baseonly middle

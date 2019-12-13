@@ -1,0 +1,6 @@
+read_verilog ../top_2.v
+proc
+select -assert-count 0 t:$shiftx
+pmux2shiftx
+select -assert-count 1 t:$shiftx
+

@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+ select */t:$mux %xe:+[A] */t:$mux
+ select -list

@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+ select -write out.txt -assert-count 4 top
+ select -list

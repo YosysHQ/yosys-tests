@@ -1,0 +1,3 @@
+read_verilog -sv ../top_initstate.v
+#proc
+ sat -ignore_unknown_cells -all -prove x 1 -set-init-def -tempinduct-def middle

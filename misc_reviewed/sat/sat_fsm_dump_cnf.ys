@@ -1,0 +1,3 @@
+read_verilog ../top_fsm.v
+proc
+ sat -dump_cnf cnf.cnf -ignore_unknown_cells fsm

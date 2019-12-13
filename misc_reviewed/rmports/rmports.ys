@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+rmports top middle
+tee -o result.out dump

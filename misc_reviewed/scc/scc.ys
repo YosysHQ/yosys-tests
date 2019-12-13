@@ -1,0 +1,6 @@
+read_verilog ../top.v
+scc top
+proc
+scc top
+synth
+tee -o result.out scc top
