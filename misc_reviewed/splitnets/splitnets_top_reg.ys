@@ -1,0 +1,3 @@
+read_verilog -sv ../top.v
+splitnets ram
+tee -o result.log dump

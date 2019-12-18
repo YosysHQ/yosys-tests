@@ -1,0 +1,3 @@
+read_verilog ../top.v
+trace add -mod top3 -wire w 0
+ trace synth -top top

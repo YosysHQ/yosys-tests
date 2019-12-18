@@ -1,0 +1,1 @@
+ERROR: Unexpected option: -scd

@@ -1,0 +1,7 @@
+read_verilog ../top.v
+splice
+proc
+splice
+synth
+splice
+dump

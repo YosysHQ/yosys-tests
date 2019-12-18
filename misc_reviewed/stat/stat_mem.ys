@@ -1,0 +1,6 @@
+read_verilog ../top_mem.v
+hierarchy -top top
+proc
+memory -nomap
+synth_xilinx
+tee -o result.log stat -tech xilinx

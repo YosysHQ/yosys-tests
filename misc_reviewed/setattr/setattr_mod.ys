@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+setattr -mod -set u 1 top
+tee -o result.out dump
