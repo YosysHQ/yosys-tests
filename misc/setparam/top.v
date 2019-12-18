@@ -10,16 +10,7 @@ module top
  parameter WIDTH = 1;
  wire o;
 
-`ifndef BUG
-//always @(posedge cin)
-//	A <= o;
-
 assign cout =  cin ? y : x;
-
-//middle u_mid (x,y,o);
-`else
-assign {cout,A} =  cin - y * x;
-`endif
 
 endmodule
 

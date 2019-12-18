@@ -7,27 +7,13 @@ module top
  output reg A,
  output cout
  );
- wire o;
+ parameter X = 1;
+ wire o_mid,o_rtl;
 
-`ifndef BUG
 always @(posedge cin)
-	A <= o;
+	A <= o_mid;
 
-assign cout =  cin? y : x;
+assign o_mid = x & o_rtl;
+assign o_rtl = y & o_mid;
 
-middle u_mid (x,y,o);
-`else
-assign {cout,A} =  cin - y * x;
-`endif
-
-endmodule
-
-module middle
-(
-	input x,
-	input y,
-	output o
-);
-
-assign o = x + y;
 endmodule

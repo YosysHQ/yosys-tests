@@ -21,7 +21,6 @@ module top
     end
  end
 
-`ifndef BUG
 always @(posedge x) begin
     if ($initstate)
         A <= 0;
@@ -36,8 +35,5 @@ always @(negedge x) begin
     assert(ASSERT);
     assert(s_eventually ASSERT);
 end
-`else
-assign {cout,A} =  cin - y * x;
-`endif
 
 endmodule

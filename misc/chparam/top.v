@@ -10,16 +10,12 @@ module top
  wire o;
  parameter X = 1;
 
-`ifndef BUG
 always @(posedge cin)
 	A <= o;
 
 assign cout =  cin? y : x;
 
 middle u_mid (x,y,o);
-`else
-assign {cout,A} =  cin - y * x;
-`endif
 
 endmodule
 

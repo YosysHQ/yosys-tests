@@ -10,7 +10,6 @@ module top
  parameter X = 1;
  wire o;
 
-`ifndef BUG
 always @(posedge cin)
 	A <= o;
 
@@ -20,9 +19,6 @@ middle u_mid1 (.x(x),.o(o),.y(1'b0));
 middle u_mid2 (.x(x),.o(o),.y(1'b1));
 middle u_mid3 (.x(x),.o(o),.y(1'bX));
 middle u_mid4 (.x(x),.o(o),.y(1'bX));
-`else
-assign {cout,A} =  cin - y * x;
-`endif
 
 endmodule
 

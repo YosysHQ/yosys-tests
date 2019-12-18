@@ -1,7 +1,8 @@
 module top
 (
  input x,
- input y,
+ input x,
+ input z,
  input cin,
 
  output reg A,
@@ -10,16 +11,10 @@ module top
  parameter X = 1;
  wire o;
 
-`ifndef BUG
 always @(posedge cin)
 	A <= o;
 
-//assign cout =  cin? y : x;
-
-middle u_mid (.x(x),.o(o));
-`else
-assign {cout,A} =  cin - y * x;
-`endif
+middle u_mid (.z(z),.x(x),.o(o));
 
 endmodule
 
@@ -27,6 +22,7 @@ module middle
 (
 	input x,
 	input y,
+	input z,
 	output o
 );
 
