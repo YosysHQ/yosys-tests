@@ -6,4 +6,4 @@ abc -g simple
 
 select -assert-count 2 t:$_AND_
 select -assert-count 1 t:$_OR_
-select -assert-count 2 t:$_NOT_
+select -assert-count 2 t:$_XOR_
