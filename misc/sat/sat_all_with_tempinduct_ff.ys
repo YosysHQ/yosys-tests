@@ -1,0 +1,3 @@
+read_verilog ../top_ff.v
+synth
+ sat -ignore_unknown_cells -all -prove clr 1 -tempinduct adff

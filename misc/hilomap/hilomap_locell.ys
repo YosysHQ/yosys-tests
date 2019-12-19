@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+hilomap -locell GND G
+select -assert-count 0 t:VCC
+select -assert-count 6 t:GND

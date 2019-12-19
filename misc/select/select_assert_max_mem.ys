@@ -1,0 +1,4 @@
+read_verilog ../top_mem.v
+ select -assert-max 32 top
+proc
+ select -assert-max 62 top

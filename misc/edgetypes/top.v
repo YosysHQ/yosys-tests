@@ -4,14 +4,22 @@ module top
  input y,
  input cin,
 
- output A,
- output cout
+ output reg A,
+ output reg cout
  );
 
-`ifndef BUG
-assign {cout,A} =  cin + y + x;
-`else
-assign {cout,A} =  cin - y * x;
-`endif
+ initial begin
+    begin
+        A = 0;
+        cout = 0;
+    end
+ end
+
+always @(posedge x) begin
+    A <=  y + cin;
+end
+always @(negedge x) begin
+        cout <=  y + A;
+end
 
 endmodule

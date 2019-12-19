@@ -9,25 +9,9 @@ module top
  );
  wire o;
 
-`ifndef BUG
 always @(posedge cin)
-	A <= o;
+	A <= y + x;
 
-assign cout =  cin? y : x;
+assign cout =  cin + A;
 
-middle u_mid (x,y,o);
-`else
-assign {cout,A} =  cin - y * x;
-`endif
-
-endmodule
-
-module middle
-(
-	input x,
-	input y,
-	output o
-);
-
-assign o = x + y;
 endmodule

@@ -1,0 +1,4 @@
+read_verilog ../top_mux.v
+proc
+techmap
+abc9 -lut 2

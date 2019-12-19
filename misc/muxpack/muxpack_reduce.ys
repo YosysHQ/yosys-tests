@@ -1,0 +1,6 @@
+read_verilog ../top_reduce.v
+proc
+muxpack
+select -assert-count 1  t:$pmux
+select -assert-count 16 t:$eq
+select -assert-count 8  t:$reduce_or

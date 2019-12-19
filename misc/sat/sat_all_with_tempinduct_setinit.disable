@@ -1,0 +1,3 @@
+read_verilog -sv ../top_ff.v
+#proc
+ sat -ignore_unknown_cells -all -prove clr 1 -set-init s 1'b1 -tempinduct adff

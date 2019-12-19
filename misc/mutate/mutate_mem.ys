@@ -1,0 +1,5 @@
+read_verilog ../top_mem.v
+mutate -list 512 -o mutate.yss
+script mutate.yss
+
+

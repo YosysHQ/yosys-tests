@@ -1,0 +1,5 @@
+read_verilog -sv ../top.v
+proc
+design -save first
+design -reset
+design -copy-to first top

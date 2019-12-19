@@ -1,0 +1,4 @@
+read_verilog ../top_fsm.v
+proc
+pmux2shiftx -min_density 3000
+

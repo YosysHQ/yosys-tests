@@ -1,0 +1,4 @@
+read_verilog ../top.v
+ select -assert-max 15 top
+proc
+ select -assert-max 15 top

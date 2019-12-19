@@ -1,0 +1,8 @@
+read_verilog ../top.v
+proc
+hilomap
+select -assert-count 1 t:$dffsr
+select -assert-count 4 t:$mux
+select -assert-count 2 t:$not
+select -assert-count 2 t:dffsr
+select -assert-none t:$dffsr t:$mux t:$not t:dffsr %% t:* %D

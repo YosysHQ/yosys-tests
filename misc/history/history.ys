@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+synth
+synth_xilinx
+tee -o result.out  history

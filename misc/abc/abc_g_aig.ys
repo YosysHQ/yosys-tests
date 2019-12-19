@@ -1,0 +1,6 @@
+read_verilog ../top.v
+synth -top top
+abc -g aig
+select -assert-count 2 t:$_AND_
+select -assert-count 3 t:$_NAND_
+select -assert-count 2 t:$_OR_

@@ -1,0 +1,5 @@
+read_verilog ../top_mem.v
+ select * %n
+proc
+ select * %n
+ select -list

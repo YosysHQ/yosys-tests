@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+pmuxtree
+select -assert-none t:$pmuxtree
+select -assert-count 3 t:$mux

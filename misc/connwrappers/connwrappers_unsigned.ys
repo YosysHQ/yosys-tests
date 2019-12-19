@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc
+connwrappers -unsigned $dff d 0

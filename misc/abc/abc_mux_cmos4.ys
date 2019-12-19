@@ -1,0 +1,9 @@
+read_verilog ../top_mux.v
+synth -top top
+tee -o result.out abc -g cmos4
+ abc -g cmos4
+
+select -assert-count 111 t:$_AOI3_
+select -assert-count 28  t:$_AOI4_
+select -assert-count 111 t:$_AOI3_
+select -assert-count 24  t:$_OAI4_

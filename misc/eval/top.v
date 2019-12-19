@@ -31,6 +31,8 @@ module middle
 	output o
 );
 
+wire w;
+
 assign o = x + y;
 endmodule
 

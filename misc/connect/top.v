@@ -1,5 +1,5 @@
 module top
-    ( input d, clk, output reg q );
+    ( input d, d1, clk, output reg q );
 	always @( posedge clk )
             q <= d;
 endmodule

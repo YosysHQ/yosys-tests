@@ -1,0 +1,6 @@
+read_verilog -sv ../top_asserts.v
+tee -o result.log cutpoint top/y top/x top/cout top/A top/cin
+tee -o result.log cutpoint -undef top/cin
+tee -o result.log cutpoint top/$auto$cutpoint.cc:70:execute$53
+dump
+

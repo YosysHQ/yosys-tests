@@ -1,0 +1,6 @@
+read_verilog ../top.v
+ trace synth -top top
+proc
+ trace synth -top top
+synth
+ trace synth -top top

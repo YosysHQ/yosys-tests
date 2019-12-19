@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc
+tee -o result.out sat -tempinduct-skip 1 -prove x 0 -set-def-at 3 x  -tempinduct middle

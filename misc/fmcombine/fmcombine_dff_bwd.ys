@@ -1,0 +1,8 @@
+read_verilog -sv ../top_dff.v
+proc
+tee -o res_a.log stat
+tee -o result.log fmcombine -bwd top u_mid1 u_mid3
+tee -o result.log fmcombine -bwd top u_mid2 u_mid4
+tee -o result.log fmcombine -bwd top u_mid1_u_mid3 u_mid2_u_mid4
+tee -o res_b.log stat
+

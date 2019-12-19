@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+ select -del *
+ select -add r:\WIDTH!0
+tee -o result.out select -list

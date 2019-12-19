@@ -3,19 +3,17 @@ module top
  input x,
  input y,
  input cin,
-
+(* init = 1'h0 *)
  output reg A,
  output cout
  );
+
  parameter X = 1;
  wire o;
 
  initial A = 0;
  initial cout = 0;
 
-
-
-`ifndef BUG
 always @(posedge cin)
 	A <= o;
 
@@ -23,9 +21,6 @@ assign cout =  cin? y : x;
 
 middle u_mid (.x(x),.o(o));
 u_rtl inst_u_rtl (.x(x),.o(o));
-`else
-assign {cout,A} =  cin - y * x;
-`endif
 
 endmodule
 
@@ -45,6 +40,8 @@ module u_rtl
 	input y,
 	output o
 );
+
+initial o = 0;
 
 assign o = x + y;
 endmodule

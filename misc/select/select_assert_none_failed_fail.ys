@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+select *
+ select -assert-none top
+ select -list

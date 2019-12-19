@@ -1,0 +1,12 @@
+top
+top/$ternary
+top/$0\\A\[0:0\]
+top/o
+top/cout
+top/A
+top/cin
+top/y
+top/x
+top/$procdff
+top/u_mid
+top/$ternary

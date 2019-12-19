@@ -1,0 +1,7 @@
+read_verilog ../top_mem.v
+ trace synth -top top
+proc
+memory
+ trace synth -top top
+synth
+ trace synth -top top

@@ -1,0 +1,5 @@
+read_verilog ../top_mem.v
+proc
+tee -o result.log freduce -dump dump_a
+synth
+tee -o result.log freduce -dump dump_b

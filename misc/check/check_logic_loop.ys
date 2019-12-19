@@ -1,0 +1,3 @@
+read_verilog -sv ../top_logic_loop.v
+proc
+tee -o result.out check

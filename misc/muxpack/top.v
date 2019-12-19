@@ -2,15 +2,9 @@ module mux2 (S,A,B,Y);
     input S;
     input A,B;
     output reg Y;
-`ifndef BUG
 
     always @(*)
 		Y = (S)? B : A;
-`else
-
-    always @(*)
-		Y = (~S)? B : A;
-`endif
 endmodule
 
 module mux4 ( S, D, Y );
@@ -71,11 +65,7 @@ always @*
             1 : Y = D[1];
             2 : Y = D[2];
             3 : Y = D[3];
-     `ifndef BUG
             4 : Y = D[4];
-     `else
-            4 : Y = D[7];
-     `endif
             5 : Y = D[5];
             6 : Y = D[6];
             7 : Y = D[7];

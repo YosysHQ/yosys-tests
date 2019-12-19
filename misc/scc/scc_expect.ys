@@ -1,0 +1,3 @@
+read_verilog ../top_no_feedback.v
+proc
+tee -o result.out scc -expect 0 top

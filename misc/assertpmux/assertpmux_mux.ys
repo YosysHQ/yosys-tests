@@ -1,0 +1,4 @@
+read_verilog ../top_mux.v
+proc
+assertpmux
+tee -o result.log dump

@@ -1,0 +1,7 @@
+read_verilog -sv ../top_dff.v
+proc
+tee -o result.log fmcombine -initeq top u_mid1 u_mid3
+tee -o result.log fmcombine -initeq top u_mid2 u_mid4
+tee -o result.log fmcombine -initeq top u_mid1_u_mid3 u_mid2_u_mid4
+
+select -assert-count 1 t:$fmcombine$fmcombine\middle

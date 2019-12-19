@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+ select -assert-any -assert-count 3 top
+ select -list

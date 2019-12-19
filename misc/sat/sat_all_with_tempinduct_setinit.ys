@@ -1,0 +1,4 @@
+read_verilog -sv ../top_ff.v
+synth
+# sat -ignore_unknown_cells -all -prove clr 1 -set-init q 1 -tempinduct adff
+tee -o result.out sat -ignore_unknown_cells -prove clr 1 -set-init q 1  -tempinduct adff

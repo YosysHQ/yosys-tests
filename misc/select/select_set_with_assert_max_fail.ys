@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+ select -set a -assert-max 2 top
+ select -list
