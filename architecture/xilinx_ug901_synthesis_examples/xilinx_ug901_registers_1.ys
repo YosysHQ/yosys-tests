@@ -8,5 +8,4 @@ cd registers_1 # Constrain all select calls below inside the top module
 #Vivado synthesizes 1 BUFG, 8 FDRE.
 select -assert-count 1 t:BUFG
 select -assert-count 8 t:FDRE
-select -assert-count 9 t:LUT2
-select -assert-none t:BUFG t:FDRE t:LUT2 %% t:* %D
+select -assert-none t:BUFG t:FDRE %% t:* %D

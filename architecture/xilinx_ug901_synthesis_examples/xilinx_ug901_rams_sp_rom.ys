@@ -16,7 +16,6 @@ cd rams_sp_rom
 stat
 #Vivado synthesizes 1 RAMB18E1.
 select -assert-count 1 t:BUFG
-select -assert-count 20 t:RAM64X1D
-select -assert-count 20 t:FDRE
+select -assert-count 1 t:RAMB18E1
 
-select -assert-none t:BUFG t:RAM64X1D t:FDRE %% t:* %D
+select -assert-none t:BUFG t:RAMB18E1 %% t:* %D

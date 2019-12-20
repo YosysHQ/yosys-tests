@@ -17,8 +17,8 @@ cd xilinx_ultraram_single_port_read_first
 select -assert-count 1 t:BUFG
 select -assert-count 53 t:FDRE
 select -assert-count 1 t:INV
-select -assert-count 8 t:LUT2
-select -assert-count 11 t:LUT3
+select -assert-count 1 t:LUT2
+select -assert-count 10 t:LUT3
 select -assert-count 16 t:RAM128X1D
 
 select -assert-none t:BUFG t:FDRE t:INV t:LUT2 t:LUT3 t:RAM128X1D %% t:* %D
