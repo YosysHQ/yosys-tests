@@ -1,1 +1,1 @@
-Estimated number of LCs:         87
+Estimated number of LCs:         75

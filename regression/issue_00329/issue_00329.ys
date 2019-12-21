@@ -1,2 +1,3 @@
 read_verilog -mem2reg ../top.v
+proc
 write_verilog result.out
