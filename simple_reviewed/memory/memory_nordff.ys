@@ -15,8 +15,3 @@ memory_nordff
 memory_map
 memory_nordff
 memory_unpack
-
-design -reset
-read_verilog ../top.v
-synth -top top
-

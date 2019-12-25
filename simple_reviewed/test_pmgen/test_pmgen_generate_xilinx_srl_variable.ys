@@ -1,7 +1,3 @@
 read_verilog ../top.v
 proc
 test_pmgen -generate xilinx_srl.variable
-design -reset
-read_verilog ../top.v
-synth -top top
-

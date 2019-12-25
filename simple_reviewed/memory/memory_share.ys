@@ -16,8 +16,3 @@ memory_map
 memory_share
 memory
 memory_share
-
-design -reset
-read_verilog ../top.v
-synth -top top
-

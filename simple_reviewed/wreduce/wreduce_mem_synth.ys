@@ -1,4 +1,2 @@
 read_verilog ../top_mem.v
-memory_memx
-proc
-submod
+synth -top top
