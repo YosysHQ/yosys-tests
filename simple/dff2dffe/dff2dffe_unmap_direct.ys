@@ -1,0 +1,14 @@
+read_verilog ../top.v
+proc
+dff2dffe
+dff2dffe -direct $dff $dffe
+dff2dffe -unmap
+dump
+synth -top top
+dff2dffe -direct $_DFF_P_ $_DFFE_PP_
+dff2dffe -unmap
+select -assert-none t:$_DFFE_PP_
+flatten
+opt
+opt_rmdff
+

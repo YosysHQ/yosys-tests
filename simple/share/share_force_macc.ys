@@ -1,0 +1,7 @@
+read_verilog ../top_macc.v
+proc
+#flatten
+alumacc
+share -force
+synth -top top
+

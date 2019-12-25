@@ -1,0 +1,3 @@
+read_verilog ../top.v
+synth_greenpak4 -run begin:map_luts
+shregmap -zinit

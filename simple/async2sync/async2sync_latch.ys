@@ -1,0 +1,5 @@
+read_verilog ../top_latch.v
+proc
+select -assert-count 4 t:$dlatch
+async2sync
+select -assert-none t:$dlatch

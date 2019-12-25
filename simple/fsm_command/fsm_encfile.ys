@@ -1,0 +1,6 @@
+read_verilog ../top.v
+proc
+fsm -encfile fsm.fsm
+
+synth -top top
+

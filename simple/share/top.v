@@ -11,7 +11,6 @@ module top
 	// Port A
 	always @ (posedge clk)
 	begin
-`ifndef BUG
 		if (we_a)
 		begin
 			ram[addr_a] <= data_a;
@@ -21,23 +20,11 @@ module top
 		begin
 			q_a <= ram[addr_a];
 		end
-`else
-		if (we_a)
-		begin
-			ram[addr_a] <= 8'bXXXXXXXX;
-			q_a <= 8'bXXXXXXXX;
-		end
-		if (re_b)
-		begin
-			q_a <= ram[addr_a];
-		end
-`endif
 	end
 
 	// Port B
 	always @ (posedge clk)
 	begin
-`ifndef BUG
 		if (we_b)
 		begin
 			ram[addr_b] <= data_b;
@@ -47,17 +34,6 @@ module top
 		begin
 			q_b <= ram[addr_b];
 		end
-`else
-		if (we_b)
-		begin
-			ram[addr_b] <= 8'bXXXXXXXX;
-			q_b <= 8'bXXXXXXXX;
-		end
-		if (re_b)
-		begin
-			q_b <= ram[addr_b];
-		end
-`endif
 	end
 
 endmodule

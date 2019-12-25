@@ -1,0 +1,4 @@
+read_verilog ../top_latch.v
+synth -top top
+flowmap top
+

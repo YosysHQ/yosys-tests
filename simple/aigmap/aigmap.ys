@@ -1,0 +1,9 @@
+read_verilog ../top.v
+
+tee -o result1.out dump
+aigmap
+tee -o result.out dump
+proc
+aigmap
+synth -top top
+aigmap

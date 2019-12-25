@@ -1,0 +1,3 @@
+read_verilog ../top.v
+proc
+test_pmgen -reduce_chain

@@ -1,0 +1,3 @@
+read_verilog ../top_down.v
+synth_greenpak4
+extract_counter

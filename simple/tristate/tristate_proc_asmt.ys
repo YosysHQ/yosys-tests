@@ -1,0 +1,2 @@
+read_verilog ../top_proc_asmt.v
+synth -top top

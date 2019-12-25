@@ -1,0 +1,5 @@
+read_verilog ../top_reduce.v
+techmap -autoproc
+extract_reduce
+opt_demorgan top
+select -assert-count 3 t:$not

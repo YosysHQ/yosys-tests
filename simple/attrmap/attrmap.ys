@@ -1,0 +1,6 @@
+read_verilog ../top.v
+attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0
+proc
+tee -o result1.out dump
+attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0
+tee -o result.out dump

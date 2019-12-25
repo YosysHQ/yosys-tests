@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+select -assert-count 2 t:$dffsr
+async2sync
+select -assert-none t:$dffsr

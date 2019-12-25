@@ -5,11 +5,7 @@
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -21,11 +17,7 @@ endmodule
     end
 	always @( posedge clk, negedge clr )
 		if ( !clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -37,11 +29,7 @@ endmodule
     end
 	always @( posedge clk )
 		if ( en )
-`ifndef BUG
 			q <= d;
-`else
-			q <= 1'b0;
-`endif
 endmodule
 
 module dffsr
@@ -51,11 +39,7 @@ module dffsr
     end
 	always @( posedge clk)
 		if ( clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else if ( pre )
 			q <= 1'b1;
 		else
@@ -69,11 +53,7 @@ module ndffnsnr
     end
 	always @( negedge clk)
 		if ( !clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else if ( !pre )
 			q <= 1'b1;
 		else

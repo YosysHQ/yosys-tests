@@ -1,0 +1,14 @@
+read_verilog ../top.v
+proc
+fsm_detect
+fsm_extract
+opt -mux_bool
+
+select -assert-count 1 t:$dff
+select -assert-count 1 t:$fsm
+select -assert-count 5 t:$mux
+select -assert-count 3 t:$or
+select -assert-count 1 t:$pmux
+select -assert-count 1 t:fsm
+
+select -assert-none t:$dff t:$fsm t:$mux t:$or t:$pmux t:fsm %% t:* %D

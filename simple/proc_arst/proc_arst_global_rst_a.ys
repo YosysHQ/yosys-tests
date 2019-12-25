@@ -1,0 +1,4 @@
+read_verilog ../top_reduce.v
+proc_arst -global_arst a
+synth -top top
+

@@ -13,11 +13,7 @@ module top (
 		4: dout <= dinA << dinB;
 		5: dout <= dinA & dinB;
 		6: dout <= dinA | dinB;
-`ifndef BUG
 		7: dout <= dinA ^ dinB;
-`else
-		7: dout <= -dinA ^ dinB;
-`endif
 		endcase
 	end
 endmodule

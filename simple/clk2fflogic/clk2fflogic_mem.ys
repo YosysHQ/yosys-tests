@@ -1,0 +1,8 @@
+read_verilog ../top_mem.v
+memory_collect
+proc
+select -assert-any t:$dff
+select -assert-none t:$ff
+clk2fflogic
+select -assert-none t:$dff
+select -assert-any t:$ff

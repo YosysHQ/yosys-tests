@@ -1,0 +1,13 @@
+read_verilog ../top.v
+synth -top top
+abc -g gates
+select -assert-count 98 t:$_ANDNOT_
+select -assert-count 465 t:$_AND_
+select -assert-count 32 t:$_DFF_P_
+select -assert-count 786 t:$_NAND_
+select -assert-count 43 t:$_NOR_
+select -assert-count 3 t:$_NOT_
+select -assert-count 92 t:$_ORNOT_
+select -assert-count 257 t:$_OR_
+select -assert-count 18 t:$_XNOR_
+select -assert-count 26 t:$_XOR_

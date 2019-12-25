@@ -1,0 +1,8 @@
+read_verilog ../top_dffr.v
+synth -top top
+proc
+flatten
+opt
+opt_rmdff
+expose -dff
+

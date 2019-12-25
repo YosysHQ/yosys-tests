@@ -1,0 +1,5 @@
+read_verilog ../top_shr.v
+proc
+share
+synth -top top
+

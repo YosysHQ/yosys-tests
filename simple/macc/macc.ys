@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+alumacc
+maccmap -unmap
+select -assert-count 1 t:$alu

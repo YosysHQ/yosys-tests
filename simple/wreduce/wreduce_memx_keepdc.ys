@@ -1,0 +1,3 @@
+read_verilog ../top.v
+hierarchy -top top
+proc; opt; memory; dff2dffe; wreduce -memx -keepdc; clean; opt

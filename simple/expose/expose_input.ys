@@ -1,0 +1,8 @@
+read_verilog ../top.v
+synth -top top
+expose -input
+proc
+flatten
+opt
+opt_rmdff
+expose -input

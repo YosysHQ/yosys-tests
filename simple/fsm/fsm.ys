@@ -1,0 +1,8 @@
+read_verilog ../top.v
+proc
+fsm_detect
+fsm_extract
+opt
+fsm_opt
+select -assert-count 1 t:$fsm
+tee -o result.out dump

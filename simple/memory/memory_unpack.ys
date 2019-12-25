@@ -1,0 +1,12 @@
+read_verilog ../top.v
+proc
+memory_unpack
+memory_collect
+memory_unpack
+memory_memx
+memory_unpack
+memory
+memory_unpack
+
+select -assert-count 2 t:$memwr
+select -assert-count 2 t:$memrd

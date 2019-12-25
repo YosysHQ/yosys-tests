@@ -1,0 +1,5 @@
+read_verilog ../top_cascade.v
+synth -top top
+extract_fa -fa -v
+stat
+select -assert-count 2 t:$fa

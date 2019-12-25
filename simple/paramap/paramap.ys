@@ -1,0 +1,5 @@
+read_verilog ../top.v
+proc
+synth_ecp5
+paramap -tocase INIT t:LUT4
+tee -o result.out dump

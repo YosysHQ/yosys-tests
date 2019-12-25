@@ -1,0 +1,10 @@
+read_verilog ../top.v
+proc
+opt
+opt_rmdff
+synth -top top
+proc
+flatten
+opt
+opt_rmdff
+

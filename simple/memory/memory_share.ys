@@ -1,0 +1,18 @@
+read_verilog ../top.v
+proc
+memory_share
+memory_dff
+memory_share
+opt_clean
+memory_share
+memory_nordff
+opt_clean
+memory_share
+memory_collect
+memory_share
+memory_nordff
+memory_share
+memory_map
+memory_share
+memory
+memory_share

@@ -1,0 +1,13 @@
+read_verilog ../top.v
+proc
+select -assert-any t:$dffsr
+select -assert-any t:$dff
+select -assert-any t:$adff
+
+select -assert-none t:$ff
+clk2fflogic
+select -assert-none t:$dffsr
+select -assert-none t:$dff
+select -assert-none t:$adff
+
+select -assert-any t:$ff

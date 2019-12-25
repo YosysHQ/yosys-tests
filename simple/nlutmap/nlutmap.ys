@@ -1,0 +1,5 @@
+read_verilog ../top.v
+synth -top top
+abc -lut 2:5
+nlutmap
+select -assert-none t:$lut

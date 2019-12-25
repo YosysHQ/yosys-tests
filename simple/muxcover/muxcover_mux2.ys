@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth -top top
+muxcover -mux2=336
+select -assert-count 17 t:$_MUX16_

@@ -1,0 +1,4 @@
+read_verilog ../top.v
+proc
+test_pmgen -generate ice40_dsp
+
