@@ -1,0 +1,5 @@
+read_verilog ../top_logic.v
+tribuf -logic tristate
+synth -top top
+tribuf -logic tristate
+select -assert-none t:$tribuf

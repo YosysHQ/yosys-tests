@@ -1,0 +1,5 @@
+read_verilog ../top.v
+synth -top top
+flowmap
+select -assert-any t:$lut
+write_verilog synth.v

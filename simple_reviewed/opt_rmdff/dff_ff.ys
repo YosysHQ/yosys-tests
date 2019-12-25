@@ -1,0 +1,11 @@
+read_verilog ../top_async.v
+proc
+clk2fflogic
+#opt
+opt_rmdff
+synth -top top
+proc
+flatten
+#opt
+opt_rmdff
+write_verilog synth.v

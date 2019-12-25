@@ -1,0 +1,4 @@
+read_verilog ../top.v
+synth -top top
+extract_fa
+select -assert-count 3 t:$fa

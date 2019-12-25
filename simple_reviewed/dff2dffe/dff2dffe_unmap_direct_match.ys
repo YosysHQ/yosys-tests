@@ -1,0 +1,9 @@
+read_verilog ../top.v
+proc
+synth -top top
+dff2dffe -direct-match $_DFF_P_
+dff2dffe -unmap
+flatten
+opt
+opt_rmdff
+write_verilog synth.v

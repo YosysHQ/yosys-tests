@@ -1,0 +1,7 @@
+read_verilog ../top_mult_out_larger.v
+proc
+ice40_dsp
+stat
+select -assert-none t:SB_MAC16
+
+synth_ice40 -top top

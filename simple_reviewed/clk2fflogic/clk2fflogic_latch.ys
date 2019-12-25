@@ -1,0 +1,7 @@
+read_verilog ../top_latch.v
+proc
+select -assert-any t:$dlatch
+select -assert-none t:$ff
+clk2fflogic
+select -assert-none t:$dlatch
+select -assert-any t:$ff

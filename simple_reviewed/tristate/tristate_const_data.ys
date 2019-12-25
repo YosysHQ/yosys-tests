@@ -1,0 +1,3 @@
+read_verilog ../top_const_data.v
+synth -top top
+stat

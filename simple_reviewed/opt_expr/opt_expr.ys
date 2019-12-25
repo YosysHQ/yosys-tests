@@ -1,0 +1,10 @@
+read_verilog ../top.v
+synth -top top
+opt_expr
+proc
+opt_expr
+flatten
+opt
+stat
+opt_expr
+stat

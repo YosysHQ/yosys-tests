@@ -1,0 +1,6 @@
+read_verilog ../top_err.v
+synth_greenpak4
+extract_counter -pout
+design -reset
+read_verilog ../top_err.v
+write_verilog synth.v

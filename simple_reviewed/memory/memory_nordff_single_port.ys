@@ -1,0 +1,18 @@
+read_verilog ../top_single_port.v
+memory_nordff
+proc
+memory_nordff
+memory_dff
+memory_nordff
+opt_clean
+memory_nordff
+memory_share
+memory_nordff
+opt_clean
+memory_nordff
+memory_collect
+memory_nordff
+memory_map
+memory_nordff
+memory_unpack
+

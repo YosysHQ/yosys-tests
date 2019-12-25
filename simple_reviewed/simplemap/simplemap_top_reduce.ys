@@ -1,0 +1,5 @@
+read_verilog ../top_reduce.v
+prep
+simplemap top
+synth
+write_verilog synth.v

@@ -1,0 +1,5 @@
+read_verilog ../top.v
+synth -top top
+extract_reduce
+select -assert-count 1 t:$reduce_or
+select -assert-count 1 t:$reduce_xor
