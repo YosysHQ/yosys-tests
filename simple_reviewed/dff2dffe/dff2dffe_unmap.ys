@@ -2,10 +2,13 @@ read_verilog ../top.v
 proc
 dff2dffe
 dff2dffe -unmap
+
+select -assert-none t:$dffe
 dump
 synth -top top
 dff2dffe
 dff2dffe -unmap
+select -assert-none t:$dffe
 flatten
 opt
 opt_rmdff

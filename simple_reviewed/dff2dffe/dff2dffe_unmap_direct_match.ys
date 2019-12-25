@@ -3,6 +3,8 @@ proc
 synth -top top
 dff2dffe -direct-match $_DFF_P_
 dff2dffe -unmap
+
+select -assert-none t:$dffe
 flatten
 opt
 opt_rmdff
