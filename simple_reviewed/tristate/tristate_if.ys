@@ -1,3 +1,2 @@
 read_verilog ../top_if.v
 synth -top top
-stat

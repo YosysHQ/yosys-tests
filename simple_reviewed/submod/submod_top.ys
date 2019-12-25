@@ -3,4 +3,4 @@ proc
 hierarchy
 submod -copy top
 synth -top top
-write_verilog synth.v
+

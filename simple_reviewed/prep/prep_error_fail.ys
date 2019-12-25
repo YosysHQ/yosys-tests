@@ -2,4 +2,4 @@ read_verilog ../top.v
 select dffe
 prep
 synth -top top
-write_verilog synth.v
+

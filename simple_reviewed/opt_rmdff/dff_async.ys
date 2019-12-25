@@ -8,4 +8,4 @@ proc
 flatten
 #opt
 opt_rmdff
-write_verilog synth.v
+

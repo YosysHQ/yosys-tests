@@ -6,4 +6,4 @@ dff2dffe -unmap
 flatten
 opt
 opt_rmdff
-write_verilog synth.v
+

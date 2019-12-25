@@ -5,4 +5,4 @@ flatten
 opt
 opt_rmdff
 expose -cut
-write_verilog synth.v
+

@@ -8,4 +8,4 @@ opt
 fsm_opt
 select -assert-count 1 t:$fsm
 synth -top top
-write_verilog synth.v
+

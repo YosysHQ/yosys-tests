@@ -4,4 +4,4 @@ extract -map %top_test
 design -reset
 read_verilog ../top.v
 proc
-write_verilog synth.v
+

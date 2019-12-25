@@ -6,4 +6,4 @@ opt
 opt_rmdff
 expose -evert -shared
 expose -shared -evert
-write_verilog synth.v
+

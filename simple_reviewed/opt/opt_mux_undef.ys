@@ -4,7 +4,6 @@ fsm_detect
 fsm_extract
 opt -mux_undef
 
-stat
 select -assert-count 1 t:$dff
 select -assert-count 1 t:$fsm
 select -assert-count 7 t:$mux

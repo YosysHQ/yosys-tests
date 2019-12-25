@@ -6,4 +6,4 @@ opt
 hierarchy
 synth -top top
 hierarchy
-write_verilog synth.v 
+ 

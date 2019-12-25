@@ -2,4 +2,4 @@ read_verilog ../top_fsm.v
 proc
 share -aggressive
 synth -top top
-write_verilog synth.v
+

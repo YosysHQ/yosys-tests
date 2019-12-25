@@ -3,4 +3,4 @@ proc
 hierarchy
 submod -name fsm -name fsm2
 synth -top top
-write_verilog synth.v
+

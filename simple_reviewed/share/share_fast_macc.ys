@@ -4,4 +4,4 @@ flatten
 alumacc
 share -fast
 synth -top top
-write_verilog synth.v
+

@@ -2,4 +2,3 @@ read_verilog ../top.v
 techmap -autoproc
 extract_reduce
 opt_demorgan top
-stat

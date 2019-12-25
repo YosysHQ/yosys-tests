@@ -1,8 +1,6 @@
 read_verilog ../top.v
 synth -top top
 abc -g gates
-stat
-
 select -assert-count 98 t:$_ANDNOT_
 select -assert-count 465 t:$_AND_
 select -assert-count 32 t:$_DFF_P_

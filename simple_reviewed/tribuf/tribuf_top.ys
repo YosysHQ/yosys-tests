@@ -3,4 +3,4 @@ proc
 tribuf tristate
 select -assert-count 1 t:$tribuf
 synth -top top
-write_verilog synth.v
+

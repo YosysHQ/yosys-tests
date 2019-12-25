@@ -11,4 +11,4 @@ flatten
 opt
 opt_rmdff
 dffsr2dff
-write_verilog synth.v
+

@@ -2,4 +2,4 @@ read_verilog ../top.v
 proc
 design -save top
 design -import top -as top_new
-write_verilog synth.v
+

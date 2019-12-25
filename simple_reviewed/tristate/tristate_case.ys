@@ -1,3 +1,2 @@
 read_verilog ../top_case.v
 synth -top top
-stat

@@ -2,4 +2,4 @@ read_verilog ../top.v
 proc
 techmap -map +/techmap.v
 synth
-write_verilog synth.v
+

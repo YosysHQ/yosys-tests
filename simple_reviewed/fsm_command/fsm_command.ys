@@ -1,6 +1,4 @@
 read_verilog ../top.v
 proc
 fsm
-stat
 synth -top top
-write_verilog synth.v

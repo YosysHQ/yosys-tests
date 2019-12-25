@@ -8,4 +8,4 @@ flatten
 opt
 opt_rmdff
 expose -evert-dff
-write_verilog synth.v
+

@@ -3,4 +3,4 @@ extract -map ../top.v -ignore_param $dff param
 design -reset
 read_verilog ../top.v
 proc
-write_verilog synth.v
+

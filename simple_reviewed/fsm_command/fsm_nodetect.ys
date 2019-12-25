@@ -1,6 +1,6 @@
 read_verilog ../top.v
 proc
 fsm -nodetect
-stat
+
 synth -top top
-write_verilog synth.v
+

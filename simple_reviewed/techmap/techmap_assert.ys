@@ -3,4 +3,4 @@ proc
 dff2dffe
 techmap -assert -map +/techmap.v +/simlib.v
 synth
-write_verilog synth.v
+

@@ -13,4 +13,4 @@ opt_expr
 opt_rmdff
 memory
 synth -top top
-write_verilog synth.v
+

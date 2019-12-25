@@ -1,6 +1,5 @@
 read_verilog ../top_mult_signed.v
 proc
 ice40_dsp
-stat
 select -assert-count 1 t:SB_MAC16
 synth_ice40 -top top
