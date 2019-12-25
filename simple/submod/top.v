@@ -27,11 +27,7 @@
   case(state)
     IDLE : if (req[0] == 1'b1) begin
                  state <=  #1  GNT0;
-`ifndef BUG
                  gnt[0] <= 1;
-`else
-                 gnt[0] <= 1'bZ;
-`endif
                end else if (req[1] == 1'b1) begin
                  gnt[1] <= 1;
                  state <=  #1  GNT0;

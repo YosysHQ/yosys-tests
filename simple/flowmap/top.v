@@ -1,128 +1,39 @@
-module adff
-    ( input d, clk, clr, output reg q );
-    initial begin
-      q = 0;
-    end
-	always @( posedge clk, posedge clr )
-		if ( clr )
-`ifndef BUG        
-			q <= 1'b0;
-`else        
-			q <= d;
-`endif
-		else
-            q <= d;
-endmodule
-
-module adffn
-    ( input d, clk, clr, output reg q );
-    initial begin
-      q = 0;
-    end
-	always @( posedge clk, negedge clr )
-		if ( !clr )
-`ifndef BUG        
-			q <= 1'b0;
-`else        
-			q <= d;
-`endif
-		else
-            q <= d;
-endmodule
-
-module dffe
-    ( input d, clk, en, output reg q );
-    initial begin
-      q = 0;
-    end
-	always @( posedge clk )
-		if ( en )
-`ifndef BUG        
-			q <= d;
-`else        
-			q <= 1'b0;
-`endif
-endmodule
-
-module dffsr
-    ( input d, clk, pre, clr, output reg q );
-    initial begin
-      q = 0;
-    end
-	always @( posedge clk, posedge pre, posedge clr )
-		if ( clr )
-`ifndef BUG        
-			q <= 1'b0;
-`else        
-			q <= d;
-`endif
-		else if ( pre )
-			q <= 1'b1;
-		else
-            q <= d;
-endmodule
-
-module ndffnsnr
-    ( input d, clk, pre, clr, output reg q );
-    initial begin
-      q = 0;
-    end
-	always @( negedge clk, negedge pre, negedge clr )
-		if ( !clr )
-`ifndef BUG        
-			q <= 1'b0;
-`else        
-			q <= d;
-`endif
-		else if ( !pre )
-			q <= 1'b1;
-		else
-            q <= d;
-endmodule
-
-module top (
-input clk,
-input clr,
-input pre,
-input a,
-output b,b1,b2,b3,b4
+module top
+(
+	input [7:0] data_a, data_b,
+	input [5:0] addr_a, addr_b,
+	input we_a, we_b, clk,
+	output reg [7:0] q_a, q_b
 );
+	// Declare the RAM variable
+	reg [7:0] ram[63:0];
 
-dffsr u_dffsr (
-        .clk (clk ),
-        .clr (clr),
-        .pre (pre),
-        .d (a ),
-        .q (b )
-    );
-    
-ndffnsnr u_ndffnsnr (
-        .clk (clk ),
-        .clr (clr),
-        .pre (pre),
-        .d (a ),
-        .q (b1 )
-    );
-    
-adff u_adff (
-        .clk (clk ),
-        .clr (clr),
-        .d (a ),
-        .q (b2 )
-    );
-    
-adffn u_adffn (
-        .clk (clk ),
-        .clr (clr),
-        .d (a ),
-        .q (b3 )
-    );
-    
-dffe u_dffe (
-        .clk (clk ),
-        .en (clr),
-        .d (a ),
-        .q (b4 )
-    );
+	// Port A
+	always @ (posedge clk)
+	begin
+		if (we_a)
+		begin
+			ram[addr_a] <= data_a;
+			q_a <= data_a;
+		end
+		else
+		begin
+			q_a <= ram[addr_a];
+		end
+	end
+
+	// Port B
+	always @ (posedge clk)
+	begin
+		if (we_b)
+		begin
+			ram[addr_b] <= data_b;
+			q_b <= data_b;
+		end
+		else
+		begin
+			q_b <= ram[addr_b];
+		end
+	end
 
 endmodule

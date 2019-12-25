@@ -5,11 +5,7 @@ module adff
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -21,11 +17,7 @@ module adffn
     end
 	always @( posedge clk, negedge clr )
 		if ( !clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -37,11 +29,7 @@ module dffe
     end
 	always @( posedge clk )
 		if ( en )
-`ifndef BUG
 			q <= d;
-`else
-			q <= 1'b0;
-`endif
 endmodule
 
 module dffsr
@@ -51,12 +39,32 @@ module dffsr
     end
 	always @( posedge clk)
 		if ( clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
 		else if ( pre )
+			q <= 1'b1;
+		else
+            q <= d;
+endmodule
+
+module dffs
+    ( input d, clk, pre, clr, output reg q );
+    initial begin
+      q = 0;
+    end
+	always @( posedge clk)
+		if ( pre )
+			q <= 1'b1;
+		else
+            q <= d;
+endmodule
+
+module dffns
+    ( input d, clk, pre, clr, output reg q );
+    initial begin
+      q = 0;
+    end
+	always @( posedge clk)
+		if ( !pre )
 			q <= 1'b1;
 		else
             q <= d;
@@ -69,11 +77,35 @@ module ndffnsnr
     end
 	always @( negedge clk)
 		if ( !clr )
-`ifndef BUG
 			q <= 1'b0;
-`else
-			q <= d;
-`endif
+		else if ( !pre )
+			q <= 1'b1;
+		else
+            q <= d;
+endmodule
+
+module ndffsnr
+    ( input d, clk, pre, clr, output reg q );
+    initial begin
+      q = 0;
+    end
+	always @( negedge clk)
+		if ( !clr )
+			q <= 1'b0;
+		else if ( pre )
+			q <= 1'b1;
+		else
+            q <= d;
+endmodule
+
+module ndffnsr
+    ( input d, clk, pre, clr, output reg q );
+    initial begin
+      q = 0;
+    end
+	always @( negedge clk)
+		if ( clr )
+			q <= 1'b0;
 		else if ( !pre )
 			q <= 1'b1;
 		else

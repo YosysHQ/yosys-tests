@@ -4,9 +4,9 @@ module MACC (P, A, B, CARRYIN, CLK, RST);
   input [24:0] A;
   input [17:0] B;
   input CARRYIN;
-  input CLK;       
+  input CLK;
   input RST;
-  
+
   reg [47:0] mult_reg;
 
   always @(posedge CLK)
@@ -22,13 +22,9 @@ module MACC (P, A, B, CARRYIN, CLK, RST);
     if(!RST)
         P <= 'b0;
     else
-`ifndef BUG
         P <= mult_reg + CARRYIN;
-`else
-        P <= mult_reg - CARRYIN;
-`endif
-    end 
-    
+    end
+
 endmodule
 
 

@@ -27,7 +27,6 @@ assign n_cin[0] = ~cin[0];
 assign n_cin[1] = cin[1];
 assign n_cin[2] = ~cin[2];
 
-`ifndef BUG
 assign A1 =  n_y + &(~cin);
 assign cout1 = cin ? |n_y : ^A;
 
@@ -35,14 +34,5 @@ assign A =  A1|y~&(~cin)~^A1;
 assign cout =  cout1&cin~|(~y);
 
 assign control = x & y & cin;
-`else
-assign A1 =  n_y + &(cin);
-assign cout1 = cin ? |n_y : ^A;
-
-assign A =  A1|y~&(~cin)~^A1;
-assign cout =  cout1&cin~|(~y);
-
-assign control = x | y | cin;
-`endif
 
 endmodule

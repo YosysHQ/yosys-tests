@@ -22,11 +22,7 @@ module MACC (P, A, B, CARRYIN, CLK, RST);
     if(!RST)
         P <= 'b0;
     else
-`ifndef BUG
         P <= mult_reg + CARRYIN;
-`else
-        P <= mult_reg - CARRYIN;
-`endif
     end
 
 endmodule

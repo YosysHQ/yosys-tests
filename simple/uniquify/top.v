@@ -5,11 +5,7 @@ module adff
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-`ifndef BUG        
 			q <= 1'b0;
-`else        
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -21,11 +17,7 @@ module adffn
     end
 	always @( posedge clk, negedge clr )
 		if ( !clr )
-`ifndef BUG        
 			q <= 1'b0;
-`else        
-			q <= d;
-`endif
 		else
             q <= d;
 endmodule
@@ -37,11 +29,7 @@ module dffe
     end
 	always @( posedge clk )
 		if ( en )
-`ifndef BUG        
 			q <= d;
-`else        
-			q <= 1'b0;
-`endif
 endmodule
 
 module dffsr
@@ -51,11 +39,7 @@ module dffsr
     end
 	always @( posedge clk, posedge pre, posedge clr )
 		if ( clr )
-`ifndef BUG        
 			q <= 1'b0;
-`else        
-			q <= d;
-`endif
 		else if ( pre )
 			q <= 1'b1;
 		else
@@ -69,11 +53,7 @@ module ndffnsnr
     end
 	always @( negedge clk, negedge pre, negedge clr )
 		if ( !clr )
-`ifndef BUG        
 			q <= 1'b0;
-`else        
-			q <= d;
-`endif
 		else if ( !pre )
 			q <= 1'b1;
 		else
@@ -95,7 +75,7 @@ dffsr u_dffsr (
         .d (a ),
         .q (b )
     );
-    
+
 ndffnsnr u_ndffnsnr (
         .clk (clk ),
         .clr (clr),
@@ -103,21 +83,21 @@ ndffnsnr u_ndffnsnr (
         .d (a ),
         .q (b1 )
     );
-    
+
 adff u_adff (
         .clk (clk ),
         .clr (clr),
         .d (a ),
         .q (b2 )
     );
-    
+
 adffn u_adffn (
         .clk (clk ),
         .clr (clr),
         .d (a ),
         .q (b3 )
     );
-    
+
 dffe u_dffe (
         .clk (clk ),
         .en (clr),
