@@ -16,7 +16,16 @@ if [ -f ../run-test.sh ]; then
 	if [ $? != 0 ] ; then
 		echo FAIL > ${1}_${2}.status
 	else
-		echo PASS > ${1}_${2}.status
+		if [ -f "../$2.pat" ]; then
+			expectation=$(<../$2.pat)
+			if grep "$expectation" yosys.log; then
+				echo PASS > ${1}_${2}.status
+			else
+				echo FAIL > ${1}_${2}.status
+			fi
+		else
+			echo PASS > ${1}_${2}.status
+		fi
 	fi
 	touch .stamp
 	exit
