@@ -2,7 +2,7 @@ read_verilog ../xilinx_ultraram_single_port_read_first.v
 hierarchy -top xilinx_ultraram_single_port_read_first
 proc
 memory -nomap
-equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx -noiopad
 memory
 opt -full
 

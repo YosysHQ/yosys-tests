@@ -3,8 +3,8 @@ hierarchy -top shift_registers_1
 proc
 flatten
 #ERROR: Found 2 unproven $equiv cells in 'equiv_status -assert'.
-#equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
-equiv_opt -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
+#equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -noiopad # equivalency check
+equiv_opt -map +/xilinx/cells_sim.v synth_xilinx -noiopad # equivalency check
 
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd shift_registers_1 # Constrain all select calls below inside the top module

@@ -3,7 +3,7 @@ design -save read
 
 hierarchy -top top
 proc
-equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -nodsp # equivalency check
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -nodsp -noiopad # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd top # Constrain all select calls below inside the top module
 stat
@@ -20,7 +20,7 @@ select -assert-none t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXCY t:MUXF7 t:XORCY %
 design -load read
 hierarchy -top top
 proc
-equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -nodsp -nowidelut # equivalency check
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -nodsp -nowidelut -noiopad # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd top # Constrain all select calls below inside the top module
 stat

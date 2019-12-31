@@ -9,7 +9,9 @@ cd dff # Constrain all select calls below inside the top module
 stat
 select -assert-count 1 t:BUFG
 select -assert-count 1 t:FDRE
-select -assert-none t:BUFG t:FDRE %% t:* %D
+select -assert-count 2 t:IBUF
+select -assert-count 1 t:OBUF
+select -assert-none t:BUFG t:FDRE t:IBUF t:OBUF %% t:* %D
 
 design -load read
 hierarchy -top dff
@@ -19,4 +21,6 @@ design -load postopt # load the post-opt design (otherwise equiv_opt loads the p
 cd dff # Constrain all select calls below inside the top module
 stat
 select -assert-count 1 t:FDRE
-select -assert-none t:FDRE %% t:* %D
+select -assert-count 2 t:IBUF
+select -assert-count 1 t:OBUF
+select -assert-none t:FDRE t:IBUF t:OBUF %% t:* %D

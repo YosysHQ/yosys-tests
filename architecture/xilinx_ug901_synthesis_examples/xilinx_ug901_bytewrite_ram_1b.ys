@@ -2,7 +2,7 @@ read_verilog ../bytewrite_ram_1b.v
 hierarchy -top bytewrite_ram_1b
 proc
 memory -nomap
-equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx -noiopad
 memory
 opt -full
 

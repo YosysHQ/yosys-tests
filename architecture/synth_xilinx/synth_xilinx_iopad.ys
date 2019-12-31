@@ -3,7 +3,7 @@ design -save read
 
 hierarchy -top dff
 proc
-equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -iopad # equivalency check
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd dff # Constrain all select calls below inside the top module
 stat
@@ -16,7 +16,7 @@ select -assert-none t:BUFG t:FDRE t:IBUF t:OBUF %% t:* %D
 design -load read
 hierarchy -top dffe
 proc
-equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx -iopad # equivalency check
+equiv_opt -assert -map +/xilinx/cells_sim.v synth_xilinx # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd dffe # Constrain all select calls below inside the top module
 stat

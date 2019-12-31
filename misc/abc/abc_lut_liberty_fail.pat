@@ -1,1 +1,1 @@
-ERROR: Got -lut and -liberty! This two options are exclusive.
+ERROR: Got -lut and -liberty! These two options are exclusive.

@@ -2,7 +2,7 @@ read_verilog ../rams_tdp_rf_rf.v
 hierarchy -top rams_tdp_rf_rf
 proc
 memory -nomap
-equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx
+equiv_opt -run :prove -map +/xilinx/cells_sim.v synth_xilinx -noiopad
 memory
 opt -full
 
