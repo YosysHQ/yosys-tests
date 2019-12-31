@@ -1,1 +1,1 @@
-ERROR: More than one module selected: \\top \\fsm2
+ERROR: More than one module selected: \\top \\fsm

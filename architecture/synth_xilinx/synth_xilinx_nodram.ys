@@ -16,8 +16,8 @@ design -load postopt
 cd top
 select -assert-count 2 t:BUFG
 select -assert-count 6 t:FDRE
-select -assert-count 6 t:RAM64X1D
-select -assert-none t:BUFG t:FDRE t:RAM64X1D %% t:* %D
+select -assert-count 2 t:RAM64M
+select -assert-none t:BUFG t:FDRE t:RAM64M %% t:* %D
 
 design -load read
 hierarchy -top top
@@ -35,10 +35,11 @@ cd top
 
 select -assert-count 2 t:BUFG
 select -assert-count 390 t:FDRE
-select -assert-count 90 t:LUT2
-select -assert-count 10 t:LUT4
+select -assert-count 2 t:LUT2
+select -assert-count 385 t:LUT3
+select -assert-count 9 t:LUT4
 select -assert-count 1 t:LUT5
-select -assert-count 158 t:LUT6
-select -assert-count 37 t:MUXF7
-select -assert-count 1 t:MUXF8
-select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
+select -assert-count 223 t:LUT6
+select -assert-count 36 t:MUXF7
+select -assert-count 3 t:MUXF8
+select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
