@@ -1,1 +1,1 @@
-cell \\IOBUFE $auto$iopadmap.cc
+cell \\IOBUF $auto$iopadmap.cc
