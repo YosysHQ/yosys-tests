@@ -14986,7 +14986,7 @@ module \toplevel
   cell $sshr $techmap\murax.jtagBridge_1.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3125$657
     parameter \A_SIGNED 0
     parameter \A_WIDTH 5
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 5
     connect \A { \murax.jtagBridge_1.io_jtag_tdi \murax.jtagBridge_1.jtag_tap_instructionShift }
@@ -14997,7 +14997,7 @@ module \toplevel
   cell $sshr $techmap\murax.jtagBridge_1.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3138$658
     parameter \A_SIGNED 0
     parameter \A_WIDTH 33
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 33
     connect \A { \murax.jtagBridge_1.io_jtag_tdi \murax.jtagBridge_1.jtag_idcodeArea_shifter }
@@ -15008,7 +15008,7 @@ module \toplevel
   cell $sshr $techmap\murax.jtagBridge_1.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3150$661
     parameter \A_SIGNED 0
     parameter \A_WIDTH 35
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 35
     connect \A { \murax.jtagBridge_1.io_jtag_tdi \murax.jtagBridge_1.jtag_readArea_shifter }
@@ -15508,7 +15508,7 @@ module \toplevel
   cell $sshr $techmap\murax.systemDebugger_1.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3229$672
     parameter \A_SIGNED 0
     parameter \A_WIDTH 9
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 9
     connect \A { \murax.systemDebugger_1.io_remote_cmd_payload_fragment \murax.systemDebugger_1.dispatcher_headerShifter }
@@ -15519,7 +15519,7 @@ module \toplevel
   cell $sshr $techmap\murax.systemDebugger_1.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3231$673
     parameter \A_SIGNED 0
     parameter \A_WIDTH 68
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 68
     connect \A { \murax.systemDebugger_1.io_remote_cmd_payload_fragment \murax.systemDebugger_1.dispatcher_dataShifter }
@@ -23768,7 +23768,7 @@ module \toplevel
   cell $sshl $techmap\murax.system_cpu.$sshl$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:2322$399
     parameter \A_SIGNED 0
     parameter \A_WIDTH 32
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 32
     connect \A \murax.system_cpu.execute_LightShifterPlugin_shiftInput
@@ -23779,7 +23779,7 @@ module \toplevel
   cell $sshr $techmap\murax.system_cpu.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:1505$151
     parameter \A_SIGNED 0
     parameter \A_WIDTH 33
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 33
     connect \A \murax.system_cpu._zz_176
@@ -24945,7 +24945,7 @@ module \toplevel
   cell $sshr $techmap\murax.system_ram.$sshr$/usr/local/google/home/keithrothman/cat_x/symbiflow-arch-defs/build/soc_tests/murax/Murax.v:3296$704
     parameter \A_SIGNED 0
     parameter \A_WIDTH 32
-    parameter \B_SIGNED 1
+    parameter \B_SIGNED 0
     parameter \B_WIDTH 32
     parameter \Y_WIDTH 32
     connect \A \murax.system_ram.io_bus_cmd_payload_address
