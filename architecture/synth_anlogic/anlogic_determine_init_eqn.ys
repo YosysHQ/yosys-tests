@@ -6,7 +6,7 @@ tribuf -logic
 deminout
 synth -run coarse
 memory_bram -rules +/anlogic/lutrams.txt
-techmap -map +/anlogic/drams_map.v
+techmap -map +/anlogic/lutrams_map.v
 #anlogic_determine_init
 opt -fast -mux_undef -undriven -fine
 memory_map
