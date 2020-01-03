@@ -5,7 +5,7 @@ flatten
 tribuf -logic
 deminout
 synth -run coarse
-memory_bram -rules +/anlogic/drams.txt
+memory_bram -rules +/anlogic/lutrams.txt
 techmap -map +/anlogic/drams_map.v
 #anlogic_determine_init
 opt -fast -mux_undef -undriven -fine

@@ -5,7 +5,7 @@ flatten
 tribuf -logic
 deminout
 synth -run coarse
-memory_bram -rules +/ecp5/bram.txt
+memory_bram -rules +/ecp5/lutrams.txt
 techmap -map +/ecp5/brams_map.v
 opt -fast -mux_undef -undriven -fine
 techmap -map +/techmap.v -map +/ecp5/arith_map.v
