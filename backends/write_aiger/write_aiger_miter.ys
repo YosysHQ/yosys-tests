@@ -1,5 +1,6 @@
 read_verilog -sv ../top3.v
-synth -top top
+proc
+simplemap
 aigmap
 write_aiger -miter result.out
 design -reset

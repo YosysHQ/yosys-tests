@@ -1,3 +1,5 @@
 read_verilog -sv ../top.v
+proc
+simplemap
 aigmap
 write_xaiger result.out

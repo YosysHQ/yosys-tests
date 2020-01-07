@@ -1,3 +1,5 @@
 read_verilog -sv ../top_x_z.v
+proc
+simplemap
 synth
 write_aiger aiger.aiger

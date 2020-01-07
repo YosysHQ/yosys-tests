@@ -1,4 +1,6 @@
 read_verilog -sv ../top3.v
+proc
+simplemap
 aigmap
 write_aiger -vmap a.map aiger.aiger
 design -reset
