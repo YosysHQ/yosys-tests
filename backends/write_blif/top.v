@@ -5,6 +5,7 @@ module top
  input cin,
 
  output reg A,
+ output B,
  output reg cout
  );
 
@@ -31,11 +32,11 @@ always @(*) begin
         cout <=  cout1&cin~|y;
 end
 
-bb ubb (cin,y,x,A);
+bb ubb (cin,y,x,B);
 
 endmodule
 
-(* black_box *) module bb(in1, in2, clk, out1);
+(* blackbox *) module bb(in1, in2, clk, out1);
  input in1;
  input in2;
  input clk;
