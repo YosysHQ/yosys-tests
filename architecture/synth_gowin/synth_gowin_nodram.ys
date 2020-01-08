@@ -44,7 +44,7 @@ stat
 select -assert-count 520 t:DFF
 select -assert-count 16 t:IBUF
 select -assert-count 592 t:LUT3
-select -assert-min 987 t:LUT4
+select -assert-min 983 t:LUT4
 select -assert-count 464 t:MUX2_LUT5
 select -assert-count 184 t:MUX2_LUT6
 select -assert-count 64 t:MUX2_LUT7
