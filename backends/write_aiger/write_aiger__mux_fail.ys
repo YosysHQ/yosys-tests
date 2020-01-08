@@ -1,4 +1,6 @@
-read_verilog -sv ../../common/adffs.v
+read_verilog -sv ../../common/mux.v
+proc
+techmap
 aigmap
 write_aiger result.out
 design -reset

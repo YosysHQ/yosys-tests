@@ -1,0 +1,5 @@
+read_verilog -sv ../top_mem.v
+proc
+simplemap
+aigmap
+write_aiger result.out

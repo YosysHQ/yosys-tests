@@ -2,4 +2,4 @@ read_verilog -sv ../top3.v
 proc
 simplemap
 aigmap
-write_aiger -map tt/tt.map aiger.aiger
+write_aiger -miter aiger.aiger

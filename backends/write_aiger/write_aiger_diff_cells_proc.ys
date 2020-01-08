@@ -1,4 +1,5 @@
 read_verilog -sv ../top_diff_cells.v
-synth
+proc
+simplemap
 aigmap
 write_aiger aiger.aiger

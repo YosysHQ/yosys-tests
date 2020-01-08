@@ -1,4 +1,6 @@
-read_verilog -sv ../../common/mux.v
+read_verilog -sv ../../common/latches.v
+proc
+simplemap
 aigmap
 write_aiger result.out
 design -reset

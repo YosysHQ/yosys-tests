@@ -1,3 +1,5 @@
 read_verilog -sv ../top_diff_cells.v
+proc
+simplemap
 aigmap
 write_aiger -ascii aiger.aiger

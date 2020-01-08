@@ -1,4 +1,6 @@
 read_verilog -sv ../../common/logic.v
+proc
+simplemap
 aigmap
 write_aiger result.out
 design -reset
