@@ -1,6 +1,0 @@
-read_verilog ../top_dff.v
-proc
-dff2dffe
-synth -top top
-abc9 -lut 5 -nomfs
-abc9 -lut 5
