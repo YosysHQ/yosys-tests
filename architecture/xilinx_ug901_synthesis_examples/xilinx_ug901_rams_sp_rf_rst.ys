@@ -20,8 +20,8 @@ select -assert-count 1 t:BUFG
 select -assert-count 16 t:FDRE
 select -assert-count 5 t:LUT2
 select -assert-count 4 t:LUT3
-select -assert-count 11 t:LUT4
-select -assert-count 25 t:LUT5
+select -assert-count 12 t:LUT4
+select -assert-count 24 t:LUT5
 select -assert-count 32 t:LUT6
 select -assert-count 128 t:RAM128X1D
 
