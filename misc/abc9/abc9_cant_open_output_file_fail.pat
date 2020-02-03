@@ -1,1 +1,1 @@
-ERROR: Can't open ABC output file
+ERROR: Can't open input file

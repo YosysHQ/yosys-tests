@@ -10,7 +10,7 @@ opt -full
 
 miter -equiv -flatten -make_assert -make_outputs gold gate miter
 
-#sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
 
 design -load postopt
 cd top
@@ -29,17 +29,17 @@ opt -full
 
 miter -equiv -flatten -make_assert -make_outputs gold gate miter
 
-#sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
-design -load postopt
-cd top
-stat
-select -assert-count 2 t:BUFG
-select -assert-count 390 t:FDRE
-select -assert-count 2 t:LUT2
-select -assert-count 384 t:LUT3
-select -assert-count 4 t:LUT4
-select -assert-count 2 t:LUT5
-select -assert-count 214 t:LUT6
-select -assert-count 27 t:MUXF7
-select -assert-count 1 t:MUXF8
-select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
+sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
+#design -load postopt
+#cd top
+#stat
+#select -assert-count 2 t:BUFG
+#select -assert-count 390 t:FDRE
+#select -assert-count 2 t:LUT2
+#select -assert-count 385 t:LUT3
+#select -assert-count 27 t:LUT4
+#select -assert-count 2 t:LUT5
+#select -assert-count 173 t:LUT6
+#select -assert-count 27 t:MUXF7
+#select -assert-count 1 t:MUXF8
+#select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D

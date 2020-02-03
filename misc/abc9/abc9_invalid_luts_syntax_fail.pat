@@ -1,1 +1,1 @@
-ERROR: Invalid -luts syntax.
+ERROR: Can't open input file

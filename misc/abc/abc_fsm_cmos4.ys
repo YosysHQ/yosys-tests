@@ -1,6 +1,6 @@
 read_verilog ../top_fsm.v
 synth -top top
 abc -g cmos4
-select -assert-count 6 t:$_AOI3_
+stat
+select -assert-count 4 t:$_AOI3_
 select -assert-count 1 t:$_AOI4_
-select -assert-count 2 t:$_OAI3_

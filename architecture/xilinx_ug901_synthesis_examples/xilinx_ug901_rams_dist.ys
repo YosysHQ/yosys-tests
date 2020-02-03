@@ -16,6 +16,6 @@ cd rams_dist
 stat
 #Vivado synthesizes 32 RAM64X1D.
 select -assert-count 1 t:BUFG
-select -assert-count 32 t:RAM64X1D
+select -assert-count 16 t:RAM64M
 
-select -assert-none t:BUFG t:RAM64X1D %% t:* %D
+select -assert-none t:BUFG t:RAM64M %% t:* %D

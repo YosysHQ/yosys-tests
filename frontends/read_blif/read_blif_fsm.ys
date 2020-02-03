@@ -4,7 +4,7 @@ write_blif blif1.blif
 design -reset
 read_blif blif1.blif
 stat
-select -assert-count 17 t:$dff
-select -assert-count 58 t:$lut
+select -assert-count 14 t:$dff
+select -assert-count 37 t:$lut
 
 #select -assert-none t:$dff t:$lut  %% t:* %D

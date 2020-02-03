@@ -18,7 +18,7 @@ stat
 select -assert-count 2 t:BUFG
 select -assert-count 271 t:FDRE
 select -assert-count 23 t:LUT2
-select -assert-count 262 t:LUT6
+select -assert-count 194 t:LUT6
 select -assert-count 115 t:MUXF7
 select -assert-count 49 t:MUXF8
 select -assert-count 128 t:RAM64M
