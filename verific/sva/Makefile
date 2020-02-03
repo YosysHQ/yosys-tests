@@ -5,6 +5,7 @@ all: $(addsuffix .status,$(TESTS))
 	touch .stamp
 
 %.status: %.sv run.sh
+	touch .start
 	-bash run.sh $(basename $@) > $(basename $@).log 2>&1
 	test -f $@
 
@@ -16,5 +17,6 @@ clean:
 	rm -f $(addsuffix .status,$(TESTS))
 	rm -f $(addsuffix .log,$(TESTS))
 	rm -f .stamp
+	rm -f .start
 
 .PHONY: all clean

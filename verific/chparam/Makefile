@@ -40,9 +40,10 @@ test5.status: test5.out
           echo PASS > $@) || echo FAIL > $@
 
 test1.out test2.out test3.out test4.out test5.out: test.ys top.v top.vhd
+	touch .start
 	@yosys -q -q test.ys
 
 clean:
-	rm -f *.status *.out .stamp
+	rm -f *.status *.out .stamp .start
 
 .PHONY: all clean

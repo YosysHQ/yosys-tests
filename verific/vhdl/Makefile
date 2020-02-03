@@ -3,10 +3,11 @@ all: test.status
 	touch .stamp
 
 test.status: bar.vhd foo.vhd tb.sv test.ys top.vhd
+	touch .start
 	yosys -ql test.log test.ys
 	grep '^SAT .*: SUCCESS' test.log && echo PASS > test.status || echo FAIL > test.status
 
 clean:
-	rm -f test.status test.log .stamp
+	rm -f test.status test.log .stamp .start
 
 .PHONY: all clean
