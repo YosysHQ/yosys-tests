@@ -2,4 +2,4 @@ read_verilog ../top_mux.v
 proc
 synth -top top
 abc
-select -assert-count 139 t:$_MUX_
+select -assert-count 104 t:$_MUX_

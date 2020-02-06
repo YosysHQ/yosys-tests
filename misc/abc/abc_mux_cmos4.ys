@@ -3,7 +3,7 @@ synth -top top
 tee -o result.out abc -g cmos4
  abc -g cmos4
 
-select -assert-count 111 t:$_AOI3_
-select -assert-count 28  t:$_AOI4_
-select -assert-count 111 t:$_AOI3_
-select -assert-count 24  t:$_OAI4_
+select -assert-count 80 t:$_AOI3_
+select -assert-count 21  t:$_AOI4_
+select -assert-count 118 t:$_OAI3_
+select -assert-count 46  t:$_OAI4_

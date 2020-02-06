@@ -30,8 +30,8 @@ miter -equiv -flatten -make_assert -make_outputs gold gate miter
 #sat -verify -prove-asserts -seq 3 -set-init-zero -show-inputs -show-outputs miter
 design -load postopt
 cd top
-
+stat
 select -assert-count 6 t:SB_DFF
 select -assert-count 384 t:SB_DFFE
-select -assert-count 376 t:SB_LUT4
+select -assert-count 372 t:SB_LUT4
 select -assert-none t:SB_DFF t:SB_DFFE t:SB_LUT4 %% t:* %D

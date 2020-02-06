@@ -1,4 +1,4 @@
 read_verilog ../top_mux.v
 synth -top top
 abc -mux4
-select -assert-count 75 t:$_MUX4_
+select -assert-count 61 t:$_MUX4_
