@@ -21,11 +21,11 @@ $(1)/.stamp_%: $(1)/.stamp_sim
 
 clean::
 	rm -rf $(1)/.stamp_* $(1)/work_*
-	rm -f $(1)_{cmos,ice40,falsify,ecp5,xilinx}{,_abc9}.status
+	rm -f $(1)_{cmos,ice40,falsify,ecp5,xilinx}{,_retime,_abc9,_abc9_dff}.status
 endef
 
-$(eval $(call template,navre,cmos ice40 ice40_abc9 ecp5 ecp5_abc9 xilinx xilinx_abc9))
+$(eval $(call template,navre,cmos ice40 ice40_retime ice40_abc9 ecp5 ecp5_retime ecp5_abc9 xilinx xilinx_retime xilinx_abc9 xilinx_abc9_dff))
 ifeq ($(ENABLE_HEAVY_TESTS),1)
-$(eval $(call template,picorv32,cmos ice40 ice40_abc9 ecp5 ecp5_abc9 xilinx xilinx_abc9))
+$(eval $(call template,picorv32,cmos ice40 ice40_retime ice40_abc9 ecp5 ecp5_retime ecp5_abc9 xilinx xilinx_retime xilinx_abc9 xilinx_abc9_dff))
 endif
 .PHONY: all clean

@@ -36,12 +36,20 @@ case "$2" in
 		yosys -ql synthlog.txt -p "$PRESYN; synth_ice40 -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
+	ice40_retime)
+		yosys -ql synthlog.txt -p "$PRESYN; synth_ice40 -retime -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
+		;;
 	ice40_abc9)
 		yosys -ql synthlog.txt -p "$PRESYN; synth_ice40 -abc9 -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ice40/cells_sim.v"
 		;;
 	ecp5)
 		yosys -ql synthlog.txt -p "$PRESYN; synth_ecp5 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v -I$TECHLIBS_PREFIX/ecp5"
+		;;
+	ecp5_retime)
+		yosys -ql synthlog.txt -p "$PRESYN; synth_ecp5 -retime -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/ecp5/cells_sim.v -I$TECHLIBS_PREFIX/ecp5"
 		;;
 	ecp5_abc9)
@@ -52,8 +60,16 @@ case "$2" in
 		yosys -ql synthlog.txt -p "$PRESYN; synth_xilinx -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
 		;;
+	xilinx_retime)
+		yosys -ql synthlog.txt -p "$PRESYN; synth_xilinx -retime -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
+		;;
 	xilinx_abc9)
 		yosys -ql synthlog.txt -p "$PRESYN; synth_xilinx -abc9 -top $TOP; write_verilog synth.v" $rtl_files
+		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
+		;;
+	xilinx_abc9_dff)
+		yosys -ql synthlog.txt -p "$PRESYN; synth_xilinx -abc9 -dff -top $TOP; write_verilog synth.v" $rtl_files
 		iverilog_cmd="$iverilog_cmd synth.v $TECHLIBS_PREFIX/xilinx/cells_sim.v"
 		;;
 	*)
