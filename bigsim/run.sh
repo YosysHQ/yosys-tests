@@ -22,7 +22,6 @@ fi
 
 case "$2" in
 	sim)
-		touch ../../.start
 		iverilog_cmd="$iverilog_cmd $rtl_files"
 		;;
 	falsify)
@@ -95,16 +94,17 @@ fi
 
 if [ "$2" = "falsify" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
-		echo FAIL > ../../${1}_${2}.status
+		echo FAIL > ${1}_${2}.status
 	else
-		echo PASS > ../../${1}_${2}.status
+		echo PASS > ${1}_${2}.status
 	fi
 elif [ "$2" != "sim" ]; then
 	if cmp output.txt ../work_sim/output.txt; then
-		echo PASS > ../../${1}_${2}.status
+		echo PASS > ${1}_${2}.status
 	else
-		echo FAIL > ../../${1}_${2}.status
+		echo FAIL > ${1}_${2}.status
 	fi
 elif [ "$2" == "sim" ]; then
-	echo PASS > ../../${1}_${2}.status
+	echo PASS > ${1}_${2}.status
 fi
+touch .stamp
