@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+import argparse, sys, os
+from shutil import rmtree
+
+def run_test(argv):
+    parser = argparse.ArgumentParser(prog="run_test",
+        usage="%(prog)s [options] <test_name>")
+    parser.add_argument("test_name", metavar="<test_name>", nargs="?",
+        help="Test name")
+    args = parser.parse_args(argv[1:])	
+    test_name = args.test_name
+
+    if test_name is None:
+        parser.print_help()
+        sys.exit()
+
+    test_path = test_name.split('.')
+    if not len(test_path)==3:
+        print("Test name have to be in proper format <suite>.<group>.<test>")
+        sys.exit()
+
+    if not os.path.isdir(test_path[0]):
+        print("Test suite {} does not exist...".format(test_path[0]))
+        sys.exit()
+
+    if not os.path.isdir(os.path.join(test_path[0],test_path[1])):
+        print("Test group {} does not exist...".format(test_path[1]))
+        sys.exit()
+
+    test_case = test_path[2][len(test_path[1])+1:]
+
+    work_dir = os.path.join(test_path[0],test_path[1], 'work_'+test_case)
+    if os.path.isdir(work_dir):
+        rmtree(work_dir)
+    make_target = os.path.join(test_path[1], 'work_'+test_case,".stamp")
+    os.system("make -C {} {}".format(test_path[0], make_target))
+
+if __name__ == '__main__':
+    run_test(sys.argv)
