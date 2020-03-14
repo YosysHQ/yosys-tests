@@ -1,1 +1,2 @@
+logger -expect error "syntax error" 1
 read_verilog ../top.v
