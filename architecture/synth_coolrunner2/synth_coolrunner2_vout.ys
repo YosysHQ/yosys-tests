@@ -9,10 +9,12 @@ equiv_opt -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd dff # Constrain all select calls below inside the top module
 
+select -assert-count 2 t:ANDTERM
 select -assert-count 1 t:FDCP
 select -assert-count 2 t:IBUF
 select -assert-count 1 t:IOBUFE
-select -assert-none t:FDCP t:IBUF t:IOBUFE %% t:* %D
+select -assert-count 1 t:MACROCELL_XOR
+select -assert-none t:ANDTERM t:FDCP t:IBUF t:IOBUFE t:MACROCELL_XOR %% t:* %D
 
 design -load read
 hierarchy -top dffe
@@ -23,7 +25,7 @@ equiv_opt -map +/coolrunner2/cells_sim.v synth_coolrunner2 # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd dffe # Constrain all select calls below inside the top module
 
-select -assert-count 2 t:ANDTERM
+select -assert-count 3 t:ANDTERM
 select -assert-count 1 t:FDCP
 select -assert-count 3 t:IBUF
 select -assert-count 1 t:IOBUFE
