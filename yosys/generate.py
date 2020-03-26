@@ -7,7 +7,7 @@ for root, dirs, files in sorted(os.walk(".")):
             work = os.path.splitext(file)[0]
             heavy = os.path.exists(os.path.join(dir, "heavy_test"))
             is_disabled = os.path.exists(os.path.join(dir, work + ".disable"))
-            print("all:: {0}/work_{1}/.stamp\n"
+            print("all: {0}/work_{1}/.stamp\n"
                   "{0}/work_{1}/.stamp:".format(dir, work))
             if (is_disabled):
                 print("\t@echo 'Skipping disabled test {0}..'".format(dir, work))
@@ -17,7 +17,7 @@ for root, dirs, files in sorted(os.walk(".")):
                 continue
             print("\t@echo 'Running {2}{1}..'\n"
                   "\t@../run.sh {0} {1}\n"
-                  "clean::\n"
+                  "clean:\n"
                   "\t@echo 'Cleaning {1}..'\n"
                   "\t@rm -rf {0}/work_{1}".format(dir, work, "heavy " if heavy else ""))
 print(".PHONY: all clean")
