@@ -6636,7 +6636,7 @@ module TopEntity
   reg [14:0] RAM [0:256-1];
 
   initial begin
-    $readmemb("../SinusTableInit.txt",RAM);
+    $readmemb("SinusTableInit.txt",RAM);
   end
 
   always @(posedge \$d(%,%) [1:1]) begin : TopEntity_blockRamFile
@@ -6661,7 +6661,7 @@ module TopEntity
   reg [14:0] RAM_0 [0:256-1];
 
   initial begin
-    $readmemb("../SinusTableInit_.txt",RAM_0);
+    $readmemb("SinusTableInit_.txt",RAM_0);
   end
 
   always @(posedge \$d(%,%) [1:1]) begin : TopEntity_blockRamFile_0
@@ -8334,7 +8334,7 @@ module TopEntity
   reg [2:0] RAM_1 [0:1024-1];
 
   initial begin
-    $readmemb("../LEDMatrixInitial.txt",RAM_1);
+    $readmemb("LEDMatrixInitial.txt",RAM_1);
   end
 
   always @(posedge \$d(%,%) [1:1]) begin : TopEntity_blockRamFile_1

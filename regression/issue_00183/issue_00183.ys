@@ -1,2 +1,2 @@
-read_verilog ../top.v
-synth_ice40 -top top -blif test.blif
+read_verilog top.v
+synth_ice40 -top top

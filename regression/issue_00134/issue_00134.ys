@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 hierarchy -top task_bug
-proc; opt; memory; dff2dffe; wreduce; clean; opt
-write_verilog -noexpr -norename result.out
+proc
+sat -verify -prove-asserts -show-ports -prove do in_data

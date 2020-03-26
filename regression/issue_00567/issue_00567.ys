@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 synth_ice40 -nocarry
 opt_clean
-write_blif -attr -cname -param lut.eblif
+select -assert-count 1 t:SB_LUT4

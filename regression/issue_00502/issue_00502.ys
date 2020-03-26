@@ -1,2 +1,2 @@
-read_verilog ../top.v
+read_verilog top.v
 select -assert-any n:\\SUM/N10

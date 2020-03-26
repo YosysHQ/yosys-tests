@@ -1,0 +1,2 @@
+logger -expect error "Found posedge/negedge event on a signal that is not 1 bit wide!" 1
+read_verilog top.v

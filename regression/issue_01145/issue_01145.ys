@@ -1,4 +1,4 @@
-read_verilog -sv ../top.sv
+read_verilog -sv top.sv
 hierarchy -check -top TopModule
 proc
 flatten

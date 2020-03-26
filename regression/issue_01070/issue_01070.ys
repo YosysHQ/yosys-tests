@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 proc
 dff2dffe
 simplemap

@@ -1,3 +1,3 @@
-read -formal ../top.v
+read -formal top.v
 prep -top mcve
-select -assert-count 5 t:$assert
+sat -verify  -prove-asserts -tempinduct

@@ -1,2 +1,2 @@
-read_verilog ../top.v
-synth_ice40 -blif litescope.bli -top top
+read_verilog top.v
+synth_ice40 -top top

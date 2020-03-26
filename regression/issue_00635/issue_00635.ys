@@ -1,0 +1,4 @@
+read_verilog -sv dff.sv
+read_verilog -sv register.sv
+synth
+select -assert-count 4 t:dff

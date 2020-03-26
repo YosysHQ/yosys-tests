@@ -1,6 +1,4 @@
-read_verilog -sv ../top.v
+read_verilog -sv top.v
 prep
 alumacc
-select -assert-count 63 t:$add
 select -assert-count 2 t:$macc
-select -assert-count 65 t:$mul

@@ -1,3 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 proc
-tee -o result.out opt -fast
+logger -werror "Driver-driver conflict"
+opt -fast

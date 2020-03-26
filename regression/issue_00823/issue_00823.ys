@@ -1,2 +1,2 @@
-read_ilang ../t2.ilang
+read_ilang t2.ilang
 synth -run coarse

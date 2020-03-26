@@ -1,6 +1,7 @@
-read_verilog ../top.v
+read_verilog top.v
 synth
 abc
+logger -expect log "Eval result: \\out = 4'1000." 2
 eval -set addr 24
 aigmap
-tee -a result.out eval -set addr 24
+eval -set addr 24

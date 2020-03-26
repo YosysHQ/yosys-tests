@@ -1,3 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 hierarchy
-tee -o result.out synth_ice40 -blif demo.blif
+logger -expect-no-warnings
+synth_ice40

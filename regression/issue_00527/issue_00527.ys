@@ -3,7 +3,7 @@
 #yosys -import
 #set libfile osu018_stdcells_edit.lib
 
-read_verilog -sv ../sd_rrmux.v
+read_verilog -sv sd_rrmux.v
 
 # Vanilla synth flow
 hierarchy
@@ -13,9 +13,9 @@ opt
 techmap
 opt
 
-dfflibmap -liberty ../osu018_stdcells_edit.lib
+dfflibmap -liberty osu018_stdcells_edit.lib
 
-abc -liberty ../osu018_stdcells_edit.lib
+abc -liberty osu018_stdcells_edit.lib
 
 clean
 

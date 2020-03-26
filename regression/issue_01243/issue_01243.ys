@@ -1,3 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 synth
-write_verilog -noattr result.out
+cd top
+select -assert-none y reg_assign %a %d

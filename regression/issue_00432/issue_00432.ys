@@ -1,5 +1,8 @@
-read_verilog -sv ../top.v
+read_verilog -sv top.v
 write_verilog result.v
+select -assert-count 1 t:$shiftx
 design -reset
 read_verilog result.v
 hierarchy -check
+select -assert-count 1 t:$shiftx
+!rm result.v

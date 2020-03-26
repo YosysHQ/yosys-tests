@@ -1,0 +1,2 @@
+logger -expect error "UNDEFINED' is implicitly declared and" 1
+read_verilog -formal top.v

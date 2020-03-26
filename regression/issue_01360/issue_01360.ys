@@ -1,2 +1,3 @@
-read_verilog -sv ../top.v
+read_verilog -sv top.v
 synth_ice40 -blif out.blif
+!rm out.blif

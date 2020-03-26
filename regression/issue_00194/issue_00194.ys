@@ -1,3 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 proc
 prep -flatten
+sat -verify -prove-asserts -show-ports -prove y a

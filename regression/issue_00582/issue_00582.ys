@@ -1,0 +1,3 @@
+logger -expect error "Failed to detect width for identifier \\valid!" 1
+read_verilog top.v
+synth_ice40 -top main

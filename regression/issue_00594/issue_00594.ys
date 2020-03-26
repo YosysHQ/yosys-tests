@@ -1,0 +1,2 @@
+logger -expect error "Single range expected." 1
+read_verilog top.v

@@ -1,0 +1,2 @@
+logger -expect error "Invalid nesting of always blocks and/or initializations." 1
+read_verilog top.v

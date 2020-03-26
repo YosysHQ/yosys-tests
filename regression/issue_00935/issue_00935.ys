@@ -1,4 +1,5 @@
-read_verilog ../top.v
+read_verilog top.v
 prep -top picorv32 -nordff
 opt -fast
 write_smt2 picorv32.smt2
+!rm picorv32.smt2

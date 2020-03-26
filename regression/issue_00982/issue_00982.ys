@@ -1,4 +1,3 @@
-read_verilog ../top.v
+read_verilog top.v
 synth_xilinx
-select -assert-count 3 t:FDRE
-tee -a result.out dump t:FDRE
+select -assert-count 3 r:INIT=1'0

@@ -1,3 +1,2 @@
-read_verilog ../top.v
-tee -a result.out synth_ice40
-
+read_verilog top.v
+synth_ice40

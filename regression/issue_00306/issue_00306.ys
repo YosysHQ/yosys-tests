@@ -1,4 +1,2 @@
-read_verilog ../top.v
-
-proc
-opt -full
+read_verilog top.v
+synth

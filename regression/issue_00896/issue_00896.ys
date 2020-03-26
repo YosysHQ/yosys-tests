@@ -1,4 +1,4 @@
-read_verilog ../outreg.v
+read_verilog outreg.v
 hierarchy -top dut
 proc
 memory -nomap

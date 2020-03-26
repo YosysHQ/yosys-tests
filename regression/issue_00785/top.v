@@ -8,7 +8,7 @@ module f16_prom (
     reg [15:0] do;
 
     initial
-        $readmemh("../bootrom.hex", rom);
+        $readmemh("bootrom.hex", rom);
 
     always @(posedge clk)
         do <= rom[addr[3:0]];

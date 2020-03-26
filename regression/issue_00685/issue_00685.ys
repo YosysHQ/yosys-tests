@@ -1,1 +1,1 @@
-read_liberty ../lib.lib
+read_liberty lib.lib

@@ -1,16 +1,10 @@
-read_verilog ../top.v
+read_verilog top.v
 hierarchy
 proc -global_arst reset
 flatten; techmap
 ice40_opt
-#-unlut
 opt_clean
 abc -script +strash
-#ifraig
-#scorr
-#retime
-#strash
 clean
-#write_blif
 select -assert-count 16 t:SB_LUT4
 

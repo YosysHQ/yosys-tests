@@ -1,5 +1,5 @@
 read_verilog -lib  +/ice40/cells_sim.v
-read_verilog ../top.v
+read_verilog top.v
 hierarchy -top main
 proc
 flatten

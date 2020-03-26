@@ -1,3 +1,4 @@
-read_verilog -sv ../top.v
-tee -a result.log dump
+read_verilog -sv top.v
+synth -top test
+sat -verify -prove-asserts -show-ports -prove b 32'hffffffff
 

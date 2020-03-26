@@ -1,2 +1,3 @@
-read_verilog ../top.v
-tee -a result.log synth_ice40 -top inivalue
+read_verilog top.v
+logger -expect-no-warnings
+synth_ice40 -top inivalue

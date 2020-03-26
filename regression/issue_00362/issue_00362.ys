@@ -1,0 +1,3 @@
+read_verilog -sv top.v
+logger -expect error "Output port top.inst.b \(inst\) is connected to constants: 1'1" 1
+synth -top top

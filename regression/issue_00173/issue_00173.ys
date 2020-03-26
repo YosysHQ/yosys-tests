@@ -1,2 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 proc
+sat -verify -prove-asserts -show-ports -prove co bi
+#TODO: check if we should take care of order or not

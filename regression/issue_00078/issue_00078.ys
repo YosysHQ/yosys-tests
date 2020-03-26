@@ -1,4 +1,7 @@
-read_verilog ../top.v
+read_verilog is28.v
 hierarchy
 splitnets -ports
-write_verilog result.out
+
+!mkdir -p work_issue_00078
+write_verilog work_issue_00078/synth.v
+!grep "(\\\X\[0\] , \\\X\[1\] , \\\X\[2\] ," work_issue_00078/synth.v > /dev/null

@@ -1,3 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 hierarchy -top test
-write_verilog -noexpr -norename result.out
+logger -expect warning "Module test contains unmapped RTLIL processes" 1
+write_verilog -noexpr -norename

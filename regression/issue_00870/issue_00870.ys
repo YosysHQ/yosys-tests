@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 hierarchy -auto-top -check;
 proc; clean;
 memory;
@@ -11,3 +11,5 @@ write_verilog multimux_out_2.v
 
 delete;
 read_verilog multimux_out_2.v
+!rm multimux_out_1.v
+!rm multimux_out_2.v

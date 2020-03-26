@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 synth -top top
 splitnets -ports
 hierarchy -check

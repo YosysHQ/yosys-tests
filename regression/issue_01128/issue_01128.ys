@@ -1,4 +1,4 @@
-read_verilog ../top.v
+read_verilog top.v
 insbuf
 # select just the $_BUF_ from w1 to w2 as @buf
 select -set buf w:w1 %coe1 w:w1 %d

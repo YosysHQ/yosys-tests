@@ -1,4 +1,4 @@
-read_verilog -DUNPACKED ../top.v
+read_verilog -DUNPACKED top.v
 synth_xilinx -nodram
 select -assert-none t:FDRE
 

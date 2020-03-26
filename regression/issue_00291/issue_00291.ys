@@ -1,2 +1,2 @@
-read_verilog -sv ../top.v
+read_verilog -sv top.v
 synth -top top

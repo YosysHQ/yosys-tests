@@ -1,1 +1,2 @@
-read_verilog ../top.v
+logger -expect warning "Deep recursion in AST simplifier." 1
+read_verilog top.v

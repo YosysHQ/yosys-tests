@@ -1,0 +1,4 @@
+read_verilog top.v
+proc
+logger -expect error "Gate cell u_mid8 not found in module top." 1
+fmcombine top u_mid1 u_mid8

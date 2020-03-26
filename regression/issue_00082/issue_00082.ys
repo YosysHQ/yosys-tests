@@ -1,0 +1,2 @@
+logger -expect error "no AST_WIRE node" 1
+read_verilog top.v

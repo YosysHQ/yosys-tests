@@ -1,2 +1,2 @@
-read_ilang ../top.il
+read_ilang top.il
 proc_init

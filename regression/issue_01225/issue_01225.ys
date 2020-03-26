@@ -1,3 +1,3 @@
-read_verilog ../top.v
+read_verilog top.v
 synth_xilinx
-select -assert-count 1 t:BUFT
+select -assert-count 1 t:IOBUF

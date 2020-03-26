@@ -1,2 +1,4 @@
-read_verilog -defer ../top.v
-chparam -set incr 42 topmod
+read_verilog -defer top.v
+chparam -set incr 42 top
+prep -flatten
+sat -verify -prove-asserts -show-ports -set a[7:0] 1 -prove y[7:0] 43

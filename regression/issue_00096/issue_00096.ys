@@ -1,0 +1,2 @@
+logger -expect error "syntax error, unexpected TOK_INOUT" 1
+read_verilog top.v

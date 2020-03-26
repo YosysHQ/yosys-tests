@@ -1,6 +1,22 @@
-read_verilog -DTEST_1 ../top.v
+read_verilog -DTEST_1 top.v
 hierarchy -top top
 proc; memory
 opt -full
-techmap
-write_verilog -noattr result.out
+synth
+
+rename -top gold
+design -save gold
+design -reset
+
+read_verilog -DTEST_2 top.v
+hierarchy -top top
+proc; memory
+opt -full
+synth
+rename -top gate
+
+
+design -copy-from gold gold
+equiv_make gold gate equiv
+equiv_induct
+equiv_status -assert equiv

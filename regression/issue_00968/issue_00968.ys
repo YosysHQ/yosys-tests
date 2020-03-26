@@ -1,4 +1,4 @@
-read -sv ../top.v
+read_verilog -sv top.v
 hierarchy -top mcve1
 synth
-write_verilog result.out
+sat -verify -prove-asserts -enable_undef -show-ports -prove o_value[3:0] i_value -prove o_value[7:4] 4'bxxxx
