@@ -17,7 +17,7 @@ for root, dirs, files in sorted(os.walk(".")):
                 continue
             print("\t@echo 'Running {2}{1}..'\n"
                   "\t@../run.sh {0} {1}\n"
-                  "clean:\n"
+                  "clean::\n"
                   "\t@echo 'Cleaning {1}..'\n"
                   "\t@rm -rf {0}/work_{1}".format(dir, work, "heavy " if heavy else ""))
 print(".PHONY: all clean")

@@ -5,7 +5,7 @@ all: $(design)/work_sim/.stamp
 $(design)/work_sim/.stamp:
 	@echo 'Running $(design)/sim..'
 	@bash run.sh $(design) sim
-clean:
+clean::
 	@echo 'Cleaning $(design)/sim..'
 	@rm -rf $(design)/work_sim
 
@@ -13,7 +13,7 @@ all: $(design)/work_falsify/.stamp
 $(design)/work_falsify/.stamp:
 	@echo 'Running $(design)/falsify..'
 	@bash run.sh $(design) falsify
-clean:
+clean::
 	@echo 'Cleaning $(design)/falsify..'
 	@rm -rf $(design)/work_falsify
 $(foreach script,$(2),
@@ -21,7 +21,7 @@ all: $(design)/work_$(script)/.stamp
 $(design)/work_$(script)/.stamp: $(design)/work_sim/.stamp
 	@echo 'Running $(design)/$(script)..'
 	@bash run.sh $(design) $(script)
-clean:
+clean::
 	@echo 'Cleaning $(design)/$(script)..'
 	@rm -rf $(design)/work_$(script)
 ))
