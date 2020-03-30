@@ -1,6 +1,5 @@
 read_verilog ../top.v
 proc
-tee -o result1.out dump
 iopadmap -widthparam wp -nameparam np -bits -inpad IBUF O:I -outpad OBUF I:O -inoutpad IOBUFE O:IO -toutpad OBUFT OE:I:O -tinoutpad IOBUF OE:O:I:IO
 iopadmap -widthparam wp -nameparam np -bits -inpad IBUF O:I -outpad OBUF I:O -inoutpad IOBUFE O:IO -toutpad OBUFT OE:I:O -tinoutpad IOBUF OE:O:I:IO
-tee -o result.out dump
+select -assert-any t:IOBUF
