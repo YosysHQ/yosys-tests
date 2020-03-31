@@ -1,0 +1,15 @@
+read_verilog -formal <<EOT
+module foo(i, trigger);
+	wire [7:0] h = $anyconst;
+	input [7:0] i;
+	output trigger;
+
+	wire [7:0] t0 = (h * i) + (h - 1);
+	wire [7:0] t1 = h[7]? t0 : t0 >> 7;
+	assign trigger = (t1 < 2);
+endmodule
+EOT
+proc; techmap
+prep -top foo -nordff
+qbfsat -assume-outputs -write-solution /tmp/qbf_solution.txt
+exec -expect-stdout \\h=[01]{8} -- cat /tmp/qbf_solution.txt

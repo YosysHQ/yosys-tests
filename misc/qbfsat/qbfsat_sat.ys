@@ -1,0 +1,17 @@
+read_verilog -formal <<EOT
+module foo(i, trigger1, trigger2, trigger3);
+	wire [7:0] h = $anyconst;
+	input [7:0] i;
+	output trigger1;
+	output trigger2;
+	output trigger3;
+
+	wire [7:0] t0 = (h * i) + (h - 1);
+	assign trigger1 = (t0 < 2);
+	assign trigger2 = trigger1;
+	assign trigger3 = trigger2;
+endmodule
+EOT
+proc; techmap
+prep -top foo -nordff
+qbfsat -unsat -assume-outputs
