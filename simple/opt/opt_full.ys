@@ -7,7 +7,7 @@ opt -full
 select -assert-count 1 t:$dff
 select -assert-count 1 t:$fsm
 select -assert-count 5 t:$mux
-select -assert-count 3 t:$or
+select -assert-count 2 t:$or
 select -assert-count 1 t:$pmux
 select -assert-count 1 t:fsm
 
