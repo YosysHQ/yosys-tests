@@ -1,0 +1,16 @@
+logger -expect log "Specializing \\const_mul from file with \\h = 8'b00000010." 1
+logger -expect log "Eval result: \\out = 8'00001000." 1
+
+read_verilog -formal <<EOT
+module const_mul(out);
+	wire [7:0] h;
+	output [7:0] out;
+
+	assign out = h[7]? h[6:0] * 3 : h[6:0] * 4;
+endmodule
+EOT
+proc; techmap
+prep -top const_mul -nordff
+qbfsat -specialize-from-file ../qbf_solution1.txt
+opt
+eval
