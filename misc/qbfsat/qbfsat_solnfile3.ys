@@ -3,7 +3,7 @@ logger -expect log "Eval result: \\out = 8'00001000." 1
 
 read_verilog -formal <<EOT
 module const_mul(out);
-	wire [7:0] h;
+	wire [7:0] h = $anyconst;
 	output [7:0] out;
 
 	assign out = h[7]? h[6:0] * 3 : h[6:0] * 4;
