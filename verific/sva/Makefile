@@ -1,4 +1,4 @@
-TESTS := consrep firstmatch gotorep intersect nonconsrep seq_and seq_or triggered until until_trig within repzero
+TESTS := consrep firstmatch gotorep intersect nonconsrep seq_and seq_or triggered until until_trig within repzero rand
 
 all: $(addsuffix .status,$(TESTS))
 	grep -H . *.status | sed 's,.status:,\t,; s,PASS,pass,;' | expand -t20
@@ -8,6 +8,10 @@ all: $(addsuffix .status,$(TESTS))
 	touch .start
 	-bash run.sh $(basename $@) > $(basename $@).log 2>&1
 	test -f $@
+
+rand.status: rand.sv
+	touch .start
+	@(yosys -ql $(<:%.sv=%.log) -p "verific -sv $<" 2>&1 && echo PASS > $(<:%.sv=%.status)) || echo FAIL > $(<:%.sv=%.status)
 
 clean:
 	rm -rf $(addsuffix .pass_??,$(TESTS))
