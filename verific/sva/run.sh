@@ -15,7 +15,7 @@ while read t; do
 		echo "smtbmc yices"
 		echo ""
 		echo "[script]"
-		echo "verific -sv $1.sv"
+		echo "verific -formal $1.sv"
 		echo "verific -import $t"
 		echo "prep -nordff -top $t"
 		echo ""
