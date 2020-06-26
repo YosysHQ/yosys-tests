@@ -1,2 +1,2 @@
-logger -expect error "no AST_WIRE node" 1
+logger -expect error "task/function argument direction missing" 1
 read_verilog top.v

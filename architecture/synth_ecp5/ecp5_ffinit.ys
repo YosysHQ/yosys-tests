@@ -11,7 +11,7 @@ opt -fast -mux_undef -undriven -fine
 techmap -map +/techmap.v -map +/ecp5/arith_map.v
 abc -dff
 opt -fast -mux_undef -undriven -fine
-dff2dffe -direct-match $_DFF_* -direct-match $__DFFS_*
+dff2dffe -direct-match $_DFF_* -direct-match $_SDFF_*
 techmap -D NO_LUT -map +/ecp5/cells_map.v
 opt_expr -mux_undef
 simplemap

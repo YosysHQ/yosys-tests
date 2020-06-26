@@ -12,7 +12,6 @@ opt -fast -mux_undef -undriven -fine
 memory_map
 opt -undriven -fine
 techmap -map +/techmap.v -map +/anlogic/arith_map.v
-dffsr2dff
 techmap -D NO_LUT -map +/anlogic/cells_map.v
 dffinit -strinit SET RESET -ff AL_MAP_SEQ q REGSET -noreinit
 opt_expr -mux_undef

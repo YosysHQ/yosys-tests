@@ -1,1 +1,1 @@
-ERROR: Can't export composite or non-word-wide signal { \\y \\A }.
+ERROR: Can't export composite or non-word-wide signal
