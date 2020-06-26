@@ -23,6 +23,6 @@ select -assert-count 2   t:BUFG
 #select -assert-count 21  t:LUT5
 #select -assert-count 356 t:LUT6
 #select -assert-count 2   t:MUXF7
-select -assert-count 256 t:RAM64M
+select -assert-count 2 t:RAMB18E1
 
-#select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:RAM128X1D %% t:* %D
+#select -assert-none t:BUFG t:FDRE t:RAMB18E1 %% t:* %D
