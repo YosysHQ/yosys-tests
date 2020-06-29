@@ -1,1 +1,2 @@
+logger -expect error "Illegal integer constant size of zero" 1
 read_verilog top.v
