@@ -1,3 +1,2 @@
-read_verilog ../top.v
-proc
+read_verilog -lib +/xilinx/cells_sim.v
 test_pmgen -generate xilinx_srl.fixed
