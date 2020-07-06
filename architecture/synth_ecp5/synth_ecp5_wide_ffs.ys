@@ -44,6 +44,6 @@ design -load postopt # load the post-opt design (otherwise equiv_opt loads the p
 cd dffsr # Constrain all select calls below inside the top module
 stat
 select -assert-count 4 t:TRELLIS_FF
-select -assert-count 5 t:LUT4
+select -assert-count 4 t:LUT4
 select -assert-none t:TRELLIS_FF t:LUT4 %% t:* %D
 write_verilog synth.v

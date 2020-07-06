@@ -17,7 +17,7 @@ module adff
     end
 	always @( posedge clk, posedge clr )
 		if ( clr )
-			q <= 4'b0110;
+			q <= 4'b0000;
 		else
             q <= d;
 endmodule
