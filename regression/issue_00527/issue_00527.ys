@@ -12,7 +12,7 @@ fsm
 opt
 techmap
 opt
-
+logger -expect error "dffs with async set or reset are not supported" 1
 dfflibmap -liberty osu018_stdcells_edit.lib
 
 abc -liberty osu018_stdcells_edit.lib
