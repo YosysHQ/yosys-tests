@@ -9,7 +9,6 @@ equiv_opt -map +/sf2/cells_sim.v synth_sf2 # equivalency check
 design -load postopt # load the post-opt design (otherwise equiv_opt loads the pre-opt design)
 cd dff # Constrain all select calls below inside the top module
 stat
-select -assert-count 1 t:CLKINT
 select -assert-count 2 t:INBUF
 select -assert-count 1 t:OUTBUF
 select -assert-count 1 t:SLE
@@ -25,7 +24,6 @@ design -load postopt # load the post-opt design (otherwise equiv_opt loads the p
 cd dffe # Constrain all select calls below inside the top module
 stat
 select -assert-count 1 t:CFG3
-select -assert-count 1 t:CLKINT
 select -assert-count 3 t:INBUF
 select -assert-count 1 t:OUTBUF
 select -assert-count 1 t:SLE
