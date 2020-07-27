@@ -35,5 +35,5 @@ synth_intel -nobram
 #design -load postopt
 cd top
 select -assert-count 520 t:dffeas
-select -assert-count 977 t:fiftyfivenm_lcell_comb
+select -assert-count 978 t:fiftyfivenm_lcell_comb
 select -assert-none t:dffeas t:fiftyfivenm_lcell_comb %% t:* %D
