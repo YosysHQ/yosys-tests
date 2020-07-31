@@ -21,6 +21,5 @@ select -assert-count 1 t:LUT2
 select -assert-count 10 t:LUT3
 select -assert-count 24 t:LUT4
 select -assert-count 16 t:RAM128X1D
-select -assert-count 8 t:INV
 
-select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:RAM128X1D t:INV %% t:* %D
+select -assert-none t:BUFG t:FDRE t:LUT2 t:LUT3 t:LUT4 t:RAM128X1D %% t:* %D
