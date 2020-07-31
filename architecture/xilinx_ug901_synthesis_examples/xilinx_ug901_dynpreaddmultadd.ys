@@ -18,8 +18,9 @@ stat
 select -assert-count 1 t:BUFG
 select -assert-count 16 t:FDRE
 select -assert-count 1 t:DSP48E1
-select -assert-count 16 t:LUT2
 select -assert-count 9 t:LUT3
+select -assert-count 9 t:LUT4
 select -assert-count 6 t:CARRY4
+select -assert-count 8 t:INV
 
-select -assert-none t:BUFG t:FDRE t:DSP48E1 t:LUT2 t:LUT3 t:CARRY4 %% t:* %D
+select -assert-none t:BUFG t:FDRE t:DSP48E1 t:LUT4 t:LUT3 t:CARRY4 t:INV %% t:* %D

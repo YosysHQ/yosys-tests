@@ -16,14 +16,14 @@ cd asym_ram_tdp_write_first
 stat
 #Vivado synthesizes 1 RAMB18E1.
 select -assert-count 2 t:BUFG
-select -assert-count 200 t:FDRE
-select -assert-count 27 t:LUT1
-select -assert-count 23 t:LUT2
-select -assert-count 48 t:LUT3
-select -assert-count 24 t:LUT4
-select -assert-count 138 t:LUT5
-select -assert-count 227 t:LUT6
-select -assert-count 318 t:MUXF7
-select -assert-count 142 t:MUXF8
+select -assert-count 136 t:FDRE
+select -assert-count 13 t:LUT1
+select -assert-count 12 t:LUT2
+select -assert-count 44 t:LUT3
+select -assert-count 9 t:LUT4
+select -assert-count 68 t:LUT5
+select -assert-count 165 t:LUT6
+select -assert-count 190 t:MUXF7
+select -assert-count 76 t:MUXF8
 
 select -assert-none t:BUFG t:FDRE t:LUT1 t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
