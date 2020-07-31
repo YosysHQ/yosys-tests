@@ -3,5 +3,5 @@ synth -top top
 proc
 flatten
 opt
-opt_rmdff -sat
+opt_dff -sat
 

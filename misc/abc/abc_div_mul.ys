@@ -1,5 +1,4 @@
 read_verilog ../top_div_mul.v
 proc
-dff2dffe
 synth -top top
 tee -o result.out abc

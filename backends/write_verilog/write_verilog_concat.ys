@@ -1,5 +1,4 @@
 read_verilog ../top_concat.v
 proc
 tribuf
-dff2dffe
 write_verilog result.out

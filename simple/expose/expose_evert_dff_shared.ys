@@ -5,5 +5,4 @@ synth -top top
 proc
 flatten
 opt
-opt_rmdff
 expose -evert-dff

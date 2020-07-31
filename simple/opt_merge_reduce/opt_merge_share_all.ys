@@ -7,10 +7,10 @@ proc_dff
 proc_clean
 opt_clean
 opt_merge -share_all
-opt_rmdff
+opt_dff
 opt_clean
 opt_expr
-opt_rmdff
+opt_dff
 memory
 synth -top top
 

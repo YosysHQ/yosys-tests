@@ -1,5 +1,4 @@
 read_verilog ../top_dff.v
 synth -top top
-dff2dffe
 tee -o result.log  abc -dff
- abc -dff
+abc -dff

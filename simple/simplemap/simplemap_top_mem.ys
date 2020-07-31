@@ -1,6 +1,5 @@
 read_verilog ../top_mem_slice_concat.v
 prep
-dff2dffe
 simplemap top
 synth
 

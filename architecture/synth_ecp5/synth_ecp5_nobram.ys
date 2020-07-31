@@ -35,8 +35,8 @@ miter -equiv -flatten -make_assert -make_outputs gold gate miter
 design -load postopt
 cd top
 stat
-select -assert-count 143 t:LUT4
-select -assert-count 16 t:PFUMX
-select -assert-count 32 t:TRELLIS_DPR16X4
-select -assert-count 143 t:TRELLIS_FF
+select -assert-max 145 t:LUT4
+select -assert-max 20 t:PFUMX
+select -assert-max 32 t:TRELLIS_DPR16X4
+select -assert-max 143 t:TRELLIS_FF
 select -assert-none t:LUT4 t:PFUMX t:TRELLIS_DPR16X4 t:TRELLIS_FF %% t:* %D
