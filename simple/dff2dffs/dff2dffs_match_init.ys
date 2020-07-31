@@ -1,6 +1,0 @@
-read_verilog ../top.v
-proc
-techmap
-tee -o result1.out stat
-dff2dffs -match-init
-tee -o result.out stat

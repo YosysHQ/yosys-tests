@@ -1,6 +1,5 @@
 read_verilog ../top_dff.v
 proc
-dff2dffe
 techmap
 abc9 -lut 5
 abc9 -lut 5

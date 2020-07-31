@@ -2,6 +2,6 @@ read_verilog ../top.v
 proc
 techmap
 tee -o result1.out stat
-dff2dffs
+opt_dff
 select -assert-none t:$_DFF_N_
 tee -o result.out stat

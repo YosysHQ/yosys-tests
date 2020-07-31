@@ -4,10 +4,13 @@ fsm_detect
 fsm_extract
 opt -mux_undef
 
-select -assert-count 1 t:$dff
+select -assert-count 2 t:$sdffe
 select -assert-count 1 t:$fsm
-select -assert-count 7 t:$mux
-select -assert-count 1 t:$pmux
+select -assert-count 1 t:$mux
+select -assert-count 2 t:$ne
+select -assert-count 2 t:$reduce_bool
+select -assert-count 2 t:$reduce_and
+select -assert-count 1 t:$not
 select -assert-count 1 t:fsm
 
-select -assert-none t:$dff t:$fsm t:$mux t:$pmux t:fsm %% t:* %D
+select -assert-none t:$sdffe t:$fsm t:$mux t:$ne t:$reduce_bool t:$reduce_and t:$not t:fsm %% t:* %D

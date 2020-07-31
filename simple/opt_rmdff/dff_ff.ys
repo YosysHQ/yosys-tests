@@ -2,10 +2,10 @@ read_verilog ../top_async.v
 proc
 clk2fflogic
 #opt
-opt_rmdff
+opt_dff
 synth -top top
 proc
 flatten
 #opt
-opt_rmdff
+opt_dff
 

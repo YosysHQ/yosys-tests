@@ -1,11 +1,10 @@
 read_verilog ../top_async.v
 proc
-dff2dffe
 #opt
-opt_rmdff
+opt_dff
 synth -top top
 proc
 flatten
 #opt
-opt_rmdff
+opt_dff
 
