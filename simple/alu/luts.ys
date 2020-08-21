@@ -1,5 +1,6 @@
 read_verilog ../top.v
 synth -top top
 abc -lut 4
+stat
 select -assert-count 32 t:$_DFF_P_
-select -assert-count 688 t:$lut
+select -assert-count 634 t:$lut

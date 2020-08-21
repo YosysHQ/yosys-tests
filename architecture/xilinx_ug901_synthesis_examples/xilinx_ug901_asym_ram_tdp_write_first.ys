@@ -17,13 +17,13 @@ stat
 #Vivado synthesizes 1 RAMB18E1.
 select -assert-count 2 t:BUFG
 select -assert-count 136 t:FDRE
-select -assert-count 13 t:LUT1
-select -assert-count 12 t:LUT2
-select -assert-count 44 t:LUT3
-select -assert-count 9 t:LUT4
-select -assert-count 68 t:LUT5
-select -assert-count 165 t:LUT6
-select -assert-count 190 t:MUXF7
-select -assert-count 76 t:MUXF8
+select -assert-count 10 t:LUT1
+select -assert-count 11 t:LUT2
+select -assert-count 52 t:LUT3
+select -assert-count 6 t:LUT4
+select -assert-count 45 t:LUT5
+select -assert-count 183 t:LUT6
+select -assert-count 188 t:MUXF7
+select -assert-count 71 t:MUXF8
 
 select -assert-none t:BUFG t:FDRE t:LUT1 t:LUT2 t:LUT3 t:LUT4 t:LUT5 t:LUT6 t:MUXF7 t:MUXF8 %% t:* %D
