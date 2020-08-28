@@ -2,7 +2,7 @@ read_verilog ../top.v
 proc
 memory
 dump -o file.il
-write_ilang ilang.ilang
+write_rtlil rtlil.il
 design -reset
-read_ilang -lib ilang.ilang
+read_rtlil -lib rtlil.il
 dump -n -o file1.il

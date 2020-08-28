@@ -2,9 +2,9 @@ read_verilog ../top.v
 proc
 memory
 dump -o file.il
-write_ilang ilang.ilang
+write_rtlil rtlil.il
 design -reset
-read_ilang -overwrite ilang.ilang
+read_rtlil -nooverwrite rtlil.il
 dump -n -o file1.il
 
 select -assert-count 1 t:$and
