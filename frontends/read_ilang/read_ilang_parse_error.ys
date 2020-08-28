@@ -1,0 +1,2 @@
+logger -expect error "Parser error in line 110" 1
+read_ilang ../ilang.ilang
