@@ -1,0 +1,4 @@
+verific -vhdl enum_bool.vhd
+hierarchy -top top
+select -assert-count 3 a:enum_value_0=\\false
+select -assert-count 3 a:enum_value_1=\\true
