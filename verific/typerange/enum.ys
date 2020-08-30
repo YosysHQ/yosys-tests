@@ -1,10 +1,10 @@
 verific -sv enum.sv
 hierarchy -top top
-select -assert-count 3 a:wiretype=\\states_t
-select -assert-count 3 a:enum_value_00=\\ts0
-select -assert-count 3 a:enum_value_01=\\ts1
-select -assert-count 3 a:enum_value_10=\\ts2
-select -assert-count 3 a:enum_value_11=\\ts3
+select -assert-count 2 a:wiretype=\\states_t
+select -assert-count 2 a:enum_value_00=\\ts0
+select -assert-count 2 a:enum_value_01=\\ts1
+select -assert-count 2 a:enum_value_10=\\ts2
+select -assert-count 2 a:enum_value_11=\\ts3
 
 
 design -reset
@@ -35,8 +35,8 @@ select -assert-count 3 a:enum_value_11=\\ts3
 design -reset
 verific -vhdl enum.vhd
 hierarchy -top top
-select -assert-count 3 a:wiretype=\\states_t
-select -assert-count 3 a:enum_value_00=\\ts0
-select -assert-count 3 a:enum_value_01=\\ts1
-select -assert-count 3 a:enum_value_10=\\ts2
-select -assert-count 3 a:enum_value_11=\\ts3
+select -assert-count 2 a:wiretype=\\states_t
+select -assert-count 2 a:enum_value_00=\\ts0
+select -assert-count 2 a:enum_value_01=\\ts1
+select -assert-count 2 a:enum_value_10=\\ts2
+select -assert-count 2 a:enum_value_11=\\ts3
