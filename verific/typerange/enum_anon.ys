@@ -1,0 +1,13 @@
+verific -sv enum_anon.sv
+hierarchy -top top
+select -assert-count 0 a:wiretype
+select -assert-count 0 a:enum_value*
+select -assert-count 0 a:enum_type
+
+
+design -reset
+read_verilog -sv enum_anon.sv
+hierarchy -top top
+select -assert-count 0 a:wiretype
+select -assert-count 0 a:enum_value*
+select -assert-count 1 a:enum_type

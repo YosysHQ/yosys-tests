@@ -1,0 +1,42 @@
+verific -sv enum.sv
+hierarchy -top top
+select -assert-count 3 a:wiretype=\\states_t
+select -assert-count 3 a:enum_value_00=\\ts0
+select -assert-count 3 a:enum_value_01=\\ts1
+select -assert-count 3 a:enum_value_10=\\ts2
+select -assert-count 3 a:enum_value_11=\\ts3
+
+
+design -reset
+read_verilog -sv <<EOT
+typedef enum logic [1:0] {
+        ts0, ts1, ts2, ts3
+} states_t;
+module top(input clk, input [1:0] din, output [1:0] dout);
+        states_t foo = din, bar; // Note: not quite legal SV, but necessary
+				 //       to workaround Yosys not supporting
+				 //       enums in ports
+        states_t r;
+        always @(posedge clk) begin
+		r <= foo;
+                bar <= r;
+	end
+        assign dout = bar;
+endmodule
+EOT
+hierarchy -top top
+select -assert-count 3 a:wiretype=\\states_t
+select -assert-count 3 a:enum_value_00=\\ts0
+select -assert-count 3 a:enum_value_01=\\ts1
+select -assert-count 3 a:enum_value_10=\\ts2
+select -assert-count 3 a:enum_value_11=\\ts3
+
+
+design -reset
+verific -vhdl enum.vhd
+hierarchy -top top
+select -assert-count 3 a:wiretype=\\states_t
+select -assert-count 3 a:enum_value_00=\\ts0
+select -assert-count 3 a:enum_value_01=\\ts1
+select -assert-count 3 a:enum_value_10=\\ts2
+select -assert-count 3 a:enum_value_11=\\ts3
