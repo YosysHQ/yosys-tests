@@ -1,4 +1,5 @@
 read_verilog ../../common/memory.v
 proc
 memory
+dffunmap
 write_smv result.out
