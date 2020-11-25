@@ -1,0 +1,3 @@
+read_verilog ../top_lhs.v
+proc
+write_verilog -simple-lhs result.out
