@@ -1,1 +1,1 @@
-ERROR: Missing -script option.
+ERROR: Missing -script or -command option.

@@ -1,1 +1,1 @@
-ERROR: The provided script file and Yosys binary do not crash on this design!
+ERROR: The provided script file or command and Yosys binary do not crash on this design!
