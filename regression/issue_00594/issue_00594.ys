@@ -1,2 +1,2 @@
-logger -expect error "Single range expected." 1
+logger -expect error "Unsupported expression on dynamic range select on signal" 1
 read_verilog top.v
