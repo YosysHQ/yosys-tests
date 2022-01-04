@@ -1,2 +1,2 @@
-logger -expect error "syntax error, unexpected ',', expecting '='" 1
+logger -expect error "Parameter defaults can only be omitted in SystemVerilog mode!" 1
 read_verilog top.v
