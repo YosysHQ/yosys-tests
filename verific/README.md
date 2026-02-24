@@ -1,1 +1,1 @@
-Test cases for Yosys+Verific (mostly using SymbiYosys)
+Test cases for Yosys+Verific (mostly using SBY)
